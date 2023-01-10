@@ -1,0 +1,303 @@
+body {
+margin: 0px;
+background-color: rgb(49, 49, 49);
+font-family: Arial, Helvetica, sans-serif;
+
+}
+input { /* Had to overwrite all input fields as divs enclosing inputs caused unnecessary padding. */
+    padding-left: 0% !important;
+    padding-right: 0% !important;
+    background-color: rgb(26, 26, 26);
+    color: white;
+    border: none;
+}
+table, th, td {
+    border: 1px solid black;
+}
+
+button {
+    background-color: rgb(26, 26, 26);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+}
+button:hover {
+    filter: invert(1);
+    transition: 0.2s;
+}
+
+#instructions {
+    background-color: rgb(43, 43, 43);
+    border-radius: 10px;
+    width: 96%;
+    margin-top: 22%;
+    margin-left: 20px;
+    padding: 10px;
+    float: left;
+    color: white;
+}
+
+.tdIinstru {
+    padding: 20px;
+}
+
+#input {
+    overflow: auto;
+}
+
+#FormsEditable {
+    width: 47%;
+    float: right;
+    margin: 20px;
+}
+
+#countdownInputForm {
+    background-color: rgb(43, 43, 43);
+    width: 46%;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 20px;
+}
+
+#formInCountdown {
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+    font-family: Arial;
+}
+
+#h2InCountdown {
+    text-align: center;
+    color: white;
+}
+
+#btnInCountdown {
+    float: right;
+    margin-top: -13px;
+    
+}
+
+/* dinner schedule styling */
+#dinnerScheduleDiv {
+    float: left;
+    border-radius: 15px;
+    margin: 20px; 
+    width: 46%;
+    background-color: rgb(43, 43, 43);
+    color: white;
+    padding: 10px;
+}
+#dinner {
+    width: 25%;
+    position: absolute;
+    margin-left: 10px;
+}
+#textInputDiv {
+    padding-left: 10%;
+    width: 25%;
+}
+#tableRemoveWeek {
+    width: 60px;
+    text-align:center;
+}
+#dinnerInputForm {
+    overflow: auto;
+    float: right;
+    width: 40%;
+    text-align: center;
+}
+#weekTableRow {
+    width: 10px;
+    height: 10px;
+    text-align: center;
+}
+.dinnerTableRow {
+    width: 200px;
+    text-align: center;
+}
+#MatsedelBorder {
+    border: 1px solid black;
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+#WeekBorder {
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+#Heading {
+    text-align: center;
+}
+#WholeMatsedelBoard {
+    border: 2px solid black;
+    height: 500px;
+    width: 60%;
+    float: right;
+    margin: 1px;
+}
+.Forms {
+    border: 2px solid black;
+    width: 39%;
+    padding: 2px;
+    margin: 10px;
+    float:left;
+}
+.AlignCenter {
+    display: inline;
+}
+.MatsedelText {
+    border: 1px solid black;
+    text-align: center;
+    width: 200px;
+}
+.UpdateForms {
+    background-color: rgb(43, 43, 43);
+    color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+.UpdateForms > * {
+    margin-bottom: 7px;
+}
+
+.UpdateForms-saved {
+    background-color: rgb(47,47,47);
+    border: 5px dashed rgb(43, 43, 43);
+    color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+.UpdateForms-saved > * {
+    margin-bottom: 7px;
+}
+
+#Week {
+    width: 50%;
+}
+.AlignEnd {
+    text-align: left;
+}
+#weekTableRow {
+width: 50px;
+text-align: center;
+}
+#tableRemoveWeek {
+width: 60px;
+text-align:center;
+}
+
+
+
+
+/* popup */
+.popupBox {
+    color: rgb(24, 24, 24);
+    outline: none;
+    box-sizing: border-box;
+    position: absolute;
+    display: none;
+}
+.popupArrow {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    max-width: 0.75rem;
+    max-height: 0.75rem;
+    background-color: rgb(24, 24, 24);
+    top: -0.0625rem;
+    transform: rotate(45deg) translateY(-50%);
+    outline: none;
+    box-sizing: border-box;
+    color: rgb(24, 24, 24);
+}
+.popupMessageBox {
+    display: block;
+    position: relative;
+    white-space: normal;
+    padding: 1.25rem;
+    background-color: rgb(24, 24, 24);
+    box-shadow: rgb(0 0 0 / 50%) 0px 0.25rem 0.625rem 0px;
+    text-transform: none;
+    text-align:center;
+    outline: none;
+    box-sizing: border-box;
+    color: rgb(24, 24, 24);
+}
+.popupMessage{
+    display: block;
+    color: rgb(255, 255, 255);
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    margin-top: -0.25rem;
+    margin-bottom: -0.25rem;
+    white-space: normal;
+    text-transform: none;
+    text-align: center;
+}
+p.popupMessage {
+    margin: 0px;
+    color: rgb(255, 255, 255);
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    outline: none;
+    box-sizing: border-box;
+    white-space: normal;
+    text-transform: none;
+    text-align: center;
+}
+
+
+
+
+
+/*INPUT IMG CSS*/
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+    gap: 10px;   
+    padding: 10px;
+}
+.grid-container > div{
+    text-align: center;
+    font-size: 30px;
+}
+.templateImg{
+    height:400px;
+}
+.bttnContainer {
+    width: 100%;
+    height: 50px;
+}
+
+.quantity {
+    width: 40px;
+}
+
+.delBtn {
+    float: right;
+}
+.delBtn:hover {
+    filter: invert(0);
+    background-color: red;
+    transition: 0.2s;
+}
+
+
+
+#savedInputs {
+    width: 46%;
+    margin: 20px;
+    float: left;
+}
+
+#publish {
+    
+    float: right;
+    margin-right: 50px;
+
+}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+<body>
+	<!-- For the input site, replace the contents of the "websocket.send" function with 
+		 data retrieved from Linns input choices. text, image etc.-->
+    <input type="text" id="inputToSend">
+    <button onclick="if(websocket.readyState == WebSocket.OPEN) {
+        websocket.send(document.getElementById('inputToSend').value);
+    }">send</button>
+</body>
+<script>
+    const websocket = new WebSocket("ws://te4projekt.se/");
+</script>

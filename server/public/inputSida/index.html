@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head >
+    <script src="inputBox.js"></script>
+    <script src="dinner.js"></script>
+    <script src="send.js"></script>
+    <script src="padLock.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body onload=ShowDinnerSchedule()>
+
+    <div class="grid-container">
+        <div class="grid-item">
+            <img class="templateImg" src="templates/template1/template1.svg">
+            <div class="bttnContainer">
+                <button onclick="PrintInputBorder(['Template1','TEXT','IMG'])">Lägg till Template 1</button>
+            </div>
+        </div>
+        <div class="grid-item">
+            <img class="templateImg" src="templates/template2/template2.svg">
+            <div class="bttnContainer">
+                <button onclick="PrintInputBorder(['Template2','TEXT','TEXT'])">Lägg till Template 2</button>
+            </div>
+        </div>
+        <div class="grid-item">
+            <img class="templateImg" src="templates/template3/template3.svg">
+            <div class="bttnContainer">
+                <button onclick="PrintInputBorder(['Template3','IMG'])">Lägg till Template 3</button>
+            </div>
+        </div>
+        <div class="grid-item">
+            <img class="templateImg" src="templates/template4/template4.svg">
+            <div class="bttnContainer">
+                <button onclick="PrintInputBorder(['Template4','TEXT','IMG'])">Lägg till Template 4</button>
+            </div>
+        </div>
+        <div class="grid-item">
+            <img class="templateImg" src="templates/template5/template5.svg">
+            <div class="bttnContainer">
+                <button onclick="PrintInputBorder(['Template5','TEXT','TEXT'])">Lägg till Template 5</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Forms -->
+    <form id="FormsEditable">
+    </form>
+
+
+    <!-- Countdown Input -->
+    <div id="countdownInputForm">
+        <h2 id="h2InCountdown">Countdown</h2>
+        <form id="formInCountdown">
+            <label> Text: </label>
+            <input type="text" id="TEXT" value=""><br><br>
+            <label> Datum: </label>
+            <input type="date" id="DATE" name="trip-start" value="2003-02-30">
+            <button id="btnInCountdown" onclick="Save('formInCountdown')" type="button">Spara</button>
+
+        </form>
+    </div>
+
+
+    <!-- Dinner schedule -->
+    <div id="dinnerScheduleDiv">
+        <h2 style="text-align: center;">Matsedel</h2>
+        <div id="dinnerInputForm">
+            <form>
+                <label for="week">Vecka</label><br>
+                <input type="text" id="week" name="week" value=""><br>
+                <label for="monday">Måndag</label><br>
+                <input type="text" id="monday" name="monday" value=""><br>
+                <label for="tuseday">Tisdag</label><br>
+                <input type="text" id="tuesday" name="tuesday" value=""><br>
+                <label for="wednesday">Onsdag</label><br>
+                <input type="text" id="wednesday" name="wednesday" value=""><br>
+                <label for="thursday">Torsdag</label><br>
+                <input type="text" id="thursday" name="thursday" value=""><br>
+                <label for="friday">Fredag</label><br>
+                <input type="text" id="friday" name="friday" value=""><br>
+            </form>
+            <br>
+            <button type="button" onclick=SaveDinnerSchedule()>Spara</button>
+            <!-- Popup for dinner schedule -->
+            <span id="popup" class="popupBox">
+                <span class="popupArrow"></span>
+                <span class="popupMessageBox">
+                    <span class="popupMessage">
+                        <p color="white" type="body" id="popupText">
+
+                        </p>
+                    </span>
+                </span>
+            </span>
+        </div>
+        <!-- Dinner schedule table -->
+        <div id="dinnerScheduleTable">
+            <form>
+                <div>
+                    <table id="dinner"></table>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="savedInputs">
+        
+    </div>
+    <button onclick="ActuallySave()" type="button" id="publish">publicera </button>
+
+    
+    <div id="instructions">
+        <table style="width:100%; color: white; border-collapse:collapse;">
+            <tr></tr>
+              <th><strong>Templates</strong></th>
+              <th><strong>Countdown</strong></th>
+              <th><strong>Matsedel</strong></th>    
+            </tr>
+            <tr>
+              <td class="tdIinstru"><strong>Steg 1:</strong> Du klickar på "Lägg till Template" för att välja.<br>
+                <strong>Steg 2:</strong> Nu kan du välja timer högst upp på boxen, det handlar om minnuter där 0 blir en stilla bild.<br>
+                <strong>Steg 3:</strong> Sedan kan du skriva in din text samt lägga in bild/video.<br>
+                <strong>Steg 4:</strong> Känner du dig klar? Klicka på spara. (Din slide kommer att sparas och vänta på att bli uppskickad till skärmen).
+              </td>
+              <td class="tdIinstru"><strong>Steg 1:</strong> Vid text rutan så skriver du in namnet på lovet.<br>
+                <strong>Steg 2:</strong> Sedan väljer du datumet som lovet sker på! (Detta så att timern har ett datum att räkna ner till)<br>
+                <strong>Steg 3:</strong> Känner du dig klar? Klicka på spara. (Din Countdown kommer att sparas och vänta på att bli uppskickad till skärmen).
+                </td>
+              <td class="tdIinstru"><strong>Steg 1:</strong> Du fyller in rutorna med rätt information angående vecka och lunch.<br>
+                <strong>Steg 2:</strong> Är du klar med veckan? Klicka på spara. (Nu har du möjlighten till att antingen fortsätta med nästa vecka, ifall du är klar så lämnar du det).
+                </td>
+            </tr>
+          </table>
+    </div>
+
+</body>
+
+</html>

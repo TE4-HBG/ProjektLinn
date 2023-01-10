@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template 3</title>
+    <link rel="stylesheet" href="http://te4projekt.se/css/main.css">
+    <script src="http://te4projekt.se/scripts/clockAndDate.js"></script>
+</head>
+<body onload="InitClockAndDate()">
+    <img class="background" src="http://te4projekt.se/images/backgrounds/standardFooterBackground.svg">
+
+    <!-- Clock and Date-->
+    <div class="datetime">
+        <div class="time">
+            <span id="hour">00</span>:
+            <span id="minutes">00</span> 
+        </div>
+        <div class="date">
+            <span id="dayname">Day</span>
+            <span id="daynum">00</span>
+            <span id="month">Month</span>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class='img' id="template3Img">
+
+    </div>
+
+
+    <!-- Footer -->
+
+    <!-- Skånetrafiken -->   
+    <!-- CONST = CONSTANT, NON CHANGEABLE TEXT -->
+    <!-- train1 -->
+    <img class="skanetrafikenIconsFooter" id="train1IconFooter" src="http://te4projekt.se/images/icons/Trains and busses/Pagatag.svg">
+    <p id="train1Footer" class="trainName">Teckomatorp</p>
+    <p id="train1TimeFooter" class="skanetrafikenTimeFooter">15</p>
+    <p id="train1MinCONSTFooter" class="skanetrafikenMinFooter">min</p>
+    <!-- train2 -->
+    <img class="skanetrafikenIconsFooter" id="train2IconFooter" src="http://te4projekt.se/images/icons/Trains and busses/Pagatag.svg">
+    <p id="train2Footer" class="trainName">Bjuv</p>
+    <p id="train2TimeFooter" class="skanetrafikenTimeFooter">12</p>
+    <p id="train2MinCONSTFooter" class="skanetrafikenMinFooter">min</p>
+    <!-- train3 -->
+    <img class="skanetrafikenIconsFooter" id="train3IconFooter" src="http://te4projekt.se/images/icons/Trains and busses/Pagatag.svg">
+    <p id="train3Footer" class="trainName">Landskrona</p>
+    <p id="train3TimeFooter" class="skanetrafikenTimeFooter">22</p>
+    <p id="train3MinCONSTFooter" class="skanetrafikenMinFooter">min</p>
+    <!-- train4 -->
+    <img class="skanetrafikenIconsFooter" id="train4IconFooter" src="http://te4projekt.se/images/icons/Trains and busses/Pagatag.svg">
+    <p id="train4Footer" class="trainName">Halmstad</p>
+    <p id="train4TimeFooter" class="skanetrafikenTimeFooter">22</p>
+    <p id="train4MinCONSTFooter" class="skanetrafikenMinFooter">min</p>
+    <!-- train5 -->
+    <img class="skanetrafikenIconsFooter" id="train5IconFooter" src="http://te4projekt.se/images/icons/Trains and busses/Oresundstag.svg">
+    <p id="train5Footer" class="trainName">Malmö</p>
+    <p id="train5TimeFooter" class="skanetrafikenTimeFooter">12</p>
+    <p id="train5MinCONSTFooter" class="skanetrafikenMinFooter">min</p>
+    <!-- train6 -->
+    <img class="skanetrafikenIconsFooter" id="train6IconFooter" src="http://te4projekt.se/images/icons/Trains and busses/Oresundstag.svg">
+    <p id="train6Footer" class="trainName">Göteborg</p>
+    <p id="train6TimeFooter" class="skanetrafikenTimeFooter">12</p>
+    <p id="train6MinCONSTFooter" class="skanetrafikenMinFooter">min</p>
+    <!-- Bus1 -->
+    <img class="skanetrafikenIconsFooter" id="bus1IconFooter" src="http://te4projekt.se/images/icons/Trains and busses/Stadsbuss.svg">
+    <p id="bus1NumberFooter" class="busNumberFooter">8</p>
+    <p id="bus1NameFooter" class="busNameFooter">Rosengården C</p>
+    <p id="bus1TimeFooter" class="skanetrafikenTimeFooter">12</p>
+    <p id="bus1MinCONSTFooter" class="skanetrafikenMinFooter">min</p>
+    <!-- Bus2 -->
+    <img class="skanetrafikenIconsFooter" id="bus2IconFooter" src="http://te4projekt.se/images/icons/Trains and busses/Stadsbuss.svg">
+    <p id="bus2NumberFooter" class="busNumberFooter">8</p>
+    <p id="bus2NameFooter" class="busNameFooter">Domsten C</p>
+    <p id="bus2TimeFooter" class="skanetrafikenTimeFooter">12</p>
+    <p id="bus2MinCONSTFooter" class="skanetrafikenMinFooter">min</p>
+    <!-- Bus3 -->
+    <img class="skanetrafikenIconsFooter" id="bus3IconFooter" src="http://te4projekt.se/images/icons/Trains and busses/Stadsbuss.svg">
+    <p id="bus3NumberFooter" class="busNumberFooter">2</p>
+    <p id="bus3NameFooter" class="busNameFooter">Råå</p>
+    <p id="bus3TimeFooter" class="skanetrafikenTimeFooter">12</p>
+    <p id="bus3MinCONSTFooter" class="skanetrafikenMinFooter">min</p>
+    <!-- Bus4 -->
+    <img class="skanetrafikenIconsFooter" id="bus4IconFooter" src="http://te4projekt.se/images/icons/Trains and busses/Stadsbuss.svg">
+    <p id="bus4NumberFooter" class="busNumberFooter">2</p>
+    <p id="bus4NameFooter" class="busNameFooter">Berga industriområde</p>
+    <p id="bus4TimeFooter" class="skanetrafikenTimeFooter">12</p>
+    <p id="bus4MinCONSTFooter" class="skanetrafikenMinFooter">min</p>
+    <!-- Bus5 -->
+    <img class="skanetrafikenIconsFooter" id="bus5IconFooter" src="http://te4projekt.se/images/icons/Trains and busses/Regionsbuss.svg">
+    <p id="bus5NumberFooter" class="busNumberFooter">219</p>
+    <p id="bus5NameFooter" class="busNameFooter">Rydebäck</p>
+    <p id="bus5TimeFooter" class="skanetrafikenTimeFooter">12</p>
+    <p id="bus5MinCONSTFooter" class="skanetrafikenMinFooter">min</p>
+    <!-- Bus6 -->
+    <img class="skanetrafikenIconsFooter" id="bus6IconFooter" src="http://te4projekt.se/images/icons/Trains and busses/Regionsbuss.svg">
+    <p id="bus6NumberFooter" class="busNumberFooter">221</p>
+    <p id="bus6NameFooter" class="busNameFooter">Höganäs</p>
+    <p id="bus6TimeFooter" class="skanetrafikenTimeFooter">13</p>
+    <p id="bus6MinCONSTFooter" class="skanetrafikenMinFooter">min</p>
+
+
+
+    <div id="lunchDivFooter">
+        <p class="lunchFooter">Kyckling i röd curry serveras med ris</p>
+        <p class="lunchFooter">Kikärtsgryta i röd curry serveras med ris</p>
+    </div>
+    
+    
+
+</body>
+</html>
