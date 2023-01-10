@@ -2,10 +2,17 @@
 
 export DISPLAY=:0.0
 
-if ! timeout 1s xset q &>/dev/null; then
-	printf "no server :(\n"
-else
-	printf "server :)\n"
-fi
+
+while true
+do 
+	if ! timeout 1s xset q &>/dev/null; then
+		printf "x still dead lol\n"
+	else
+		break
+	fi
+	sleep 1
+done
+
+
 
 exit 0
