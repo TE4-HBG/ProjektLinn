@@ -7,4 +7,4 @@ sudo apt -y install xdotool
 sudo apt -y install xbanish
 sudo apt -y upgrade
 git fetch
-git pull
+git pull --ff-only
