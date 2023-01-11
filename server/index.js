@@ -1,13 +1,10 @@
 import express from 'express';
-import {JSDOM} from 'jsdom'
+import {JSDOM, DOMWindow } from 'jsdom'
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { WebSocketServer } from 'ws';
 import { readFile, writeFile } from 'fs/promises';
-import { Blob } from 'buffer';
-import { timeStamp } from 'console';
-import { buffer } from 'stream/consumers';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -127,7 +124,7 @@ let displayTemplates = "";
             }
             
             document.body.classList.add("page");
-            displayTemplates += changeTag(document.body, HTMLDivElement.prototype).outerHTML;
+            displayTemplates += changeTag(document.body, "div").outerHTML;
             
         }
         displayTemplates = displayTemplates.replace(/[\n\r]/g,'');
@@ -157,13 +154,13 @@ let displayTemplates = "";
 
 }
 /**
- * 
+ * @param {Document} document
  * @param {HTMLElement} oldElement 
- * @param {HTMLElement} prototype
+ * @param {string} tag
  * @returns {HTMLElement}
  */
-function changeTag(oldElement, prototype) {
-    let newElement = Object.assign({}, prototype);
+function changeTag(document, oldElement, tag) {
+    let newElement = document.createElement(tag);
     console.log(newElement.outerHTML)
     
     for (let i = 0; i < oldElement.attributes.length; i++) {
