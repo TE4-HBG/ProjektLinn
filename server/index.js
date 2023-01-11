@@ -168,6 +168,5 @@ function changeTag(document, oldElement, tag) {
         console.log(newElement.outerHTML)
     }
     newElement.innerHTML = oldElement.innerHTML;
-    console.log(newElement.outerHTML)
     return newElement;
 }
