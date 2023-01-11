@@ -28,7 +28,8 @@
                 {opacity: '0%', zIndex:'-1'},
     
             ]
-            let array;
+            
+            let array = null;
             let str;
             let changed = false;
             let counter = 0;
@@ -40,17 +41,17 @@
                     console.log("got new stuff!")
                     changed = true;
                     str = message.data;
+                    document.body.innerHTML = str;
+                    array = document.getElementsByClassName('page');
                 }
                 
             })
             
-            setInterval(async () => {
+            setInterval(() => {
                 counter += 1000;
                 if (changed) {
                         console.log("stuff changed! changed!")
                         changed = false;
-                        document.body.innerHTML = str;
-                        array = document.getElementsByClassName('page');
                         array[i].style.opacity = '100%';
                         for (let index = 0; index < array.length; index++) {
                             if(index != i) {
@@ -58,18 +59,20 @@
                             }
                         }
                 }
-                if(counter % 10000 == 0) {
-                    for (let index = 0; index < array.length; index++) {
-                        if(index !== i || index !== ((i + 1) % array.length)) {
-                            array[index].animate(disappear,{duration:0,iterations:1, fill: 'forwards'});
+                if (array.length > 1) {
+                    if(counter % 10000 == 0  ) {
+                        for (let index = 0; index < array.length; index++) {
+                            if(index !== i || index !== ((i + 1) % array.length)) {
+                                array[index].animate(disappear,{duration:0,iterations:1, fill: 'forwards'});
+                            }
                         }
+                        console.log(`Changing from ${i} to ${(i+1) % array.length}`);
+        
+                        array[(i + 1) % array.length].animate(appear,{duration:0,iterations:1, fill: 'forwards'});
+                        
+                        array[i].animate(fade,{duration:0,iterations:1, fill: 'forwards'});
+                        i = (i + 1) % array.length;
                     }
-                    console.log(`Changing from ${i} to ${(i+1) % array.length}`);
-    
-                    array[(i + 1) % array.length].animate(appear,{duration:0,iterations:1, fill: 'forwards'});
-                    
-                    array[i].animate(fade,{duration:0,iterations:1, fill: 'forwards'});
-                    i = (i + 1) % array.length;
                 }
             }, 1000);
             
