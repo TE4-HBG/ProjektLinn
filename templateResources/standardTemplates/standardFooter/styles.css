@@ -1,0 +1,291 @@
+/* Global, don't touch unless you know what you're doing :D */
+body {
+    margin: 0%;
+    font-family: Arial; /* use !important to change font of specific element */
+    color: white;
+}
+p {
+    margin: 0%;
+}
+.background {
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+}
+/*#footer {
+    position: absolute;
+    bottom: 0%;
+    height: 138px;
+    width: 100%;
+}*/
+
+/* Date and time */
+.datetime {
+    color: white;
+    font-family: Arial;
+    word-spacing: -1px;
+    width: 340px;
+    padding: 15px 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 2.3%;
+    left:26%;
+}
+.date {
+    margin-top: -5px;
+    font-size: 9.5mm;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap; /* prevents break line */
+}
+.time {
+    font-size: 14.5mm;
+    font-style: normal;
+    font-weight:100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.time span {
+    position: relative;
+    margin: 0 6px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 3px;
+}
+
+
+
+
+/* Buses and trains */
+/* 18mm between each element */
+.trainName {
+    font-size: 4.5mm; 
+    position: absolute; 
+}
+.busName {
+    font-size: 3.2mm; 
+    position: absolute; 
+}
+.skanetrafikenTime {
+    font-size: 3.8mm; 
+    font-family: Arial; 
+    position: absolute; 
+}
+.skanetrafikenMin {
+    color: rgb(90, 90, 90);
+    font-size: 3.8mm; 
+    font-family: Arial; 
+    position: absolute; 
+}
+.busNumber {
+    font-size: 4mm; 
+    position: absolute; 
+}
+.skanetrafikenIcons {
+    position: absolute; 
+    max-width:5.6%;
+    max-height:5.6%;
+}
+/* Train 1 */
+#train1 {            
+    transform: translateX(84mm) translateY(292.8mm) !important; 
+}
+#train1Time {
+    transform: translateX(125.3mm) translateY(293mm) !important; 
+}
+#train1MinCONST {
+    transform: translateX(129.7mm) translateY(293mm) !important; 
+}
+#train1Icon {
+    transform: translateX(72.4mm) translateY(291.8mm) !important; 
+}
+/* Train 2 */
+#train2 {
+    transform: translateX(84mm) translateY(300.2mm) !important; 
+}
+#train2Time {
+    transform: translateX(125.3mm) translateY(300.5mm) !important; 
+}
+#train2MinCONST {
+    transform: translateX(129.7mm) translateY(300.5mm) !important; 
+}
+#train2Icon {
+    transform: translateX(72.4mm) translateY(299.2mm) !important; 
+}
+/* Train 3 */
+#train3 {
+    transform: translateX(84mm) translateY(307.5mm) !important;
+}
+#train3Time {
+    transform: translateX(125.3mm) translateY(308mm) !important; 
+}
+#train3MinCONST {
+    transform: translateX(129.7mm) translateY(308mm) !important; 
+}
+#train3Icon {
+    transform: translateX(72.4mm) translateY(306.6mm) !important; 
+}
+/* Train 4 */
+#train4 {
+    transform: translateX(84mm) translateY(314.9mm) !important;
+}
+#train4Time {
+    transform: translateX(125.3mm) translateY(315.5mm) !important; 
+}
+#train4MinCONST {
+    transform: translateX(129.7mm) translateY(315.5mm) !important; 
+}
+#train4Icon {
+    transform: translateX(72.4mm) translateY(314mm) !important; 
+}
+/* Train 5 */
+#train5 {
+    transform: translateX(84mm) translateY(322.4mm) !important;
+}
+#train5Time {
+    transform: translateX(125.3mm) translateY(323mm) !important; 
+}
+#train5MinCONST {
+    transform: translateX(129.7mm) translateY(323mm) !important; 
+}
+#train5Icon {
+    transform: translateX(72.4mm) translateY(321.4mm) !important; 
+}
+/* Train 6 */
+#train6 {
+    transform: translateX(84mm) translateY(329.8mm) !important;
+}
+#train6Time {
+    transform: translateX(125.3mm) translateY(330.5mm) !important; 
+}
+#train6MinCONST {
+    transform: translateX(129.7mm) translateY(330.5mm) !important; 
+}
+#train6Icon {
+    transform: translateX(72.4mm) translateY(328.8mm) !important; 
+}
+/* Bus 1 */
+#bus1Number {
+    transform: translateX(19mm) translateY(292.8mm) !important; 
+}
+#bus1Name {            
+    transform: translateX(27mm) translateY(293.4mm) !important; 
+}
+#bus1Time {
+    transform: translateX(59.3mm) translateY(293mm) !important; 
+}
+#bus1MinCONST {
+    transform: translateX(63.7mm) translateY(293mm) !important; 
+}
+#bus1Icon {
+    transform: translateX(6.6mm) translateY(291.8mm) !important; 
+}
+/* Bus 2 */
+#bus2Number {
+    transform: translateX(19mm) translateY(300.2mm) !important; 
+}
+#bus2Name {            
+    transform: translateX(27mm) translateY(300.7mm) !important; 
+}
+#bus2Time {
+    transform: translateX(59.3mm) translateY(300.5mm) !important; 
+}
+#bus2MinCONST {
+    transform: translateX(63.7mm) translateY(300.5mm) !important; 
+}
+#bus2Icon {
+    transform: translateX(6.6mm) translateY(299.2mm) !important; 
+}
+/* Bus 3 */
+#bus3Number {
+    transform: translateX(19mm) translateY(307.5mm) !important; 
+}
+#bus3Name {            
+    transform: translateX(27mm) translateY(308.2mm) !important; 
+}
+#bus3Time {
+    transform: translateX(59.3mm) translateY(308mm) !important; 
+}
+#bus3MinCONST {
+    transform: translateX(63.7mm) translateY(308mm) !important; 
+}
+#bus3Icon {
+    transform: translateX(6.6mm) translateY(306.6mm) !important; 
+}
+/* Bus 4 */
+#bus4Number {
+    transform: translateX(19mm) translateY(314.9mm) !important; 
+}
+#bus4Name {            
+    transform: translateX(27mm) translateY(315.8mm) !important; 
+}
+#bus4Time {
+    transform: translateX(59.3mm) translateY(315.5mm) !important; 
+}
+#bus4MinCONST {
+    transform: translateX(63.7mm) translateY(315.5mm) !important; 
+}
+#bus4Icon {
+    transform: translateX(6.6mm) translateY(314mm) !important; 
+}
+/* Bus 5 */
+#bus5Number {
+    transform: translateX(19mm) translateY(322.4mm) !important; 
+}
+#bus5Name {            
+    transform: translateX(27mm) translateY(323.1mm) !important; 
+}
+#bus5Time {
+    transform: translateX(59.3mm) translateY(323mm) !important; 
+}
+#bus5MinCONST {
+    transform: translateX(63.7mm) translateY(323mm) !important; 
+}
+#bus5Icon {
+    transform: translateX(6.6mm) translateY(321.4mm) !important; 
+}
+/* Bus 6 */
+#bus6Number {
+    transform: translateX(19mm) translateY(329.8mm) !important; 
+}
+#bus6Name {            
+    transform: translateX(27mm) translateY(330.4mm) !important; 
+}
+#bus6Time {
+    transform: translateX(59.3mm) translateY(330.5mm) !important; 
+}
+#bus6MinCONST {
+    transform: translateX(63.7mm) translateY(330.5mm) !important; 
+}
+#bus6Icon {
+    transform: translateX(6.6mm) translateY(328.8mm) !important;
+}
+
+/*Lunch*/
+#lunchDiv {
+    position: absolute;
+    padding: 1mm;
+    height: 24.3mm;
+    width: 40.5mm;
+    transform: translateX(142.4mm) translateY(303.3mm) !important;
+}
+.lunch {
+    text-align: center;
+    margin-top: 1mm;
+    font-size: 3mm;
+}
+
+
+/* Countdown in footer */
+.countdown {
+    text-align: center;
+}
+#countdownName {
+    padding-top: 20px;
+    font-size: 9.5mm;
+}
+#countdownTime {
+    padding-top: 10px;
+    font-size: 9.5mm;
+}
