@@ -52,7 +52,7 @@ function UpdateClock() {
     var values = [week[dname], months[mo], dnum.pad(2), hou.pad(2), min.pad(2)];
     for (var i = 0; i < ids.length; i++) {
         Array.prototype.forEach.call(document.getElementsByClassName(ids[i]), element => {
-            element.innerHTML = values[i];
+            if(element) element.innerHTML = values[i];
         });
     }
         
