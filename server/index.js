@@ -1,5 +1,5 @@
-import express from 'express';
-import {JSDOM, DOMWindow } from 'jsdom'
+const express = require('express');
+const jsdom = require('jsdom');
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -66,7 +66,7 @@ let displayTemplates = "";
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
         console.log(`amount of funnies: ${templates.length}`)
         for (let i = 0; i < templates.length; i++) {
-            const document = (await JSDOM.fromFile(`${__dirname}/templates/${templates[i].templateID}.html`)).window.document;
+            const document = (await jsdom.JSDOM.fromFile(`${__dirname}/templates/${templates[i].templateID}.html`)).window.document;
             const textElements = document.getElementsByClassName('text');
             const imageElements = document.getElementsByClassName('img');
             switch (templates[i].templateID) {

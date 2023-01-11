@@ -1,6 +1,5 @@
 {
   "main": "index.js",
-  "type": "module",
   "dependencies": {
     "express": "latest",
     "jsdom": "latest",
