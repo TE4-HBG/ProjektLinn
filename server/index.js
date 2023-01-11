@@ -125,12 +125,11 @@ let displayTemplates = "";
                 default:
                     break;
             }
-            console.log();
+            console.log(document.body.attributes[0].nodeName, document.body.attributes[0].nodeValue)
+            console.log(document.body.attributes[0])
             displayTemplates += `<div class=page ${Array.prototype.reduce.call(document.body.attributes, (attribute, acc) => acc + `${attribute.nodeName}=${attribute.nodeValue} `, "") }">${document.body.innerHTML}</div>`
             
         }
-        console.log(document.body.attributes[0].nodeName, document.body.attributes[0].nodeValue)
-        console.log(document.body.attributes[0])
         displayTemplates = displayTemplates.replace(/[\n\r]/g,'');
         console.log("bruh");
     }
