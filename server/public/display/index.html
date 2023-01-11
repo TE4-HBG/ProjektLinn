@@ -40,43 +40,44 @@
       });
 
       setInterval(() => {
-        counter += 1000;
-        if (changed) {
-          console.log("stuff changed! changed!");
-          changed = false;
-          console.log(array[i])
-          array[i].style.opacity = "100%";
-          for (let index = 0; index < array.length; index++) {
-            if (index != i) {
-              array[index].style.opacity = "0%";
-            }
-          }
-        }
-        if (array.length > 1) {
-          if (counter % 10000 == 0) {
+        if (array) {
+          counter += 1000;
+          if (changed) {
+            console.log("stuff changed! changed!");
+            changed = false;
+            array[i].style.opacity = "100%";
             for (let index = 0; index < array.length; index++) {
-              if (index !== i || index !== (i + 1) % array.length) {
-                array[index].animate(disappear, {
-                  duration: 0,
-                  iterations: 1,
-                  fill: "forwards",
-                });
+              if (index != i) {
+                array[index].style.opacity = "0%";
               }
             }
-            console.log(`Changing from ${i} to ${(i + 1) % array.length}`);
+          }
+          if (array.length > 1) {
+            if (counter % 10000 == 0) {
+              for (let index = 0; index < array.length; index++) {
+                if (index !== i || index !== (i + 1) % array.length) {
+                  array[index].animate(disappear, {
+                    duration: 0,
+                    iterations: 1,
+                    fill: "forwards",
+                  });
+                }
+              }
+              console.log(`Changing from ${i} to ${(i + 1) % array.length}`);
 
-            array[(i + 1) % array.length].animate(appear, {
-              duration: 0,
-              iterations: 1,
-              fill: "forwards",
-            });
+              array[(i + 1) % array.length].animate(appear, {
+                duration: 0,
+                iterations: 1,
+                fill: "forwards",
+              });
 
-            array[i].animate(fade, {
-              duration: 0,
-              iterations: 1,
-              fill: "forwards",
-            });
-            i = (i + 1) % array.length;
+              array[i].animate(fade, {
+                duration: 0,
+                iterations: 1,
+                fill: "forwards",
+              });
+              i = (i + 1) % array.length;
+            }
           }
         }
       }, 1000);

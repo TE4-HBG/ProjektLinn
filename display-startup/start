@@ -1,4 +1,4 @@
 printf "Running update script:\n"
-bash ./update.sh
+bash update
 printf "Starting display:\n"
-bash ./xinit.sh
+bash xinit
