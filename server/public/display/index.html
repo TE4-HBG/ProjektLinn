@@ -29,7 +29,7 @@
       let i = 0;
       const source = new EventSource("events");
 
-      source.addEventListener("message", async (message) => {
+      source.addEventListener("message", (message) => {
         if (str != message.data) {
           console.log("got new stuff!");
           changed = true;
