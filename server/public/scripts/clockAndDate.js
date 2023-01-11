@@ -60,6 +60,7 @@ function UpdateClock() {
 
 function InitClock() {
     UpdateClock();
+    
     setInterval(UpdateClock, 30000);
 }
 
