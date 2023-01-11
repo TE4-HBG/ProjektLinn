@@ -124,7 +124,7 @@ let displayTemplates = "";
             }
             
             document.body.classList.add("page");
-            displayTemplates += changeTag(document.body, "div").outerHTML;
+            displayTemplates += changeTag(document, document.body, "div").outerHTML;
             
         }
         displayTemplates = displayTemplates.replace(/[\n\r]/g,'');
