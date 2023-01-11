@@ -1,10 +1,10 @@
 const express = require('express');
 const jsdom = require('jsdom');
 
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import { WebSocketServer } from 'ws';
-import { readFile, writeFile } from 'fs/promises';
+const { fileURLToPath } = require('url');
+const { dirname } = require('path');
+const { WebSocketServer } = require('ws');
+const { readFile, writeFile } = require('fs/promises');
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
