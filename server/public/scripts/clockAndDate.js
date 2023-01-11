@@ -51,7 +51,7 @@ function UpdateClock() {
     var ids = ["dayname", "month", "daynum", "hour", "minutes"];
     var values = [week[dname], months[mo], dnum.pad(2), hou.pad(2), min.pad(2)];
     for (var i = 0; i < ids.length; i++) {
-        document.getElementsByClassName(ids[i]).forEach(element => {
+        Array.prototype.forEach.call(document.getElementsByClassName(ids[i]), element => {
             element.innerHTML = values[i];
         });
     }
