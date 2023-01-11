@@ -125,9 +125,9 @@ let displayTemplates = "";
                 default:
                     break;
             }
-            console.log(document.body.attributes[0].nodeName, document.body.attributes[0].nodeValue)
-            console.log(document.body.attributes[0])
-            displayTemplates += `<div class=page ${Array.prototype.reduce.call(document.body.attributes, (acc, attribute) => acc + `${attribute.nodeName}=${attribute.nodeValue} `, "") }">${document.body.innerHTML}</div>`
+            
+            document.body.classList.add("page");
+            displayTemplates += changeTag(document.body, HTMLDivElement.prototype).outerHTML;
             
         }
         displayTemplates = displayTemplates.replace(/[\n\r]/g,'');
@@ -155,4 +155,22 @@ let displayTemplates = "";
     });
 
 
+}
+/**
+ * 
+ * @param {HTMLElement} oldElement 
+ * @param {HTMLElement} prototype
+ * @returns {HTMLElement}
+ */
+function changeTag(oldElement, prototype) {
+    let newElement = Object.assign({}, prototype);
+    console.log(newElement.outerHTML)
+    
+    for (let i = 0; i < oldElement.attributes.length; i++) {
+        newElement.setAttribute(oldElement.attributes.item(i).nodeName, oldElement.attributes.item(i).nodeValue);
+        console.log(newElement.outerHTML)
+    }
+    newElement.innerHTML = oldElement.innerHTML;
+    console.log(newElement.outerHTML)
+    return newElement;
 }
