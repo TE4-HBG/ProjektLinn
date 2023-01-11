@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StandardBody</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="../../header/clockAndDate.js"></script>
+</head>
+<body onload="InitClockAndDate()">
+    <img class="background" src="Background.svg">
+
+
+     <!-- Clock and Date-->
+     <div class="datetime">
+        <div class="time">
+            <span id="hour">00</span>:
+            <span id="minutes">00</span> 
+        </div>
+        <div class="date">
+            <span id="dayname">Day</span>
+            <span id="daynum">00</span>
+            <span id="month">Month</span>
+        </div>
+    </div>
+
+
+    <!-- Skånetrafiken -->   
+    <!-- CONST = CONSTANT, NON CHANGEABLE TEXT -->
+    <!-- train1 -->
+    <img class="skanetrafikenIcons" id="train1Icon" src="../../Icons/Train and busses/Pagatag.svg">
+    <p id="train1" class="trainName">Teckomatorp</p>
+    <p id="train1Time" class="skanetrafikenTime">5</p>
+    <p id="train1MinCONST" class="skanetrafikenMin">min</p>
+    <!-- train2 -->
+    <img class="skanetrafikenIcons" id="train2Icon" src="../../Icons/Train and busses/Pagatag.svg">
+    <p id="train2" class="trainName">Bjuv</p>
+    <p id="train2Time" class="skanetrafikenTime">12</p>
+    <p id="train2MinCONST" class="skanetrafikenMin">min</p>
+    <!-- train3 -->
+    <img class="skanetrafikenIcons" id="train3Icon" src="../../Icons/Train and busses/Pagatag.svg">
+    <p id="train3" class="trainName">Landskrona</p>
+    <p id="train3Time" class="skanetrafikenTime">12</p>
+    <p id="train3MinCONST" class="skanetrafikenMin">min</p>
+    <!-- train4 -->
+    <img class="skanetrafikenIcons" id="train4Icon" src="../../Icons/Train and busses/Pagatag.svg">
+    <p id="train4" class="trainName">Halmstad</p>
+    <p id="train4Time" class="skanetrafikenTime">7</p>
+    <p id="train4MinCONST" class="skanetrafikenMin">min</p>
+    <!-- train5 -->
+    <img class="skanetrafikenIcons" id="train5Icon" src="../../Icons/Train and busses/Oresundstag.svg">
+    <p id="train5" class="trainName">Malmö</p>
+    <p id="train5Time" class="skanetrafikenTime">7</p>
+    <p id="train5MinCONST" class="skanetrafikenMin">min</p>
+    <!-- train6 -->
+    <img class="skanetrafikenIcons" id="train6Icon" src="../../Icons/Train and busses/Oresundstag.svg">
+    <p id="train6" class="trainName">Göteborg</p>
+    <p id="train6Time" class="skanetrafikenTime">7</p>
+    <p id="train6MinCONST" class="skanetrafikenMin">min</p>
+     <!-- Bus1 -->
+     <img class="skanetrafikenIcons" id="bus1Icon" src="../../Icons/Train and busses/Stadsbuss.svg">
+     <p id="bus1Number" class="busNumber">8</p>
+     <p id="bus1Name" class="busName">Rosengården C</p>
+     <p id="bus1Time" class="skanetrafikenTime">7</p>
+     <p id="bus1MinCONST" class="skanetrafikenMin">min</p>
+     <!-- Bus2 -->
+     <img class="skanetrafikenIcons" id="bus2Icon" src="../../Icons/Train and busses/Stadsbuss.svg">
+     <p id="bus2Number" class="busNumber">8</p>
+     <p id="bus2Name" class="busName">Domsten C</p>
+     <p id="bus2Time" class="skanetrafikenTime">12</p>
+     <p id="bus2MinCONST" class="skanetrafikenMin">min</p>
+     <!-- Bus3 -->
+     <img class="skanetrafikenIcons" id="bus3Icon" src="../../Icons/Train and busses/Stadsbuss.svg">
+     <p id="bus3Number" class="busNumber">2</p>
+     <p id="bus3Name" class="busName">Råå</p>
+     <p id="bus3Time" class="skanetrafikenTime">12</p>
+     <p id="bus3MinCONST" class="skanetrafikenMin">min</p>
+     <!-- Bus4 -->
+     <img class="skanetrafikenIcons" id="bus4Icon" src="../../Icons/Train and busses/Stadsbuss.svg">
+     <p id="bus4Number" class="busNumber">2</p>
+     <p id="bus4Name" class="busName">Berga industriområde</p>
+     <p id="bus4Time" class="skanetrafikenTime">12</p>
+     <p id="bus4MinCONST" class="skanetrafikenMin">min</p>
+     <!-- Bus5 -->
+     <img class="skanetrafikenIcons" id="bus5Icon" src="../../Icons/Train and busses/Regionsbuss.svg">
+     <p id="bus5Number" class="busNumber">219</p>
+     <p id="bus5Name" class="busName">Rydebäck</p>
+     <p id="bus5Time" class="skanetrafikenTime">12</p>
+     <p id="bus5MinCONST" class="skanetrafikenMin">min</p>
+     <!-- Bus6 -->
+     <img class="skanetrafikenIcons" id="bus6Icon" src="../../Icons/Train and busses/Regionsbuss.svg">
+     <p id="bus6Number" class="busNumber">221</p>
+     <p id="bus6Name" class="busName">Höganäs</p>
+     <p id="bus6Time" class="skanetrafikenTime">13</p>
+     <p id="bus6MinCONST" class="skanetrafikenMin">min</p>
+
+    <div id="lunchDiv">
+        <p class="lunch">Kyckling i röd curry serveras med ris</p>
+        <p class="lunch">Kikärtsgryta i röd curry serveras med ris</p>
+    </div>
+
+
+    <!-- Footer countdown -->
+    <div id="footer">
+        <p id="countdownName" class="countdown">Countdown</p>
+        <p id="countdownTime" class="countdown">12 dagar</p>
+
+        <div id="ww_c2119b56c9599" v='1.3' loc='id' a='{"t":"ticker","lang":"en","ids":["wl2618"],"font":"Arial","sl_ics":"one","sl_sot":"celsius","cl_bkg":"#7B1FA2","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","el_nme":3}'>
+            <a href="https://sharpweather.com/widgets/" id="ww_c2119b56c9599_u" target="_blank">
+                Free HTML Weather Widget for Website
+            </a>
+        </div>
+        <script async src="https://app1.weatherwidget.org/js/?id=ww_c2119b56c9599"></script>
+    </div>
+
+</body>
+</html>

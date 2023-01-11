@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Display the countdown timer in an element -->
+    <p id="demo"></p>
+
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("december 22, 2023").getTime();
+        var message = "";
+
+        // Update the count down every 43200 seconds
+        var x = setInterval(function() {
+
+            var now = new Date().getTime();
+
+             // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+            // Display the result in the element with id="demo"
+            document.getElementById("demo").innerHTML = days + " Dagar till " + message;
+            //if the date has passed
+            if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "You have reached your destination.";
+            }
+        }, 43200000);
+    </script>
+</body>
+</html>
