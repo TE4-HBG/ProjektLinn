@@ -124,8 +124,7 @@ let displayTemplates = "";
                 default:
                     break;
             }
-
-            displayTemplates += `<div class=page onload="InitClockAndDate()">${document.body.innerHTML}</div>`
+            displayTemplates += `<div class=page ${Array.prototype.reduce.call(document.body.attributes, (attribute, acc) => acc + `${attribute.name}=${attribute.nodeValue}`, "") }">${document.body.innerHTML}</div>`
             
         }
         displayTemplates = displayTemplates.replace(/[\n\r]/g,'');
