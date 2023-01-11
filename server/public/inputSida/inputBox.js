@@ -103,6 +103,12 @@ async function Save(x) {
                 console.log("hi");
 
             break;*/
+        case 'food':
+            jsonObject = {
+                "foodlist": weekList
+            };
+            allSaveInputs.push(new Template(5, x, jsonObject));
+            break;
         case 'Template1':
             allTextInput = inputBox.getElementsByClassName("TEXT");
             allImgInput = inputBox.getElementsByClassName("IMG");
