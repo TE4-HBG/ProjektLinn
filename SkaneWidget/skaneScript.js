@@ -171,7 +171,7 @@ var routeID = [
   9011012041000000n, //10,Örkelljunga - Helsingborg
   9011012060100000n, //1,HelsingborgsExpressen Dalhem - Råå
   9011012021900000n, //219,Helsingborg - Rydebäck
-  9011012022100000n, //221,Höganäs - Helsingborg
+  //9011012022100000n, 221,Höganäs - Helsingborg
   9011012060800000n, //8,Rosengården - Husensjö - Helsingborg C - Sofiero -
   9011012060200000n, //2,Ödåkra/Berga - Helsingborg C - Ättekulla/Råå
   //Train routes
@@ -230,14 +230,23 @@ for (let i = 0; i < routeID.length; i++) {
   var foundTrips = tripsArr.filter(trip => trip.routeID === found.ID);
   timesArr.forEach(time => {
     for (let stopIndex = 0; stopIndex < helsingborgCStops.length; stopIndex++) {
+
       if(time.stopID === helsingborgCStops[stopIndex]) {
+
         for (let tripIndex = 0; tripIndex < foundTrips.length; tripIndex++) {
+
           if(time.tripID === foundTrips[tripIndex].tripID) {
+
             journeys.push(new Journey(found.ID, found.shortName, found.longName, found.type, time.tripID, foundTrips[tripIndex].directionID, time.departureTime, time.stopID))
+
           }
+
         }
+
       }
+
     }
+
   });
 }
 /*journeys.sort((a, b) => {
