@@ -125,7 +125,7 @@ let displayTemplates = "";
                 default:
                     break;
             }
-            console.log(document.body.attributes);
+            console.log(document.body.attributes[0].nodeName);
             displayTemplates += `<div class=page ${Array.prototype.reduce.call(document.body.attributes, (attribute, acc) => acc + `${attribute.name}=${attribute.nodeValue}`, "") }">${document.body.innerHTML}</div>`
             
         }
