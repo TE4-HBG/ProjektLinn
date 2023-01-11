@@ -2,8 +2,8 @@
   "main": "index.js",
   "type": "module",
   "dependencies": {
-    "express": "*",
-    "jsdom": "*",
-    "ws": "*"
+    "express": "latest",
+    "jsdom": "latest",
+    "ws": "latest"
   }
 }
