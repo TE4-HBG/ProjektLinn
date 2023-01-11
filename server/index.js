@@ -12,6 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
+const address = "http://infotavla.te4projekt.se";
 const port = 80;
 
 // string array
@@ -83,7 +84,7 @@ let displayTemplates = "";
                     const data = matches[1].split(',')[1];
                     console.log(Buffer.from(data, 'base64'));
                     await writeFile(`public/images/template/${templates[i].templateID}.${ext}`, Buffer.from(data, 'base64'));
-                    image1.src = `http://te4projekt.se/images/template/${templates[i].templateID}.${ext}`;
+                    image1.src = `${address}/images/template/${templates[i].templateID}.${ext}`;
                     imageElements[0].appendChild(image1);
                     
                     break;}
@@ -100,7 +101,7 @@ let displayTemplates = "";
                     const data = matches[1].split(',')[1];
                     console.log(Buffer.from(data, 'base64'));
                     await writeFile(`public/images/template/${templates[i].templateID}.${ext}`, Buffer.from(data, 'base64'));
-                    image1.src = `http://te4projekt.se/images/template/${templates[i].templateID}.${ext}`;
+                    image1.src = `${address}/images/template/${templates[i].templateID}.${ext}`;
                     imageElements[0].appendChild(image1);
                     break;}
                 
@@ -114,7 +115,7 @@ let displayTemplates = "";
                     const data = matches[1].split(',')[1];
                     console.log(Buffer.from(data, 'base64'));
                     await writeFile(`public/images/template/${templates[i].templateID}.${ext}`, Buffer.from(data, 'base64'));
-                    image1.src = `http://te4projekt.se/images/template/${templates[i].templateID}.${ext}`;
+                    image1.src = `${address}/images/template/${templates[i].templateID}.${ext}`;
                     imageElements[0].appendChild(image1);
                     break;}
                 case 'Template5':{
