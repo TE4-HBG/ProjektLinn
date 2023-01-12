@@ -42,7 +42,7 @@ else
 	/usr/bin/firefox -kiosk -private-window "$website" &
 	sleep 3
 	for i in {1..8}; do
-		xdotool key ctrl++
+		xdotool key ctrl+plus
 	done
 
 	while true
