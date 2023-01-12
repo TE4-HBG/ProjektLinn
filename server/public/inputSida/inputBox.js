@@ -177,8 +177,11 @@ async function Save(x) {
 }
 function ActuallySave() {
     if(Send(JSON.stringify(allSaveInputs))) {
-        console.log("bruh");
-    };
+        alert("Data Skickat!");
+    }
+    else {
+        alert("Hmm, något gick fel. Servern kan vara nere. Ladda om sidan och prova igen, och ifall det fortfarande inte fungerar kontakta utvecklare!");
+    }
     //window.location.reload();
 }
 
