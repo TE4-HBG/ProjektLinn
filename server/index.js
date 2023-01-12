@@ -13,6 +13,10 @@ const app = express();
 const address = "http://infotavla.te4projekt.se";
 const port = 80;
 
+let rawdata = fs.readFileSync('../SkaneWidget/journeys.json');
+let jsonData = JSON.parse(rawdata);
+console.log("traffic data acquired:" + jsonData[0].routeLongName)
+return;
 // string array
 let displayTemplates = "";
 {
