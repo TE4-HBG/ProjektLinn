@@ -6,7 +6,7 @@ class Template {
     }
 }
 
-const socket = new WebSocket('ws://te4projekt.se')
+const socket = new WebSocket('ws://infotavla.te4projekt.se')
 let tmp4 = [];
 
 function addX() {
