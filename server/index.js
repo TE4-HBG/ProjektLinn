@@ -19,8 +19,9 @@ let displayTemplates = "";
     //Create Websocket Server
     const wsServer = new WebSocketServer({ noServer: true });
     wsServer.on('connection', function connection(ws) {
+        console.log(`${new Date().toISOString()} - Got a new input site connection: ${ws.url}`)
         ws.on('message', async (message) => {
-            console.log("writing!")
+            console.log(`${new Date().toISOString()} - Input site "${ws.url}" sent some new display info!`)
             await writeFile("currentDisplayInfo.json", message);
             UpdateDisplayInfo();
         });
@@ -31,7 +32,7 @@ let displayTemplates = "";
     app.use(express.static(__dirname + '/public'));
 
     app.get('/display/events', async (req, res) => {
-        console.log(`${new Date().toISOString()}: ${req.ip} connecting to event site!`);
+        console.log(`${new Date().toISOString()} - Got a new display site connection: ${req.ip}.`);
         res.set({
             'Cache-Control': 'no-cache',
             'Content-Type': 'text/event-stream',
@@ -42,17 +43,18 @@ let displayTemplates = "";
         let counter = 0;
         let interValID = setInterval(() => {
             counter++;
-            console.log(`${new Date().toISOString()}: sent event to ${req.ip}.`)
-            console.log(displayTemplates.length);
+            console.log(`${new Date().toISOString()} - Sending info to display site "${req.ip}".`)
             if(res.write(`data: ${displayTemplates}\n\n`, (error) => {console.log(error)})) {
-                console.log("it be worken");
+                console.log(`${new Date().toISOString()} - Successfully sent data to display site "${req.ip}".`);
+            } else {
+                console.error(`${new Date().toISOString()} - Failed to sent data to display site "${req.ip}"!`);
             }
             
         }, 4000);
 
         // If client closes connection, stop sending events
         res.on('close', () => {
-            console.log('client dropped me');
+            console.log(`${new Date().toISOString()} - Display site "${req.ip}" disconnected.`);
             clearInterval(interValID);
             res.end();
         });
@@ -61,7 +63,6 @@ let displayTemplates = "";
 
 
     async function UpdateDisplayInfo() {
-        /** @type [] */
         displayTemplates = '';
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
         console.log(`amount of funnies: ${templates.length}`)
@@ -79,10 +80,7 @@ let displayTemplates = "";
                     
                     const ext = matches[0].split('/')[1];
                     const data = matches[1].split(',')[1];
-                    console.log(Buffer.from(data, 'base64'));
-                    await writeFile(`public/images/template/${templates[i].templateID}.${ext}`, Buffer.from(data, 'base64'));
-                    console.log("saved file")
-                    image1.src = `${address}/images/template/${templates[i].templateID}.${ext}`;
+                    image1.src = await saveTemplateImage(templateID,ext, Buffer.from(data,'base64'));
                     imageElements[0].appendChild(image1);
                     
                     break;}
@@ -97,10 +95,7 @@ let displayTemplates = "";
                     
                     const ext = matches[0].split('/')[1];
                     const data = matches[1].split(',')[1];
-                    console.log(Buffer.from(data, 'base64'));
-                    await writeFile(`public/images/template/${templates[i].templateID}.${ext}`, Buffer.from(data, 'base64'));
-                    console.log("saved file")
-                    image1.src = `${address}/images/template/${templates[i].templateID}.${ext}`;
+                    image1.src = await saveTemplateImage(templateID,ext, Buffer.from(data,'base64'));
                     imageElements[0].appendChild(image1);
                     break;}
                 
@@ -112,10 +107,7 @@ let displayTemplates = "";
                     
                     const ext = matches[0].split('/')[1];
                     const data = matches[1].split(',')[1];
-                    console.log(Buffer.from(data, 'base64'));
-                    await writeFile(`public/images/template/${templates[i].templateID}.${ext}`, Buffer.from(data, 'base64'));
-                    console.log("saved file")
-                    image1.src = `${address}/images/template/${templates[i].templateID}.${ext}`;
+                    image1.src = await saveTemplateImage(templateID,ext, Buffer.from(data,'base64'));
                     imageElements[0].appendChild(image1);
                     break;}
                 case 'Template5':{
@@ -172,4 +164,10 @@ function changeTag(document, oldElement, tag) {
     }
     newElement.innerHTML = oldElement.innerHTML;
     return newElement;
+}
+async function saveTemplateImage(templateID, ext, buffer) {
+    console.log(`${new Date().toISOString()} - Writing image from ${templateID}".`);
+    await writeFile(`public/images/template/${templateID}.${ext}`, buffer);
+    console.log(`${new Date().toISOString()} - Finished writing image from "${templateID}".`);
+    return `${address}/images/template/${templateID}.${ext}`;
 }
