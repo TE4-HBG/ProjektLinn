@@ -1,5 +1,6 @@
 const express = require('express');
 const jsdom = require('jsdom');
+const fs = require('fs');
 
 const { fileURLToPath } = require('url');
 const { dirname } = require('path');

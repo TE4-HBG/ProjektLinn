@@ -1,4 +1,5 @@
 const fs = require("fs");
+const bigintJSON = require('bigint-json');
 
 /**Array class for route file*/
 class Route {
@@ -279,6 +280,10 @@ let output = [];
 for (let index = firstJourney; index < firstJourney + 12; index++) {
   output.push(journeys[index % journeys.length]);
 }
+
+let json = bigintJSON.stringify(output);
+
+fs.writeFileSync('journeys.json', json, 'utf8');
 
 console.log(output);
 
