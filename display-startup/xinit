@@ -42,6 +42,13 @@ else
 	/usr/bin/firefox -kiosk -private-window "$website" &
 	
 	xdotool search --sync "Mozilla Firefox" key ctrl+plus
+	xdotool search --sync "Mozilla Firefox" key ctrl+plus
+	xdotool search --sync "Mozilla Firefox" key ctrl+plus
+	xdotool search --sync "Mozilla Firefox" key ctrl+plus
+	xdotool search --sync "Mozilla Firefox" key ctrl+plus
+	xdotool search --sync "Mozilla Firefox" key ctrl+plus
+	xdotool search --sync "Mozilla Firefox" key ctrl+plus
+	xdotool search --sync "Mozilla Firefox" key ctrl+plus
 
 	while true
 	do
