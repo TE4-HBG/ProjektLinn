@@ -83,7 +83,7 @@ let displayTemplates = "";
                     
                     const ext = matches[0].split('/')[1];
                     const data = matches[1].split(',')[1];
-                    image1.src = await saveTemplateImage(templateID,ext, Buffer.from(data,'base64'));
+                    image1.src = await saveTemplateImage(templates[i].templateID, ext, Buffer.from(data,'base64'));
                     imageElements[0].appendChild(image1);
                     
                     break;}
@@ -98,7 +98,7 @@ let displayTemplates = "";
                     
                     const ext = matches[0].split('/')[1];
                     const data = matches[1].split(',')[1];
-                    image1.src = await saveTemplateImage(templateID,ext, Buffer.from(data,'base64'));
+                    image1.src = await saveTemplateImage(templates[i].templateID, ext, Buffer.from(data,'base64'));
                     imageElements[0].appendChild(image1);
                     break;}
                 
@@ -110,7 +110,7 @@ let displayTemplates = "";
                     
                     const ext = matches[0].split('/')[1];
                     const data = matches[1].split(',')[1];
-                    image1.src = await saveTemplateImage(templateID,ext, Buffer.from(data,'base64'));
+                    image1.src = await saveTemplateImage(templates[i].templateID, ext, Buffer.from(data,'base64'));
                     imageElements[0].appendChild(image1);
                     break;}
                 case 'Template5':{
