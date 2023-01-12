@@ -44,10 +44,10 @@ let displayTemplates = "";
         let interValID = setInterval(() => {
             counter++;
             console.log(`${new Date().toISOString()} - Sending info to display site "${req.ip}".`)
-            if(res.write(`data: ${displayTemplates}\n\n`, (error) => {console.log(error)})) {
-                console.log(`${new Date().toISOString()} - Successfully sent data to display site "${req.ip}".`);
+            if(res.write(`data: ${displayTemplates}\n\n`, (error) => {if (error) { console.log(`${new Date().toISOString()} - Got an error when sending info to display site "${req.ip}": ${error}`) }})) {
+                console.log(`${new Date().toISOString()} - Successfully sent info to display site "${req.ip}".`);
             } else {
-                console.error(`${new Date().toISOString()} - Failed to sent data to display site "${req.ip}"!`);
+                console.error(`${new Date().toISOString()} - Failed to sent info to display site "${req.ip}"!`);
             }
             
         }, 4000);
@@ -64,8 +64,11 @@ let displayTemplates = "";
 
     async function UpdateDisplayInfo() {
         displayTemplates = '';
+        /**
+         * @type {[]}
+         */
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
-        console.log(`amount of funnies: ${templates.length}`)
+        console.log(`${new Date().toISOString()} - Got ${templates.length} templates!`)
         for (let i = 0; i < templates.length; i++) {
             const document = (await jsdom.JSDOM.fromFile(`${__dirname}/templates/${templates[i].templateID}.html`)).window.document;
             const textElements = document.getElementsByClassName('text');
@@ -123,20 +126,19 @@ let displayTemplates = "";
             
         }
         displayTemplates = displayTemplates.replace(/[\n\r]/g,'');
-        console.log("bruh");
     }
 
 
     app.get('*', async (req, res) => {
-        console.log(`${new Date().toISOString()}: ${req.ip} is connecting to 404`);
+        console.log(`${new Date().toISOString()} - ${req.ip} is connecting to 404`);
         res.statusCode = 404;
 
         res.setHeader('Content-Type', 'text/html');
-        res.send("<head></head><body>404</body>");
+        res.send("<head></head><body>Uh oh, you entered an incorrect link and now the sad <br/> <h1>:(</h1></body>");
     });
 
     const server = app.listen(port, async () => {
-        console.log(`Listening on port ${port}`)
+        console.log(`${new Date().toISOString()} - Listening on port ${port}`)
         UpdateDisplayInfo();
     });
 
@@ -156,11 +158,11 @@ let displayTemplates = "";
  */
 function changeTag(document, oldElement, tag) {
     let newElement = document.createElement(tag);
-    console.log(newElement.outerHTML)
+    //console.log(newElement.outerHTML)
     
     for (let i = 0; i < oldElement.attributes.length; i++) {
         newElement.setAttribute(oldElement.attributes.item(i).nodeName, oldElement.attributes.item(i).nodeValue);
-        console.log(newElement.outerHTML)
+        //console.log(newElement.outerHTML)
     }
     newElement.innerHTML = oldElement.innerHTML;
     return newElement;
