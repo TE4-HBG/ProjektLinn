@@ -81,6 +81,7 @@ let displayTemplates = "";
                     const data = matches[1].split(',')[1];
                     console.log(Buffer.from(data, 'base64'));
                     await writeFile(`public/images/template/${templates[i].templateID}.${ext}`, Buffer.from(data, 'base64'));
+                    console.log("saved file")
                     image1.src = `${address}/images/template/${templates[i].templateID}.${ext}`;
                     imageElements[0].appendChild(image1);
                     
@@ -98,6 +99,7 @@ let displayTemplates = "";
                     const data = matches[1].split(',')[1];
                     console.log(Buffer.from(data, 'base64'));
                     await writeFile(`public/images/template/${templates[i].templateID}.${ext}`, Buffer.from(data, 'base64'));
+                    console.log("saved file")
                     image1.src = `${address}/images/template/${templates[i].templateID}.${ext}`;
                     imageElements[0].appendChild(image1);
                     break;}
@@ -112,6 +114,7 @@ let displayTemplates = "";
                     const data = matches[1].split(',')[1];
                     console.log(Buffer.from(data, 'base64'));
                     await writeFile(`public/images/template/${templates[i].templateID}.${ext}`, Buffer.from(data, 'base64'));
+                    console.log("saved file")
                     image1.src = `${address}/images/template/${templates[i].templateID}.${ext}`;
                     imageElements[0].appendChild(image1);
                     break;}
