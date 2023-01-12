@@ -118,7 +118,7 @@ p {
     transform: translateX(109mm) translateY(70.5mm) !important; 
 }
 #train1IconBody {
-    transform: translateX(66.5mm) translateY(57.1mm) !important; 
+    transform: translateX(66.5mm) translateY(63mm) !important; 
 }
 /* Train 2 */
 #train2Body {
@@ -131,7 +131,7 @@ p {
     transform: translateX(109mm) translateY(87.8mm) !important; 
 }
 #train2IconBody {
-    transform: translateX(66.5mm) translateY(74.5mm) !important; 
+    transform: translateX(66.5mm) translateY(80.6mm) !important; 
 }
 /* Train 3 */
 #train3Body {
@@ -144,7 +144,7 @@ p {
     transform: translateX(109mm) translateY(105.6mm) !important; 
 }
 #train3IconBody {
-    transform: translateX(66.5mm) translateY(92.3mm) !important; 
+    transform: translateX(66.5mm) translateY(98.2mm) !important; 
 }
 /* Train 4 */
 #train4Body {
@@ -157,7 +157,7 @@ p {
     transform: translateX(109mm) translateY(123.2mm) !important; 
 }
 #train4IconBody {
-    transform: translateX(66.5mm) translateY(109.9mm) !important; 
+    transform: translateX(66.5mm) translateY(115.8mm) !important; 
 }
 /* Train 5 */
 #train5Body {
@@ -170,7 +170,7 @@ p {
     transform: translateX(109mm) translateY(141mm) !important; 
 }
 #train5IconBody {
-    transform: translateX(66.5mm) translateY(127.6mm) !important; 
+    transform: translateX(66.5mm) translateY(133.5mm) !important; 
 }
 /* Train 6 */
 #train6Body {
@@ -183,7 +183,7 @@ p {
     transform: translateX(109mm) translateY(158.6mm) !important; 
 }
 #train6IconBody {
-    transform: translateX(66.5mm) translateY(145.3mm) !important; 
+    transform: translateX(66.5mm) translateY(151.1mm) !important; 
 }
 /* Bus 1 */
 #bus1NumberBody {
@@ -199,7 +199,7 @@ p {
     transform: translateX(47.5mm) translateY(70.5mm) !important; 
 }
 #bus1IconBody {
-    transform: translateX(6.6mm) translateY(57.1mm) !important; 
+    transform: translateX(6.6mm) translateY(63mm) !important; 
 }
 /* Bus 2 */
 #bus2NumberBody {
@@ -215,7 +215,7 @@ p {
     transform: translateX(47.5mm) translateY(88mm) !important; 
 }
 #bus2IconBody {
-    transform: translateX(6.7mm) translateY(74.7mm) !important; 
+    transform: translateX(6.7mm) translateY(80.8mm) !important; 
 }
 /* Bus 3 */
 #bus3NumberBody {
@@ -231,7 +231,7 @@ p {
     transform: translateX(47.5mm) translateY(105.8mm) !important; 
 }
 #bus3IconBody {
-    transform: translateX(6.7mm) translateY(92.3mm) !important; 
+    transform: translateX(6.7mm) translateY(98.2mm) !important; 
 }
 /* Bus 4 */
 #bus4NumberBody {
@@ -247,7 +247,7 @@ p {
     transform: translateX(47.5mm) translateY(123.3mm) !important; 
 }
 #bus4IconBody {
-    transform: translateX(6.8mm) translateY(109.9mm) !important; 
+    transform: translateX(6.8mm) translateY(115.8mm) !important; 
 }
 /* Bus 5 */
 #bus5NumberBody {
@@ -263,7 +263,7 @@ p {
     transform: translateX(47.5mm) translateY(140.8mm) !important; 
 }
 #bus5IconBody {
-    transform: translateX(6.8mm) translateY(127.6mm) !important; 
+    transform: translateX(6.8mm) translateY(133.5mm) !important; 
 }
 /* Bus 6 */
 #bus6NumberBody {
@@ -279,7 +279,7 @@ p {
     transform: translateX(47.5mm) translateY(158.3mm) !important; 
 }
 #bus6IconBody {
-    transform: translateX(6.8mm) translateY(145.3mm) !important; 
+    transform: translateX(6.8mm) translateY(151.1mm) !important; 
 }
 
 /*Lunch*/
