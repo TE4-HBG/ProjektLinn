@@ -40,10 +40,8 @@ else
 
 	# launch firefox in background
 	/usr/bin/firefox -kiosk -private-window "$website" &
-	sleep 3
-	for i in {1..8}; do
-		xdotool key ctrl+plus
-	done
+	
+	xdotool search --sync "Mozilla Firefox" key ctrl+plus
 
 	while true
 	do
@@ -55,9 +53,8 @@ else
 		xrandr --orientation left
 		
 		# set firefox size and width to screen
-		xdotool search "Mozilla Firefox" windowmove 0 0
-		xdotool search "Mozilla Firefox" windowsize "$height" "$width"
-
+		xdotool search --sync "Mozilla Firefox" windowmove 0 0
+		xdotool search --sync "Mozilla Firefox" windowsize "$height" "$width"
 		sleep 1
 	done
 fi
