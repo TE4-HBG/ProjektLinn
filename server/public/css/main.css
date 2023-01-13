@@ -8,6 +8,9 @@ body {
 p {
     margin: 0%;
 }
+.paragraph {
+    margin: 1em;
+}
 .background {
     width: 100%;
     z-index: -1;
