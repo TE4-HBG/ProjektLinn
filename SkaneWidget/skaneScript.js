@@ -169,14 +169,21 @@ const routesArr = Route.fromFile("");
 
 var routeID = [
   //Buss routes
+  
   9011012041000000n, //10,Örkelljunga - Helsingborg
   9011012060100000n, //1,HelsingborgsExpressen Dalhem - Råå
   9011012021900000n, //219,Helsingborg - Rydebäck
   //9011012022100000n, 221,Höganäs - Helsingborg
   9011012060800000n, //8,Rosengården - Husensjö - Helsingborg C - Sofiero -
   9011012060200000n, //2,Ödåkra/Berga - Helsingborg C - Ättekulla/Råå
+
   //Train routes
-  9011012830300000n, //3,"HELSINGBORG NO 3 Rosenlund, Hässlunda m fl - Påarp"
+  9011012080400000n, // Malmö Öresundståg
+  9011012081700000n, // Landskrona Pågatåg
+  9011012081500000n, // Teckomatorp Pågatåg
+  9011012081600000n, // Halmstad pågatåg
+  9011012082700000n, //?, "Helsingborg - Landskrona - Malmö"
+  //9011012830300000n, //3,"HELSINGBORG NO 3 Rosenlund, Hässlunda m fl - Påarp" FUNGERAR EJ
 ];
 
 var helsingborgCStops = [
@@ -223,7 +230,6 @@ var helsingborgCStops = [
 
 let journeys = [];
 for (let i = 0; i < routeID.length; i++) {
-  
   var givenRoute  = routeID[i];
 
   var found = routesArr.find(route => route.ID === givenRoute);
@@ -239,7 +245,6 @@ for (let i = 0; i < routeID.length; i++) {
           if(time.tripID === foundTrips[tripIndex].tripID) {
 
             journeys.push(new Journey(found.ID, found.shortName, found.longName, found.type, time.tripID, foundTrips[tripIndex].directionID, time.departureTime, time.stopID))
-
           }
 
         }
@@ -276,20 +281,42 @@ for (let index = 0; index < journeys.length; index++) {
   }
 }
 
-let output = [];
-for (let index = firstJourney; index < firstJourney + 12; index++) {
-  output.push(journeys[index % journeys.length]);
+let outputTrain = [];
+let loopTrainAmount = 6;
+for (let index = firstJourney; index < firstJourney + loopTrainAmount; index++) {
+  if (journeys[index % journeys.length].type == 100)
+  {
+    outputTrain.push(journeys[index % journeys.length]);
+  }
+  else {
+    loopTrainAmount++;
+  }
+    
 }
 
-let json = bigintJSON.stringify(output);
+let outputBuss = [];
+let loopBussAmount = 6;
+for (let index = firstJourney; index < firstJourney + loopBussAmount; index++) {
+  if (journeys[index % journeys.length].type == 700 || journeys[index % journeys.length].type == 1501)
+  {
+    outputBuss.push(journeys[index % journeys.length]);
+  }
+  else {
+    loopBussAmount++;
+  }
+  
+}
 
+let json = bigintJSON.stringify({outputTrain, outputBuss});
 fs.writeFileSync('journeys.json', json, 'utf8');
 
-console.log(output);
-
-console.log(output[9].routeShortName);
-console.log(output[9].routeLongName);
-console.log(output[9].type);
-console.log(output[9].departureTime);
+//Regionbuss 700 eller 1501
+//Tåg 100
+console.log(outputBuss);
+console.log(outputTrain);
+/*console.log(output[0].routeShortName);
+console.log(output[0].routeLongName);
+console.log(output[0].type);
+console.log(output[0].departureTime);*/
 
 console.log(date);

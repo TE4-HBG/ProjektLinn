@@ -23,9 +23,6 @@ try {
 catch {
 
 }
-
-
-return;
 // string array
 let displayTemplates = "";
 {
@@ -73,7 +70,7 @@ let displayTemplates = "";
     });
 
 
-
+    
     async function UpdateDisplayInfo() {
         /** @type [] */
         displayTemplates = '';
@@ -83,7 +80,11 @@ let displayTemplates = "";
             const document = (await jsdom.JSDOM.fromFile(`${__dirname}/templates/${templates[i].templateID}.html`)).window.document;
             const textElements = document.getElementsByClassName('text');
             const imageElements = document.getElementsByClassName('img');
+            
+
+
             switch (templates[i].templateID) {
+
                 case 'Template1':{
                     
                     textElements[0].appendChild(document.createTextNode(templates[i].content.text1));
