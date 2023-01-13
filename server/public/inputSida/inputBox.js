@@ -186,6 +186,12 @@ async function Save(x) {
             PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allTextInput[1].value]);
             console.log("hello");
 
+            // ParagraphDivision testing, newText1 and newText2 needs to be sent to the server
+            var newText1 = ParagraphDivision(allTextInput[0], "paragraph")
+            var newText2 = ParagraphDivision(allTextInput[1], "paragraph")
+            console.log(newText1)
+            console.log(newText2)
+
             break;
         case 'Template6':
             break;
@@ -250,3 +256,35 @@ function PrintSavedInputs(minutes, x, newArray) {
     document.getElementById('savedInputs').innerHTML = container;
 
 }
+
+function ParagraphDivision(text, className) {
+    // For now this function is only used at template5 in the save(x) function. 
+
+    /*
+    This code converts strings to paragraphs. Example blow:
+    Denna veckan gör vi:
+    Sak 1
+    Sak 2
+
+    Det var allt hejdå
+    
+    To:
+    <p>Denna veckan gör vi:</p>
+    <p>Sak 1</p>
+    <p>Sak 2</p>
+    <p class='paragraph'>Det var allt hejdå</p>
+    */
+    var paragraphs = text.value.split(/(\n\n|\n)/);
+    var result = "";
+    for (var i = 0; i < paragraphs.length; i++) {
+      if(paragraphs[i] === "\n\n" || paragraphs[i] === "\n"){
+        continue;
+      }
+      if (className && paragraphs[i-1] === "\n\n") {
+        result += "<p class='" + className + "'>" + paragraphs[i] + "</p>";
+      } else {
+        result += "<p>" + paragraphs[i] + "</p>";
+      }
+    }
+    return result;
+  }
