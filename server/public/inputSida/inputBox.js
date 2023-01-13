@@ -15,16 +15,20 @@ function PrintInputBorder(Arr) {
 
     let textAmount = 0;
     let imgAmount = 0;
-    for (let index = 0; index < Arr.length; index++) {
-        if (Arr[index] === 'IMG') {
-            imgAmount++;
-            Text += GetImgInput(imgAmount);
+
+        for (let index = 0; index < Arr.length; index++) {
+            if (Arr[index] === 'IMG') {
+                imgAmount++;
+                Text += GetImgInput(imgAmount);
+            }
+            if (Arr[index] === 'TEXT') {
+                textAmount++;
+                Text += GetTextInput(Arr[0], textAmount);
+            }
         }
-        if (Arr[index] === 'TEXT') {
-            textAmount++;
-            Text += GetTextInput(textAmount);
-        }
-    }
+
+
+    
 
 
     Text += '<button type="button" onclick=Save("' + Arr[0] + '")><a>Spara</a></button>' +
@@ -33,7 +37,31 @@ function PrintInputBorder(Arr) {
 
     document.getElementById('FormsEditable').innerHTML = Text;
 }
-function GetTextInput(spec, readable = true, value = "") {
+function GetTextInput(template, spec, readable = true, value = "") {
+    let maxCharacters = 0;
+    switch (template) {
+        case 'Template1': 
+            maxCharacters = 130;
+        break;
+        case 'Template2': 
+            console.log(spec + " template 2");
+//gör en if sats baserat på spec, spec är 1 och 2 EZ GG
+
+            maxCharacters = 50;
+        break;
+        case 'Template4': 
+            maxCharacters = 50;
+        break;
+        case 'Template5': 
+            
+            maxCharacters = 50;
+        break;
+        
+        default:
+            console.log("Något gick fel vid generationen av SKITEN");
+        break;
+        }
+
     if (readable) {
         return '<label> Text ' + spec + ': </label>' +
         '<textarea type="text" class="TEXT" name="' + spec + '" value=""></textarea><br>';
@@ -221,7 +249,7 @@ function PrintSavedInputs(minutes, x, newArray) {
         }
         if (Arr[index] === 'TEXT') {
             textAmount++;
-            container += GetTextInput(textAmount, false, newArray[index -1]);
+            container += GetTextInput(Arr[0], textAmount, false, newArray[index -1]);
         }
     }
     container += '</div>' +
