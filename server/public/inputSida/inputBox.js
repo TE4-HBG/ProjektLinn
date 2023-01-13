@@ -170,7 +170,7 @@ async function Save(x) {
             };
 
             allSaveInputs.push(new Template(minutes[0].value, x, jsonObject));
-            PrintSavedInputs(x, [allTextInput[0].value, allImgInput[0].value]);
+            PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name]);
 
             break;
         case 'Template5':
