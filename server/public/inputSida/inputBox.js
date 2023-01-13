@@ -34,27 +34,35 @@ function PrintInputBorder(Arr) {
     Text += '<button type="button" onclick=Save("' + Arr[0] + '")><a>Spara</a></button>' +
         '</div>' +
         '</div>';
-
+    
     document.getElementById('FormsEditable').innerHTML = Text;
+
 }
 function GetTextInput(template, spec, readable = true, value = "") {
     let maxCharacters = 0;
     switch (template) {
         case 'Template1': 
-            maxCharacters = 130;
+            maxCharacters = 765;
         break;
         case 'Template2': 
             console.log(spec + " template 2");
-//gör en if sats baserat på spec, spec är 1 och 2 EZ GG
-
-            maxCharacters = 50;
+            if (spec == 1) {
+                maxCharacters = 765;
+            }
+            else if (spec == 2) {
+                maxCharacters = 1800;
+            }
+            else {
+                console.log("Spec is " + spec + "\nError when selecting max charakter lenght for template 2, contact Hugo/Developer");
+            }
+            break;
         break;
         case 'Template4': 
-            maxCharacters = 50;
+            maxCharacters = 1800;
         break;
         case 'Template5': 
             
-            maxCharacters = 50;
+            maxCharacters = 1800;
         break;
         
         default:
@@ -63,8 +71,10 @@ function GetTextInput(template, spec, readable = true, value = "") {
         }
 
     if (readable) {
+        const tmp = ['charakterLable' + spec, maxCharacters]; //tmp array. Kan inte skicka variablarna direkt in i funktionen för jag måste separera dem med ett , vilket förstår för stringen
         return '<label> Text ' + spec + ': </label>' +
-        '<textarea type="text" class="TEXT" name="' + spec + '" value=""></textarea><br>';
+        '<textarea oninput="checkRemaningCharakters([' + tmp + '])" maxlength="' + maxCharacters + '" type="text" class="TEXT" id="TEXT' + spec + '" value=""></textarea>' +
+        '<lable id="charakterLable' + spec + '"></lable><br>';
     }
     else {
         return '<label> Text ' + spec + ': </label>' +
@@ -256,5 +266,14 @@ function PrintSavedInputs(minutes, x, newArray) {
     '</div>'
 
     document.getElementById('savedInputs').innerHTML = container;
+
+}
+
+function checkRemaningCharakters(arr) {
+    let spec = arr[0].id; //arr[0] blir magiskt ett <labl> object, men datan som vi vill ha ligger sparat i dens id
+    let maxCharacters = arr[1] 
+    let lable = arr[0]; 
+    let textArea = document.getElementsByClassName('TEXT')[spec.slice(-1)-1]; //ett dåligt sätt att få motsvarande textArea för lablen som ska redigeras
+    lable.innerHTML =  maxCharacters - textArea.value.length + " tecken återstår";
 
 }
