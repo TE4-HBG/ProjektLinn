@@ -520,9 +520,14 @@ p {
 
 #template1Img0 {
     position: absolute;
-    width:  233.3px;
-    height: 125.3px;
+    width: 700px;
+    height: 376px;
     transform: translateX(2.5mm) translateY(200mm) !important;
+}
+
+#template1Img0 * { /* CSS for all child elements of this div. We choose this solution to prevent doing server stuff :D */
+    max-width: 100%;
+    max-height: 100%;
 }
 
 #template2Text1 {
