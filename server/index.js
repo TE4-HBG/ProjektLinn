@@ -208,7 +208,7 @@ let displayTemplates = "";
 
             //Add Skånetrafiken information to display here
 
-            trainName1.innerHTML = jsonData[0].outputTrain.routeLongName;
+           /* trainName1.innerHTML = jsonData[0].outputTrain.routeLongName;
             trainName2.innerHTML = jsonData[1].outputTrain.routeLongName;
             trainName3.innerHTML = jsonData[2].outputTrain.routeLongName;
             trainName4.innerHTML = jsonData[3].outputTrain.routeLongName;
@@ -225,7 +225,7 @@ let displayTemplates = "";
             trainImg3.innerHTML = jsonData[2].outputTrain.routeLongName;
             trainImg4.innerHTML = jsonData[3].outputTrain.routeLongName;
             trainImg5.innerHTML = jsonData[4].outputTrain.routeLongName;
-            trainImg6.innerHTML = jsonData[5].outputTrain.routeLongName;
+            trainImg6.innerHTML = jsonData[5].outputTrain.routeLongName;*/
             /*busShortName1 = 
             busShortName2 = 
             busShortName3 = 
