@@ -13,9 +13,18 @@ const app = express();
 const address = "http://infotavla.te4projekt.se";
 const port = 80;
 
-let rawdata = fs.readFileSync('../SkaneWidget/journeys.json');
-let jsonData = JSON.parse(rawdata);
-console.log("traffic data acquired:" + jsonData[0].routeLongName)
+//Here skanetrafiken data is read from ther journeys json file.
+//Next step involves filtering the data to be read and used.
+try {
+    let rawdata = fs.readFileSync('../SkaneWidget/journeys.json');
+    let jsonData = JSON.parse(rawdata);
+    console.log("traffic data acquired:" + jsonData[0].routeLongName)
+}
+catch {
+
+}
+
+
 return;
 // string array
 let displayTemplates = "";
