@@ -23,6 +23,14 @@ try {
 catch {
 
 }
+
+    //Assign all traffic elements with json data
+
+    //#region 
+   
+    //#endregion 
+
+
 // string array
 let displayTemplates = "";
 {
@@ -72,58 +80,7 @@ let displayTemplates = "";
 
     
     async function UpdateDisplayInfo() {
-        //Assign all traffic elements with json data
 
-        //#region 
-        const trainName1 = document.getElementsByClassName("trainName1");
-        const trainName2 = document.getElementsByClassName("trainName2");
-        const trainName3 = document.getElementsByClassName("trainName3");
-        const trainName4 = document.getElementsByClassName("trainName4");
-        const trainName5 = document.getElementsByClassName("trainName5");
-        const trainName6 = document.getElementsByClassName("trainName6");
-
-        const trainTime1 = document.getElementsByClassName("trainTime1");
-        const trainTime2 = document.getElementsByClassName("trainTime2");
-        const trainTime3 = document.getElementsByClassName("trainTime3");
-        const trainTime4 = document.getElementsByClassName("trainTime4");
-        const trainTime5 = document.getElementsByClassName("trainTime5");
-        const trainTime6 = document.getElementsByClassName("trainTime6");
-
-        const busShortName1 = document.getElementsByClassName("busShortName1");
-        const busShortName2 = document.getElementsByClassName("busShortName2");
-        const busShortName3 = document.getElementsByClassName("busShortName3");
-        const busShortName4 = document.getElementsByClassName("busShortName4");
-        const busShortName5 = document.getElementsByClassName("busShortName5");
-        const busShortName6 = document.getElementsByClassName("busShortName6");
-
-        const busName1 = document.getElementsByClassName("busName1");
-        const busName2 = document.getElementsByClassName("busName2");
-        const busName3 = document.getElementsByClassName("busName3");
-        const busName4 = document.getElementsByClassName("busName4");
-        const busName5 = document.getElementsByClassName("busName5");
-        const busName6 = document.getElementsByClassName("busName6");
-
-        const busTime1 = document.getElementsByClassName("busTime1");
-        const busTime2 = document.getElementsByClassName("busTime2");
-        const busTime3 = document.getElementsByClassName("busTime3");
-        const busTime4 = document.getElementsByClassName("busTime4");
-        const busTime5 = document.getElementsByClassName("busTime5");
-        const busTime6 = document.getElementsByClassName("busTime6");
-
-        const trainImg1 = document.getElementsByClassName("train1IconBody");
-        const trainImg2 = document.getElementsByClassName("train2IconBody");
-        const trainImg3 = document.getElementsByClassName("train3IconBody");
-        const trainImg4 = document.getElementsByClassName("train4IconBody");
-        const trainImg5 = document.getElementsByClassName("train5IconBody");
-        const trainImg6 = document.getElementsByClassName("train6IconBody");
-        
-        const busImg1 = document.getElementsByClassName("bus1IconBody");
-        const busImg2 = document.getElementsByClassName("bus2IconBody");
-        const busImg3 = document.getElementsByClassName("bus3IconBody");
-        const busImg4 = document.getElementsByClassName("bus4IconBody");
-        const busImg5 = document.getElementsByClassName("bus5IconBody");
-        const busImg6 = document.getElementsByClassName("bus6IconBody");
-        //#endregion 
 
 
         /** @type [] */
@@ -135,7 +92,54 @@ let displayTemplates = "";
             const textElements = document.getElementsByClassName('text');
             const imageElements = document.getElementsByClassName('img');
 
-
+            const trainName1 = document.getElementsByClassName("trainName1");
+            const trainName2 = document.getElementsByClassName("trainName2");
+            const trainName3 = document.getElementsByClassName("trainName3");
+            const trainName4 = document.getElementsByClassName("trainName4");
+            const trainName5 = document.getElementsByClassName("trainName5");
+            const trainName6 = document.getElementsByClassName("trainName6");
+        
+            const trainTime1 = document.getElementsByClassName("trainTime1");
+            const trainTime2 = document.getElementsByClassName("trainTime2");
+            const trainTime3 = document.getElementsByClassName("trainTime3");
+            const trainTime4 = document.getElementsByClassName("trainTime4");
+            const trainTime5 = document.getElementsByClassName("trainTime5");
+            const trainTime6 = document.getElementsByClassName("trainTime6");
+        
+            const busShortName1 = document.getElementsByClassName("busShortName1");
+            const busShortName2 = document.getElementsByClassName("busShortName2");
+            const busShortName3 = document.getElementsByClassName("busShortName3");
+            const busShortName4 = document.getElementsByClassName("busShortName4");
+            const busShortName5 = document.getElementsByClassName("busShortName5");
+            const busShortName6 = document.getElementsByClassName("busShortName6");
+        
+            const busName1 = document.getElementsByClassName("busName1");
+            const busName2 = document.getElementsByClassName("busName2");
+            const busName3 = document.getElementsByClassName("busName3");
+            const busName4 = document.getElementsByClassName("busName4");
+            const busName5 = document.getElementsByClassName("busName5");
+            const busName6 = document.getElementsByClassName("busName6");
+        
+            const busTime1 = document.getElementsByClassName("busTime1");
+            const busTime2 = document.getElementsByClassName("busTime2");
+            const busTime3 = document.getElementsByClassName("busTime3");
+            const busTime4 = document.getElementsByClassName("busTime4");
+            const busTime5 = document.getElementsByClassName("busTime5");
+            const busTime6 = document.getElementsByClassName("busTime6");
+        
+            const trainImg1 = document.getElementsByClassName("train1IconBody");
+            const trainImg2 = document.getElementsByClassName("train2IconBody");
+            const trainImg3 = document.getElementsByClassName("train3IconBody");
+            const trainImg4 = document.getElementsByClassName("train4IconBody");
+            const trainImg5 = document.getElementsByClassName("train5IconBody");
+            const trainImg6 = document.getElementsByClassName("train6IconBody");
+            
+            const busImg1 = document.getElementsByClassName("bus1IconBody");
+            const busImg2 = document.getElementsByClassName("bus2IconBody");
+            const busImg3 = document.getElementsByClassName("bus3IconBody");
+            const busImg4 = document.getElementsByClassName("bus4IconBody");
+            const busImg5 = document.getElementsByClassName("bus5IconBody");
+            const busImg6 = document.getElementsByClassName("bus6IconBody");
 
             switch (templates[i].templateID) {
 
@@ -196,7 +200,51 @@ let displayTemplates = "";
             
             document.body.classList.add("page");
             displayTemplates += changeTag(document, document.body, "div").outerHTML;
-            
+
+            //Add Skånetrafiken information to display here
+
+            trainName1.innerHTML = jsonData[0].outputTrain.routeLongName;
+            trainName2.innerHTML = jsonData[1].outputTrain.routeLongName;
+            trainName3.innerHTML = jsonData[2].outputTrain.routeLongName;
+            trainName4.innerHTML = jsonData[3].outputTrain.routeLongName;
+            trainName5.innerHTML = jsonData[4].outputTrain.routeLongName;
+            trainName6.innerHTML = jsonData[5].outputTrain.routeLongName;
+            trainTime1.innerHTML = jsonData[0].outputTrain.departureTime;
+            trainTime2.innerHTML = jsonData[1].outputTrain.departureTime;
+            trainTime3.innerHTML = jsonData[2].outputTrain.departureTime;
+            trainTime4.innerHTML = jsonData[3].outputTrain.departureTime;
+            trainTime5.innerHTML = jsonData[4].outputTrain.departureTime;
+            trainTime6.innerHTML = jsonData[5].outputTrain.departureTime;
+            trainImg1.innerHTML = jsonData[0].outputTrain.routeLongName;   //Filter by type and find appropriate img
+            trainImg2.innerHTML = jsonData[1].outputTrain.routeLongName;
+            trainImg3.innerHTML = jsonData[2].outputTrain.routeLongName;
+            trainImg4.innerHTML = jsonData[3].outputTrain.routeLongName;
+            trainImg5.innerHTML = jsonData[4].outputTrain.routeLongName;
+            trainImg6.innerHTML = jsonData[5].outputTrain.routeLongName;
+            /*busShortName1 = 
+            busShortName2 = 
+            busShortName3 = 
+            busShortName4 = 
+            busShortName5 = 
+            busShortName6 = 
+            busName1 = 
+            busName2 = 
+            busName3 = 
+            busName4 = 
+            busName5 = 
+            busName6 = 
+            busTime1 = 
+            busTime2 = 
+            busTime3 = 
+            busTime4 = 
+            busTime5 = 
+            busTime6 = 
+            busImg1 = 
+            busImg2 = 
+            busImg3 =
+            busImg4 =
+            busImg5 =
+            busImg6 = */
         }
         displayTemplates = displayTemplates.replace(/[\n\r]/g,'');
         console.log("bruh");
