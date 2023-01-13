@@ -301,3 +301,17 @@ p.popupMessage {
     margin-right: 50px;
 
 }
+
+.TEXT {
+    width: 100%;
+    color: white;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #000000;
+  font-size: 16px;
+  resize: none;
+}
+
