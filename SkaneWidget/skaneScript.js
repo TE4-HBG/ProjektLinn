@@ -33,7 +33,6 @@ class Route {
   
     static fromFile(path) {
       const strs = fs.readFileSync("routes.txt").toString('utf8').split('\r\n');
-      console.log(strs);
       strs.shift();
       strs.pop();
       const routesArr = [];
@@ -234,7 +233,7 @@ for (let i = 0; i < routeID.length; i++) {
   var givenRoute  = routeID[i];
 
   var found = routesArr.find(route => route.ID === givenRoute);
-
+  console.log(routesArr);
   var foundTrips = tripsArr.filter(trip => trip.routeID === found.ID);
   timesArr.forEach(time => {
     for (let stopIndex = 0; stopIndex < helsingborgCStops.length; stopIndex++) {
@@ -307,8 +306,6 @@ for (let index = firstJourney; index < firstJourney + loopBussAmount; index++) {
   }
   
 }
-console.log(outputTrain);
-console.log(journeys);
 let json = bigintJSON.stringify({outputTrain, outputBuss});
 fs.writeFileSync('journeys.json', json, 'utf8');
 
