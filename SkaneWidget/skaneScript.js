@@ -33,6 +33,7 @@ class Route {
   
     static fromFile(path) {
       const strs = fs.readFileSync("routes.txt").toString('utf8').split('\r\n');
+      console.log(strs);
       strs.shift();
       strs.pop();
       const routesArr = [];
