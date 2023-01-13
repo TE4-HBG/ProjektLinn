@@ -550,11 +550,21 @@ p {
     transform: translateX(0mm) translateY(48.5mm) !important;
 }
 
+#template3Img * { /* CSS for all child elements of this div. We choose this solution to prevent doing server stuff :D */
+    max-width: 100%;
+    max-height: 100%;
+}
+
 #template4Img {
     position: absolute;
     width: 669px;
     height: 378px;
     transform: translateX(6.8mm) translateY(53.3mm) !important;
+}
+
+#template4Img * { /* CSS for all child elements of this div. We choose this solution to prevent doing server stuff :D */
+    max-width: 100%;
+    max-height: 100%;
 }
 
 #template4Text {
