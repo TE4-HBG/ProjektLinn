@@ -259,8 +259,6 @@ function PrintSavedInputs(minutes, x, newArray) {
 }
 
 function ParagraphDivision(text, className) {
-    // For now this function is only used at template5 in the save(x) function. 
-
     /*
     This code converts strings to paragraphs. Example blow:
     Denna veckan gör vi:
