@@ -306,7 +306,8 @@ for (let index = firstJourney; index < firstJourney + loopBussAmount; index++) {
   }
   
 }
-
+console.log(outputTrain);
+console.log(journeys);
 let json = bigintJSON.stringify({outputTrain, outputBuss});
 fs.writeFileSync('journeys.json', json, 'utf8');
 
