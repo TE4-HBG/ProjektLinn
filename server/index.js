@@ -114,8 +114,12 @@ let displayTemplates = "";
                     imageElements[0].appendChild(image1);
                     break;}
                 case 'Template5':{
-                    textElements[0].appendChild(document.createTextNode(templates[i].content.text1));
-                    textElements[1].appendChild(document.createTextNode(templates[i].content.text2));
+                    let text1 = document.createElement("div");
+                    text1.innerHTML = templates[i].content.text1;
+                    textElements[0].appendChild(text1);
+                    let text2 = document.createElement("div");
+                    text2.innerHTML = templates[i].content.text2; 
+                    textElements[1].appendChild(text2);
                     break;}
                 default:
                     break;

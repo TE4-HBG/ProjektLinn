@@ -176,22 +176,17 @@ async function Save(x) {
         case 'Template5':
             allTextInput = inputBox.getElementsByClassName("TEXT");
             minutes = inputBox.getElementsByClassName('quantity');
+            var newText1 = ParagraphDivision(allTextInput[0], "paragraph")
+            var newText2 = ParagraphDivision(allTextInput[1], "paragraph")
             jsonObject = {
-                "text1": allTextInput[0].value,
-                "text2": allTextInput[1].value
+                "text1": newText1,
+                "text2": newText2
             }
 
 
             allSaveInputs.push(new Template(minutes[0].value, x, jsonObject));
             PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allTextInput[1].value]);
             console.log("hello");
-
-            // ParagraphDivision testing, newText1 and newText2 needs to be sent to the server
-            var newText1 = ParagraphDivision(allTextInput[0], "paragraph")
-            var newText2 = ParagraphDivision(allTextInput[1], "paragraph")
-            console.log(newText1)
-            console.log(newText2)
-
             break;
         case 'Template6':
             break;
