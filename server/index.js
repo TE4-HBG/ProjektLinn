@@ -16,9 +16,9 @@ const port = 80;
 //Here skanetrafiken data is read from ther journeys json file.
 //Next step involves filtering the data to be read and used.
 
-    let rawdata = fs.readFileSync('../SkaneWidget/journeys.json');
-    let jsonData = JSON.parse(rawdata);
-    console.log("traffic data acquired:" + jsonData[0].routeLongName)
+    //let rawdata = fs.readFileSync('../SkaneWidget/journeys.json');
+    //let jsonData = JSON.parse(rawdata);
+    //console.log("traffic data acquired:" + jsonData[0].routeLongName)
 
     //Assign all traffic elements with json data
 
