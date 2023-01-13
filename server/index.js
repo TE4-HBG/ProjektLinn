@@ -72,6 +72,17 @@ let displayTemplates = "";
 
     
     async function UpdateDisplayInfo() {
+        //Assign all traffic elements with json data
+        const trainNameElements = document.getElementsByClassName("trainName");
+        const trainTimeElements = document.getElementsByClassName("skanetrafikenTimeBody");
+        const trainImgElements = document.getElementsByClassName("skanetrafikenIconsBody");
+        const busNameElements = document.getElementsByClassName("busNameBody");
+        const busTimeElements = document.getElementsByClassName("skanetrafikenTimeBody");
+        const busImgElements = document.getElementsByClassName("skanetrafikenIconsBody");
+        const busNumberElements = document.getElementsByClassName("busNumberBody");
+
+
+        train1Name.innerHTML = jsonData.outputTrain.routeLongName;
         /** @type [] */
         displayTemplates = '';
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
@@ -80,7 +91,7 @@ let displayTemplates = "";
             const document = (await jsdom.JSDOM.fromFile(`${__dirname}/templates/${templates[i].templateID}.html`)).window.document;
             const textElements = document.getElementsByClassName('text');
             const imageElements = document.getElementsByClassName('img');
-            
+
 
 
             switch (templates[i].templateID) {
@@ -89,7 +100,6 @@ let displayTemplates = "";
                     
                     textElements[0].appendChild(document.createTextNode(templates[i].content.text1));
                     const image1 = document.createElement('img');
-                    
                     const matches = templates[i].content.image1.split(':')[1].split(';')
                     
                     const ext = matches[0].split('/')[1];
