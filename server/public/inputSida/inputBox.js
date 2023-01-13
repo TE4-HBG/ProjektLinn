@@ -103,12 +103,26 @@ async function Save(x) {
                 console.log("hi");
 
             break;*/
+        /*
         case 'food':
             jsonObject = {
                 "foodlist": weekList
             };
             allSaveInputs.push(new Template(5, x, jsonObject));
             break;
+        case 'countdown': 
+            countdownDate = document.getElementById('CountdownDATE').value;
+            countdownText = document.getElementById('CountdownTEXT').value;
+
+            jsonObject = {
+                "date": countdownDate,
+                "text": countdownText
+            }
+
+            allSaveInputs.push(new Template(5, x, jsonObject));
+
+            break;
+            */
         case 'Template1':
             allTextInput = inputBox.getElementsByClassName("TEXT");
             allImgInput = inputBox.getElementsByClassName("IMG");

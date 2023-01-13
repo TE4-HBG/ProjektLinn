@@ -54,11 +54,11 @@
     <div id="countdownInputForm">
         <h2 id="h2InCountdown">Countdown</h2>
         <form id="formInCountdown">
-            <label> Text: </label>
-            <input type="text" id="TEXT" value=""><br><br>
+            <label id="countdown"> Text: </label>
+            <input type="text" id="CountdownTEXT" value=""><br><br>
             <label> Datum: </label>
-            <input type="date" id="DATE" name="trip-start" value="2003-02-30">
-            <button id="btnInCountdown" onclick="Save('formInCountdown')" type="button">Spara</button>
+            <input type="date" id="CountdownDATE" name="trip-start" value="2003-02-30">
+            <button id="btnInCountdown" onclick='Save("countdown")' type="button">Spara</button>
 
         </form>
     </div>
