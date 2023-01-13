@@ -165,7 +165,9 @@ class Journey {
 
 const tripsArr = Trip.fromFile("");
 const timesArr = StopTimes.fromFile("");
-const routesArr = Route.fromFile("");
+const routesArr = Route.fromFile(""); //routesArr är tom på servern. Inuti funktionen är den dock ej tom. Vet inte varför
+console.log(routesArr)
+
 
 var routeID = [
   //Buss routes
