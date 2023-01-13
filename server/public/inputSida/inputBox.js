@@ -103,6 +103,26 @@ async function Save(x) {
                 console.log("hi");
 
             break;*/
+        /* if these are uncomented bad/unexpected data will be sent to the server and stop the entire """server"""/process
+        case 'food':
+            jsonObject = {
+                "foodlist": weekList
+            };
+            allSaveInputs.push(new Template(5, x, jsonObject));
+            break;
+        case 'countdown': 
+            countdownDate = document.getElementById('CountdownDATE').value;
+            countdownText = document.getElementById('CountdownTEXT').value;
+
+            jsonObject = {
+                "date": countdownDate,
+                "text": countdownText
+            }
+
+            allSaveInputs.push(new Template(5, x, jsonObject));
+
+            break;
+            */
         case 'Template1':
             allTextInput = inputBox.getElementsByClassName("TEXT");
             allImgInput = inputBox.getElementsByClassName("IMG");
@@ -150,7 +170,7 @@ async function Save(x) {
             };
 
             allSaveInputs.push(new Template(minutes[0].value, x, jsonObject));
-            PrintSavedInputs(x, [allTextInput[0].value, allImgInput[0].value]);
+            PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name]);
 
             break;
         case 'Template5':
