@@ -40,11 +40,18 @@ else
 
 	# launch firefox in background
 	/usr/bin/firefox -kiosk -private-window "$website" &
-	
+	sleep 8
+	xdotool search --sync "Mozilla Firefox" key ctrl+plus
+	xdotool search --sync "Mozilla Firefox" key ctrl+plus
+	xdotool search --sync "Mozilla Firefox" key ctrl+plus
+	xdotool search --sync "Mozilla Firefox" key ctrl+plus
+	xdotool search --sync "Mozilla Firefox" key ctrl+plus
+	xdotool search --sync "Mozilla Firefox" key ctrl+plus
+	xdotool search --sync "Mozilla Firefox" key ctrl+plus
+	xdotool search --sync "Mozilla Firefox" key ctrl+plus
+
 	while true
 	do
-		sleep 1
-		
 		size=$(xrandr | grep '*' | awk '{print $1}')
 		width=$(printf "$size" | awk '{split($1,arr,"x"); print arr[1]}')
 		height=$(printf "$size" | awk '{split($1,arr,"x"); print arr[2]}')
@@ -53,8 +60,9 @@ else
 		xrandr --orientation left
 		
 		# set firefox size and width to screen
-		xdotool search "Mozilla Firefox" windowmove 0 0
-		xdotool search "Mozilla Firefox" windowsize "$height" "$width"
+		xdotool search --sync "Mozilla Firefox" windowmove 0 0
+		xdotool search --sync "Mozilla Firefox" windowsize "$height" "$width"
+		sleep 1
 	done
 fi
 

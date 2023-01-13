@@ -36,6 +36,7 @@ function Send(data) {
     if(val) {
         console.log(data);
         socket.send(data);
+        console.log("I think the info was sent //H");
     }
     return val;
 }
