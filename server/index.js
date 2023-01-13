@@ -75,8 +75,10 @@ let displayTemplates = "";
             const imageElements = document.getElementsByClassName('img');
             switch (templates[i].templateID) {
                 case 'Template1':{
-                    
-                    textElements[0].appendChild(document.createTextNode(templates[i].content.text1));
+                    let text1 = document.createElement("div");
+                    text1.innerHTML = templates[i].content.text1;
+                    textElements[0].appendChild(text1);
+
                     const image1 = document.createElement('img');
                     
                     const matches = templates[i].content.image1.split(':')[1].split(';')
@@ -88,8 +90,12 @@ let displayTemplates = "";
                     
                     break;}
                 case 'Template2':
-                    textElements[0].appendChild(document.createTextNode(templates[i].content.text1));
-                    textElements[1].appendChild(document.createTextNode(templates[i].content.text2));
+                    let text1 = document.createElement("div");
+                    text1.innerHTML = templates[i].content.text1;
+                    textElements[0].appendChild(text1);
+                    let text2 = document.createElement("div");
+                    text2.innerHTML = templates[i].content.text2; 
+                    textElements[1].appendChild(text2);
                     break;
                 case 'Template3':{
                     const image1 = document.createElement('img');
@@ -103,7 +109,10 @@ let displayTemplates = "";
                     break;}
                 
                 case 'Template4':{
-                    textElements[0].appendChild(document.createTextNode(templates[i].content.text1));
+                    let text1 = document.createElement("div");
+                    text1.innerHTML = templates[i].content.text1;
+                    textElements[0].appendChild(text1);
+
                     const image1 = document.createElement('img');
                     
                     const matches = templates[i].content.image1.split(':')[1].split(';')
