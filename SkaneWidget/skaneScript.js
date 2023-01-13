@@ -166,6 +166,7 @@ class Journey {
 const tripsArr = Trip.fromFile("");
 const timesArr = StopTimes.fromFile("");
 const routesArr = Route.fromFile("");
+console.log(routesArr)
 
 var routeID = [
   //Buss routes
@@ -233,7 +234,6 @@ for (let i = 0; i < routeID.length; i++) {
   var givenRoute  = routeID[i];
 
   var found = routesArr.find(route => route.ID === givenRoute);
-  console.log(routesArr);
   var foundTrips = tripsArr.filter(trip => trip.routeID === found.ID);
   timesArr.forEach(time => {
     for (let stopIndex = 0; stopIndex < helsingborgCStops.length; stopIndex++) {
@@ -311,8 +311,6 @@ fs.writeFileSync('journeys.json', json, 'utf8');
 
 //Regionbuss 700 eller 1501
 //Tåg 100
-console.log(outputBuss);
-console.log(outputTrain);
 /*console.log(output[0].routeShortName);
 console.log(output[0].routeLongName);
 console.log(output[0].type);
