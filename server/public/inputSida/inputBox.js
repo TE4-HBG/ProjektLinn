@@ -127,10 +127,12 @@ async function Save(x) {
             allTextInput = inputBox.getElementsByClassName("TEXT");
             allImgInput = inputBox.getElementsByClassName("IMG");
             minutes = inputBox.getElementsByClassName('quantity');
+            var newText1 = ParagraphDivision(allTextInput[0], "paragraph")
             jsonObject = {
-                "text1": allTextInput[0].value,
+                "text1": newText1,
                 "image1": await _arrayBufferToBase64(allImgInput[0].files[0])
             };
+            
 
             allSaveInputs.push(new Template(minutes[0].value, x, jsonObject));
             PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name]);
@@ -139,9 +141,11 @@ async function Save(x) {
         case 'Template2':
             allTextInput = inputBox.getElementsByClassName("TEXT");
             minutes = inputBox.getElementsByClassName('quantity');
+            var newText1 = ParagraphDivision(allTextInput[0], "paragraph")
+            var newText2 = ParagraphDivision(allTextInput[1], "paragraph")
             jsonObject = {
-                "text1": allTextInput[0].value,
-                "text2": allTextInput[1].value
+                "text1": newText1,
+                "text2": newText2
             }
 
             allSaveInputs.push(new Template(minutes[0].value, x, jsonObject));
@@ -164,10 +168,12 @@ async function Save(x) {
             allTextInput = inputBox.getElementsByClassName("TEXT");
             allImgInput = inputBox.getElementsByClassName("IMG");
             minutes = inputBox.getElementsByClassName('quantity');
+            var newText1 = ParagraphDivision(allTextInput[0], "paragraph")
             jsonObject = {
-                "text1": allTextInput[0].value,
+                "text1": newText1,
                 "image1": await _arrayBufferToBase64(allImgInput[0].files[0])
             };
+
 
             allSaveInputs.push(new Template(minutes[0].value, x, jsonObject));
             PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name]);
