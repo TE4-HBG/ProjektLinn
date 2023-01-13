@@ -73,16 +73,59 @@ let displayTemplates = "";
     
     async function UpdateDisplayInfo() {
         //Assign all traffic elements with json data
-        const trainNameElements = document.getElementsByClassName("trainName");
-        const trainTimeElements = document.getElementsByClassName("skanetrafikenTimeBody");
-        const trainImgElements = document.getElementsByClassName("skanetrafikenIconsBody");
-        const busNameElements = document.getElementsByClassName("busNameBody");
-        const busTimeElements = document.getElementsByClassName("skanetrafikenTimeBody");
-        const busImgElements = document.getElementsByClassName("skanetrafikenIconsBody");
-        const busNumberElements = document.getElementsByClassName("busNumberBody");
+
+        //#region 
+        const trainName1 = document.getElementsByClassName("trainName1");
+        const trainName2 = document.getElementsByClassName("trainName2");
+        const trainName3 = document.getElementsByClassName("trainName3");
+        const trainName4 = document.getElementsByClassName("trainName4");
+        const trainName5 = document.getElementsByClassName("trainName5");
+        const trainName6 = document.getElementsByClassName("trainName6");
+
+        const trainTime1 = document.getElementsByClassName("trainTime1");
+        const trainTime2 = document.getElementsByClassName("trainTime2");
+        const trainTime3 = document.getElementsByClassName("trainTime3");
+        const trainTime4 = document.getElementsByClassName("trainTime4");
+        const trainTime5 = document.getElementsByClassName("trainTime5");
+        const trainTime6 = document.getElementsByClassName("trainTime6");
+
+        const busShortName1 = document.getElementsByClassName("busShortName1");
+        const busShortName2 = document.getElementsByClassName("busShortName2");
+        const busShortName3 = document.getElementsByClassName("busShortName3");
+        const busShortName4 = document.getElementsByClassName("busShortName4");
+        const busShortName5 = document.getElementsByClassName("busShortName5");
+        const busShortName6 = document.getElementsByClassName("busShortName6");
+
+        const busName1 = document.getElementsByClassName("busName1");
+        const busName2 = document.getElementsByClassName("busName2");
+        const busName3 = document.getElementsByClassName("busName3");
+        const busName4 = document.getElementsByClassName("busName4");
+        const busName5 = document.getElementsByClassName("busName5");
+        const busName6 = document.getElementsByClassName("busName6");
+
+        const busTime1 = document.getElementsByClassName("busTime1");
+        const busTime2 = document.getElementsByClassName("busTime2");
+        const busTime3 = document.getElementsByClassName("busTime3");
+        const busTime4 = document.getElementsByClassName("busTime4");
+        const busTime5 = document.getElementsByClassName("busTime5");
+        const busTime6 = document.getElementsByClassName("busTime6");
+
+        const trainImg1 = document.getElementsByClassName("train1IconBody");
+        const trainImg2 = document.getElementsByClassName("train2IconBody");
+        const trainImg3 = document.getElementsByClassName("train3IconBody");
+        const trainImg4 = document.getElementsByClassName("train4IconBody");
+        const trainImg5 = document.getElementsByClassName("train5IconBody");
+        const trainImg6 = document.getElementsByClassName("train6IconBody");
+        
+        const busImg1 = document.getElementsByClassName("bus1IconBody");
+        const busImg2 = document.getElementsByClassName("bus2IconBody");
+        const busImg3 = document.getElementsByClassName("bus3IconBody");
+        const busImg4 = document.getElementsByClassName("bus4IconBody");
+        const busImg5 = document.getElementsByClassName("bus5IconBody");
+        const busImg6 = document.getElementsByClassName("bus6IconBody");
+        //#endregion 
 
 
-        train1Name.innerHTML = jsonData.outputTrain.routeLongName;
         /** @type [] */
         displayTemplates = '';
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
