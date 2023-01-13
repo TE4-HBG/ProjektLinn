@@ -1,3 +1,5 @@
+#!/bin/sh -e
+
 sudo apt update
 
 sudo apt -y upgrade

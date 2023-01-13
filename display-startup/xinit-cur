@@ -1,0 +1,54 @@
+#!/bin/sh -e
+
+website=infotavla.te4projekt.se/display
+
+function wait_for_X {
+    while true
+    do
+        if ! timeout 1s xset q &>/dev/null; then
+            printf "x still dead lol\n"
+        else
+            break
+        fi
+        sleep 1
+    done
+}
+# runs X in background
+X &
+# defines display for other commands
+export DISPLAY=:0.0;
+# wait for X to start up
+wait_for_X
+
+# hide the mouse
+#./xtoggle.cprog &
+
+
+# launch firefox in background
+/usr/bin/firefox -kiosk -private-window "$website" &
+sleep 8
+xdotool search --sync "Mozilla Firefox" key ctrl+plus
+xdotool search --sync "Mozilla Firefox" key ctrl+plus
+xdotool search --sync "Mozilla Firefox" key ctrl+plus
+xdotool search --sync "Mozilla Firefox" key ctrl+plus
+xdotool search --sync "Mozilla Firefox" key ctrl+plus
+xdotool search --sync "Mozilla Firefox" key ctrl+plus
+xdotool search --sync "Mozilla Firefox" key ctrl+plus
+xdotool search --sync "Mozilla Firefox" key ctrl+plus
+
+while true
+do
+    size=$(xrandr | grep '*' | awk '{print $1}')
+    width=$(printf "$size" | awk '{split($1,arr,"x"); print arr[1]}')
+    height=$(printf "$size" | awk '{split($1,arr,"x"); print arr[2]}')
+    
+    # change screen orientation
+    xrandr --orientation left
+    
+    # set firefox size and width to screen
+    xdotool search --sync "Mozilla Firefox" windowmove 0 0
+    xdotool search --sync "Mozilla Firefox" windowsize "$height" "$width"
+    sleep 1
+done
+
+exit 0
