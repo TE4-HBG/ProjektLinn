@@ -36,11 +36,11 @@ function PrintInputBorder(Arr) {
 function GetTextInput(spec, readable = true, value = "") {
     if (readable) {
         return '<label> Text ' + spec + ': </label>' +
-        '<input type="text" class="TEXT" name="' + spec + '" value=""><br>';
+        '<textarea type="text" class="TEXT" name="' + spec + '" value=""></textarea><br>';
     }
     else {
         return '<label> Text ' + spec + ': </label>' +
-        '<input readonly type="text" class="TEXT" name="' + spec + '" value="' + value + '"><br>';
+        '<textarea readonly type="text" class="TEXT" name="' + spec + '">' + value + '</textarea><br>';
     }
 }
 function GetImgInput(spec, readonly = true, value = "") {
