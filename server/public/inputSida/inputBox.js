@@ -103,7 +103,7 @@ async function Save(x) {
                 console.log("hi");
 
             break;*/
-        /*
+        /* if these are uncomented bad/unexpected data will be sent to the server and stop the entire """server"""/process
         case 'food':
             jsonObject = {
                 "foodlist": weekList
