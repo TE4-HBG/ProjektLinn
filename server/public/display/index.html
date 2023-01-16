@@ -34,7 +34,7 @@
     const source = new EventSource("events");
 
     source.addEventListener("message", (message) => {
-      console.log(message.data)
+      console.log(JSON.stringify(message.data))
       if (info != message.data) {
         console.log("got new stuff!");
         changed = true;
