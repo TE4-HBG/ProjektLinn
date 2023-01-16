@@ -89,7 +89,6 @@ let displayInfo = { templates: [] };
 
         displayInfo = { templates: [] };
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
-        console.log(templates);
         let loggedIn = AuthenticateLogin(templates[0]);
         if (loggedIn) {
             console.log(`amount of templates: ${templates.length}`)
@@ -272,7 +271,6 @@ let displayInfo = { templates: [] };
                 busImg5 =
                 busImg6 = */
             }
-            console.log(displayInfo);
         }
         else {
             console.log("login failed");
