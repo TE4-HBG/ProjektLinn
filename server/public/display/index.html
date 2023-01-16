@@ -57,7 +57,7 @@
           }
         }
         if (templateElements.length > 1) {
-          if (counter <= (info.templates[currentIndex].duration * 1000)) {
+          if (counter >= (info.templates[currentIndex].duration * 1000)) {
             counter = 0;
             for (let index = 0; index < templateElements.length; index++) {
               if (index !== currentIndex || index !== (currentIndex + 1) % templateElements.length) {
