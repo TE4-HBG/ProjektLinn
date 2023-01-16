@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body onload=ShowDinnerSchedule()>
+<body onload=DisplayLoginPopup()>
 
     <div class="grid-container">
         <div class="grid-item">
@@ -110,7 +110,16 @@
     <div id="savedInputs">
         
     </div>
-    <button onclick="ActuallySave()" type="button" id="publish">publicera </button>
+    <button onclick="Publish()" type="button" id="publish">Publicera</button>
+    <div id="loginPopup">
+        <form type="login">
+            <label type="login">Username: <input type="login" id="username"></label>
+            <br>
+            <label type="login">Password: <input type="login" id="password"></label>
+            <br>
+            <input type="submitLogin" value="Submit" onclick="HideLoginPopup()">
+        </form>
+    </div>
 
     
     <div id="instructions">
