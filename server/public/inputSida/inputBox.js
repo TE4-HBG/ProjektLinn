@@ -9,8 +9,8 @@ function PrintInputBorder(Arr) {
         '<div class="UpdateForms">' +
         '<button type="button" class="delBtn" onclick=DeleteInputBorder("' + Arr[0] + '")>X</button>' +
         '<h4>' + Arr[0] + '</h4>' +
-        '<input type="number" class="quantity" name="quantity" min="0" max="15" value="5">' +
-        '<label> Hur många minuter ska sidan visas? (0 = för alltid) </label>' +
+        '<input type="number" class="quantity" name="quantity" min="10" max="999" value="15">' +
+        '<label> Hur många sekunder ska sidan visas?</label>' +
         '<br>';
 
     let textAmount = 0;
