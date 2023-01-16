@@ -15,66 +15,28 @@ function PrintInputBorder(Arr) {
 
     let textAmount = 0;
     let imgAmount = 0;
-
-        for (let index = 0; index < Arr.length; index++) {
-            if (Arr[index] === 'IMG') {
-                imgAmount++;
-                Text += GetImgInput(imgAmount);
-            }
-            if (Arr[index] === 'TEXT') {
-                textAmount++;
-                Text += GetTextInput(Arr[0], textAmount);
-            }
+    for (let index = 0; index < Arr.length; index++) {
+        if (Arr[index] === 'IMG') {
+            imgAmount++;
+            Text += GetImgInput(imgAmount);
         }
-
-
-    
+        if (Arr[index] === 'TEXT') {
+            textAmount++;
+            Text += GetTextInput(textAmount);
+        }
+    }
 
 
     Text += '<button type="button" onclick=Save("' + Arr[0] + '")><a>Spara</a></button>' +
         '</div>' +
         '</div>';
-    
+
     document.getElementById('FormsEditable').innerHTML = Text;
-
 }
-function GetTextInput(template, spec, readable = true, value = "") {
-    let maxCharacters = 0;
-    switch (template) {
-        case 'Template1': 
-            maxCharacters = 765;
-        break;
-        case 'Template2': 
-            console.log(spec + " template 2");
-            if (spec == 1) {
-                maxCharacters = 765;
-            }
-            else if (spec == 2) {
-                maxCharacters = 1800;
-            }
-            else {
-                console.log("Spec is " + spec + "\nError when selecting max charakter lenght for template 2, contact Hugo/Developer");
-            }
-            break;
-        break;
-        case 'Template4': 
-            maxCharacters = 1800;
-        break;
-        case 'Template5': 
-            
-            maxCharacters = 1800;
-        break;
-        
-        default:
-            console.log("Något gick fel vid generationen av SKITEN");
-        break;
-        }
-
+function GetTextInput(spec, readable = true, value = "") {
     if (readable) {
-        const tmp = ['charakterLable' + spec, maxCharacters]; //tmp array. Kan inte skicka variablarna direkt in i funktionen för jag måste separera dem med ett , vilket förstår för stringen
         return '<label> Text ' + spec + ': </label>' +
-        '<textarea oninput="checkRemaningCharakters([' + tmp + '])" maxlength="' + maxCharacters + '" type="text" class="TEXT" id="TEXT' + spec + '" value=""></textarea>' +
-        '<lable id="charakterLable' + spec + '"></lable><br>';
+        '<textarea type="text" class="TEXT" name="' + spec + '" value=""></textarea><br>';
     }
     else {
         return '<label> Text ' + spec + ': </label>' +
@@ -286,7 +248,7 @@ function PrintSavedInputs(minutes, x, newArray) {
         }
         if (Arr[index] === 'TEXT') {
             textAmount++;
-            container += GetTextInput(Arr[0], textAmount, false, newArray[index -1]);
+            container += GetTextInput(textAmount, false, newArray[index -1]);
         }
     }
     container += '</div>' +
@@ -296,19 +258,7 @@ function PrintSavedInputs(minutes, x, newArray) {
 
 }
 
-
-function checkRemaningCharakters(arr) {
-    let spec = arr[0].id; //arr[0] blir magiskt ett <labl> object, men datan som vi vill ha ligger sparat i dens id
-    let maxCharacters = arr[1] 
-    let lable = arr[0]; 
-    let textArea = document.getElementsByClassName('TEXT')[spec.slice(-1)-1]; //ett dåligt sätt att få motsvarande textArea för lablen som ska redigeras
-    lable.innerHTML =  maxCharacters - textArea.value.length + " tecken återstår";
-
-}
-
 function ParagraphDivision(text, className) {
-    // For now this function is only used at template5 in the save(x) function. 
-
     /*
     This code converts strings to paragraphs. Example blow:
     Denna veckan gör vi:
@@ -337,4 +287,3 @@ function ParagraphDivision(text, className) {
     }
     return result;
   }
-

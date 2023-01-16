@@ -40,7 +40,7 @@ else
 
 	# launch firefox in background
 	/usr/bin/firefox -kiosk -private-window "$website" &
-	sleep 8
+	sleep 30
 	xdotool search --sync "Mozilla Firefox" key ctrl+plus
 	xdotool search --sync "Mozilla Firefox" key ctrl+plus
 	xdotool search --sync "Mozilla Firefox" key ctrl+plus
