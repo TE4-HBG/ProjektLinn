@@ -9,8 +9,8 @@ function PrintInputBorder(Arr) {
         '<div class="UpdateForms">' +
         '<button type="button" class="delBtn" onclick=DeleteInputBorder("' + Arr[0] + '")>X</button>' +
         '<h4>' + Arr[0] + '</h4>' +
-        '<input type="number" class="quantity" name="quantity" min="0" max="15" value="5">' +
-        '<label> Hur många minuter ska sidan visas? (0 = för alltid) </label>' +
+        '<input type="number" class="quantity" name="quantity" min="10" max="999" value="15">' +
+        '<label> Hur många sekunder ska sidan visas?</label>' +
         '<br>';
 
     let textAmount = 0;
@@ -50,8 +50,8 @@ function GetTextInput(template, spec, readable = true, value = "") {
             else {
                 console.log("Spec is " + spec + "\nError when selecting max charakter lenght for template 2, contact Hugo/Developer");
             }
-            break;
         break;
+        
         case 'Template4': 
             maxCharacters = 1800;
         break;
@@ -291,7 +291,7 @@ function PrintSavedInputs(minutes, x, newArray) {
         }
         if (Arr[index] === 'TEXT') {
             textAmount++;
-            container += GetTextInput(textAmount, false, newArray[index -1]);
+            container += GetTextInput(Arr[0], textAmount, false, newArray[index -1]);
         }
     }
     container += '</div>' +
