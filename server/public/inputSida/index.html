@@ -5,7 +5,8 @@
     <script src="inputBox.js"></script>
     <script src="dinner.js"></script>
     <script src="send.js"></script>
-    <script src="padLock.js"></script>
+    <script src="padLock.js"></script>¨
+    <script src="popup.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -110,7 +111,28 @@
     <div id="savedInputs">
         
     </div>
-    <button onclick="ActuallySave()" type="button" id="publish">publicera </button>
+    <button onclick="create_module()" type="button" id="publish">publicera </button>
+
+    <div id="scroll-disable">
+        <!-- Your content here -->
+        <div id="myModal" class="modal">
+    
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="username-form">
+              <label for="username">Username:</label>
+              <input type="text" id="username" name="username">
+            </form>
+            <form id="password-form">
+              <label for="password">Password:</label>
+              <input type="text" id="password" name="password">
+            </form>
+            <button type="button" id="submit-button" onclick=ActuallySave()>Submit</button>
+          </div>
+    
+        </div>
+      </div>
 
     
     <div id="instructions">
