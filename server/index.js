@@ -222,7 +222,7 @@ let displayInfo = { templates: [] };
                 }
 
                 document.body.classList.add("page");
-                console.log(displayInfo);
+                
                 displayInfo.templates[i] = { duration: templates[i].duration, html: changeTag(document, document.body, "div").outerHTML };
                 displayInfo.templates[i].html = displayInfo.templates[i].html.replace(/[\n\r]/g, '');
                 //displayTemplates += changeTag(document, document.body, "div").outerHTML;
@@ -272,6 +272,7 @@ let displayInfo = { templates: [] };
                 busImg5 =
                 busImg6 = */
             }
+            console.log(displayInfo);
         }
         else {
             console.log("login failed");
