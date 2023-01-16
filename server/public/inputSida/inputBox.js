@@ -163,13 +163,11 @@ async function Save(x) {
             var newText1 = ParagraphDivision(allTextInput[0], "paragraph")
             jsonObject = {
                 "text1": newText1,
-                "image1": await _arrayBufferToBase64(allImgInput[0].files[0]),
-                "username": username,
-                "password": password
+                "image1": await _arrayBufferToBase64(allImgInput[0].files[0])
             };
             
 
-            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject));
+            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password));
             PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name]);
 
             break;
@@ -180,12 +178,10 @@ async function Save(x) {
             var newText2 = ParagraphDivision(allTextInput[1], "paragraph")
             jsonObject = {
                 "text1": newText1,
-                "text2": newText2,
-                "username": username,
-                "password": password
+                "text2": newText2
             }
 
-            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject));
+            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password));
             PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allTextInput[1].value]);
 
             break;
@@ -193,13 +189,11 @@ async function Save(x) {
             allImgInput = inputBox.getElementsByClassName("IMG");
             minutes = inputBox.getElementsByClassName('quantity');
             jsonObject = {
-                "image1": await _arrayBufferToBase64(allImgInput[0].files[0]),
-                "username": username,
-                "password": password
+                "image1": await _arrayBufferToBase64(allImgInput[0].files[0])
             };
 
 
-            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject));
+            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password));
             PrintSavedInputs(minutes[0].value, x, [allImgInput[0].value]);
 
             break;
@@ -210,13 +204,11 @@ async function Save(x) {
             var newText1 = ParagraphDivision(allTextInput[0], "paragraph")
             jsonObject = {
                 "text1": newText1,
-                "image1": await _arrayBufferToBase64(allImgInput[0].files[0]),
-                "username": username,
-                "password": password
+                "image1": await _arrayBufferToBase64(allImgInput[0].files[0])
             };
 
 
-            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject));
+            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password));
             PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name]);
 
             break;
@@ -227,13 +219,11 @@ async function Save(x) {
             var newText2 = ParagraphDivision(allTextInput[1], "paragraph")
             jsonObject = {
                 "text1": newText1,
-                "text2": newText2,
-                "username": username,
-                "password": password
+                "text2": newText2
             }
 
 
-            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject));
+            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password));
             PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allTextInput[1].value]);
             console.log("hello");
             break;
