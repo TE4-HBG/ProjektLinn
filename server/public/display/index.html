@@ -24,61 +24,64 @@
     const appear = [{ opacity: "100%", zIndex: "0" }];
     const disappear = [{ opacity: "0%", zIndex: "-1" }];
 
-    let array = null;
-    let str;
+    let templateElements = null;
+    let info = {
+      templates: []
+    };
     let changed = false;
     let counter = 0;
-    let i = 0;
+    let currentIndex = 0;
     const source = new EventSource("events");
 
     source.addEventListener("message", (message) => {
-      if (str != message.data) {
+      if (info != message.data) {
         console.log("got new stuff!");
         changed = true;
-        str = message.data;
-        document.getElementById('page-container').innerHTML = str;
-        array = document.getElementsByClassName("page");
+        info = message.data;
+        document.getElementById('page-container').innerHTML = info.templates.reduce((prev, curr) => (prev + curr.html), '');
+        templateElements = document.getElementsByClassName("page");
       }
     });
 
     setInterval(() => {
-      if (array) {
+      if (templateElements) {
         counter += 1000;
         if (changed) {
           console.log("stuff changed! changed!");
           changed = false;
-          array[i].style.opacity = "100%";
-          for (let index = 0; index < array.length; index++) {
-            if (index != i) {
-              array[index].style.opacity = "0%";
+          templateElements[currentIndex].style.opacity = "100%";
+          for (let index = 0; index < templateElements.length; index++) {
+            if (index != currentIndex) {
+              templateElements[index].style.opacity = "0%";
             }
           }
         }
-        if (array.length > 1) {
-          if (counter % 10000 == 0) {
-            for (let index = 0; index < array.length; index++) {
-              if (index !== i || index !== (i + 1) % array.length) {
-                array[index].animate(disappear, {
+        if (templateElements.length > 1) {
+          if (counter <= (info.templates[currentIndex].duration * 1000)) {
+            counter = 0;
+            for (let index = 0; index < templateElements.length; index++) {
+              if (index !== currentIndex || index !== (currentIndex + 1) % templateElements.length) {
+                templateElements[index].animate(disappear, {
                   duration: 0,
                   iterations: 1,
                   fill: "forwards",
                 });
               }
             }
-            console.log(`Changing from ${i} to ${(i + 1) % array.length}`);
+            console.log(`Changing from ${currentIndex} to ${(currentIndex + 1) % templateElements.length}`);
 
-            array[(i + 1) % array.length].animate(appear, {
+            templateElements[(currentIndex + 1) % templateElements.length].animate(appear, {
               duration: 0,
               iterations: 1,
               fill: "forwards",
             });
 
-            array[i].animate(fade, {
+            templateElements[currentIndex].animate(fade, {
               duration: 0,
               iterations: 1,
               fill: "forwards",
             });
-            i = (i + 1) % array.length;
+            currentIndex = (currentIndex + 1) % templateElements.length;
           }
         }
       }

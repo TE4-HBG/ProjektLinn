@@ -28,7 +28,7 @@ const port = 80;
 
 
 // string array
-let displayTemplates = "";
+let displayInfo = {templates:[] };
 {
 
     //Create Websocket Server
@@ -58,8 +58,8 @@ let displayTemplates = "";
         let interValID = setInterval(() => {
             counter++;
             console.log(`${new Date().toISOString()}: sent event to ${req.ip}.`)
-            console.log(displayTemplates.length);
-            if(res.write(`data: ${displayTemplates}\n\n`, (error) => {console.log(error)})) {
+            console.log(displayInfo.length);
+            if(res.write(`data: ${displayInfo}\n\n`, (error) => {console.log(error)})) {
                 console.log("it be worken");
             }
             
@@ -86,11 +86,11 @@ let displayTemplates = "";
 
     
     async function UpdateDisplayInfo() {
-        /** @type [] */
-        displayTemplates = '';
+        
+        displayInfo = {templates:[] };
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
-        var loginStatus = AuthenticateLogin(templates[0]);
-        if (loginStatus === true) {
+        let loggedIn = AuthenticateLogin(templates[0]);
+        if (loggedIn) {
             console.log(`amount of templates: ${templates.length}`)
             for (let i = 0; i < templates.length; i++) {
                 const document = (await jsdom.JSDOM.fromFile(`${__dirname}/templates/${templates[i].templateID}.html`)).window.document;
@@ -103,7 +103,7 @@ let displayTemplates = "";
                 const trainName4 = document.getElementsByClassName("trainName4");
                 const trainName5 = document.getElementsByClassName("trainName5");
                 const trainName6 = document.getElementsByClassName("trainName6");
-            
+
                 const trainTime1 = document.getElementsByClassName("trainTime1");
                 const trainTime2 = document.getElementsByClassName("trainTime2");
                 const trainTime3 = document.getElementsByClassName("trainTime3");
@@ -217,7 +217,9 @@ let displayTemplates = "";
                 }
                 
                 document.body.classList.add("page");
-                displayTemplates += changeTag(document, document.body, "div").outerHTML;
+                displayInfo.templates[i] = { duration: templates[i].duration, html: changeTag(document, document.body, "div").outerHTML };
+                displayInfo.templates[i] = displayInfo.templates[i].replace(/[\n\r]/g,'');
+                //displayTemplates += changeTag(document, document.body, "div").outerHTML;
 
                 //Add Skånetrafiken information to display here
 
@@ -264,8 +266,6 @@ let displayTemplates = "";
                 busImg5 =
                 busImg6 = */
             }
-        displayTemplates = displayTemplates.replace(/[\n\r]/g,'');
-        console.log("bruh");
         }
         else {
             console.log("login failed");
@@ -273,8 +273,7 @@ let displayTemplates = "";
             console.log("password: " + templates[0].password);
         }
     }
-
-
+    
     app.get('*', async (req, res) => {
         console.log(`${new Date().toISOString()}: ${req.ip} is connecting to 404`);
         res.statusCode = 404;
