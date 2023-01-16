@@ -34,11 +34,11 @@
     const source = new EventSource("events");
 
     source.addEventListener("message", (message) => {
-      console.log(JSON.stringify(message.data))
+      console.log(message.data)
       if (info != message.data) {
         console.log("got new stuff!");
         changed = true;
-        info = message.data;
+        info = JSON.parse(message.data);
         document.getElementById('page-container').innerHTML = info.templates.reduce((prev, curr) => (prev + curr.html), '');
         templateElements = document.getElementsByClassName("page");
       }
