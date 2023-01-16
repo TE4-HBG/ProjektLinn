@@ -86,11 +86,9 @@ let displayInfo = { templates: [] };
 
 
     async function UpdateDisplayInfo() {
-
-        displayInfo = { templates: [] };
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
-        let loggedIn = AuthenticateLogin(templates[0]);
-        if (loggedIn) {
+        if (AuthenticateLogin(templates[0])) {
+            displayInfo = { templates: [] };
             console.log(`amount of templates: ${templates.length}`)
             for (let i = 0; i < templates.length; i++) {
                 const document = (await jsdom.JSDOM.fromFile(`${__dirname}/templates/${templates[i].templateID}.html`)).window.document;
