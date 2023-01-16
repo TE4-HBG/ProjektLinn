@@ -1,4 +1,4 @@
-function create_module(){
+
     var modal = document.getElementById("myModal");
 
     // Get the button that opens the modal
@@ -28,5 +28,5 @@ function create_module(){
       event.preventDefault();
     })
     
-   }
+   
    
