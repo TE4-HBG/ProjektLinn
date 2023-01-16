@@ -76,7 +76,6 @@ let displayInfo = { templates: [] };
 
     function AuthenticateLogin(template) { // Unsure if this function can be here or if we should move it outside of whatever this is... :D
         // Load credentials from file
-        console.log(template);
         username = "test";
         password = "test";
         if (template && (template.username === username && template.password === password)) {
@@ -90,7 +89,7 @@ let displayInfo = { templates: [] };
 
         displayInfo = { templates: [] };
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
-        console.log("tetet   " + templates[0]);
+        console.log(templates);
         let loggedIn = AuthenticateLogin(templates[0]);
         if (loggedIn) {
             console.log(`amount of templates: ${templates.length}`)
@@ -223,6 +222,7 @@ let displayInfo = { templates: [] };
                 }
 
                 document.body.classList.add("page");
+                console.log(templates[i]);
                 displayInfo.templates[i] = { duration: templates[i].duration, html: changeTag(document, document.body, "div").outerHTML };
                 displayInfo.templates[i] = displayInfo.templates[i].replace(/[\n\r]/g, '');
                 //displayTemplates += changeTag(document, document.body, "div").outerHTML;
