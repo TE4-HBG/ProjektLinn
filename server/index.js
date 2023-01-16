@@ -274,6 +274,7 @@ let displayInfo = { templates: [] };
         else {
             console.log("login failed");
             if (templates[0]) {
+                console.log(templates[0]);
                 console.log("username: " + templates[0].username);
                 console.log("password: " + templates[0].password);
             } else {
