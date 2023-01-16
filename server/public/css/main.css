@@ -536,6 +536,7 @@ p {
     height: 854px;
     text-align: center;
     transform: translateX(0mm) translateY(48.5mm) !important;
+    width:100%;
 }
   
 #template3Img * { /* CSS for all child elements of this div. We choose this solution to prevent doing server stuff :D */
