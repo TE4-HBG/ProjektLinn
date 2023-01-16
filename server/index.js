@@ -78,7 +78,7 @@ let displayInfo = {templates:[] };
         // Load credentials from file
         username = "test";
         password = "test";
-        if (template.username === username && template.password === password) {
+        if (template && (template.username === username && template.password === password)) {
             return true
         }
         return false
