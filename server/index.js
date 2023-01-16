@@ -59,7 +59,7 @@ let displayInfo = { templates: [] };
             counter++;
             console.log(`${new Date().toISOString()}: sent event to ${req.ip}.`)
             console.log(displayInfo.length);
-            if (res.write(`data: ${displayInfo}\n\n`, (error) => { console.log(error) })) {
+            if (res.write(`data: ${JSON.stringify(displayInfo)}\n\n`, (error) => { console.log(error) })) {
                 console.log("it be worken");
             }
 

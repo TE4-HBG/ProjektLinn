@@ -34,10 +34,10 @@
     const source = new EventSource("events");
 
     source.addEventListener("message", (message) => {
-      if (info != message.data) {
+      if (JSON.stringify(info) !== message.data) {
         console.log("got new stuff!");
         changed = true;
-        info = message.data;
+        info = JSON.parse(message.data);
         document.getElementById('page-container').innerHTML = info.templates.reduce((prev, curr) => (prev + curr.html), '');
         templateElements = document.getElementsByClassName("page");
       }
@@ -57,7 +57,7 @@
           }
         }
         if (templateElements.length > 1) {
-          if (counter <= (info.templates[currentIndex].duration * 1000)) {
+          if (counter >= (info.templates[currentIndex].duration * 1000)) {
             counter = 0;
             for (let index = 0; index < templateElements.length; index++) {
               if (index !== currentIndex || index !== (currentIndex + 1) % templateElements.length) {
