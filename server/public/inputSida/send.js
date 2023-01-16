@@ -1,15 +1,17 @@
 class Template {
-    constructor(duration, templateID, content) {
+    constructor(duration, templateID, content, username, password) {
         this.duration = duration;
         this.templateID = templateID;
         this.content = content;
+        this.username = username;
+        this.password = password;
     }
 }
 
 const socket = new WebSocket('ws://infotavla.te4projekt.se')
 let tmp4 = [];
 
-function addX() {
+function addX() { // Test function??
     let jsonObject = {
         "content": 
             {
