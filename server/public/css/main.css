@@ -8,6 +8,9 @@ body {
 p {
     margin: 0%;
 }
+.paragraph {
+    margin-top: 1em;
+}
 .background {
     width: 100%;
     z-index: -1;
@@ -20,14 +23,13 @@ p {
     height: 138px;
     width: 100%;
 }
-
 /* Date and time */
 .datetime {
     color: white;
     font-family: Arial;
     word-spacing: -1px;
     width: 340px;
-    padding: 15px 10px;
+    padding: 40px 10px;
     border-radius: 5px;
     position: absolute;
     top: 2.3%;
@@ -55,13 +57,11 @@ p {
     text-align: center;
     letter-spacing: 3px;
 }
-
 /* Buses and trains */
 .trainName {
     font-size: 4.5mm; 
     position: absolute; 
 }
-
 /* Countdown in footer */ 
 .countdown {
     text-align: center;
@@ -73,14 +73,11 @@ p {
 #countdownTime {
     font-size: 9.5mm;
 }
-
 /*Weather*/
 #ww_c2119b56c9599 {
     position: absolute !important;
     bottom: 0 !important;
 }
-
-
 /*CSS ON STANDARD BODY TEMPLATES*/
 .busNameBody {
     font-size: 3.4mm; 
@@ -106,7 +103,6 @@ p {
     width:5.6%;
     /*height:5.6%;*/
 }
-
 /* Train 1 */
 #train1Body {            
     transform: translateX(79mm) translateY(63.5mm) !important; 
@@ -118,7 +114,7 @@ p {
     transform: translateX(109mm) translateY(70.5mm) !important; 
 }
 #train1IconBody {
-    transform: translateX(66.5mm) translateY(57.1mm) !important; 
+    transform: translateX(66.5mm) translateY(63mm) !important; 
 }
 /* Train 2 */
 #train2Body {
@@ -131,7 +127,7 @@ p {
     transform: translateX(109mm) translateY(87.8mm) !important; 
 }
 #train2IconBody {
-    transform: translateX(66.5mm) translateY(74.5mm) !important; 
+    transform: translateX(66.5mm) translateY(80.6mm) !important; 
 }
 /* Train 3 */
 #train3Body {
@@ -144,7 +140,7 @@ p {
     transform: translateX(109mm) translateY(105.6mm) !important; 
 }
 #train3IconBody {
-    transform: translateX(66.5mm) translateY(92.3mm) !important; 
+    transform: translateX(66.5mm) translateY(98.2mm) !important; 
 }
 /* Train 4 */
 #train4Body {
@@ -157,7 +153,7 @@ p {
     transform: translateX(109mm) translateY(123.2mm) !important; 
 }
 #train4IconBody {
-    transform: translateX(66.5mm) translateY(109.9mm) !important; 
+    transform: translateX(66.5mm) translateY(115.8mm) !important; 
 }
 /* Train 5 */
 #train5Body {
@@ -170,7 +166,7 @@ p {
     transform: translateX(109mm) translateY(141mm) !important; 
 }
 #train5IconBody {
-    transform: translateX(66.5mm) translateY(127.6mm) !important; 
+    transform: translateX(66.5mm) translateY(133.5mm) !important; 
 }
 /* Train 6 */
 #train6Body {
@@ -183,7 +179,7 @@ p {
     transform: translateX(109mm) translateY(158.6mm) !important; 
 }
 #train6IconBody {
-    transform: translateX(66.5mm) translateY(145.3mm) !important; 
+    transform: translateX(66.5mm) translateY(151.1mm) !important; 
 }
 /* Bus 1 */
 #bus1NumberBody {
@@ -199,7 +195,7 @@ p {
     transform: translateX(47.5mm) translateY(70.5mm) !important; 
 }
 #bus1IconBody {
-    transform: translateX(6.6mm) translateY(57.1mm) !important; 
+    transform: translateX(6.6mm) translateY(63mm) !important; 
 }
 /* Bus 2 */
 #bus2NumberBody {
@@ -215,7 +211,7 @@ p {
     transform: translateX(47.5mm) translateY(88mm) !important; 
 }
 #bus2IconBody {
-    transform: translateX(6.7mm) translateY(74.7mm) !important; 
+    transform: translateX(6.7mm) translateY(80.8mm) !important; 
 }
 /* Bus 3 */
 #bus3NumberBody {
@@ -231,7 +227,7 @@ p {
     transform: translateX(47.5mm) translateY(105.8mm) !important; 
 }
 #bus3IconBody {
-    transform: translateX(6.7mm) translateY(92.3mm) !important; 
+    transform: translateX(6.7mm) translateY(98.2mm) !important; 
 }
 /* Bus 4 */
 #bus4NumberBody {
@@ -247,7 +243,7 @@ p {
     transform: translateX(47.5mm) translateY(123.3mm) !important; 
 }
 #bus4IconBody {
-    transform: translateX(6.8mm) translateY(109.9mm) !important; 
+    transform: translateX(6.8mm) translateY(115.8mm) !important; 
 }
 /* Bus 5 */
 #bus5NumberBody {
@@ -263,7 +259,7 @@ p {
     transform: translateX(47.5mm) translateY(140.8mm) !important; 
 }
 #bus5IconBody {
-    transform: translateX(6.8mm) translateY(127.6mm) !important; 
+    transform: translateX(6.8mm) translateY(133.5mm) !important; 
 }
 /* Bus 6 */
 #bus6NumberBody {
@@ -279,9 +275,8 @@ p {
     transform: translateX(47.5mm) translateY(158.3mm) !important; 
 }
 #bus6IconBody {
-    transform: translateX(6.8mm) translateY(145.3mm) !important; 
+    transform: translateX(6.8mm) translateY(151.1mm) !important; 
 }
-
 /*Lunch*/
 #lunchDivBody {
     position: absolute;
@@ -293,8 +288,6 @@ p {
     text-align: center;
     margin-top: 2mm;
 }
-
-
 /*CSS ON STANDARD FOOTER TEMPLATES*/
 .busNameFooter {
     font-size: 3.2mm; 
@@ -319,197 +312,193 @@ p {
     position: absolute; 
     max-width:5.6% !important;
 }
-
 /* Train 1 */
 #train1Footer {            
-    transform: translateX(84mm) translateY(292.8mm) !important; 
+    transform: translateX(84mm) translateY(282.8mm) !important; 
 }
 #train1TimeFooter {
-    transform: translateX(125.3mm) translateY(293mm) !important; 
+    transform: translateX(125.3mm) translateY(283mm) !important; 
 }
 #train1MinCONSTFooter {
-    transform: translateX(129.7mm) translateY(293mm) !important; 
+    transform: translateX(129.7mm) translateY(283mm) !important; 
 }
 #train1IconFooter {
-    transform: translateX(72.4mm) translateY(291.8mm) !important; 
+    transform: translateX(72.4mm) translateY(281.8mm) !important; 
 }
 /* Train 2 */
 #train2Footer {
-    transform: translateX(84mm) translateY(300.2mm) !important; 
+    transform: translateX(84mm) translateY(290.2mm) !important; 
 }
 #train2TimeFooter {
-    transform: translateX(125.3mm) translateY(300.5mm) !important; 
+    transform: translateX(125.3mm) translateY(290.5mm) !important; 
 }
 #train2MinCONSTFooter {
-    transform: translateX(129.7mm) translateY(300.5mm) !important; 
+    transform: translateX(129.7mm) translateY(290.5mm) !important; 
 }
 #train2IconFooter {
-    transform: translateX(72.4mm) translateY(299.2mm) !important; 
+    transform: translateX(72.4mm) translateY(289.2mm) !important; 
 }
 /* Train 3 */
 #train3Footer {
-    transform: translateX(84mm) translateY(307.5mm) !important;
+    transform: translateX(84mm) translateY(297.5mm) !important;
 }
 #train3TimeFooter {
-    transform: translateX(125.3mm) translateY(308mm) !important; 
+    transform: translateX(125.3mm) translateY(298mm) !important; 
 }
 #train3MinCONSTFooter {
-    transform: translateX(129.7mm) translateY(308mm) !important; 
+    transform: translateX(129.7mm) translateY(298mm) !important; 
 }
 #train3IconFooter {
-    transform: translateX(72.4mm) translateY(306.6mm) !important; 
+    transform: translateX(72.4mm) translateY(296.6mm) !important; 
 }
 /* Train 4 */
 #train4Footer {
-    transform: translateX(84mm) translateY(314.9mm) !important;
+    transform: translateX(84mm) translateY(304.9mm) !important;
 }
 #train4TimeFooter {
-    transform: translateX(125.3mm) translateY(315.5mm) !important; 
+    transform: translateX(125.3mm) translateY(305.5mm) !important; 
 }
 #train4MinCONSTFooter {
-    transform: translateX(129.7mm) translateY(315.5mm) !important; 
+    transform: translateX(129.7mm) translateY(305.5mm) !important; 
 }
 #train4IconFooter {
-    transform: translateX(72.4mm) translateY(314mm) !important; 
+    transform: translateX(72.4mm) translateY(304mm) !important; 
 }
 /* Train 5 */
 #train5Footer {
-    transform: translateX(84mm) translateY(322.4mm) !important;
+    transform: translateX(84mm) translateY(312.4mm) !important;
 }
 #train5TimeFooter {
-    transform: translateX(125.3mm) translateY(323mm) !important; 
+    transform: translateX(125.3mm) translateY(313mm) !important; 
 }
 #train5MinCONSTFooter {
-    transform: translateX(129.7mm) translateY(323mm) !important; 
+    transform: translateX(129.7mm) translateY(313mm) !important; 
 }
 #train5IconFooter {
-    transform: translateX(72.4mm) translateY(321.4mm) !important; 
+    transform: translateX(72.4mm) translateY(311.4mm) !important; 
 }
 /* Train 6 */
 #train6Footer {
-    transform: translateX(84mm) translateY(329.8mm) !important;
+    transform: translateX(84mm) translateY(319.8mm) !important;
 }
 #train6TimeFooter {
-    transform: translateX(125.3mm) translateY(330.5mm) !important; 
+    transform: translateX(125.3mm) translateY(320.5mm) !important; 
 }
 #train6MinCONSTFooter {
-    transform: translateX(129.7mm) translateY(330.5mm) !important; 
+    transform: translateX(129.7mm) translateY(320.5mm) !important; 
 }
 #train6IconFooter {
-    transform: translateX(72.4mm) translateY(328.8mm) !important; 
+    transform: translateX(72.4mm) translateY(318.8mm) !important; 
 }
 /* Bus 1 */
 #bus1NumberFooter {
-    transform: translateX(19mm) translateY(292.8mm) !important; 
+    transform: translateX(19mm) translateY(282.8mm) !important; 
 }
 #bus1NameFooter {            
-    transform: translateX(27mm) translateY(293.4mm) !important; 
+    transform: translateX(27mm) translateY(283.4mm) !important; 
 }
 #bus1TimeFooter {
-    transform: translateX(59.3mm) translateY(293mm) !important; 
+    transform: translateX(59.3mm) translateY(283mm) !important; 
 }
 #bus1MinCONSTFooter {
-    transform: translateX(63.7mm) translateY(293mm) !important; 
+    transform: translateX(63.7mm) translateY(283mm) !important; 
 }
 #bus1IconFooter {
-    transform: translateX(6.6mm) translateY(291.8mm) !important; 
+    transform: translateX(6.6mm) translateY(281.8mm) !important; 
 }
 /* Bus 2 */
 #bus2NumberFooter {
-    transform: translateX(19mm) translateY(300.2mm) !important; 
+    transform: translateX(19mm) translateY(290.2mm) !important; 
 }
 #bus2NameFooter {            
-    transform: translateX(27mm) translateY(300.7mm) !important; 
+    transform: translateX(27mm) translateY(290.7mm) !important; 
 }
 #bus2TimeFooter {
-    transform: translateX(59.3mm) translateY(300.5mm) !important; 
+    transform: translateX(59.3mm) translateY(290.5mm) !important; 
 }
 #bus2MinCONSTFooter {
-    transform: translateX(63.7mm) translateY(300.5mm) !important; 
+    transform: translateX(63.7mm) translateY(290.5mm) !important; 
 }
 #bus2IconFooter {
-    transform: translateX(6.6mm) translateY(299.2mm) !important; 
+    transform: translateX(6.6mm) translateY(289.2mm) !important; 
 }
 /* Bus 3 */
 #bus3NumberFooter {
-    transform: translateX(19mm) translateY(307.5mm) !important; 
+    transform: translateX(19mm) translateY(297.5mm) !important; 
 }
 #bus3NameFooter {            
-    transform: translateX(27mm) translateY(308.2mm) !important; 
+    transform: translateX(27mm) translateY(298.2mm) !important; 
 }
 #bus3TimeFooter {
-    transform: translateX(59.3mm) translateY(308mm) !important; 
+    transform: translateX(59.3mm) translateY(298mm) !important; 
 }
 #bus3MinCONSTFooter {
-    transform: translateX(63.7mm) translateY(308mm) !important; 
+    transform: translateX(63.7mm) translateY(298mm) !important; 
 }
 #bus3IconFooter {
-    transform: translateX(6.6mm) translateY(306.6mm) !important; 
+    transform: translateX(6.6mm) translateY(296.6mm) !important; 
 }
 /* Bus 4 */
 #bus4NumberFooter {
-    transform: translateX(19mm) translateY(314.9mm) !important; 
+    transform: translateX(19mm) translateY(304.9mm) !important; 
 }
 #bus4NameFooter {            
-    transform: translateX(27mm) translateY(315.8mm) !important; 
+    transform: translateX(27mm) translateY(305.8mm) !important; 
 }
 #bus4TimeFooter {
-    transform: translateX(59.3mm) translateY(315.5mm) !important; 
+    transform: translateX(59.3mm) translateY(305.5mm) !important; 
 }
 #bus4MinCONSTFooter {
-    transform: translateX(63.7mm) translateY(315.5mm) !important; 
+    transform: translateX(63.7mm) translateY(305.5mm) !important; 
 }
 #bus4IconFooter {
-    transform: translateX(6.6mm) translateY(314mm) !important; 
+    transform: translateX(6.6mm) translateY(304mm) !important; 
 }
 /* Bus 5 */
 #bus5NumberFooter {
-    transform: translateX(19mm) translateY(322.4mm) !important; 
+    transform: translateX(19mm) translateY(312.4mm) !important; 
 }
 #bus5NameFooter {            
-    transform: translateX(27mm) translateY(323.1mm) !important; 
+    transform: translateX(27mm) translateY(313.1mm) !important; 
 }
 #bus5TimeFooter {
-    transform: translateX(59.3mm) translateY(323mm) !important; 
+    transform: translateX(59.3mm) translateY(313mm) !important; 
 }
 #bus5MinCONSTFooter {
-    transform: translateX(63.7mm) translateY(323mm) !important; 
+    transform: translateX(63.7mm) translateY(313mm) !important; 
 }
 #bus5IconFooter {
-    transform: translateX(6.6mm) translateY(321.4mm) !important; 
+    transform: translateX(6.6mm) translateY(311.4mm) !important; 
 }
 /* Bus 6 */
 #bus6NumberFooter {
-    transform: translateX(19mm) translateY(329.8mm) !important; 
+    transform: translateX(19mm) translateY(319.8mm) !important; 
 }
 #bus6NameFooter {            
-    transform: translateX(27mm) translateY(330.4mm) !important; 
+    transform: translateX(27mm) translateY(320.4mm) !important; 
 }
 #bus6TimeFooter {
-    transform: translateX(59.3mm) translateY(330.5mm) !important; 
+    transform: translateX(59.3mm) translateY(320.5mm) !important; 
 }
 #bus6MinCONSTFooter {
-    transform: translateX(63.7mm) translateY(330.5mm) !important; 
+    transform: translateX(63.7mm) translateY(320.5mm) !important; 
 }
 #bus6IconFooter {
-    transform: translateX(6.6mm) translateY(328.8mm) !important;
+    transform: translateX(6.6mm) translateY(318.8mm) !important;
 }
-
 /*Lunch*/
 #lunchDivFooter {
     position: absolute;
     padding: 1mm;
     height: 24.3mm;
     width: 40.5mm;
-    transform: translateX(142.4mm) translateY(303.3mm) !important;
+    transform: translateX(142.4mm) translateY(293.3mm) !important;
 }
 .lunchFooter {
     text-align: center;
     margin-top: 1mm;
     font-size: 3mm;
 }
-
-
 /*CSS ON DIFFERENT TEMPLATES*/
 #template1Text0 {
     position: absolute;
@@ -517,7 +506,6 @@ p {
     height: 537px;
     transform: translateX(126.9mm) translateY(52.9mm) !important;
 }
-
 #template1Img0 {
     position: absolute;
     width: 700px;
@@ -526,6 +514,20 @@ p {
     transform: translateX(2.5mm) translateY(200mm) !important;
 }
 
+
+    
+        
+          
+    
+
+        
+    
+    @@ -548,8 +549,8 @@ p {
+  
+#template1Img0 * { /* CSS for all child elements of this div. We choose this solution to prevent doing server stuff :D */
+    max-width: 100%;
+    max-height: 100%;
+}
 #template2Text1 {
     position: absolute;
     width: 230px;
@@ -546,6 +548,20 @@ p {
     transform: translateX(0mm) translateY(48.5mm) !important;
 }
 
+
+    
+        
+          
+    
+
+        
+    
+    @@ -562,6 +563,7 @@ p {
+  
+#template3Img * { /* CSS for all child elements of this div. We choose this solution to prevent doing server stuff :D */
+    max-width: 100%;
+    max-height: 100%;
+}
 #template4Img {
     position: absolute;
     width: 669px;
@@ -554,20 +570,32 @@ p {
     transform: translateX(6.8mm) translateY(53.3mm) !important;
 }
 
+
+    
+          
+            
+    
+
+          
+    
+    
+  
+#template4Img * { /* CSS for all child elements of this div. We choose this solution to prevent doing server stuff :D */
+    max-width: 100%;
+    max-height: 100%;
+}
 #template4Text {
     position: absolute;
     width: 669px;
     height: 378px;
     transform: translateX(6.8mm) translateY(169.3mm) !important;
 }
-
 #template5Text1 {
     position: absolute;
     width: 669px;
     height: 378px;
     transform: translateX(6.8mm) translateY(53.3mm) !important;
 }
-
 #template5Text2 {
     position: absolute;
     width: 669px;
