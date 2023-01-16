@@ -16,19 +16,19 @@ const port = 80;
 //Here skanetrafiken data is read from ther journeys json file.
 //Next step involves filtering the data to be read and used.
 
-    //let rawdata = fs.readFileSync('../SkaneWidget/journeys.json');
-    //let jsonData = JSON.parse(rawdata);
-    //console.log("traffic data acquired:" + jsonData[0].routeLongName)
+//let rawdata = fs.readFileSync('../SkaneWidget/journeys.json');
+//let jsonData = JSON.parse(rawdata);
+//console.log("traffic data acquired:" + jsonData[0].routeLongName)
 
-    //Assign all traffic elements with json data
+//Assign all traffic elements with json data
 
-    //#region 
-   
-    //#endregion 
+//#region 
+
+//#endregion 
 
 
 // string array
-let displayInfo = {templates:[] };
+let displayInfo = { templates: [] };
 {
 
     //Create Websocket Server
@@ -59,10 +59,10 @@ let displayInfo = {templates:[] };
             counter++;
             console.log(`${new Date().toISOString()}: sent event to ${req.ip}.`)
             console.log(displayInfo.length);
-            if(res.write(`data: ${displayInfo}\n\n`, (error) => {console.log(error)})) {
+            if (res.write(`data: ${displayInfo}\n\n`, (error) => { console.log(error) })) {
                 console.log("it be worken");
             }
-            
+
         }, 4000);
 
         // If client closes connection, stop sending events
@@ -84,10 +84,10 @@ let displayInfo = {templates:[] };
         return false
     }
 
-    
+
     async function UpdateDisplayInfo() {
-        
-        displayInfo = {templates:[] };
+
+        displayInfo = { templates: [] };
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
         let loggedIn = AuthenticateLogin(templates[0]);
         if (loggedIn) {
@@ -110,35 +110,35 @@ let displayInfo = {templates:[] };
                 const trainTime4 = document.getElementsByClassName("trainTime4");
                 const trainTime5 = document.getElementsByClassName("trainTime5");
                 const trainTime6 = document.getElementsByClassName("trainTime6");
-            
+
                 const busShortName1 = document.getElementsByClassName("busShortName1");
                 const busShortName2 = document.getElementsByClassName("busShortName2");
                 const busShortName3 = document.getElementsByClassName("busShortName3");
                 const busShortName4 = document.getElementsByClassName("busShortName4");
                 const busShortName5 = document.getElementsByClassName("busShortName5");
                 const busShortName6 = document.getElementsByClassName("busShortName6");
-            
+
                 const busName1 = document.getElementsByClassName("busName1");
                 const busName2 = document.getElementsByClassName("busName2");
                 const busName3 = document.getElementsByClassName("busName3");
                 const busName4 = document.getElementsByClassName("busName4");
                 const busName5 = document.getElementsByClassName("busName5");
                 const busName6 = document.getElementsByClassName("busName6");
-            
+
                 const busTime1 = document.getElementsByClassName("busTime1");
                 const busTime2 = document.getElementsByClassName("busTime2");
                 const busTime3 = document.getElementsByClassName("busTime3");
                 const busTime4 = document.getElementsByClassName("busTime4");
                 const busTime5 = document.getElementsByClassName("busTime5");
                 const busTime6 = document.getElementsByClassName("busTime6");
-            
+
                 const trainImg1 = document.getElementsByClassName("train1IconBody");
                 const trainImg2 = document.getElementsByClassName("train2IconBody");
                 const trainImg3 = document.getElementsByClassName("train3IconBody");
                 const trainImg4 = document.getElementsByClassName("train4IconBody");
                 const trainImg5 = document.getElementsByClassName("train5IconBody");
                 const trainImg6 = document.getElementsByClassName("train6IconBody");
-                
+
                 const busImg1 = document.getElementsByClassName("bus1IconBody");
                 const busImg2 = document.getElementsByClassName("bus2IconBody");
                 const busImg3 = document.getElementsByClassName("bus3IconBody");
@@ -148,14 +148,14 @@ let displayInfo = {templates:[] };
 
                 switch (templates[i].templateID) {
 
-                    case 'Template1':{
+                    case 'Template1': {
                         let text1 = document.createElement("div");
                         text1.innerHTML = templates[i].content.text1;
                         textElements[0].appendChild(text1);
 
                         const image1 = document.createElement('img');
                         const matches = templates[i].content.image1.split(':')[1].split(';')
-                        
+
                         const ext = matches[0].split('/')[1];
                         const data = matches[1].split(',')[1];
                         console.log(Buffer.from(data, 'base64'));
@@ -163,21 +163,22 @@ let displayInfo = {templates:[] };
                         console.log("saved file")
                         image1.src = `${address}/images/template/${templates[i].templateID}.${ext}`;
                         imageElements[0].appendChild(image1);
-                        
-                        break;}
+
+                        break;
+                    }
                     case 'Template2':
                         let text1 = document.createElement("div");
                         text1.innerHTML = templates[i].content.text1;
                         textElements[0].appendChild(text1);
                         let text2 = document.createElement("div");
-                        text2.innerHTML = templates[i].content.text2; 
+                        text2.innerHTML = templates[i].content.text2;
                         textElements[1].appendChild(text2);
                         break;
-                    case 'Template3':{
+                    case 'Template3': {
                         const image1 = document.createElement('img');
-                        
+
                         const matches = templates[i].content.image1.split(':')[1].split(';')
-                        
+
                         const ext = matches[0].split('/')[1];
                         const data = matches[1].split(',')[1];
                         console.log(Buffer.from(data, 'base64'));
@@ -185,17 +186,18 @@ let displayInfo = {templates:[] };
                         console.log("saved file")
                         image1.src = `${address}/images/template/${templates[i].templateID}.${ext}`;
                         imageElements[0].appendChild(image1);
-                        break;}
-                    
-                    case 'Template4':{
+                        break;
+                    }
+
+                    case 'Template4': {
                         let text1 = document.createElement("div");
                         text1.innerHTML = templates[i].content.text1;
                         textElements[0].appendChild(text1);
 
                         const image1 = document.createElement('img');
-                        
+
                         const matches = templates[i].content.image1.split(':')[1].split(';')
-                        
+
                         const ext = matches[0].split('/')[1];
                         const data = matches[1].split(',')[1];
                         console.log(Buffer.from(data, 'base64'));
@@ -203,44 +205,46 @@ let displayInfo = {templates:[] };
                         console.log("saved file")
                         image1.src = `${address}/images/template/${templates[i].templateID}.${ext}`;
                         imageElements[0].appendChild(image1);
-                        break;}
-                    case 'Template5':{
+                        break;
+                    }
+                    case 'Template5': {
                         let text1 = document.createElement("div");
                         text1.innerHTML = templates[i].content.text1;
                         textElements[0].appendChild(text1);
                         let text2 = document.createElement("div");
-                        text2.innerHTML = templates[i].content.text2; 
+                        text2.innerHTML = templates[i].content.text2;
                         textElements[1].appendChild(text2);
-                        break;}
+                        break;
+                    }
                     default:
                         break;
                 }
-                
+
                 document.body.classList.add("page");
                 displayInfo.templates[i] = { duration: templates[i].duration, html: changeTag(document, document.body, "div").outerHTML };
-                displayInfo.templates[i] = displayInfo.templates[i].replace(/[\n\r]/g,'');
+                displayInfo.templates[i] = displayInfo.templates[i].replace(/[\n\r]/g, '');
                 //displayTemplates += changeTag(document, document.body, "div").outerHTML;
 
                 //Add Skånetrafiken information to display here
 
-            /* trainName1.innerHTML = jsonData[0].outputTrain.routeLongName;
-                trainName2.innerHTML = jsonData[1].outputTrain.routeLongName;
-                trainName3.innerHTML = jsonData[2].outputTrain.routeLongName;
-                trainName4.innerHTML = jsonData[3].outputTrain.routeLongName;
-                trainName5.innerHTML = jsonData[4].outputTrain.routeLongName;
-                trainName6.innerHTML = jsonData[5].outputTrain.routeLongName;
-                trainTime1.innerHTML = jsonData[0].outputTrain.departureTime;
-                trainTime2.innerHTML = jsonData[1].outputTrain.departureTime;
-                trainTime3.innerHTML = jsonData[2].outputTrain.departureTime;
-                trainTime4.innerHTML = jsonData[3].outputTrain.departureTime;
-                trainTime5.innerHTML = jsonData[4].outputTrain.departureTime;
-                trainTime6.innerHTML = jsonData[5].outputTrain.departureTime;
-                trainImg1.innerHTML = jsonData[0].outputTrain.routeLongName;   //Filter by type and find appropriate img
-                trainImg2.innerHTML = jsonData[1].outputTrain.routeLongName;
-                trainImg3.innerHTML = jsonData[2].outputTrain.routeLongName;
-                trainImg4.innerHTML = jsonData[3].outputTrain.routeLongName;
-                trainImg5.innerHTML = jsonData[4].outputTrain.routeLongName;
-                trainImg6.innerHTML = jsonData[5].outputTrain.routeLongName;*/
+                /* trainName1.innerHTML = jsonData[0].outputTrain.routeLongName;
+                    trainName2.innerHTML = jsonData[1].outputTrain.routeLongName;
+                    trainName3.innerHTML = jsonData[2].outputTrain.routeLongName;
+                    trainName4.innerHTML = jsonData[3].outputTrain.routeLongName;
+                    trainName5.innerHTML = jsonData[4].outputTrain.routeLongName;
+                    trainName6.innerHTML = jsonData[5].outputTrain.routeLongName;
+                    trainTime1.innerHTML = jsonData[0].outputTrain.departureTime;
+                    trainTime2.innerHTML = jsonData[1].outputTrain.departureTime;
+                    trainTime3.innerHTML = jsonData[2].outputTrain.departureTime;
+                    trainTime4.innerHTML = jsonData[3].outputTrain.departureTime;
+                    trainTime5.innerHTML = jsonData[4].outputTrain.departureTime;
+                    trainTime6.innerHTML = jsonData[5].outputTrain.departureTime;
+                    trainImg1.innerHTML = jsonData[0].outputTrain.routeLongName;   //Filter by type and find appropriate img
+                    trainImg2.innerHTML = jsonData[1].outputTrain.routeLongName;
+                    trainImg3.innerHTML = jsonData[2].outputTrain.routeLongName;
+                    trainImg4.innerHTML = jsonData[3].outputTrain.routeLongName;
+                    trainImg5.innerHTML = jsonData[4].outputTrain.routeLongName;
+                    trainImg6.innerHTML = jsonData[5].outputTrain.routeLongName;*/
                 /*busShortName1 = 
                 busShortName2 = 
                 busShortName3 = 
@@ -269,11 +273,16 @@ let displayInfo = {templates:[] };
         }
         else {
             console.log("login failed");
-            console.log("username: " + templates[0].username);
-            console.log("password: " + templates[0].password);
+            if (templates[0]) {
+                console.log("username: " + templates[0].username);
+                console.log("password: " + templates[0].password);
+            } else {
+                console.log("username and password was missing!");
+            }
+
         }
     }
-    
+
     app.get('*', async (req, res) => {
         console.log(`${new Date().toISOString()}: ${req.ip} is connecting to 404`);
         res.statusCode = 404;
@@ -304,7 +313,7 @@ let displayInfo = {templates:[] };
 function changeTag(document, oldElement, tag) {
     let newElement = document.createElement(tag);
     console.log(newElement.outerHTML)
-    
+
     for (let i = 0; i < oldElement.attributes.length; i++) {
         newElement.setAttribute(oldElement.attributes.item(i).nodeName, oldElement.attributes.item(i).nodeValue);
         console.log(newElement.outerHTML)
