@@ -224,7 +224,7 @@ let displayInfo = { templates: [] };
                 document.body.classList.add("page");
                 console.log(templates[i]);
                 displayInfo.templates[i] = { duration: templates[i].duration, html: changeTag(document, document.body, "div").outerHTML };
-                displayInfo.templates[i] = displayInfo.templates[i].replace(/[\n\r]/g, '');
+                //displayInfo.templates[i] = displayInfo.templates[i].replace(/[\n\r]/g, '');
                 //displayTemplates += changeTag(document, document.body, "div").outerHTML;
 
                 //Add Skånetrafiken information to display here
