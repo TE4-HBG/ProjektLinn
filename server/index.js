@@ -93,7 +93,7 @@ let displayInfo = { templates: [] };
                 // Load foodSchedule file to array of objects
                 const savedSchedule = JSON.parse(fs.readFileSync('foodSchedule.txt', 'utf8'));
                 // Check if the new data already exists in savedSchedule
-                console.log(savedSchedule);
+                console.log(JSON.parse(savedSchedule));
                 for (let x = 0; x < savedSchedule.length; x++) {
                     for (let y = 0; y < templates[i].foodSchedule.length; y++) {
                         //console.log(templates[i]);
