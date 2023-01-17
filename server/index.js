@@ -108,12 +108,12 @@ let displayInfo = { templates: [] };
                 // Save the new savedSchedule to file.
                 fs.writeFileSync('foodSchedule.txt', JSON.stringify(savedSchedule));
                 console.log("foodSchedule.txt updated");
-                templates[i].splice(i,1);
+                templates.splice(i,1);
             }
             else if (templates[i].duration === null && templates[i].countdown != null) {
                 // Ah! Theres been changes to the countdown!
                 // Not started working here but same plan :D
-                templates[i].splice(i,1);
+                templates.splice(i,1);
             }
         }
     }
