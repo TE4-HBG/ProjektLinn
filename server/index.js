@@ -77,8 +77,8 @@ let displayInfo = { templates: [] };
 
     function AuthenticateLogin(template) { // Unsure if this function can be here or if we should move it outside of whatever this is... :D
         // Load credentials from file
-        username = "test";
-        password = "test";
+        const data = fs.readFileSync('credentials.txt', 'utf8');
+        const [username, password] = data.split(':');
         if (template && (template.username === username && template.password === password)) {
             return true
         }
