@@ -5,7 +5,7 @@ function PrintInputBorder(Arr) {
     let Text = "";
     console.log(Arr[0]);
     localStorage.setItem(Arr[0], Arr);
-    Text += '<div name="'+ Arr +'" id="' + Arr[0] + '">' +
+    Text += '<div name="' + Arr + '" id="' + Arr[0] + '">' +
         '<div class="UpdateForms">' +
         '<button type="button" class="delBtn" onclick=DeleteInputBorder("' + Arr[0] + '")>X</button>' +
         '<h4>' + Arr[0] + '</h4>' +
@@ -36,10 +36,10 @@ function PrintInputBorder(Arr) {
 function GetTextInput(template, spec, readable = true, value = "") {
     let maxCharacters = 0;
     switch (template) {
-        case 'Template1': 
+        case 'Template1':
             maxCharacters = 765;
-        break;
-        case 'Template2': 
+            break;
+        case 'Template2':
             console.log(spec + " template 2");
             if (spec == 1) {
                 maxCharacters = 765;
@@ -50,41 +50,41 @@ function GetTextInput(template, spec, readable = true, value = "") {
             else {
                 console.log("Spec is " + spec + "\nError when selecting max charakter lenght for template 2, contact Hugo/Developer");
             }
-        break;
-        
-        case 'Template4': 
+            break;
+
+        case 'Template4':
             maxCharacters = 1800;
-        break;
-        case 'Template5': 
-            
+            break;
+        case 'Template5':
+
             maxCharacters = 1800;
-        break;
-        
+            break;
+
         default:
             console.log("Något gick fel vid generationen av SKITEN");
-        break;
-        }
+            break;
+    }
 
     if (readable) {
         const tmp = ['charakterLable' + spec, maxCharacters]; //tmp array. Kan inte skicka variablarna direkt in i funktionen för jag måste separera dem med ett , vilket förstår för stringen
         return '<label> Text ' + spec + ': </label>' +
-        '<textarea oninput="checkRemaningCharakters([' + tmp + '])" maxlength="' + maxCharacters + '" type="text" class="TEXT" id="TEXT' + spec + '" value=""></textarea>' +
-        '<lable id="charakterLable' + spec + '"></lable><br>';
+            '<textarea oninput="checkRemaningCharakters([' + tmp + '])" maxlength="' + maxCharacters + '" type="text" class="TEXT" id="TEXT' + spec + '" value=""></textarea>' +
+            '<lable id="charakterLable' + spec + '"></lable><br>';
     }
     else {
         return '<label> Text ' + spec + ': </label>' +
-        '<textarea readonly type="text" class="TEXT" name="' + spec + '">' + value + '</textarea><br>';
+            '<textarea readonly type="text" class="TEXT" name="' + spec + '">' + value + '</textarea><br>';
     }
 }
 function GetImgInput(spec, readonly = true, value = "") {
     if (readonly) {
         return '<label> Bild ' + spec + ': </label>' +
-        '<input type="file" class="IMG" name="' + spec + '" accept="image/*">' +
-        '<br>';
+            '<input type="file" class="IMG" name="' + spec + '" accept="image/*">' +
+            '<br>';
     }
     else {
         return '<label>Bild ' + spec + ': ' + value + '</label>' +
-        '<br>';
+            '<br>';
     }
 }
 
@@ -99,7 +99,7 @@ function GetCountdownInput() {
 function _arrayBufferToBase64(blob) {
     return new Promise((resolve, _) => {
         const reader = new FileReader();
-        reader.onloadend = () => {resolve(reader.result); console.log(reader.result)};
+        reader.onloadend = () => { resolve(reader.result); console.log(reader.result) };
         reader.readAsDataURL(blob);
     });
 }
@@ -165,7 +165,7 @@ async function Save(x) {
                 "text1": newText1,
                 "image1": await _arrayBufferToBase64(allImgInput[0].files[0])
             };
-            
+
 
             allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password));
             PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name]);
@@ -236,7 +236,7 @@ async function Save(x) {
 
 }
 function Publish() {
-    if(Send(JSON.stringify(allSaveInputs))) {
+    if (Send(JSON.stringify(allSaveInputs))) {
         alert("Data Skickat!");
     }
     else {
@@ -262,30 +262,30 @@ function PrintSavedInputs(minutes, x, newArray) {
     let imgAmount = 0;
     let Arr = localStorage.getItem(x);
     Arr = Arr.split(",");
-    
-    container += '<div name="'+ Arr +'" id="' + Arr[0] + '-saved">' +
-    '<div class="UpdateForms-saved">' +
-    '<button type="button" class="delBtn" onclick=DeleteInputBorder("' + Arr[0] + '-saved")>X</button>' +
-    '<h4>' + Arr[0] + '</h4>' +
-    '<input readonly type="number" class="quantity" name="quantity" min="0" max="15" value="' + minutes + '">' +
-    '<br>';
-    
-    
-    
+
+    container += '<div name="' + Arr + '" id="' + Arr[0] + '-saved">' +
+        '<div class="UpdateForms-saved">' +
+        '<button type="button" class="delBtn" onclick=DeleteInputBorder("' + Arr[0] + '-saved")>X</button>' +
+        '<h4>' + Arr[0] + '</h4>' +
+        '<input readonly type="number" class="quantity" name="quantity" min="0" max="15" value="' + minutes + '">' +
+        '<br>';
+
+
+
     for (let index = 0; index < Arr.length; index++) {
         console.log(1);
 
         if (Arr[index] === 'IMG') {
             imgAmount++;
-            container += GetImgInput(imgAmount, false, newArray[index -1]);
+            container += GetImgInput(imgAmount, false, newArray[index - 1]);
         }
         if (Arr[index] === 'TEXT') {
             textAmount++;
-            container += GetTextInput(Arr[0], textAmount, false, newArray[index -1]);
+            container += GetTextInput(Arr[0], textAmount, false, newArray[index - 1]);
         }
     }
     container += '</div>' +
-    '</div>'
+        '</div>'
 
     document.getElementById('savedInputs').innerHTML = container;
 
@@ -309,17 +309,17 @@ function ParagraphDivision(text, className) {
     var paragraphs = text.value.split(/(\n\n|\n)/);
     var result = "";
     for (var i = 0; i < paragraphs.length; i++) {
-      if(paragraphs[i] === "\n\n" || paragraphs[i] === "\n"){
-        continue;
-      }
-      if (className && paragraphs[i-1] === "\n\n") {
-        result += "<p class='" + className + "'>" + paragraphs[i] + "</p>";
-      } else {
-        result += "<p>" + paragraphs[i] + "</p>";
-      }
+        if (paragraphs[i] === "\n\n" || paragraphs[i] === "\n") {
+            continue;
+        }
+        if (className && paragraphs[i - 1] === "\n\n") {
+            result += "<p class='" + className + "'>" + paragraphs[i] + "</p>";
+        } else {
+            result += "<p>" + paragraphs[i] + "</p>";
+        }
     }
     return result;
-  }
+}
 
 
 
@@ -332,7 +332,7 @@ function ParagraphDivision(text, className) {
 function DisplayLoginPopup() {
     popup = document.getElementById("loginPopup");
     popup.style.display = "block";
-    
+
 }
 function HideLoginPopup() {
     username = document.getElementById("username").value;
@@ -345,9 +345,9 @@ function HideLoginPopup() {
 
 function checkRemaningCharakters(arr) {
     let spec = arr[0].id; //arr[0] blir magiskt ett <labl> object, men datan som vi vill ha ligger sparat i dens id
-    let maxCharacters = arr[1] 
-    let lable = arr[0]; 
-    let textArea = document.getElementsByClassName('TEXT')[spec.slice(-1)-1]; //ett dåligt sätt att få motsvarande textArea för lablen som ska redigeras
-    lable.innerHTML =  maxCharacters - textArea.value.length + " tecken återstår";
+    let maxCharacters = arr[1]
+    let lable = arr[0];
+    let textArea = document.getElementsByClassName('TEXT')[spec.slice(-1) - 1]; //ett dåligt sätt att få motsvarande textArea för lablen som ska redigeras
+    lable.innerHTML = maxCharacters - textArea.value.length + " tecken återstår";
 
 }

@@ -28,10 +28,6 @@ function InitDate() {
     setInterval(UpdateDate, 43200000);
 }
 
-
-
-
-
 function UpdateClock() {
     var now = new Date();
     var dname = now.getDay(),
@@ -55,15 +51,14 @@ function UpdateClock() {
             element.innerHTML = values[i];
         });
     }
-        
+
 }
 
 function InitClock() {
     UpdateClock();
-    
+
     setInterval(UpdateClock, 30000);
 }
-
 
 function InitClockAndDate() {
     InitClock();
