@@ -91,28 +91,25 @@ let displayInfo = { templates: [] };
                 // Ah! Theres been changes to the food schedule!
                 console.log("Detected changes to food schedule")
                 // Load foodSchedule file to array of objects
-                var savedSchedule = JSON.parse(fs.readFileSync('foodSchedule.txt', 'utf8'));
-                savedSchedule = JSON.parse(savedSchedule); //I dont know why, but this is the only way
+                var savedSchedules = JSON.parse(fs.readFileSync('foodSchedules.txt', 'utf8'));
+                savedSchedules = JSON.parse(savedSchedules); //I dont know why, but this is the only way
                 // Check if the new data already exists in savedSchedule
-                for (let x = 0; x < savedSchedule.length; x++) {
-                    for (let y = 0; y < templates[i].foodSchedules.length; y++) {
-                        //console.log(templates[i]);
-                        console.log(JSON.parse(templates[i].foodSchedules));
-                        console.log(JSON.parse(templates[i].foodSchedules[0]));
-                        //console.log(savedSchedule[x]);
-                        if (savedSchedule[x].week === templates[i].foodSchedules[y].week) {
+                for (let x = 0; x < savedSchedules.length; x++) {
+                    for (let y = 0; y < JSON.parse(templates[i].foodSchedules).length; y++) {
+                        foodSchedule = JSON.parse(templates[i].foodSchedules[y]);// NOTE SINGULAR NOT PLURAL!!!
+                        if (savedSchedules[x].week === foodSchedule.week) {
                             // If the new week already exists in savedSchedule, replace it with new week.
-                            savedSchedule[x] = templates[i].foodSchedules[y];
+                            savedSchedules[x] = foodSchedule;
                         }
                         else {
                             // If the new week doesn't exists in savedSchedule, add it
-                            savedSchedule.push(foodSchedules[y]);
+                            savedSchedules.push(foodSchedule);
                         }
                     }
                 }
                 // Save the new savedSchedule to file.
-                console.log(savedSchedule);
-                fs.writeFileSync('foodSchedule.txt', JSON.stringify(savedSchedule));
+                console.log(savedSchedules);
+                fs.writeFileSync('foodSchedule.txt', JSON.stringify(savedSchedules));
                 console.log("foodSchedule.txt updated");
                 templates.splice(i,1);
             }
@@ -127,7 +124,6 @@ let displayInfo = { templates: [] };
 
     async function UpdateDisplayInfo() {
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
-        console.log(templates);
         if (templates[0] && templates[0].isCool) {
             console.log("\u006B\u006C\u006F\u0068\u0067\u0065\u0072\u0020\u0077\u0061\u0073\u0020\u0068\u0065\u0072\u0065")
             displayInfo.templates = [];
