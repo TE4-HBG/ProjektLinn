@@ -6,13 +6,15 @@ const { fileURLToPath } = require('url');
 const { dirname } = require('path');
 const { WebSocketServer } = require('ws');
 const { readFile, writeFile } = require('fs/promises');
+//const {Download} = require('./SkåneTrafiken.js')
 //const __filename = fileURLToPath(import.meta.url);
 //const __dirname = dirname(__filename);
 
 const app = express();
 const address = "http://infotavla.te4projekt.se";
 const port = 80;
-
+//Download();
+console.log("hopefully i wait for the download :)")
 //Here skanetrafiken data is read from ther journeys json file.
 //Next step involves filtering the data to be read and used.
 
@@ -30,7 +32,6 @@ const port = 80;
 // string array
 let displayInfo = { templates: [] };
 {
-
     //Create Websocket Server
     const wsServer = new WebSocketServer({ noServer: true });
     wsServer.on('connection', function connection(ws) {
@@ -95,7 +96,7 @@ let displayInfo = { templates: [] };
                 const document = window.document;
                 const DOMPurify = createDOMPurify(window);
                 const config = {
-                    ALLOWED_TAGS: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li', 'ul', 'ol', 'u', 'b', 'i', 'center', '#text', 'sans'],
+                    ALLOWED_TAGS: ['p', 'h1', 'h2', 'h3', 'li', 'ul', 'ol', 'u', 'b', 'i', 'center', '#text', 'sans'],
                     ALLOWED_ATTR: [],
                     KEEP_CONTENT: false,
                 }

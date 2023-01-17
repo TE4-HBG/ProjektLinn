@@ -3,142 +3,168 @@ const bigintJSON = require('bigint-json');
 
 /**Array class for route file*/
 class Route {
-    ID;
-    agencyID;
-    shortName;
-    longName;
-    type;
-    description;
-    constructor(ID,agencyID,shortName,longName,type,description) {
-      this.ID = ID;
-      this.agencyID = agencyID;
-      this.shortName = shortName;
-      this.longName = longName;
-      this.type = type;
-      this.description = description;
+  ID;
+  agencyID;
+  shortName;
+  longName;
+  type;
+  description;
+  constructor(ID, agencyID, shortName, longName, type, description) {
+    this.ID = ID;
+    this.agencyID = agencyID;
+    this.shortName = shortName;
+    this.longName = longName;
+    this.type = type;
+    this.description = description;
+  }
+  /**
+   * 
+   * @param {string} str 
+   * @returns {Route}
+   */
+  static fromString(str) {
+    const splitted = str.split(',');
+    const route = new Route(
+      BigInt(splitted[0]),
+      BigInt(splitted[1]),
+      splitted[2],
+      splitted[3],
+      splitted[4],
+      splitted[5]
+    );
+    return route;
+  }
+  /**
+   * 
+   * @param {string} path 
+   * @returns {Route[]}
+   */
+  static fromFile(path) {
+    const strs = fs.readFileSync("routes.txt").toString('utf8').split('\r\n');
+    strs.shift();
+    strs.pop();
+    const routesArr = [];
+
+    for (let index = 0; index < strs.length; index++) {
+      routesArr[index] = Route.fromString(strs[index]);
     }
-    
-    static fromString(str) {
-      const splitted = str.split(',');
-      const route = new Route(
-        BigInt(splitted[0]),
-        BigInt(splitted[1]),
-        splitted[2],
-        splitted[3],
-        splitted[4],
-        splitted[5]
-      );
-      return route;
-    }
-  
-    static fromFile(path) {
-      const strs = fs.readFileSync("routes.txt").toString('utf8').split('\r\n');
-      strs.shift();
-      strs.pop();
-      const routesArr = [];
-  
-      for (let index = 0; index < strs.length; index++) {
-        routesArr[index] = Route.fromString(strs[index]);
-      }
-      return routesArr;
-    }
+    return routesArr;
+  }
 }
 
 /**Array class for the trips file*/
 class Trip {
-    routeID;
-    serviceID;
-    tripID;
-    tripHeadSign;
-    directionID;
-    shapeID;
-    constructor(routeID,serviceID,tripID,tripHeadSign,directionID,shapeID) {
-      this.routeID = routeID;
-      this.serviceID = serviceID;
-      this.tripID = tripID;
-      this.tripHeadSign = tripHeadSign;
-      this.directionID = directionID;
-      this.shapeID = shapeID;
+  routeID;
+  serviceID;
+  tripID;
+  tripHeadSign;
+  directionID;
+  shapeID;
+  constructor(routeID, serviceID, tripID, tripHeadSign, directionID, shapeID) {
+    this.routeID = routeID;
+    this.serviceID = serviceID;
+    this.tripID = tripID;
+    this.tripHeadSign = tripHeadSign;
+    this.directionID = directionID;
+    this.shapeID = shapeID;
+  }
+
+  /**
+   * 
+   * @param {string} str 
+   * @returns {Trip}
+   */
+  static fromString(str) {
+    const splitted = str.split(',');
+    const trip = new Trip(
+      BigInt(splitted[0]),
+      splitted[1],
+      BigInt(splitted[2]),
+      splitted[3],
+      splitted[4],
+      BigInt(splitted[5])
+    );
+    return trip;
+  }
+  /**
+   * 
+   * @param {string} path 
+   * @returns {Trip[]}
+   */
+  static fromFile(path) {
+    const strs = fs.readFileSync("trips.txt").toString('utf8').split('\r\n');
+    strs.shift();
+    strs.pop();
+    const tripsArr = [];
+
+    for (let index = 0; index < strs.length; index++) {
+      tripsArr[index] = Trip.fromString(strs[index]);
     }
-  
-    static fromString(str) {
-      const splitted = str.split(',');
-      const trip = new Trip(
-        BigInt(splitted[0]),
-        splitted[1],
-        BigInt(splitted[2]),
-        splitted[3],
-        splitted[4],
-        BigInt(splitted[5])
-      );
-      return trip;
-    }
-    static fromFile(path) {
-      const strs = fs.readFileSync("trips.txt").toString('utf8').split('\r\n');
-      strs.shift();
-      strs.pop();
-      const tripsArr = [];
-  
-      for (let index = 0; index < strs.length; index++) {
-        tripsArr[index] = Trip.fromString(strs[index]);
-      }
-      return tripsArr;
-    }
+    return tripsArr;
+  }
 }
 
 /**Array class for stoptimes file*/
 class StopTimes {
-    tripID;
-    arrivalTime;
-    departureTime;
-    stopID;
-    stopSequence;
-    stopHeadSign;
-    pickupType;
-    dropoffType;
-    shapeDistTraveled;
-    timepoint;
-    constructor(tripID,arrivalTime,departureTime,stopID,stopSequence,stopHeadSign,pickupType,dropoffType,shapeDistTraveled,timepoint) {
-      this.tripID = tripID;
-      this.arrivalTime = arrivalTime;
-      this.departureTime = departureTime;
-      this.stopID = stopID;
-      this.stopSequence = stopSequence;
-      this.stopHeadSign = stopHeadSign;
-      this.pickupType = pickupType;
-      this.dropoffType = dropoffType;
-      this.shapeDistTraveled = shapeDistTraveled;
-      this.timepoint = timepoint;
-    }
+  tripID;
+  arrivalTime;
+  departureTime;
+  stopID;
+  stopSequence;
+  stopHeadSign;
+  pickupType;
+  dropoffType;
+  shapeDistTraveled;
+  timepoint;
+  constructor(tripID, arrivalTime, departureTime, stopID, stopSequence, stopHeadSign, pickupType, dropoffType, shapeDistTraveled, timepoint) {
+    this.tripID = tripID;
+    this.arrivalTime = arrivalTime;
+    this.departureTime = departureTime;
+    this.stopID = stopID;
+    this.stopSequence = stopSequence;
+    this.stopHeadSign = stopHeadSign;
+    this.pickupType = pickupType;
+    this.dropoffType = dropoffType;
+    this.shapeDistTraveled = shapeDistTraveled;
+    this.timepoint = timepoint;
+  }
+  /**
+   * 
+   * @param {string} str 
+   * @returns {StopTimes}
+   */
+  static fromString(str) {
+    const splitted = str.split(',');
+    const stopTimes = new StopTimes(
+      BigInt(splitted[0]),
+      splitted[1],
+      splitted[2],
+      BigInt(splitted[3]),
+      splitted[4],
+      splitted[5],
+      splitted[6],
+      splitted[7],
+      splitted[8],
+      splitted[9]
+    );
+    return stopTimes;
+  }
+  /**
+   * 
+   * @param {string} path 
+   * @returns {StopTimes[]}
+   */
+  static fromFile(path) {
+    const strs = fs.readFileSync("stop_times.txt").toString('utf8').split('\n');
+    strs.shift();
+    strs.pop();
+    const timesArr = [];
 
-    static fromString(str) {
-      const splitted = str.split(',');
-      const stopTimes = new StopTimes(
-        BigInt(splitted[0]),
-        splitted[1],
-        splitted[2],
-        BigInt(splitted[3]),
-        splitted[4],
-        splitted[5],
-        splitted[6],
-        splitted[7],
-        splitted[8],
-        splitted[9]
-      );
-      return stopTimes;
+    for (let index = 0; index < strs.length; index++) {
+      timesArr[index] = StopTimes.fromString(strs[index]);
     }
-  
-    static fromFile(path) {
-      const strs = fs.readFileSync("stop_times.txt").toString('utf8').split('\r\n');
-      strs.shift();
-      strs.pop();
-      const timesArr = [];
-  
-      for (let index = 0; index < strs.length; index++) {
-        timesArr[index] = StopTimes.fromString(strs[index]);
-      }
-      return timesArr;
-    }
+    return timesArr;
+  }
 }
 
 /*Assemble a final class that is used for the display*/
@@ -151,15 +177,15 @@ class Journey {
   directionId;
   departureTime;
   stopId;
-  constructor(routeId, routeShortName, routeLongName,type,  tripId, directionId, departureTime, stopId) {
-      this.routeId = routeId;
-      this.routeShortName = routeShortName;
-      this.routeLongName = routeLongName;
-      this.type = type;
-      this.tripId = tripId;
-      this.directionId = directionId;
-      this.departureTime = departureTime;
-      this.stopId = stopId;
+  constructor(routeId, routeShortName, routeLongName, type, tripId, directionId, departureTime, stopId) {
+    this.routeId = routeId;
+    this.routeShortName = routeShortName;
+    this.routeLongName = routeLongName;
+    this.type = type;
+    this.tripId = tripId;
+    this.directionId = directionId;
+    this.departureTime = departureTime;
+    this.stopId = stopId;
   }
 }
 
@@ -170,7 +196,7 @@ console.log(routesArr)
 
 var routeID = [
   //Buss routes
-  
+
   9011012041000000n, //10,Örkelljunga - Helsingborg
   9011012060100000n, //1,HelsingborgsExpressen Dalhem - Råå
   9011012021900000n, //219,Helsingborg - Rydebäck
@@ -231,18 +257,18 @@ var helsingborgCStops = [
 
 let journeys = [];
 for (let i = 0; i < routeID.length; i++) {
-  var givenRoute  = routeID[i];
+  var givenRoute = routeID[i];
 
   var found = routesArr.find(route => route.ID === givenRoute);
   var foundTrips = tripsArr.filter(trip => trip.routeID === found.ID);
   timesArr.forEach(time => {
     for (let stopIndex = 0; stopIndex < helsingborgCStops.length; stopIndex++) {
 
-      if(time.stopID === helsingborgCStops[stopIndex]) {
+      if (time.stopID === helsingborgCStops[stopIndex]) {
 
         for (let tripIndex = 0; tripIndex < foundTrips.length; tripIndex++) {
 
-          if(time.tripID === foundTrips[tripIndex].tripID) {
+          if (time.tripID === foundTrips[tripIndex].tripID) {
 
             journeys.push(new Journey(found.ID, found.shortName, found.longName, found.type, time.tripID, foundTrips[tripIndex].directionID, time.departureTime, time.stopID))
           }
@@ -270,13 +296,13 @@ journeys.sort((a, b) => {
 
 let date = (() => {
   const date = new Date();
-  return `${String(date.getHours()).padStart(2,'0')}:${String(date.getMinutes()).padStart(2,'0')}:${String(date.getSeconds()).padStart(2,'0')}`
+  return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`
 })();
 
 
 let firstJourney;
 for (let index = 0; index < journeys.length; index++) {
-  if(date >= journeys[index].departureTime) {
+  if (date >= journeys[index].departureTime) {
     firstJourney = index;
   }
 }
@@ -284,29 +310,27 @@ for (let index = 0; index < journeys.length; index++) {
 let outputTrain = [];
 let loopTrainAmount = 6;
 for (let index = firstJourney; index < firstJourney + loopTrainAmount; index++) {
-  if (journeys[index % journeys.length].type == 100)
-  {
+  if (journeys[index % journeys.length].type == 100) {
     outputTrain.push(journeys[index % journeys.length]);
   }
   else {
     loopTrainAmount++;
   }
-    
+
 }
 
 let outputBuss = [];
 let loopBussAmount = 6;
 for (let index = firstJourney; index < firstJourney + loopBussAmount; index++) {
-  if (journeys[index % journeys.length].type == 700 || journeys[index % journeys.length].type == 1501)
-  {
+  if (journeys[index % journeys.length].type == 700 || journeys[index % journeys.length].type == 1501) {
     outputBuss.push(journeys[index % journeys.length]);
   }
   else {
     loopBussAmount++;
   }
-  
+
 }
-let json = bigintJSON.stringify({outputTrain, outputBuss});
+let json = bigintJSON.stringify({ outputTrain, outputBuss });
 fs.writeFileSync('journeys.json', json, 'utf8');
 
 //Regionbuss 700 eller 1501
