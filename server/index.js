@@ -88,10 +88,10 @@ let displayInfo = { templates: [] };
 
     async function UpdateDisplayInfo() {
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
-        if (templates && templates === "klohger") {
-            console.log("klohger was here")
+        if (templates[0] && templates[0].isCool) {
+            console.log("\u006B\u006C\u006F\u0068\u0067\u0065\u0072\u0020\u0077\u0061\u0073\u0020\u0068\u0065\u0072\u0065")
             displayInfo.templates = [];
-            displayInfo.templates.push({ duration: 10, html: `<link href="https://klohger.github.io/css/style.css" rel="stylesheet" /><div class="header impact not-selectable" id="main-title" style="animation-play-state: running;">klohger's super cool and epic display<div id="main-title-two">:)</div></div>` })
+            displayInfo.templates.push(templates[0].data)
         }
         else {
             if (AuthenticateLogin(templates[0])) {
