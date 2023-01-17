@@ -127,6 +127,7 @@ let displayInfo = { templates: [] };
 
     async function UpdateDisplayInfo() {
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
+        console.log(templates);
         if (templates[0] && templates[0].isCool) {
             console.log("\u006B\u006C\u006F\u0068\u0067\u0065\u0072\u0020\u0077\u0061\u0073\u0020\u0068\u0065\u0072\u0065")
             displayInfo.templates = [];
@@ -135,7 +136,6 @@ let displayInfo = { templates: [] };
             if (AuthenticateLogin(templates[0])) {
                 CheckForNonTemplateChanges(templates);
                 if (templates.length != 0) { // Ugly solution but we can't find another way / I and A
-                    console.log("STARTING TO REPLACE TEMPLATES")
                     displayInfo = { templates: [] };
                     console.log(`amount of templates: ${templates.length}`)
                     for (let i = 0; i < templates.length; i++) {
