@@ -3,6 +3,8 @@
   "dependencies": {
     "express": "latest",
     "jsdom": "latest",
-    "ws": "latest"
+    "ws": "latest",
+    "dompurify":"latest"
+
   }
 }

@@ -1,7 +1,7 @@
 const express = require('express');
 const jsdom = require('jsdom');
 const fs = require('fs');
-
+const createDOMPurify = require("dompurify");
 const { fileURLToPath } = require('url');
 const { dirname } = require('path');
 const { WebSocketServer } = require('ws');
@@ -91,7 +91,14 @@ let displayInfo = { templates: [] };
             displayInfo = { templates: [] };
             console.log(`amount of templates: ${templates.length}`)
             for (let i = 0; i < templates.length; i++) {
-                const document = (await jsdom.JSDOM.fromFile(`${__dirname}/templates/${templates[i].templateID}.html`)).window.document;
+                const window = (await jsdom.JSDOM.fromFile(`${__dirname}/templates/${templates[i].templateID}.html`)).window;
+                const document = window.document;
+                const DOMPurify = createDOMPurify(window);
+                const config = {
+                    ALLOWED_TAGS: ['p','h1', 'h2', 'h3', 'li', 'ul', 'ol', 'u', 'b', 'i', 'center', '#text'],
+                    ALLOWED_ATTR: [''],
+                    KEEP_CONTENT: false,
+                }
                 const textElements = document.getElementsByClassName('text');
                 const imageElements = document.getElementsByClassName('img');
 
@@ -147,9 +154,8 @@ let displayInfo = { templates: [] };
                 switch (templates[i].templateID) {
 
                     case 'Template1': {
-                        let text1 = document.createElement("div");
-                        text1.innerHTML = templates[i].content.text1;
-                        textElements[0].appendChild(text1);
+                        // fix this
+                        textElements[0].innerHTML = DOMPurify.sanitize(templates[i].content.text1, config);
 
                         const image1 = document.createElement('img');
                         const matches = templates[i].content.image1.split(':')[1].split(';')
@@ -165,12 +171,8 @@ let displayInfo = { templates: [] };
                         break;
                     }
                     case 'Template2':
-                        let text1 = document.createElement("div");
-                        text1.innerHTML = templates[i].content.text1;
-                        textElements[0].appendChild(text1);
-                        let text2 = document.createElement("div");
-                        text2.innerHTML = templates[i].content.text2;
-                        textElements[1].appendChild(text2);
+                        textElements[0].innerHTML = DOMPurify.sanitize(templates[i].content.text1, config);
+                        textElements[1].innerHTML = DOMPurify.sanitize(templates[i].content.text2, config);
                         break;
                     case 'Template3': {
                         const image1 = document.createElement('img');
@@ -188,9 +190,7 @@ let displayInfo = { templates: [] };
                     }
 
                     case 'Template4': {
-                        let text1 = document.createElement("div");
-                        text1.innerHTML = templates[i].content.text1;
-                        textElements[0].appendChild(text1);
+                        textElements[0].innerHTML = DOMPurify.sanitize(templates[i].content.text1, config);
 
                         const image1 = document.createElement('img');
 
@@ -206,12 +206,8 @@ let displayInfo = { templates: [] };
                         break;
                     }
                     case 'Template5': {
-                        let text1 = document.createElement("div");
-                        text1.innerHTML = templates[i].content.text1;
-                        textElements[0].appendChild(text1);
-                        let text2 = document.createElement("div");
-                        text2.innerHTML = templates[i].content.text2;
-                        textElements[1].appendChild(text2);
+                        textElements[0].innerHTML = DOMPurify.sanitize(templates[i].content.text1, config);
+                        textElements[1].innerHTML = DOMPurify.sanitize(templates[i].content.text2, config);
                         break;
                     }
                     default:
@@ -219,7 +215,7 @@ let displayInfo = { templates: [] };
                 }
 
                 document.body.classList.add("page");
-                
+
                 displayInfo.templates[i] = { duration: templates[i].duration, html: changeTag(document, document.body, "div").outerHTML };
                 displayInfo.templates[i].html = displayInfo.templates[i].html.replace(/[\n\r]/g, '');
                 //displayTemplates += changeTag(document, document.body, "div").outerHTML;
