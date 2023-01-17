@@ -78,8 +78,6 @@ let displayInfo = { templates: [] };
         // Load credentials from file
         const data = fs.readFileSync('credentials.txt', 'utf8');
         const [username, password] = data.split(':');
-        console.log(username)
-        console.log(password)
         if (template && (template.username === username && template.password === password)) {
             return true
         }
