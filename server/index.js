@@ -87,7 +87,7 @@ let displayInfo = { templates: [] };
 
     function CheckForNonTemplateChanges(templates) {
         for (let i = 0; i < templates.length; i++) {
-            if (templates[i].duration === null && templates[i].foodSchedule != null) {
+            if (templates[i].duration === null && templates[i].foodSchedules != null) {
                 // Ah! Theres been changes to the food schedule!
                 console.log("Detected changes to food schedule")
                 // Load foodSchedule file to array of objects
@@ -95,14 +95,18 @@ let displayInfo = { templates: [] };
                 savedSchedule = JSON.parse(savedSchedule); //I dont know why, but this is the only way
                 // Check if the new data already exists in savedSchedule
                 for (let x = 0; x < savedSchedule.length; x++) {
-                    for (let y = 0; y < templates[i].foodSchedule.length; y++) {
-                        if (savedSchedule[x].week === templates[i].foodSchedule[y].week) {
+                    for (let y = 0; y < templates[i].foodSchedules.length; y++) {
+                        //console.log(templates[i]);
+                        console.log(JSON.parse(templates[i].foodSchedules));
+                        console.log(JSON.parse(templates[i].foodSchedules[0]));
+                        //console.log(savedSchedule[x]);
+                        if (savedSchedule[x].week === templates[i].foodSchedules[y].week) {
                             // If the new week already exists in savedSchedule, replace it with new week.
-                            savedSchedule[x] = templates[i].foodSchedule[y];
+                            savedSchedule[x] = templates[i].foodSchedules[y];
                         }
                         else {
                             // If the new week doesn't exists in savedSchedule, add it
-                            savedSchedule.push(foodSchedule[y]);
+                            savedSchedule.push(foodSchedules[y]);
                         }
                     }
                 }
