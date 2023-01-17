@@ -75,7 +75,7 @@ let displayInfo = { templates: [] };
     });
 
 
-    function AuthenticateLogin(template) { // Unsure if this function can be here or if we should move it outside of whatever this is... :D
+    function AuthenticateLogin(template) {
         // Load credentials from file
         const data = fs.readFileSync('credentials.txt', 'utf8');
         const [username, password] = data.split(':');
@@ -92,14 +92,10 @@ let displayInfo = { templates: [] };
                 console.log("Detected changes to food schedule")
                 // Load foodSchedule file to array of objects
                 var savedSchedule = JSON.parse(fs.readFileSync('foodSchedule.txt', 'utf8'));
-                
+                savedSchedule = JSON.parse(savedSchedule); //I dont know why, but this is the only way
                 // Check if the new data already exists in savedSchedule
-                console.log(savedSchedule);
                 for (let x = 0; x < savedSchedule.length; x++) {
                     for (let y = 0; y < templates[i].foodSchedule.length; y++) {
-                        //console.log(templates[i]);
-                        //console.log(JSON.parse(templates[i].foodSchedule));
-                        //console.log(savedSchedule[x]);
                         if (savedSchedule[x].week === templates[i].foodSchedule[y].week) {
                             // If the new week already exists in savedSchedule, replace it with new week.
                             savedSchedule[x] = templates[i].foodSchedule[y];
