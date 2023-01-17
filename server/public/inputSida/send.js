@@ -1,10 +1,12 @@
 class Template {
-    constructor(duration, templateID, content, username, password) {
+    constructor(duration, templateID, content, username, password, foodSchedule, countdown) {
         this.duration = duration;
         this.templateID = templateID;
         this.content = content;
         this.username = username;
         this.password = password;
+        this.foodSchedule = foodSchedule;
+        this.countdown = countdown;
     }
 }
 

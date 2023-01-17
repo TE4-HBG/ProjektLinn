@@ -136,26 +136,15 @@ async function Save(x) {
                 console.log("hi");
 
             break;*/
-        /* if these are uncomented bad/unexpected data will be sent to the server and stop the entire """server"""/process
         case 'food':
-            jsonObject = {
-                "foodlist": weekList
-            };
-            allSaveInputs.push(new Template(5, x, jsonObject));
+            allSaveInputs.push(new Template(null, null, null, username, password, JSON.stringify(weekList), null));
             break;
         case 'countdown': 
             countdownDate = document.getElementById('CountdownDATE').value;
             countdownText = document.getElementById('CountdownTEXT').value;
 
-            jsonObject = {
-                "date": countdownDate,
-                "text": countdownText
-            }
-
-            allSaveInputs.push(new Template(5, x, jsonObject));
-
+            allSaveInputs.push(new Template(null, null, null, username, password, null, [countdownDate, countdownText]));
             break;
-            */
         case 'Template1':
             allTextInput = inputBox.getElementsByClassName("TEXT");
             allImgInput = inputBox.getElementsByClassName("IMG");
@@ -167,7 +156,7 @@ async function Save(x) {
             };
 
 
-            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password));
+            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
             PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name]);
 
             break;
@@ -181,7 +170,7 @@ async function Save(x) {
                 "text2": newText2
             }
 
-            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password));
+            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
             PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allTextInput[1].value]);
 
             break;
@@ -193,7 +182,7 @@ async function Save(x) {
             };
 
 
-            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password));
+            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
             PrintSavedInputs(minutes[0].value, x, [allImgInput[0].value]);
 
             break;
@@ -208,7 +197,7 @@ async function Save(x) {
             };
 
 
-            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password));
+            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
             PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name]);
 
             break;
@@ -223,7 +212,7 @@ async function Save(x) {
             }
 
 
-            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password));
+            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
             PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allTextInput[1].value]);
             console.log("hello");
             break;
