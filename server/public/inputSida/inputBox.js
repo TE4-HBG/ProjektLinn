@@ -224,7 +224,11 @@ async function Save(x) {
 
 
 }
-function Publish() {
+function Publish(type) {
+    if (type === "food" || type === "countdown") {
+        Save(type);
+    }
+    
     if (Send(JSON.stringify(allSaveInputs))) {
         alert("Data Skickat!");
     }

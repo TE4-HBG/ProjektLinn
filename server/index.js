@@ -89,7 +89,7 @@ let displayInfo = { templates: [] };
         for (let i = 0; i < templates.length; i++) {
             if (templates[i].duration === null && templates[i].foodSchedule != null) {
                 // Ah! Theres been changes to the food schedule!
-
+                console.log("Detected changes to food schedule")
                 // Load foodSchedule file to array of objects
                 const savedSchedule = JSON.parse(fs.readFileSync('foodSchedule.txt', 'utf8'));
                 // Check if the new data already exists in savedSchedule
@@ -107,6 +107,7 @@ let displayInfo = { templates: [] };
                 }
                 // Save the new savedSchedule to file.
                 fs.writeFileSync('foodSchedule.txt', JSON.stringify(savedSchedule));
+                console.log("foodSchedule.txt updated")
             }
             else if (templates[i].duration === null && templates[i].countdown != null) {
                 // Ah! Theres been changes to the countdown!
