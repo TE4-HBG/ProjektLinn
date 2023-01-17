@@ -135,6 +135,7 @@ let displayInfo = { templates: [] };
             if (AuthenticateLogin(templates[0])) {
                 CheckForNonTemplateChanges(templates);
                 if (templates.length != 0) { // Ugly solution but we can't find another way / I and A
+                    console.log("STARTING TO REPLACE TEMPLATES")
                     displayInfo = { templates: [] };
                     console.log(`amount of templates: ${templates.length}`)
                     for (let i = 0; i < templates.length; i++) {
