@@ -85,10 +85,43 @@ let displayInfo = { templates: [] };
         return false
     }
 
+    function CheckForNonTemplateChanges (templates) {
+        for (let i = 0; i < templates.length; i++) {
+            if (templates[i].duration === null && templates[i].foodSchedule != null) {
+                // Ah! Theres been changes to the food schedule!
+
+                // Load foodSchedule file to array of objects
+                const savedSchedule = JSON.parse(fs.readFileSync('foodSchedule.txt', 'utf8'));
+                // Check if the new data already exists in savedSchedule
+                for (let x = 0; x < savedSchedule.length; x++) {
+                    for (let y = 0; y < templates[i].foodSchedule.length; y++) {
+                        if (savedSchedule[x].week === templates[i].foodSchedule[y].week) {
+                            // If the new week already exists in savedSchedule, replace it with new week.
+                            savedSchedule[x] = templates[i].foodSchedule[y];
+                        }
+                        else { 
+                            // If the new week doesn't exists in savedSchedule, add it
+                            savedSchedule.push(foodSchedule[y]);
+                        }
+                    }
+                }
+                // Save the new savedSchedule to file.
+                fs.writeFileSync('foodSchedule.txt', JSON.stringify(savedSchedule));
+            }
+            else if (templates[i].duration === null && templates[i].countdown != null) {
+                // Ah! Theres been changes to the countdown!
+                // Not started working here but same plan :D
+            }
+        }
+    }
+
 
     async function UpdateDisplayInfo() {
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
         if (AuthenticateLogin(templates[0])) {
+            CheckForNonTemplateChanges(templates);
+
+
             displayInfo = { templates: [] };
             console.log(`amount of templates: ${templates.length}`)
             for (let i = 0; i < templates.length; i++) {
