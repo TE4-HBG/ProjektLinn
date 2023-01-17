@@ -86,6 +86,8 @@ let displayInfo = { templates: [] };
     }
 
     function CheckForNonTemplateChanges(templates) {
+        console.log("Entering function")
+        console.log("templates length: " + templates.length)
         for (let i = 0; i < templates.length; i++) {
             if (templates[i].duration === null && templates[i].foodSchedules != null) {
                 // Ah! Theres been changes to the food schedule!
