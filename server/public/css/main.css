@@ -19,9 +19,9 @@ p {
 }
 #footer {
     position: absolute;
-    bottom: 0%;
     height: 138px;
     width: 100%;
+    transform: translateY(303mm) !important;
 }
 /* Date and time */
 .datetime {
