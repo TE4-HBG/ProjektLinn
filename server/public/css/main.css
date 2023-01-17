@@ -573,3 +573,8 @@ p {
     height: 378px;
     transform: translateX(6.8mm) translateY(169.3mm) !important;
 }
+
+.img * {
+    max-width: 100%;
+    max-height: 100%;
+}
