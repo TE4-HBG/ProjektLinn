@@ -95,8 +95,9 @@ let displayInfo = { templates: [] };
                 // Check if the new data already exists in savedSchedule
                 for (let x = 0; x < savedSchedule.length; x++) {
                     for (let y = 0; y < templates[i].foodSchedule.length; y++) {
-                        console.log(templates[i].foodSchedule[y].week);
-                        console.log(savedSchedule[x].week);
+                        console.log(templates[i]);
+                        console.log(templates[i].foodSchedule[y]);
+                        console.log(savedSchedule[x]);
                         if (savedSchedule[x].week === templates[i].foodSchedule[y].week) {
                             // If the new week already exists in savedSchedule, replace it with new week.
                             savedSchedule[x] = templates[i].foodSchedule[y];
