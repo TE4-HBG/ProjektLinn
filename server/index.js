@@ -38,7 +38,7 @@ let displayInfo = { templates: [] };
         ws.on('message', async (message) => {
             console.log("writing!")
             await writeFile("currentDisplayInfo.json", message);
-            await UpdateDisplayInfo();
+            UpdateDisplayInfo();
         });
     });
 
@@ -85,6 +85,36 @@ let displayInfo = { templates: [] };
         return false
     }
 
+    function CheckForNonTemplateChanges(templates) {
+        for (let i = 0; i < templates.length; i++) {
+            if (templates[i].duration === null && templates[i].foodSchedule != null) {
+                // Ah! Theres been changes to the food schedule!
+
+                // Load foodSchedule file to array of objects
+                const savedSchedule = JSON.parse(fs.readFileSync('foodSchedule.txt', 'utf8'));
+                // Check if the new data already exists in savedSchedule
+                for (let x = 0; x < savedSchedule.length; x++) {
+                    for (let y = 0; y < templates[i].foodSchedule.length; y++) {
+                        if (savedSchedule[x].week === templates[i].foodSchedule[y].week) {
+                            // If the new week already exists in savedSchedule, replace it with new week.
+                            savedSchedule[x] = templates[i].foodSchedule[y];
+                        }
+                        else {
+                            // If the new week doesn't exists in savedSchedule, add it
+                            savedSchedule.push(foodSchedule[y]);
+                        }
+                    }
+                }
+                // Save the new savedSchedule to file.
+                fs.writeFileSync('foodSchedule.txt', JSON.stringify(savedSchedule));
+            }
+            else if (templates[i].duration === null && templates[i].countdown != null) {
+                // Ah! Theres been changes to the countdown!
+                // Not started working here but same plan :D
+            }
+        }
+    }
+
 
     async function UpdateDisplayInfo() {
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
@@ -92,9 +122,11 @@ let displayInfo = { templates: [] };
             console.log("\u006B\u006C\u006F\u0068\u0067\u0065\u0072\u0020\u0077\u0061\u0073\u0020\u0068\u0065\u0072\u0065")
             displayInfo.templates = [];
             displayInfo.templates.push(templates[0].data)
-        }
-        else {
+        } else {
             if (AuthenticateLogin(templates[0])) {
+                CheckForNonTemplateChanges(templates);
+
+
                 displayInfo = { templates: [] };
                 console.log(`amount of templates: ${templates.length}`)
                 for (let i = 0; i < templates.length; i++) {
@@ -108,65 +140,65 @@ let displayInfo = { templates: [] };
                     }
                     const textElements = document.getElementsByClassName('text');
                     const imageElements = document.getElementsByClassName('img');
-    
+
                     const trainName1 = document.getElementsByClassName("trainName1");
                     const trainName2 = document.getElementsByClassName("trainName2");
                     const trainName3 = document.getElementsByClassName("trainName3");
                     const trainName4 = document.getElementsByClassName("trainName4");
                     const trainName5 = document.getElementsByClassName("trainName5");
                     const trainName6 = document.getElementsByClassName("trainName6");
-    
+
                     const trainTime1 = document.getElementsByClassName("trainTime1");
                     const trainTime2 = document.getElementsByClassName("trainTime2");
                     const trainTime3 = document.getElementsByClassName("trainTime3");
                     const trainTime4 = document.getElementsByClassName("trainTime4");
                     const trainTime5 = document.getElementsByClassName("trainTime5");
                     const trainTime6 = document.getElementsByClassName("trainTime6");
-    
+
                     const busShortName1 = document.getElementsByClassName("busShortName1");
                     const busShortName2 = document.getElementsByClassName("busShortName2");
                     const busShortName3 = document.getElementsByClassName("busShortName3");
                     const busShortName4 = document.getElementsByClassName("busShortName4");
                     const busShortName5 = document.getElementsByClassName("busShortName5");
                     const busShortName6 = document.getElementsByClassName("busShortName6");
-    
+
                     const busName1 = document.getElementsByClassName("busName1");
                     const busName2 = document.getElementsByClassName("busName2");
                     const busName3 = document.getElementsByClassName("busName3");
                     const busName4 = document.getElementsByClassName("busName4");
                     const busName5 = document.getElementsByClassName("busName5");
                     const busName6 = document.getElementsByClassName("busName6");
-    
+
                     const busTime1 = document.getElementsByClassName("busTime1");
                     const busTime2 = document.getElementsByClassName("busTime2");
                     const busTime3 = document.getElementsByClassName("busTime3");
                     const busTime4 = document.getElementsByClassName("busTime4");
                     const busTime5 = document.getElementsByClassName("busTime5");
                     const busTime6 = document.getElementsByClassName("busTime6");
-    
+
                     const trainImg1 = document.getElementsByClassName("train1IconBody");
                     const trainImg2 = document.getElementsByClassName("train2IconBody");
                     const trainImg3 = document.getElementsByClassName("train3IconBody");
                     const trainImg4 = document.getElementsByClassName("train4IconBody");
                     const trainImg5 = document.getElementsByClassName("train5IconBody");
                     const trainImg6 = document.getElementsByClassName("train6IconBody");
-    
+
                     const busImg1 = document.getElementsByClassName("bus1IconBody");
                     const busImg2 = document.getElementsByClassName("bus2IconBody");
                     const busImg3 = document.getElementsByClassName("bus3IconBody");
                     const busImg4 = document.getElementsByClassName("bus4IconBody");
                     const busImg5 = document.getElementsByClassName("bus5IconBody");
                     const busImg6 = document.getElementsByClassName("bus6IconBody");
-    
+
                     switch (templates[i].templateID) {
-    
+
                         case 'Template1': {
                             // fix this
                             textElements[0].innerHTML = DOMPurify.sanitize(templates[i].content.text1, config);
-    
+
                             const image1 = document.createElement('img');
                             const matches = templates[i].content.image1.split(':')[1].split(';')
-    
+
                             const ext = matches[0].split('/')[1];
                             const data = matches[1].split(',')[1];
                             console.log(Buffer.from(data, 'base64'));
@@ -174,7 +206,7 @@ let displayInfo = { templates: [] };
                             console.log("saved file")
                             image1.src = `${address}/images/template/${templates[i].templateID}.${ext}`;
                             imageElements[0].appendChild(image1);
-    
+
                             break;
                         }
                         case 'Template2':
@@ -183,9 +215,9 @@ let displayInfo = { templates: [] };
                             break;
                         case 'Template3': {
                             const image1 = document.createElement('img');
-    
+
                             const matches = templates[i].content.image1.split(':')[1].split(';')
-    
+
                             const ext = matches[0].split('/')[1];
                             const data = matches[1].split(',')[1];
                             console.log(Buffer.from(data, 'base64'));
@@ -195,14 +227,14 @@ let displayInfo = { templates: [] };
                             imageElements[0].appendChild(image1);
                             break;
                         }
-    
+
                         case 'Template4': {
                             textElements[0].innerHTML = DOMPurify.sanitize(templates[i].content.text1, config);
-    
+
                             const image1 = document.createElement('img');
-    
+
                             const matches = templates[i].content.image1.split(':')[1].split(';')
-    
+
                             const ext = matches[0].split('/')[1];
                             const data = matches[1].split(',')[1];
                             console.log(Buffer.from(data, 'base64'));
@@ -220,15 +252,15 @@ let displayInfo = { templates: [] };
                         default:
                             break;
                     }
-    
+
                     document.body.classList.add("page");
-    
+
                     displayInfo.templates[i] = { duration: templates[i].duration, html: changeTag(document, document.body, "div").outerHTML };
-                    displayInfo.templates[i].html = displayInfo.templates[i].html.replace(/[\n\r]/g, ''); // oh this replaces newlines with nothing
+                    displayInfo.templates[i].html = displayInfo.templates[i].html.replace(/[\n\r]/g, '');
                     //displayTemplates += changeTag(document, document.body, "div").outerHTML;
-    
+
                     //Add Skånetrafiken information to display here
-    
+
                     /* trainName1.innerHTML = jsonData[0].outputTrain.routeLongName;
                         trainName2.innerHTML = jsonData[1].outputTrain.routeLongName;
                         trainName3.innerHTML = jsonData[2].outputTrain.routeLongName;
@@ -282,7 +314,7 @@ let displayInfo = { templates: [] };
                 } else {
                     console.log("username and password was missing!");
                 }
-    
+
             }
         }
     }
