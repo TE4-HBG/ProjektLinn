@@ -97,7 +97,7 @@ let displayInfo = { templates: [] };
                 const DOMPurify = createDOMPurify(window);
                 const config = {
                     ALLOWED_TAGS: ['p', 'h1', 'h2', 'h3', 'li', 'ul', 'ol', 'u', 'b', 'i', 'center', '#text', 'sans'],
-                    ALLOWED_ATTR: [],
+                    ALLOWED_ATTR: ['class'],
                     KEEP_CONTENT: false,
                 }
                 const textElements = document.getElementsByClassName('text');
