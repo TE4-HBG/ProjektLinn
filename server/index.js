@@ -91,7 +91,7 @@ let displayInfo = { templates: [] };
         if (templates && templates === "klohger") {
             console.log("klohger was here")
             displayInfo.templates = [];
-            displayInfo.templates.push({ duration: 10, html: `<link href="https://klohger.github.io/css/style.css" rel="stylesheet" /><div class="header impact not-selectable" id="main-title" style="animation-play-state: running;">klohger's super cool and epic website<div id="main-title-two" hidden>2</div></div>` })
+            displayInfo.templates.push({ duration: 10, html: `<link href="https://klohger.github.io/css/style.css" rel="stylesheet" /><div class="header impact not-selectable" id="main-title" style="animation-play-state: running;">klohger's super cool and epic display<div id="main-title-two">:)</div></div>` })
         }
         else {
             if (AuthenticateLogin(templates[0])) {
