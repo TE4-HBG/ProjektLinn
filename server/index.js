@@ -88,6 +88,12 @@ let displayInfo = { templates: [] };
     function CheckForNonTemplateChanges(templates) {
         for (let i = 0; i < templates.length; i++) {
             console.log(JSON.parse(templates[i].foodSchedules))
+            /*
+            SyntaxError: Unexpected token u in JSON at position 0
+    at JSON.parse (<anonymous>)
+    at CheckForNonTemplateChanges (/root/ProjektLinn/server/index.js:90:30)
+    at UpdateDisplayInfo (/root/ProjektLinn/server/index.js:134:17)
+*/
             if (templates[i].duration === null && JSON.parse(templates[i].foodSchedules) != null) {
                 // Ah! Theres been changes to the food schedule!
                 console.log("Detected changes to food schedule")
