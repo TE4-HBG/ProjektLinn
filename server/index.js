@@ -96,6 +96,7 @@ let displayInfo = { templates: [], skåneTrafiken: null };
         return false
     }
 
+
     function ParseData(templatesToParse) {
         templatesToParse.forEach(template => {
             template.foodSchedules = JSON.parse(template.foodSchedules);
@@ -142,14 +143,31 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                 var savedCountdown = fs.readFileSync('countdown.txt', 'utf8');
                 console.log(savedCountdown);
 
+                var countdownDate;
+                var countdownText;
+                //Saving the new and old information for countdown into four variables
                 var newCountdownDate = templates[i].countdown[0]
                 var newCountdownText = templates[i].countdown[1]
-
                 var [oldCountdownDate, oldCountdownText] = savedCountdown.split(':');
-                console.log(oldCountdownDate);
+
+                /*if (oldCountdownDate != newCountdownDate) {
+                    countdownDate = newCountdownDate;
+                }
+                else {
+                    countdownDate = oldCountdownDate;
+                }
+                if (oldCountdownText != newCountdownText) {
+                    countdownText = newCountdownText;
+                }
+                else {
+                    countdownText = oldCountdownText;
+                }*/
+
+                //var countdownInfo = countdownDate + ":" + countdownText;
+                console.log(newCountdownText);
                 console.log(newCountdownDate);
 
-                
+                //fs.writeFileSync('countdown.txt', countdownInfo);
 
                 templates.splice(i, 1);
             }
