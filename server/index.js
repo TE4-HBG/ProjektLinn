@@ -207,7 +207,8 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                             ALLOWED_ATTR: ['class'],
                             KEEP_CONTENT: false,
                         }
-
+                        const textElements = document.getElementsByClassName('text');
+                        const imageElements = document.getElementsByClassName('img');
                         switch (templates[i].templateID) {
 
                             case 'Template1': {
