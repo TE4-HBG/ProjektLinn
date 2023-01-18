@@ -250,7 +250,7 @@ async function Get() {
     let downloaded = false;
     const maxTime = 50;
     let currentTime = 0;
-    console.log(downloading)
+    console.log("downloading")
     https.get(url, (response) => response
         .pipe(unzipper.Extract({ path: './skånetrafiken/' }))
         .on('finish', () => downloaded = true)
