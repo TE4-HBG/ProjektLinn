@@ -164,9 +164,13 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                 }
 
                 var countdownInfo = countdownDate + ":" + countdownText;
-                console.log(countdownInfo);
 
-                //fs.writeFileSync('countdown.txt', countdownInfo);
+                fs.writeFileSync('countdown.txt', countdownInfo);
+
+                console.log("countdown.txt updated");
+                // Reading from file again to make sure things are correct
+                var newCountdownInfo = fs.readFileSync('countdown.txt', 'utf8');
+                console.log("Current countdown.txt: " + newCountdownInfo);
 
                 templates.splice(i, 1);
             }
