@@ -174,8 +174,9 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                     displayInfo.templates = [];
                     console.log(`amount of templates: ${templates.length}`)
                     for (let i = 0; i < templates.length; i++) {
+                        let window
                         try { // Adding this for testing purposes, but might be smart to keep it :D
-                            const window = (await jsdom.JSDOM.fromFile(`${__dirname}/templates/${templates[i].templateID}.html`)).window;
+                            window = (await jsdom.JSDOM.fromFile(`${__dirname}/templates/${templates[i].templateID}.html`)).window;
                         }
                         catch {
                             console.log(`Failed to find /${templates[i].templateID}.html`);
