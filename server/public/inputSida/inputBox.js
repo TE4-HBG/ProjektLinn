@@ -228,8 +228,10 @@ async function Save(x) {
             break;
     }
     //Adds saved info to localstorage
+    console.log(allSaveInputs);
     localStorage.setItem("savedInputs", JSON.stringify(allSaveInputs));
 }
+
 function Publish(type) {
     if (type === "food" || type === "countdown") {
         Save(type);
