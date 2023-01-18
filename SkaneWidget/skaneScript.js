@@ -192,7 +192,6 @@ class Journey {
 const tripsArr = Trip.fromFile("");
 const timesArr = StopTimes.fromFile("");
 const routesArr = Route.fromFile("");
-console.log(routesArr)
 
 var routeID = [
   //Buss routes
