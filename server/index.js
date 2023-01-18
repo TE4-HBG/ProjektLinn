@@ -147,6 +147,7 @@ let displayInfo = { templates: [], skåneTrafiken: null };
     async function UpdateDisplayInfo() {
         console.log("Entered UpdateDisplayInfo()");
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
+        console.log(templates[0]);
         console.log("Parsed currentDisplayInfo.json");
         if (templates[0] && templates[0].isCool) {
             console.log("\u006B\u006C\u006F\u0068\u0067\u0065\u0072\u0020\u0077\u0061\u0073\u0020\u0068\u0065\u0072\u0065")
