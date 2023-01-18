@@ -127,7 +127,10 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                             break;
                         }
                     }
-                    if (!duplicate) { savedSchedules.push(foodSchedule); }
+                    if (!duplicate) { 
+                        savedSchedules.push(foodSchedule); 
+                        console.log("Added week");
+                    }
                 }
 
                 // Save the new savedSchedule to file.
