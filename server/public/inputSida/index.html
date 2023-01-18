@@ -112,10 +112,10 @@
     </div>
     <button onclick="Publish('templates')" type="button" id="publish">Publicera</button>
     <div id="loginPopup">
-        <form type="login">
-            <label type="login">Username: <input type="login" id="username"></label>
+        <form type="login" autocomplete="on">
+            <label type="login">Username: <input type="login" name="username" id="username"></label>
             <br>
-            <label type="login">Password: <input type="login" id="password"></label>
+            <label type="login">Password: <input type="login" name="password" id="password"></label>
             <br>
             <input type="submitLogin" value="Submit" onclick="HideLoginPopup()">
         </form>
