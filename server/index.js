@@ -113,16 +113,17 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                 var savedSchedules = JSON.parse(fs.readFileSync('foodSchedules.txt', 'utf8'));
                 // Check if the new data already exists in savedSchedule
                 for (let x = 0; x < savedSchedules.length; x++) {
-                    let duplicate = false;
                     console.log(templates[i].foodSchedules.length);
                     for (let y = 0; y < templates[i].foodSchedules.length; y++) {
                         foodSchedule = templates[i].foodSchedules[y];
-                        duplicate = false;
+                        var duplicate = false;
                         if (savedSchedules[x].week === foodSchedule.week) {
                             duplicate = true;
                             console.log("Before: " + savedSchedules[x]);
-                            savedSchedules[x] = foodSchedule;
-                            console.log("After: " + savedSchedules[x]);
+                            savedSchedules.splice(x, 1); 
+                            console.log("afterrrrrrrrrrr: " + savedSchedules[x]);
+                            savedSchedules.push(foodSchedule);
+                            console.log("After: " + savedSchedules[savedSchedules.length - 1]);
                             break;
                         }
                     }
