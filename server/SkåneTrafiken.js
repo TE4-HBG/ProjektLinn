@@ -259,14 +259,15 @@ async function Get() {
     const maxTime = 50;
     let currentTime = 0;
     console.log("downloading")
-    https.get(url, (response) => response
+    https.get(url, { headers: { "Accept-Encoding": "gzip" } }, (response) => response
         .pipe(unzipper.Extract({ path: './skånetrafiken/' }))
         .on('finish', () => downloaded = true)
     );
-    while(!downloaded) {
+
+    while (!downloaded) {
         await sleep(1000);
         currentTime += 1;
-        if(currentTime > maxTime) {
+        if (currentTime > maxTime) {
             throw "the skånetrafiken servers timed out uh oh :("
         }
     }
