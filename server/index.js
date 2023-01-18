@@ -111,10 +111,6 @@ let displayInfo = { templates: [], skåneTrafiken: {} };
                 console.log("Detected changes to food schedule")
                 // Load foodSchedule file to array of objects
                 var savedSchedules = JSON.parse(fs.readFileSync('foodSchedules.txt', 'utf8'));
-                console.log(savedSchedules[0])
-                console.log(savedSchedules)
-                savedSchedules = JSON.parse(savedSchedules); // Needs to be parsed twice
-
                 // Check if the new data already exists in savedSchedule
                 for (let x = 0; x < savedSchedules.length; x++) {
                     for (let y = 0; y < templates[i].foodSchedules.length; y++) {
@@ -133,12 +129,9 @@ let displayInfo = { templates: [], skåneTrafiken: {} };
                 // Save the new savedSchedule to file.
                 console.log(JSON.stringify(savedSchedules))
                 fs.writeFileSync('foodSchedules.txt', JSON.stringify(savedSchedules));
-                /*
                 console.log("foodSchedules.txt updated");
                 // Reading from file again to make sure things are correct
-                var newSavedSchedules = JSON.parse(fs.readFileSync('foodSchedules.txt', 'utf8'));
-                newSavedSchedules = JSON.parse(newSavedSchedules); // Needs to be parsed twice
-                */
+                var newSavedSchedules = fs.readFileSync('foodSchedules.txt', 'utf8');
                 console.log("Current foodSchedules.txt: " + newSavedSchedules);
                 templates.splice(i, 1);
             }
