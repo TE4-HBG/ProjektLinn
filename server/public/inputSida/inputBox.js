@@ -84,9 +84,11 @@ function GetTextInput(template, spec, readable = true, value = "") {
 }
 function GetImgInput(spec, readonly = true, value = "") {
     if (readonly) {
+        let id = specialRNG();
         return '<label> Bild ' + spec + ': </label>' +
-            '<input type="file" class="IMG" name="' + spec + '" accept="image/*">' +
-            '<br>';
+
+        '<input id=' + id + ' onchange="checkImageSize(' + id + ')" type="file" class="IMG" name="' + spec + '" accept="image/*">' +
+        '<br>';
     }
     else {
         return '<label>Bild ' + spec + ': ' + value + '</label>' +
@@ -355,4 +357,25 @@ function checkRemaningCharakters(arr) {
 
 function limit(min, max, object) {  
     object.value = Math.max(Math.min(object.value, max), min);
+}
+
+
+function checkImageSize(id) {
+    let object = document.getElementById(id);
+    let file = object.files[0];
+    let reader = new FileReader();
+
+
+    reader.onload = function() {
+        console.log(file.size + " bytes");
+        if (file.size > 2000000) {
+            
+            object.value = ""; // remove the image
+            alert("Bilden du la upp är " + parseFloat((file.size / 1048576).toFixed(3)) + "MB, Max 2MB");
+        }
+        else {
+            console.log("AlloweD!");
+        }
+    };
+    reader.readAsArrayBuffer(file);
 }
