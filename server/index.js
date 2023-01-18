@@ -111,6 +111,8 @@ let displayInfo = { templates: [], skåneTrafiken: {} };
                 console.log("Detected changes to food schedule")
                 // Load foodSchedule file to array of objects
                 var savedSchedules = JSON.parse(fs.readFileSync('foodSchedules.txt', 'utf8'));
+                console.log(savedSchedules[0])
+                console.log(savedSchedules)
                 savedSchedules = JSON.parse(savedSchedules); // Needs to be parsed twice
 
                 // Check if the new data already exists in savedSchedule
