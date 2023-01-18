@@ -118,9 +118,7 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                         var duplicate = false;
                         if (savedSchedules[x].week === foodSchedule.week) {
                             duplicate = true;
-                            console.log("Before: " + savedSchedules[x].week + savedSchedules[x].monday);
-                            savedSchedules.splice(x, 1, foodSchedule); 
-                            console.log("afterrrrrrrrrrr: " + savedSchedules[x].week + savedSchedules[x].monday);
+                            savedSchedules.splice(x, 1, foodSchedule);
                             break;
                         }
                     }
@@ -150,13 +148,12 @@ let displayInfo = { templates: [], skåneTrafiken: null };
     async function UpdateDisplayInfo() {
         console.log("Entered UpdateDisplayInfo()");
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
-        console.log(templates[0]);
-        console.log("Parsed currentDisplayInfo.json");
         if (templates[0] && templates[0].isCool) {
             console.log("\u006B\u006C\u006F\u0068\u0067\u0065\u0072\u0020\u0077\u0061\u0073\u0020\u0068\u0065\u0072\u0065")
             displayInfo.templates = [];
             displayInfo.templates.push(templates[0].data)
-        } else {
+        } 
+        else {
             if (AuthenticateLogin(templates[0])) {
                 CheckForNonTemplateChanges(templates);
 
