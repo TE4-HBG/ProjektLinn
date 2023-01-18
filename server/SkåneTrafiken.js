@@ -259,10 +259,13 @@ async function Get() {
     const maxTime = 50;
     let currentTime = 0;
     console.log("downloading")
-    https.get(url, (response) => response
+    try {
+        https.get(url, { headers: { "Accept-Encoding": "gzip" } }, (response) => response
         .pipe(unzipper.Extract({ path: './skånetrafiken/' }))
         .on('finish', () => downloaded = true)
     );
+    }
+    
     while(!downloaded) {
         await sleep(1000);
         currentTime += 1;
