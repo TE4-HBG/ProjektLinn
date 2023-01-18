@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body onload=ShowDinnerSchedule()>
+<body onload=DisplayLoginPopup()>
 
     <div class="grid-container">
         <div class="grid-item">
@@ -84,7 +84,7 @@
             </form>
             <br>
             <button type="button" onclick=SaveDinnerSchedule()>Lägg till i Matsedel</button>
-            <button type="button" onclick="Save('food')">Spara Matsedel</button>
+            <button type="button" onclick="Publish('food')">Spara Matsedel</button>
             <!-- Popup for dinner schedule -->
             <span id="popup" class="popupBox">
                 <span class="popupArrow"></span>
@@ -110,28 +110,63 @@
     <div id="savedInputs">
         
     </div>
-    <button onclick="ActuallySave()" type="button" id="publish">publicera </button>
+    <button onclick="Publish('templates')" type="button" id="publish">Publicera</button>
+    <div id="loginPopup">
+        <form type="login">
+            <label type="login">Username: <input type="login" id="username"></label>
+            <br>
+            <label type="login">Password: <input type="login" id="password"></label>
+            <br>
+            <input type="submitLogin" value="Submit" onclick="HideLoginPopup()">
+        </form>
+    </div>
 
     
     <div id="instructions">
         <table style="width:100%; color: white; border-collapse:collapse;">
-            <tr></tr>
+            <tr>
               <th><strong>Templates</strong></th>
               <th><strong>Countdown</strong></th>
-              <th><strong>Matsedel</strong></th>    
+              <th><strong>Matsedel</strong></th>
             </tr>
             <tr>
               <td class="tdIinstru"><strong>Steg 1:</strong> Du klickar på "Lägg till Template" för att välja.<br>
-                <strong>Steg 2:</strong> Nu kan du välja timer högst upp på boxen, det handlar om minnuter där 0 blir en stilla bild.<br>
-                <strong>Steg 3:</strong> Sedan kan du skriva in din text samt lägga in bild/video.<br>
-                <strong>Steg 4:</strong> Känner du dig klar? Klicka på spara. (Din slide kommer att sparas och vänta på att bli uppskickad till skärmen).
+                <strong>Steg 2:</strong> Nu kan du välja timer högst upp på boxen, det handlar om sekunder där 0 blir en stilla bild (Ignorera vid endast 1 template).<br>
+                <strong>Steg 3:</strong> Sedan kan du skriva in din text samt lägga in en bild.<br>
+                <strong>Steg 4:</strong> Spara din template efter att du är klar med den, vill du ha en till template? Gör om stegen ovan.<br>
+                <strong>Steg 5:</strong> När du har sparat det du vill publicera trycker du på publisera.
               </td>
-              <td class="tdIinstru"><strong>Steg 1:</strong> Vid text rutan så skriver du in namnet på lovet.<br>
-                <strong>Steg 2:</strong> Sedan väljer du datumet som lovet sker på! (Detta så att timern har ett datum att räkna ner till)<br>
+              <td class="tdIinstru"><strong>Steg 1:</strong> I textrutan skriver du in det du vill räkna ner till.<br>
+                <strong>Steg 2:</strong> Sedan väljer du datumet det sker på! (Detta så att timern har ett datum att räkna ner till)<br>
                 <strong>Steg 3:</strong> Känner du dig klar? Klicka på spara. (Din Countdown kommer att sparas och vänta på att bli uppskickad till skärmen).
                 </td>
               <td class="tdIinstru"><strong>Steg 1:</strong> Du fyller in rutorna med rätt information angående vecka och lunch.<br>
                 <strong>Steg 2:</strong> Är du klar med veckan? Klicka på spara. (Nu har du möjlighten till att antingen fortsätta med nästa vecka, ifall du är klar så lämnar du det).
+                </td> 
+            </tr>
+
+            <tr>
+                <th><strong>Funktion</strong></th>
+                <th><strong>Styling</strong></th>
+                <th><strong>Funktion + Styling</strong></th>
+            </tr>
+            <tr>
+                <td class="tdIinstru">
+                    <strong>Stor rubrik =</strong> &lt;h1&gt;Linn text&lt;/h1&gt; ex: <h1>Linn text</h1><br>
+                    <strong>Mellan rubrik =</strong> &lt;h2&gt;Linn text&lt;/h2&gt; ex: <h2>Linn text</h1><br>
+                    <strong>Liten rubrik =</strong> &lt;h3&gt;Linn text&lt;/h3&gt; ex: <h3>Linn text</h1><br>
+                    <strong>Skapa en lista =</strong> &lt;li&gt;Linn text1&lt;/li&gt;&lt;li&gt;Linn text2&lt;/li&gt; ex: <li>Linn text1</li><li>Linn text2</li>
+                </td>
+                <td class="tdIinstru">
+                    <strong>Understrucken text =</strong> &lt;u&gt;Linn text&lt;/u&gt; <br> ex: <u>Linn text</u><br><br>
+                    <strong>Fet text =</strong> &lt;b&gt;Linn text&lt;/b&gt; <br> ex: <b>Linn text</b><br><br>
+                    <strong>Kursiv text =</strong> &lt;i&gt;Linn text&lt;/i&gt; <br> ex: <i>Linn text</i><br><br>
+                    <strong>Centrerad text =</strong> &lt;center&gt;Linn text&lt;/center&gt; <br> ex: <center>Linn text</center>
+                </td>
+                <td class="tdIinstru">
+                    <strong> Guide för att få strukturen nedan: <br> <br> &lt;h2&gt;&lt;center&gt;Veckans namn&lt;/center&gt;&lt;/h2&gt;<br>&lt;li&gt;&lt;b&gt;Carl&lt;/b&gt;&lt;/li&gt;<br>&lt;li&gt;&lt;u&gt;Tom&lt;/u&gt;&lt;/li&gt;<br>
+                        &lt;li&gt;&lt;i&gt;Jerry&lt;/i&gt;&lt;/li&gt;</strong><h2><center>Veckans namn</center></h2><li><b>Carl</b> - &lt;li&gt;&lt;b&gt;Carl&lt;/b&gt;&lt;/li&gt; används här</li>
+                    <li><u>Tom</u> - &lt;li&gt;&lt;u&gt;Tom&lt;/u&gt;&lt;/li&gt; används här</li><li><i>Jerry</i> - &lt;li&gt;&lt;i&gt;Jerry&lt;/i&gt;&lt;/li&gt; används här</li><br>
                 </td>
             </tr>
           </table>

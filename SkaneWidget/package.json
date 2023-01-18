@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "bigint-json": "^1.1.5",
-    "tar": "^6.1.12",
-    "unzip": "^0.1.11"
+    "unzipper": "latest"
   }
 }

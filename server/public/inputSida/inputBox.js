@@ -5,12 +5,12 @@ function PrintInputBorder(Arr) {
     let Text = "";
     console.log(Arr[0]);
     localStorage.setItem(Arr[0], Arr);
-    Text += '<div name="'+ Arr +'" id="' + Arr[0] + '">' +
+    Text += '<div name="' + Arr + '" id="' + Arr[0] + '">' +
         '<div class="UpdateForms">' +
         '<button type="button" class="delBtn" onclick=DeleteInputBorder("' + Arr[0] + '")>X</button>' +
         '<h4>' + Arr[0] + '</h4>' +
-        '<input type="number" class="quantity" name="quantity" min="0" max="15" value="5">' +
-        '<label> Hur många minuter ska sidan visas? (0 = för alltid) </label>' +
+        '<input id="seconds' + Arr[0] + '" onchange="limit(10, 999, seconds' + Arr[0] + ')" type="number" class="quantity" name="quantity" min="10" max="999" value="15">' +
+        '<label> Hur många sekunder ska sidan visas?</label>' +
         '<br>';
 
     let textAmount = 0;
@@ -22,7 +22,7 @@ function PrintInputBorder(Arr) {
         }
         if (Arr[index] === 'TEXT') {
             textAmount++;
-            Text += GetTextInput(textAmount);
+            Text += GetTextInput(Arr[0], textAmount);
         }
     }
 
@@ -33,25 +33,58 @@ function PrintInputBorder(Arr) {
 
     document.getElementById('FormsEditable').innerHTML = Text;
 }
-function GetTextInput(spec, readable = true, value = "") {
+function GetTextInput(template, spec, readable = true, value = "") {
+    let maxCharacters = 0;
+    switch (template) {
+        case 'Template1':
+            maxCharacters = 765;
+            break;
+        case 'Template2':
+            console.log(spec + " template 2");
+            if (spec == 1) {
+                maxCharacters = 765;
+            }
+            else if (spec == 2) {
+                maxCharacters = 1800;
+            }
+            else {
+                console.log("Spec is " + spec + "\nError when selecting max charakter lenght for template 2, contact Hugo/Developer");
+            }
+            break;
+
+        case 'Template4':
+            maxCharacters = 1800;
+            break;
+        case 'Template5':
+
+            maxCharacters = 1800;
+            break;
+
+        default:
+            console.log("Något gick fel vid generationen av SKITEN");
+            break;
+    }
+
     if (readable) {
+        const tmp = ['charakterLable' + spec, maxCharacters]; //tmp array. Kan inte skicka variablarna direkt in i funktionen för jag måste separera dem med ett , vilket förstår för stringen
         return '<label> Text ' + spec + ': </label>' +
-        '<textarea type="text" class="TEXT" name="' + spec + '" value=""></textarea><br>';
+            '<textarea oninput="checkRemaningCharakters([' + tmp + '])" maxlength="' + maxCharacters + '" type="text" class="TEXT" id="TEXT' + spec + '" value=""></textarea>' +
+            '<lable id="charakterLable' + spec + '"></lable><br>';
     }
     else {
         return '<label> Text ' + spec + ': </label>' +
-        '<textarea readonly type="text" class="TEXT" name="' + spec + '">' + value + '</textarea><br>';
+            '<textarea readonly type="text" class="TEXT" name="' + spec + '">' + value + '</textarea><br>';
     }
 }
 function GetImgInput(spec, readonly = true, value = "") {
     if (readonly) {
         return '<label> Bild ' + spec + ': </label>' +
-        '<input type="file" class="IMG" name="' + spec + '" accept="image/*">' +
-        '<br>';
+            '<input type="file" class="IMG" name="' + spec + '" accept="image/*">' +
+            '<br>';
     }
     else {
         return '<label>Bild ' + spec + ': ' + value + '</label>' +
-        '<br>';
+            '<br>';
     }
 }
 
@@ -66,7 +99,7 @@ function GetCountdownInput() {
 function _arrayBufferToBase64(blob) {
     return new Promise((resolve, _) => {
         const reader = new FileReader();
-        reader.onloadend = () => {resolve(reader.result); console.log(reader.result)};
+        reader.onloadend = () => { resolve(reader.result); console.log(reader.result) };
         reader.readAsDataURL(blob);
     });
 }
@@ -103,26 +136,15 @@ async function Save(x) {
                 console.log("hi");
 
             break;*/
-        /* if these are uncomented bad/unexpected data will be sent to the server and stop the entire """server"""/process
         case 'food':
-            jsonObject = {
-                "foodlist": weekList
-            };
-            allSaveInputs.push(new Template(5, x, jsonObject));
+            allSaveInputs.push(new Template(null, null, null, username, password, JSON.stringify(weekList), null));
             break;
         case 'countdown': 
             countdownDate = document.getElementById('CountdownDATE').value;
             countdownText = document.getElementById('CountdownTEXT').value;
 
-            jsonObject = {
-                "date": countdownDate,
-                "text": countdownText
-            }
-
-            allSaveInputs.push(new Template(5, x, jsonObject));
-
+            allSaveInputs.push(new Template(null, null, null, username, password, null, [countdownDate, countdownText]));
             break;
-            */
         case 'Template1':
             allTextInput = inputBox.getElementsByClassName("TEXT");
             allImgInput = inputBox.getElementsByClassName("IMG");
@@ -132,9 +154,9 @@ async function Save(x) {
                 "text1": newText1,
                 "image1": await _arrayBufferToBase64(allImgInput[0].files[0])
             };
-            
 
-            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject));
+
+            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
             PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name]);
 
             break;
@@ -148,7 +170,7 @@ async function Save(x) {
                 "text2": newText2
             }
 
-            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject));
+            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
             PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allTextInput[1].value]);
 
             break;
@@ -160,7 +182,7 @@ async function Save(x) {
             };
 
 
-            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject));
+            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
             PrintSavedInputs(minutes[0].value, x, [allImgInput[0].value]);
 
             break;
@@ -175,7 +197,7 @@ async function Save(x) {
             };
 
 
-            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject));
+            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
             PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name]);
 
             break;
@@ -190,7 +212,7 @@ async function Save(x) {
             }
 
 
-            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject));
+            allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
             PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allTextInput[1].value]);
             console.log("hello");
             break;
@@ -202,8 +224,12 @@ async function Save(x) {
 
 
 }
-function ActuallySave() {
-    if(Send(JSON.stringify(allSaveInputs))) {
+function Publish(type) {
+    if (type === "food" || type === "countdown") {
+        Save(type);
+    }
+    
+    if (Send(JSON.stringify(allSaveInputs))) {
         alert("Data Skickat!");
     }
     else {
@@ -229,38 +255,36 @@ function PrintSavedInputs(minutes, x, newArray) {
     let imgAmount = 0;
     let Arr = localStorage.getItem(x);
     Arr = Arr.split(",");
-    
-    container += '<div name="'+ Arr +'" id="' + Arr[0] + '-saved">' +
-    '<div class="UpdateForms-saved">' +
-    '<button type="button" class="delBtn" onclick=DeleteInputBorder("' + Arr[0] + '-saved")>X</button>' +
-    '<h4>' + Arr[0] + '</h4>' +
-    '<input readonly type="number" class="quantity" name="quantity" min="0" max="15" value="' + minutes + '">' +
-    '<br>';
-    
-    
-    
+
+    container += '<div name="' + Arr + '" id="' + Arr[0] + '-saved">' +
+        '<div class="UpdateForms-saved">' +
+        '<button type="button" class="delBtn" onclick=DeleteInputBorder("' + Arr[0] + '-saved")>X</button>' +
+        '<h4>' + Arr[0] + '</h4>' +
+        '<input readonly type="number" class="quantity" name="quantity" min="0" max="15" value="' + minutes + '">' +
+        '<br>';
+
+
+
     for (let index = 0; index < Arr.length; index++) {
         console.log(1);
 
         if (Arr[index] === 'IMG') {
             imgAmount++;
-            container += GetImgInput(imgAmount, false, newArray[index -1]);
+            container += GetImgInput(imgAmount, false, newArray[index - 1]);
         }
         if (Arr[index] === 'TEXT') {
             textAmount++;
-            container += GetTextInput(textAmount, false, newArray[index -1]);
+            container += GetTextInput(Arr[0], textAmount, false, newArray[index - 1]);
         }
     }
     container += '</div>' +
-    '</div>'
+        '</div>'
 
     document.getElementById('savedInputs').innerHTML = container;
 
 }
 
 function ParagraphDivision(text, className) {
-    // For now this function is only used at template5 in the save(x) function. 
-
     /*
     This code converts strings to paragraphs. Example blow:
     Denna veckan gör vi:
@@ -278,14 +302,50 @@ function ParagraphDivision(text, className) {
     var paragraphs = text.value.split(/(\n\n|\n)/);
     var result = "";
     for (var i = 0; i < paragraphs.length; i++) {
-      if(paragraphs[i] === "\n\n" || paragraphs[i] === "\n"){
-        continue;
-      }
-      if (className && paragraphs[i-1] === "\n\n") {
-        result += "<p class='" + className + "'>" + paragraphs[i] + "</p>";
-      } else {
-        result += "<p>" + paragraphs[i] + "</p>";
-      }
+        if (paragraphs[i] === "\n\n" || paragraphs[i] === "\n") {
+            continue;
+        }
+        if (className && paragraphs[i - 1] === "\n\n") {
+            result += "<p class='" + className + "'>" + paragraphs[i] + "</p>";
+        } else {
+            result += "<p>" + paragraphs[i] + "</p>";
+        }
     }
     return result;
-  }
+}
+
+
+
+
+/* LOGIN SYSTEM
+    Our plan with this login system is to send username and password input to the server and on the server validate these credentials.
+    The username and password is sent to the server with the "jsonObject" object. Seeing as every template saved has a jsonObject attached to it the password and username data 
+    will be present on all templates. This is not really an issue as you can simply only look at the first templates data on the server... :D
+*/
+function DisplayLoginPopup() {
+    popup = document.getElementById("loginPopup");
+    popup.style.display = "block";
+
+}
+function HideLoginPopup() {
+    username = document.getElementById("username").value;
+    password = document.getElementById("password").value;
+    popup.style.display = "none";
+    ShowDinnerSchedule()
+}
+
+
+
+function checkRemaningCharakters(arr) {
+    let spec = arr[0].id; //arr[0] blir magiskt ett <labl> object, men datan som vi vill ha ligger sparat i dens id
+    let maxCharacters = arr[1]
+    let lable = arr[0];
+    let textArea = document.getElementsByClassName('TEXT')[spec.slice(-1) - 1]; //ett dåligt sätt att få motsvarande textArea för lablen som ska redigeras
+    lable.innerHTML = maxCharacters - textArea.value.length + " tecken återstår";
+
+}
+
+
+function limit(min, max, object) {  
+    object.value = Math.max(Math.min(object.value, max), min);
+}
