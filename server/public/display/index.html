@@ -25,9 +25,13 @@
     const appear = [{ opacity: "100%", zIndex: "0" }];
     const disappear = [{ opacity: "0%", zIndex: "-1" }];
 
-    let templateElements = null;
+    let templateElements = [];
     let info = {
-      templates: []
+      templates: [],
+      skånetrafiken: {
+        busInfo: [],
+        trainInfo: [],
+      }
     };
     let changed = false;
     let counter = 0;
@@ -50,7 +54,9 @@
         currentIndex = 0;
         console.log("stuff changed! changed!");
         changed = false;
-        if (templateElements != null) {
+        if (templateElements.length != 0) {
+
+
           templateElements[currentIndex].style.opacity = "100%";
           for (let index = 0; index < templateElements.length; index++) {
             if (index != currentIndex) {
