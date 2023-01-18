@@ -113,9 +113,11 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                 var savedSchedules = JSON.parse(fs.readFileSync('foodSchedules.txt', 'utf8'));
                 // Check if the new data already exists in savedSchedule
                 for (let x = 0; x < savedSchedules.length; x++) {
+                    let duplicate = false;
+                    console.log(templates[i].foodSchedules.length);
                     for (let y = 0; y < templates[i].foodSchedules.length; y++) {
                         foodSchedule = templates[i].foodSchedules[y];
-                        let duplicate = false;
+                        duplicate = false;
                         if (savedSchedules[x].week === foodSchedule.week) {
                             duplicate = true;
                             console.log("Before: " + savedSchedules[x]);
@@ -124,7 +126,7 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                             break;
                         }
                     }
-                    //if (!duplicate) { savedSchedules.push(foodSchedule); }
+                    if (!duplicate) { savedSchedules.push(foodSchedule); }
                 }
 
                 // Save the new savedSchedule to file.
@@ -155,7 +157,7 @@ let displayInfo = { templates: [], skåneTrafiken: null };
             displayInfo.templates.push(templates[0].data)
         } else {
             if (AuthenticateLogin(templates[0])) {
-                //CheckForNonTemplateChanges(templates);
+                CheckForNonTemplateChanges(templates);
 
                 // if templates.length is 0, then the for loop shouldn't run in the first place! /// KLohger
                 if (templates.length != 0) { // Ugly solution but we can't find another way / I and A 
