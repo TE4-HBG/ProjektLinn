@@ -129,11 +129,14 @@ let displayInfo = { templates: [], skåneTrafiken: {} };
                 }
 
                 // Save the new savedSchedule to file.
+                console.log(JSON.stringify(savedSchedules))
                 fs.writeFileSync('foodSchedules.txt', JSON.stringify(savedSchedules));
+                /*
                 console.log("foodSchedules.txt updated");
                 // Reading from file again to make sure things are correct
                 var newSavedSchedules = JSON.parse(fs.readFileSync('foodSchedules.txt', 'utf8'));
                 newSavedSchedules = JSON.parse(newSavedSchedules); // Needs to be parsed twice
+                */
                 console.log("Current foodSchedules.txt: " + newSavedSchedules);
                 templates.splice(i, 1);
             }
