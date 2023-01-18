@@ -14,7 +14,7 @@ const app = express();
 const address = "http://infotavla.te4projekt.se";
 const port = 80;
 
-
+BigInt.prototype.toJSON = function() { return this.toString() }
 
 //Here skanetrafiken data is read from ther journeys json file.
 //Next step involves filtering the data to be read and used.
