@@ -112,12 +112,12 @@
     </div>
     <button onclick="Publish('templates')" type="button" id="publish">Publicera</button>
     <div id="loginPopup">
-        <form autocomplete="on" class="loginForm" action="/submit-form" method="post">
+        <form autocomplete="on" class="loginForm">
             <label class="loginLabel">Username: <input class="loginInput" name="username" id="username" type="text"></label>
             <br>
             <label class="loginLabel">Password: <input class="loginInput" name="password" id="password" type="password"></label>
             <br>
-            <input class="submitInput" value="Submit" onclick="event.preventDefault(); HideLoginPopup();">
+            <input class="submitInput" value="Submit" onclick="HideLoginPopup();">
         </form>
         
     </div>
