@@ -114,16 +114,17 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                 // Check if the new data already exists in savedSchedule
                 for (let x = 0; x < savedSchedules.length; x++) {
                     for (let y = 0; y < templates[i].foodSchedules.length; y++) {
-                        foodSchedule = templates[i].foodSchedules[y];// NOTE SINGULAR NOT PLURAL!!!
+                        foodSchedule = templates[i].foodSchedules[y];
+                        let duplicate = false;
                         if (savedSchedules[x].week === foodSchedule.week) {
-                            // If the new week already exists in savedSchedule, replace it with new week.
+                            duplicate = true;
+                            console.log("Before: " + savedSchedules[x]);
                             savedSchedules[x] = foodSchedule;
-                        }
-                        else {
-                            // If the new week doesn't exists in savedSchedule, add it
-                            savedSchedules.push(foodSchedule);
+                            console.log("After: " + savedSchedules[x]);
+                            break;
                         }
                     }
+                    if (!duplicate) { savedSchedules.push(foodSchedule); }
                 }
 
                 // Save the new savedSchedule to file.
