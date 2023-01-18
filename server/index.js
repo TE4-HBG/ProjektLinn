@@ -137,8 +137,11 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                 templates.splice(i, 1);
             }
             else if (templates[i].duration === null && templates[i].countdown != null) {
-                console.log("Detected changes to countdown")
-                // Not started working here but same plan :D
+                console.log("Detected changes to countdown");
+                console.log(templates[i].countdown);
+
+                //var savedCountdown = JSON.parse(fs.readFileSync('Countdown.txt', 'utf8'));
+
                 templates.splice(i, 1);
             }
         }
