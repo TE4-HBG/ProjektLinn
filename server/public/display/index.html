@@ -190,8 +190,16 @@
           foreach(busNumberFour, (item) => item.innerHTML = skånetrafiken.busData[3].routeShortName);
           foreach(busNumberFive, (item) => item.innerHTML = skånetrafiken.busData[4].routeShortName);
           foreach(busNumberSix, (item) => item.innerHTML = skånetrafiken.busData[5].routeShortName);
+          
+          
+          if (skånetrafiken.busData[0].type = "700")
+          {
+            foreach(busImgOne, (item) => item.src.innerHTML = "http://infotavla.te4projekt.se/images/icons/Trains and busses/Stadsbuss.svg");
+          }
+          else {
+            foreach(busImgOne, (item) => item.src.innerHTML = "http://infotavla.te4projekt.se/images/icons/Trains and busses/Stadsbuss.svg");
+          }
           /*
-          foreach(busImgOne, (item) => item.innerHTML = skånetrafiken.busData[0].type);
           foreach(busImgTwo, (item) => item.innerHTML = skånetrafiken.busData[1].type);
           foreach(busImgThree, (item) => item.innerHTML = skånetrafiken.busData[2].type);
           foreach(busImgFour, (item) => item.innerHTML = skånetrafiken.busData[3].type);
