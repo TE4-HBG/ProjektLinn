@@ -127,7 +127,6 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                 }
 
                 // Save the new savedSchedule to file.
-                console.log(JSON.stringify(savedSchedules))
                 fs.writeFileSync('foodSchedules.txt', JSON.stringify(savedSchedules));
                 console.log("foodSchedules.txt updated");
                 // Reading from file again to make sure things are correct
