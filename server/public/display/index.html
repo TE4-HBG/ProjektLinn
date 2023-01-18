@@ -50,9 +50,7 @@
         currentIndex = 0;
         console.log("stuff changed! changed!");
         changed = false;
-        if (templateElements.length != 0) {
-
-
+        if (templateElements != null) {
           templateElements[currentIndex].style.opacity = "100%";
           for (let index = 0; index < templateElements.length; index++) {
             if (index != currentIndex) {
