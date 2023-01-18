@@ -143,8 +143,6 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                 var savedCountdown = fs.readFileSync('countdown.txt', 'utf8');
                 console.log("Old countdown.txt: " + savedCountdown);
 
-                var countdownDate;
-                var countdownText;
                 //Saving the new and old information for countdown into four variables
                 var newCountdownDate = templates[i].countdown[0]
                 var newCountdownText = templates[i].countdown[1]
