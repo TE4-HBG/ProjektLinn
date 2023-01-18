@@ -1,5 +1,12 @@
 let allSaveInputs = [];
 
+try {
+    allSaveInputs = JSON.parse(localStorage.getItem("savedInputs"));
+}
+catch {
+    
+}
+
 
 function PrintInputBorder(Arr) {
     let Text = "";
@@ -221,8 +228,8 @@ async function Save(x) {
         default:
             break;
     }
-
-
+    //Adds saved info to localstorage
+    localStorage.setItem("savedInputs", JSON.stringify(allSaveInputs));
 }
 function Publish(type) {
     if (type === "food" || type === "countdown") {
