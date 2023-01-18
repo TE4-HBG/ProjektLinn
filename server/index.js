@@ -98,7 +98,7 @@ let displayInfo = { templates: [], skåneTrafiken: {} };
 
     function CheckForNonTemplateChanges(templates) {
         for (let i = 0; i < templates.length; i++) {
-            console.log(templates[i].foodSchedules)
+            console.log(templates[i])
             console.log(JSON.parse(templates[i].foodSchedules))
             /*
             SyntaxError: Unexpected token u in JSON at position 0
