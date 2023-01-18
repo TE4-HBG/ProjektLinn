@@ -1,11 +1,9 @@
-let allSaveInputs = [];
+
 //Attempts to retrieve localStorage file
-try {
-    allSaveInputs = JSON.parse(localStorage.getItem("savedInputs"));
-    console.log("localStorage.getItem")
-}
-catch {
-    
+let allSaveInputs = JSON.parse(localStorage.getItem("savedInputs"));
+
+if (!allSaveInputs) {
+    allSaveInputs = [];
 }
 
 
