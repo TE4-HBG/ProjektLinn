@@ -148,22 +148,9 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                 //Saving the new and old information for countdown into four variables
                 var newCountdownDate = templates[i].countdown[0]
                 var newCountdownText = templates[i].countdown[1]
-                var [oldCountdownDate, oldCountdownText] = savedCountdown.split(':');
+                var [oldCountdownDate, oldCountdownText] = savedCountdown.split(':'); //Leaving this to be able to implement support for if empty info is submitted
 
-                if (oldCountdownDate != "") {
-                    countdownDate = newCountdownDate;
-                }
-                else {
-                    countdownDate = oldCountdownDate;
-                }
-                if (oldCountdownText != "") {
-                    countdownText = newCountdownText;
-                }
-                else {
-                    countdownText = oldCountdownText;
-                }
-
-                var countdownInfo = countdownDate + ":" + countdownText;
+                var countdownInfo = newCountdownDate + ":" + newCountdownText;
 
                 fs.writeFileSync('countdown.txt', countdownInfo);
 
