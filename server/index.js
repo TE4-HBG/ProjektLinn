@@ -79,7 +79,7 @@ let displayInfo = { templates: [], skåneTrafiken: null };
 
         // If client closes connection, stop sending events
         res.on('close', () => {
-            console.log('client dropped me');
+            console.log(`${new Date().toISOString()}: ${req.ip} disconnecting to event site.`);
             clearInterval(interValID);
             res.end();
         });
