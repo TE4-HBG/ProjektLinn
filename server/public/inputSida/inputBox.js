@@ -227,8 +227,7 @@ async function Save(x) {
         default:
             break;
     }
-    //Adds saved info to localstorage
-    console.log(allSaveInputs);
+    //Localstorage works
     localStorage.setItem("savedInputs", JSON.stringify(allSaveInputs));
 }
 
