@@ -150,22 +150,21 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                 var newCountdownText = templates[i].countdown[1]
                 var [oldCountdownDate, oldCountdownText] = savedCountdown.split(':');
 
-                /*if (oldCountdownDate != newCountdownDate) {
+                if (oldCountdownDate != "") {
                     countdownDate = newCountdownDate;
                 }
                 else {
                     countdownDate = oldCountdownDate;
                 }
-                if (oldCountdownText != newCountdownText) {
+                if (oldCountdownText != "") {
                     countdownText = newCountdownText;
                 }
                 else {
                     countdownText = oldCountdownText;
-                }*/
+                }
 
-                //var countdownInfo = countdownDate + ":" + countdownText;
-                console.log(newCountdownText);
-                console.log(newCountdownDate);
+                var countdownInfo = countdownDate + ":" + countdownText;
+                console.log(countdownInfo);
 
                 //fs.writeFileSync('countdown.txt', countdownInfo);
 
