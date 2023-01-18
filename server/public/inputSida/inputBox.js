@@ -1,4 +1,10 @@
-let allSaveInputs = [];
+
+//Attempts to retrieve localStorage file
+let allSaveInputs = JSON.parse(localStorage.getItem("savedInputs"));
+
+if (!allSaveInputs) {
+    allSaveInputs = [];
+}
 
 
 function PrintInputBorder(Arr) {
@@ -221,9 +227,10 @@ async function Save(x) {
         default:
             break;
     }
-
-
+    //Localstorage works
+    localStorage.setItem("savedInputs", JSON.stringify(allSaveInputs));
 }
+
 function Publish(type) {
     if (type === "food" || type === "countdown") {
         Save(type);
