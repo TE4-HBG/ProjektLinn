@@ -53,8 +53,6 @@ let displayInfo = { templates: [], skåneTrafiken: null };
         });
     });
 
-
-
     app.use(express.static(__dirname + '/public'));
 
     app.get('/display/events', async (req, res) => {
@@ -84,7 +82,6 @@ let displayInfo = { templates: [], skåneTrafiken: null };
             res.end();
         });
     });
-
 
     function AuthenticateLogin(template) {
         // Load credentials from file
@@ -149,13 +146,12 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                 console.log(oldCountdownDate);
                 console.log(newCountdownDate);
 
-                
+
 
                 templates.splice(i, 1);
             }
         }
     }
-
 
     async function UpdateDisplayInfo() {
         console.log("Entered UpdateDisplayInfo()");
@@ -174,7 +170,7 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                     displayInfo.templates = [];
                     console.log(`amount of templates: ${templates.length}`)
                     for (let i = 0; i < templates.length; i++) {
-                        let window
+                        let window;
                         try { // Adding this for testing purposes, but might be smart to keep it :D
                             window = (await jsdom.JSDOM.fromFile(`${__dirname}/templates/${templates[i].templateID}.html`)).window;
                         }
