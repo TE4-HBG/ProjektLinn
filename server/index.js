@@ -140,7 +140,11 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                 console.log("Detected changes to countdown");
                 console.log(templates[i].countdown);
 
-                //var savedCountdown = JSON.parse(fs.readFileSync('Countdown.txt', 'utf8'));
+                var newCountdownDate = templates[i].countdown[0]
+                var newCountdownText = templates[i].countdown[1]
+
+                var savedCountdown = fs.readFileSync('countdown.txt', 'utf8');
+                console.log(savedCountdown);
 
                 templates.splice(i, 1);
             }
