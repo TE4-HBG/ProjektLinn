@@ -97,17 +97,17 @@ let displayInfo = { templates: [], skåneTrafiken: {} };
     }
 
     function ParseData(templatesToParse) {
-        let templates = JSON.parse(templatesToParse);
-        templates.forEach(template => {
+        templatesToParse.forEach(template => {
         template.foodSchedules = JSON.parse(template.foodSchedules);
         });
-        return templates;
+        return templatesToParse;
     }
 
     function CheckForNonTemplateChanges(templates) {
+        console.log(templates)
         templates = ParseData(templates);
+        console.log("After: " + templates)
         for (let i = 0; i < templates.length; i++) {
-            console.log(templates[i])
             if (templates[i].duration === null && JSON.parse(templates[i].foodSchedules) != null) {
                 // Ah! Theres been changes to the food schedule!
                 console.log("Detected changes to food schedule")
