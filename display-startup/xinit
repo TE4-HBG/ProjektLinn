@@ -6,15 +6,15 @@ secretLen=7
 website=infotavla.te4projekt.se/display
 
 function wait_for_X {
-	while true
-	do 
-		if ! timeout 1s xset q &>/dev/null; then
-			printf "x still dead lol\n"
-		else
-			break
-		fi
-		sleep 1
-	done
+    while true
+    do
+        if ! timeout 1s xset q &>/dev/null; then
+            printf "x still dead lol\n"
+        else
+            break
+        fi
+        sleep 1
+    done
 }
 
 printf "\033[38;2;255;255;0mWAITING FOR SECRET KEY:\033[39m "
@@ -24,46 +24,53 @@ printf "\n"
 # if i got a reply and its equal to $secret, then
 if [ $RETVAL -eq 0 ] && [ "$REPLY" = "$secret" ]
 then
-	printf "\033[38;2;0;255;0mDEBUG ENABLED!\033[39m\n"
+    printf "\033[38;2;0;255;0mDEBUG ENABLED!\033[39m\n"
 else
-	printf "\033[38;2;255;0;0mRUNNING X\033[39m\n";
-	# runs X in background
-	X -nocursor &
-	# defines display for other commands
-	export DISPLAY=:0.0;
-	# wait for X to start up
-	wait_for_X
-
-	# hide the mouse
-	#./xtoggle.cprog &
-
-
-	# launch firefox in background
-	/usr/bin/firefox -kiosk -private-window "$website" &
-	sleep 30
-	xdotool search --sync "Mozilla Firefox" key ctrl+plus
-	xdotool search --sync "Mozilla Firefox" key ctrl+plus
-	xdotool search --sync "Mozilla Firefox" key ctrl+plus
-	xdotool search --sync "Mozilla Firefox" key ctrl+plus
-	xdotool search --sync "Mozilla Firefox" key ctrl+plus
-	xdotool search --sync "Mozilla Firefox" key ctrl+plus
-	xdotool search --sync "Mozilla Firefox" key ctrl+plus
-	xdotool search --sync "Mozilla Firefox" key ctrl+plus
-
-	while true
-	do
-		size=$(xrandr | grep '*' | awk '{print $1}')
-		width=$(printf "$size" | awk '{split($1,arr,"x"); print arr[1]}')
-		height=$(printf "$size" | awk '{split($1,arr,"x"); print arr[2]}')
-
-		# change screen orientation
-		xrandr --orientation left
-		
-		# set firefox size and width to screen
-		xdotool search --sync "Mozilla Firefox" windowmove 0 0
-		xdotool search --sync "Mozilla Firefox" windowsize "$height" "$width"
-		sleep 1
-	done
+    printf "\033[38;2;255;0;0mRUNNING X\033[39m\n";
+    # runs X in background
+    X -nocursor &
+    # defines display for other commands
+    export DISPLAY=:0.0;
+    # wait for X to start up
+    wait_for_X
+    
+    # hide the mouse
+    #./xtoggle.cprog &
+    
+    
+    # launch firefox in background
+    /usr/bin/firefox -kiosk -private-window "$website" &
+    sleep 30
+    xdotool search --sync "Mozilla Firefox" key ctrl+plus
+    xdotool search --sync "Mozilla Firefox" key ctrl+plus
+    xdotool search --sync "Mozilla Firefox" key ctrl+plus
+    xdotool search --sync "Mozilla Firefox" key ctrl+plus
+    xdotool search --sync "Mozilla Firefox" key ctrl+plus
+    xdotool search --sync "Mozilla Firefox" key ctrl+plus
+    xdotool search --sync "Mozilla Firefox" key ctrl+plus
+    xdotool search --sync "Mozilla Firefox" key ctrl+plus
+    
+    
+	# hopefully this disables screen blanking
+    setterm -blank 0
+    xset -dpms
+    xset s noblank
+    xset s off
+    
+    while true
+    do
+        size=$(xrandr | grep '*' | awk '{print $1}')
+        width=$(printf "$size" | awk '{split($1,arr,"x"); print arr[1]}')
+        height=$(printf "$size" | awk '{split($1,arr,"x"); print arr[2]}')
+        
+        # change screen orientation
+        xrandr --orientation left
+        
+        # set firefox size and width to screen
+        xdotool search --sync "Mozilla Firefox" windowmove 0 0
+        xdotool search --sync "Mozilla Firefox" windowsize "$height" "$width"
+        sleep 1
+    done
 fi
 
 exit 0

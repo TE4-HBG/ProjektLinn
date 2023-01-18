@@ -1,7 +1,15 @@
 const fs = require('fs');
 const https = require('https');
 const unzipper = require('unzipper');
-const { setTimeout } = require('timers/promises');
+
+function sleep(ms) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, ms);
+    })
+}
+//const { setTimeout } = require('timers/promises');
 /**Array class for route file*/
 class Route {
     ID;
@@ -251,17 +259,25 @@ async function Get() {
     const maxTime = 50;
     let currentTime = 0;
     console.log("downloading")
-    https.get(url, (response) => response
-        .pipe(unzipper.Extract({ path: './skånetrafiken/' }))
-        .on('finish', () => downloaded = true)
-    );
-    while(!downloaded) {
-        await setTimeout(1000);
+    https.get(url, { headers: { "Accept-Encoding": "gzip" } }, (response) => response
+        .pipe(fs.createWriteStream('skånetrafiken.zip')))
+        .on('finish', () => downloaded = true);
+
+    while (!downloaded) {
+        await sleep(1000);
         currentTime += 1;
-        if(currentTime > maxTime) {
+        if (currentTime > maxTime) {
             throw "the skånetrafiken servers timed out uh oh :("
         }
     }
+    try {
+        console.log(JSON.parse(fs.readFileSync('skånetrafiken.zip').toString('utf-8')))
+    } catch {
+
+    }
+
+    fs.createReadStream('skånetrafiken.zip').pipe(unzipper.Extract({path: './skånetrafiken/'}))
+    
     console.log('downloaded');
 
     const tripsArr = Trip.fromFile('./skånetrafiken/trips.txt');

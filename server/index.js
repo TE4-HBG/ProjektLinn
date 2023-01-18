@@ -14,7 +14,7 @@ const app = express();
 const address = "http://infotavla.te4projekt.se";
 const port = 80;
 
-
+BigInt.prototype.toJSON = function () { return this.toString() }
 
 //Here skanetrafiken data is read from ther journeys json file.
 //Next step involves filtering the data to be read and used.
@@ -31,15 +31,15 @@ const port = 80;
 
 
 // string array
-let displayInfo = { templates: [], skåneTrafiken: {} };
-/*
+let displayInfo = { templates: [], skåneTrafiken: null };
+
 (async () => {
     displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
     setInterval(async () => {
         displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
     }, 3600000);
 })();
-*/
+
 
 
 {
@@ -69,17 +69,17 @@ let displayInfo = { templates: [], skåneTrafiken: {} };
         let counter = 0;
         let interValID = setInterval(() => {
             counter++;
-            console.log(`${new Date().toISOString()}: sent event to ${req.ip}.`)
-            console.log(displayInfo.length);
-            if (res.write(`data: ${JSON.stringify(displayInfo)}\n\n`, (error) => { console.log(error) })) {
-                console.log("it be worken");
+            if (res.write(`data: ${JSON.stringify(displayInfo)}\n\n`, (error) => { if (error) { console.log(error) } })) {
+                console.log(`${new Date().toISOString()}: sent event to ${req.ip}.`)
+            } else {
+                console.error(`${new Date().toISOString()}: failed to send event to ${req.ip}!`)
             }
 
         }, 4000);
 
         // If client closes connection, stop sending events
         res.on('close', () => {
-            console.log('client dropped me');
+            console.log(`${new Date().toISOString()}: ${req.ip} disconnected from event site.`);
             clearInterval(interValID);
             res.end();
         });
@@ -96,45 +96,66 @@ let displayInfo = { templates: [], skåneTrafiken: {} };
         return false
     }
 
+
+    function ParseData(templatesToParse) {
+        templatesToParse.forEach(template => {
+            template.foodSchedules = JSON.parse(template.foodSchedules);
+        });
+        console.log("Parsed templates in ParseData()")
+        return templatesToParse;
+    }
+
     function CheckForNonTemplateChanges(templates) {
+        templates = ParseData(templates);
         for (let i = 0; i < templates.length; i++) {
-            console.log(templates[i])
-            console.log(JSON.parse(templates[i].foodSchedules))
-            /*
-            SyntaxError: Unexpected token u in JSON at position 0
-    at JSON.parse (<anonymous>)
-    at CheckForNonTemplateChanges (/root/ProjektLinn/server/index.js:90:30)
-    at UpdateDisplayInfo (/root/ProjektLinn/server/index.js:134:17)
-*/
-            if (templates[i].duration === null && JSON.parse(templates[i].foodSchedules) != null) {
-                // Ah! Theres been changes to the food schedule!
+            if (templates[i].duration === null && templates[i].foodSchedules != null) {
                 console.log("Detected changes to food schedule")
                 // Load foodSchedule file to array of objects
                 var savedSchedules = JSON.parse(fs.readFileSync('foodSchedules.txt', 'utf8'));
-                savedSchedules = JSON.parse(savedSchedules); //I dont know why, but this is the only way
                 // Check if the new data already exists in savedSchedule
-                for (let x = 0; x < savedSchedules.length; x++) {
-                    for (let y = 0; y < JSON.parse(templates[i].foodSchedules).length; y++) {
-                        foodSchedule = JSON.parse(templates[i].foodSchedules[y]);// NOTE SINGULAR NOT PLURAL!!!
+                for (let y = 0; y < templates[i].foodSchedules.length; y++) {
+                    foodSchedule = templates[i].foodSchedules[y];
+                    for (let x = 0; x < savedSchedules.length; x++) {
+                        var duplicate = false;
                         if (savedSchedules[x].week === foodSchedule.week) {
-                            // If the new week already exists in savedSchedule, replace it with new week.
-                            savedSchedules[x] = foodSchedule;
-                        }
-                        else {
-                            // If the new week doesn't exists in savedSchedule, add it
-                            savedSchedules.push(foodSchedule);
+                            duplicate = true;
+                            savedSchedules.splice(x, 1, foodSchedule);
+                            break;
                         }
                     }
+                    if (!duplicate) {
+                        savedSchedules.push(foodSchedule);
+                        console.log("Added week");
+                    }
                 }
+
                 // Save the new savedSchedule to file.
-                console.log(savedSchedules);
                 fs.writeFileSync('foodSchedules.txt', JSON.stringify(savedSchedules));
                 console.log("foodSchedules.txt updated");
+                // Reading from file again to make sure things are correct
+                var newSavedSchedules = fs.readFileSync('foodSchedules.txt', 'utf8');
+                console.log("Current foodSchedules.txt: " + newSavedSchedules);
                 templates.splice(i, 1);
             }
             else if (templates[i].duration === null && templates[i].countdown != null) {
-                // Ah! Theres been changes to the countdown!
-                // Not started working here but same plan :D
+                console.log("Detected changes to countdown");
+                console.log(templates[i].countdown);
+                var savedCountdown = fs.readFileSync('countdown.txt', 'utf8');
+                console.log("Old countdown.txt: " + savedCountdown);
+
+                //Saving the new and old information for countdown into four variables
+                var newCountdownDate = templates[i].countdown[0];
+                var newCountdownText = templates[i].countdown[1];
+                var [oldCountdownDate, oldCountdownText] = savedCountdown.split(':'); //Leaving this to be able to implement support for if empty info is submitted
+
+                var countdownInfo = newCountdownDate + ":" + newCountdownText;
+                fs.writeFileSync('countdown.txt', countdownInfo);
+
+                console.log("countdown.txt updated");
+                // Reading from file again to make sure things are correct
+                var newCountdownInfo = fs.readFileSync('countdown.txt', 'utf8');
+                console.log("Current countdown.txt: " + newCountdownInfo);
+
                 templates.splice(i, 1);
             }
         }
@@ -144,19 +165,28 @@ let displayInfo = { templates: [], skåneTrafiken: {} };
     async function UpdateDisplayInfo() {
         console.log("Entered UpdateDisplayInfo()");
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
-        console.log("Parsed currentDisplayInfo.json");
         if (templates[0] && templates[0].isCool) {
             console.log("\u006B\u006C\u006F\u0068\u0067\u0065\u0072\u0020\u0077\u0061\u0073\u0020\u0068\u0065\u0072\u0065")
             displayInfo.templates = [];
             displayInfo.templates.push(templates[0].data)
-        } else {
+        }
+        else {
             if (AuthenticateLogin(templates[0])) {
                 CheckForNonTemplateChanges(templates);
-                if (templates.length != 0) { // Ugly solution but we can't find another way / I and A
-                    displayInfo = { templates: [] };
+
+                // if templates.length is 0, then the for loop shouldn't run in the first place! /// KLohger
+                if (templates.length != 0) { // Ugly solution but we can't find another way / I and A 
+                    displayInfo.templates = [];
                     console.log(`amount of templates: ${templates.length}`)
                     for (let i = 0; i < templates.length; i++) {
-                        const window = (await jsdom.JSDOM.fromFile(`${__dirname}/templates/${templates[i].templateID}.html`)).window;
+                        let window
+                        try { // Adding this for testing purposes, but might be smart to keep it :D
+                            window = (await jsdom.JSDOM.fromFile(`${__dirname}/templates/${templates[i].templateID}.html`)).window;
+                        }
+                        catch {
+                            console.log(`Failed to find /${templates[i].templateID}.html`);
+                            break;
+                        }
                         const document = window.document;
                         const DOMPurify = createDOMPurify(window);
                         const config = {
@@ -166,56 +196,6 @@ let displayInfo = { templates: [], skåneTrafiken: {} };
                         }
                         const textElements = document.getElementsByClassName('text');
                         const imageElements = document.getElementsByClassName('img');
-
-                        const trainName1 = document.getElementsByClassName("trainName1");
-                        const trainName2 = document.getElementsByClassName("trainName2");
-                        const trainName3 = document.getElementsByClassName("trainName3");
-                        const trainName4 = document.getElementsByClassName("trainName4");
-                        const trainName5 = document.getElementsByClassName("trainName5");
-                        const trainName6 = document.getElementsByClassName("trainName6");
-
-                        const trainTime1 = document.getElementsByClassName("trainTime1");
-                        const trainTime2 = document.getElementsByClassName("trainTime2");
-                        const trainTime3 = document.getElementsByClassName("trainTime3");
-                        const trainTime4 = document.getElementsByClassName("trainTime4");
-                        const trainTime5 = document.getElementsByClassName("trainTime5");
-                        const trainTime6 = document.getElementsByClassName("trainTime6");
-
-                        const busShortName1 = document.getElementsByClassName("busShortName1");
-                        const busShortName2 = document.getElementsByClassName("busShortName2");
-                        const busShortName3 = document.getElementsByClassName("busShortName3");
-                        const busShortName4 = document.getElementsByClassName("busShortName4");
-                        const busShortName5 = document.getElementsByClassName("busShortName5");
-                        const busShortName6 = document.getElementsByClassName("busShortName6");
-
-                        const busName1 = document.getElementsByClassName("busName1");
-                        const busName2 = document.getElementsByClassName("busName2");
-                        const busName3 = document.getElementsByClassName("busName3");
-                        const busName4 = document.getElementsByClassName("busName4");
-                        const busName5 = document.getElementsByClassName("busName5");
-                        const busName6 = document.getElementsByClassName("busName6");
-
-                        const busTime1 = document.getElementsByClassName("busTime1");
-                        const busTime2 = document.getElementsByClassName("busTime2");
-                        const busTime3 = document.getElementsByClassName("busTime3");
-                        const busTime4 = document.getElementsByClassName("busTime4");
-                        const busTime5 = document.getElementsByClassName("busTime5");
-                        const busTime6 = document.getElementsByClassName("busTime6");
-
-                        const trainImg1 = document.getElementsByClassName("train1IconBody");
-                        const trainImg2 = document.getElementsByClassName("train2IconBody");
-                        const trainImg3 = document.getElementsByClassName("train3IconBody");
-                        const trainImg4 = document.getElementsByClassName("train4IconBody");
-                        const trainImg5 = document.getElementsByClassName("train5IconBody");
-                        const trainImg6 = document.getElementsByClassName("train6IconBody");
-
-                        const busImg1 = document.getElementsByClassName("bus1IconBody");
-                        const busImg2 = document.getElementsByClassName("bus2IconBody");
-                        const busImg3 = document.getElementsByClassName("bus3IconBody");
-                        const busImg4 = document.getElementsByClassName("bus4IconBody");
-                        const busImg5 = document.getElementsByClassName("bus5IconBody");
-                        const busImg6 = document.getElementsByClassName("bus6IconBody");
-
                         switch (templates[i].templateID) {
 
                             case 'Template1': {
@@ -283,52 +263,6 @@ let displayInfo = { templates: [], skåneTrafiken: {} };
 
                         displayInfo.templates[i] = { duration: templates[i].duration, html: changeTag(document, document.body, "div").outerHTML };
                         displayInfo.templates[i].html = displayInfo.templates[i].html.replace(/[\n\r]/g, '');
-                        //displayTemplates += changeTag(document, document.body, "div").outerHTML;
-
-                        //Add Skånetrafiken information to display here
-
-                        /* trainName1.innerHTML = jsonData[0].outputTrain.routeLongName;
-                            trainName2.innerHTML = jsonData[1].outputTrain.routeLongName;
-                            trainName3.innerHTML = jsonData[2].outputTrain.routeLongName;
-                            trainName4.innerHTML = jsonData[3].outputTrain.routeLongName;
-                            trainName5.innerHTML = jsonData[4].outputTrain.routeLongName;
-                            trainName6.innerHTML = jsonData[5].outputTrain.routeLongName;
-                            trainTime1.innerHTML = jsonData[0].outputTrain.departureTime;
-                            trainTime2.innerHTML = jsonData[1].outputTrain.departureTime;
-                            trainTime3.innerHTML = jsonData[2].outputTrain.departureTime;
-                            trainTime4.innerHTML = jsonData[3].outputTrain.departureTime;
-                            trainTime5.innerHTML = jsonData[4].outputTrain.departureTime;
-                            trainTime6.innerHTML = jsonData[5].outputTrain.departureTime;
-                            trainImg1.innerHTML = jsonData[0].outputTrain.routeLongName;   //Filter by type and find appropriate img
-                            trainImg2.innerHTML = jsonData[1].outputTrain.routeLongName;
-                            trainImg3.innerHTML = jsonData[2].outputTrain.routeLongName;
-                            trainImg4.innerHTML = jsonData[3].outputTrain.routeLongName;
-                            trainImg5.innerHTML = jsonData[4].outputTrain.routeLongName;
-                            trainImg6.innerHTML = jsonData[5].outputTrain.routeLongName;*/
-                        /*busShortName1 = 
-                        busShortName2 = 
-                        busShortName3 = 
-                        busShortName4 = 
-                        busShortName5 = 
-                        busShortName6 = 
-                        busName1 = 
-                        busName2 = 
-                        busName3 = 
-                        busName4 = 
-                        busName5 = 
-                        busName6 = 
-                        busTime1 = 
-                        busTime2 = 
-                        busTime3 = 
-                        busTime4 = 
-                        busTime5 = 
-                        busTime6 = 
-                        busImg1 = 
-                        busImg2 = 
-                        busImg3 =
-                        busImg4 =
-                        busImg5 =
-                        busImg6 = */
                     }
                 }
             }

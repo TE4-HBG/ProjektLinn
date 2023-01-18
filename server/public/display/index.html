@@ -6,7 +6,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/x-icon" href="http://infotavla.te4projekt.se/favicon.ico"/>
+  <link rel="icon" type="image/x-icon" href="http://infotavla.te4projekt.se/favicon.ico" />
   <title>TE4</title>
   <link rel="stylesheet" href="http://infotavla.te4projekt.se/css/main.css" />
   <script src="http://infotavla.te4projekt.se/scripts/clockAndDate.js"></script>
@@ -25,9 +25,13 @@
     const appear = [{ opacity: "100%", zIndex: "0" }];
     const disappear = [{ opacity: "0%", zIndex: "-1" }];
 
-    let templateElements = null;
+    let templateElements = [];
     let info = {
-      templates: []
+      templates: [],
+      skånetrafiken: {
+        busInfo: [],
+        trainInfo: [],
+      }
     };
     let changed = false;
     let counter = 0;
@@ -45,11 +49,14 @@
     });
 
     setInterval(() => {
-      if (templateElements) {
-        counter += 1000;
-        if (changed) {
-          console.log("stuff changed! changed!");
-          changed = false;
+      counter += 1000;
+      if (changed) {
+        currentIndex = 0;
+        console.log("stuff changed! changed!");
+        changed = false;
+        if (templateElements.length != 0) {
+
+
           templateElements[currentIndex].style.opacity = "100%";
           for (let index = 0; index < templateElements.length; index++) {
             if (index != currentIndex) {
@@ -57,33 +64,33 @@
             }
           }
         }
-        if (templateElements.length > 1) {
-          if (counter >= (info.templates[currentIndex].duration * 1000)) {
-            counter = 0;
-            for (let index = 0; index < templateElements.length; index++) {
-              if (index !== currentIndex || index !== (currentIndex + 1) % templateElements.length) {
-                templateElements[index].animate(disappear, {
-                  duration: 0,
-                  iterations: 1,
-                  fill: "forwards",
-                });
-              }
+      }
+      if (templateElements.length > 1) {
+        if (counter >= (info.templates[currentIndex].duration * 1000)) {
+          counter = 0;
+          for (let index = 0; index < templateElements.length; index++) {
+            if (index !== currentIndex || index !== (currentIndex + 1) % templateElements.length) {
+              templateElements[index].animate(disappear, {
+                duration: 0,
+                iterations: 1,
+                fill: "forwards",
+              });
             }
-            console.log(`Changing from ${currentIndex} to ${(currentIndex + 1) % templateElements.length}`);
-
-            templateElements[(currentIndex + 1) % templateElements.length].animate(appear, {
-              duration: 0,
-              iterations: 1,
-              fill: "forwards",
-            });
-
-            templateElements[currentIndex].animate(fade, {
-              duration: 0,
-              iterations: 1,
-              fill: "forwards",
-            });
-            currentIndex = (currentIndex + 1) % templateElements.length;
           }
+          console.log(`Changing from ${currentIndex} to ${(currentIndex + 1) % templateElements.length}`);
+
+          templateElements[(currentIndex + 1) % templateElements.length].animate(appear, {
+            duration: 0,
+            iterations: 1,
+            fill: "forwards",
+          });
+
+          templateElements[currentIndex].animate(fade, {
+            duration: 0,
+            iterations: 1,
+            fill: "forwards",
+          });
+          currentIndex = (currentIndex + 1) % templateElements.length;
         }
       }
     }, 1000);
