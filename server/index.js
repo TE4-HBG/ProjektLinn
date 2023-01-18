@@ -124,7 +124,7 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                             break;
                         }
                     }
-                    if (!duplicate) { savedSchedules.push(foodSchedule); }
+                    //if (!duplicate) { savedSchedules.push(foodSchedule); }
                 }
 
                 // Save the new savedSchedule to file.
@@ -154,7 +154,7 @@ let displayInfo = { templates: [], skåneTrafiken: null };
             displayInfo.templates.push(templates[0].data)
         } else {
             if (AuthenticateLogin(templates[0])) {
-                CheckForNonTemplateChanges(templates);
+                //CheckForNonTemplateChanges(templates);
 
                 // if templates.length is 0, then the for loop shouldn't run in the first place! /// KLohger
                 if (templates.length != 0) { // Ugly solution but we can't find another way / I and A 
