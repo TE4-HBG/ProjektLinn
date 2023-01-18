@@ -4,7 +4,7 @@
     "express": "latest",
     "jsdom": "latest",
     "ws": "latest",
-    "dompurify":"latest"
-
+    "dompurify":"latest",
+    "unzipper": "latest"
   }
 }

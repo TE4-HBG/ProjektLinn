@@ -1,19 +1,7 @@
 const fs = require('fs');
-const bigintJSON = require('bigint-json');
 const https = require('https');
-const tar = require('tar');
-function Download() {
-    const url = 'https://opendata.samtrafiken.se/gtfs/skane/skane.zip?key=762ba7e4b02b4688856cc10ae69af137';
-    const dest = './skånetrafiken/';
-
-    https.get(url, (response) => response
-        .pipe(tar.extract({ cwd: dest }))
-        .on('finish', function () {
-            console.log('done');
-        })
-    );
-    console.log()
-}
+const unzipper = require('unzipper');
+const { setTimeout } = require('timers/promises');
 /**Array class for route file*/
 class Route {
     ID;
@@ -53,7 +41,7 @@ class Route {
      * @returns {Route[]}
      */
     static fromFile(path) {
-        const strs = fs.readFileSync("routes.txt").toString('utf8').split('\n');
+        const strs = fs.readFileSync(path).toString('utf8').split('\n');
         strs.shift();
         strs.pop();
         const routesArr = [];
@@ -104,7 +92,7 @@ class Trip {
      * @returns {Trip[]}
      */
     static fromFile(path) {
-        const strs = fs.readFileSync("trips.txt").toString('utf8').split('\n');
+        const strs = fs.readFileSync(path).toString('utf8').split('\n');
         strs.shift();
         strs.pop();
         const tripsArr = [];
@@ -166,7 +154,7 @@ class StopTimes {
      * @returns {StopTimes[]}
      */
     static fromFile(path) {
-        const strs = fs.readFileSync("stop_times.txt").toString('utf8').split('\n');
+        const strs = fs.readFileSync(path).toString('utf8').split('\n');
         strs.shift();
         strs.pop();
         const timesArr = [];
@@ -257,10 +245,28 @@ const helsingborgCStops = [
     9022012083241048n,
     9022012083241049n
 ];
-function Get() {
-    const tripsArr = Trip.fromFile("");
-    const timesArr = StopTimes.fromFile("");
-    const routesArr = Route.fromFile("");
+async function Get() {
+    const url = 'https://opendata.samtrafiken.se/gtfs/skane/skane.zip?key=762ba7e4b02b4688856cc10ae69af137';
+    let downloaded = false;
+    const maxTime = 50;
+    let currentTime = 0;
+    console.log(downloading)
+    https.get(url, (response) => response
+        .pipe(unzipper.Extract({ path: './skånetrafiken/' }))
+        .on('finish', () => downloaded = true)
+    );
+    while(!downloaded) {
+        await setTimeout(1000);
+        currentTime += 1;
+        if(currentTime > maxTime) {
+            throw "the skånetrafiken servers timed out uh oh :("
+        }
+    }
+    console.log('downloaded');
+
+    const tripsArr = Trip.fromFile('./skånetrafiken/trips.txt');
+    const timesArr = StopTimes.fromFile('./skånetrafiken/stop_times.txt');
+    const routesArr = Route.fromFile('./skånetrafiken/routes.txt');
     let journeys = [];
     for (let i = 0; i < routeID.length; i++) {
         var givenRoute = routeID[i];
@@ -336,8 +342,7 @@ function Get() {
         }
 
     }
-    let json = bigintJSON.stringify({ outputTrain, outputBuss });
-    fs.writeFileSync('journeys.json', json, 'utf8');
+    return { trainData: outputTrain, busData: outputBuss };
 
     //Regionbuss 700 eller 1501
     //Tåg 100
@@ -345,8 +350,6 @@ function Get() {
     console.log(output[0].routeLongName);
     console.log(output[0].type);
     console.log(output[0].departureTime);*/
-
-    console.log(date);
 }
 module.exports = {
     Route,
@@ -355,6 +358,5 @@ module.exports = {
     Journey,
     routeID,
     helsingborgCStops,
-    Download,
     Get,
 }

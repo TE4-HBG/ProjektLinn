@@ -6,15 +6,16 @@ const { fileURLToPath } = require('url');
 const { dirname } = require('path');
 const { WebSocketServer } = require('ws');
 const { readFile, writeFile } = require('fs/promises');
-//const {Download} = require('./SkåneTrafiken.js')
+const SkåneTrafiken = require('./SkåneTrafiken.js')
 //const __filename = fileURLToPath(import.meta.url);
 //const __dirname = dirname(__filename);
 
 const app = express();
 const address = "http://infotavla.te4projekt.se";
 const port = 80;
-//Download();
-console.log("hopefully i wait for the download :)")
+
+
+
 //Here skanetrafiken data is read from ther journeys json file.
 //Next step involves filtering the data to be read and used.
 
@@ -30,7 +31,13 @@ console.log("hopefully i wait for the download :)")
 
 
 // string array
-let displayInfo = { templates: [] };
+let displayInfo = { templates: [], skåneTrafiken: {} };
+
+displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
+setInterval(async () => {
+    displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
+}, 3600000);
+
 {
     //Create Websocket Server
     const wsServer = new WebSocketServer({ noServer: true });
