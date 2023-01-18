@@ -100,20 +100,19 @@ let displayInfo = { templates: [], skåneTrafiken: {} };
         templatesToParse.forEach(template => {
         template.foodSchedules = JSON.parse(template.foodSchedules);
         });
+        console.log("Parsed templates in ParseData()")
         return templatesToParse;
     }
 
     function CheckForNonTemplateChanges(templates) {
-        console.log(templates)
         templates = ParseData(templates);
-        console.log("After: " + templates[0])
         for (let i = 0; i < templates.length; i++) {
             if (templates[i].duration === null && templates[i].foodSchedules != null) {
-                // Ah! Theres been changes to the food schedule!
                 console.log("Detected changes to food schedule")
                 // Load foodSchedule file to array of objects
                 var savedSchedules = JSON.parse(fs.readFileSync('foodSchedules.txt', 'utf8'));
                 savedSchedules = JSON.parse(savedSchedules); // Needs to be parsed twice
+
                 // Check if the new data already exists in savedSchedule
                 for (let x = 0; x < savedSchedules.length; x++) {
                     for (let y = 0; y < templates[i].foodSchedules.length; y++) {
@@ -128,14 +127,18 @@ let displayInfo = { templates: [], skåneTrafiken: {} };
                         }
                     }
                 }
+
                 // Save the new savedSchedule to file.
-                console.log(savedSchedules);
                 fs.writeFileSync('foodSchedules.txt', JSON.stringify(savedSchedules));
                 console.log("foodSchedules.txt updated");
+                // Reading from file again to make sure things are correct
+                var newSavedSchedules = JSON.parse(fs.readFileSync('foodSchedules.txt', 'utf8'));
+                newSavedSchedules = JSON.parse(newSavedSchedules); // Needs to be parsed twice
+                console.log("Current foodSchedules.txt: " + newSavedSchedules);
                 templates.splice(i, 1);
             }
             else if (templates[i].duration === null && templates[i].countdown != null) {
-                // Ah! Theres been changes to the countdown!
+                console.log("Detected changes to countdown")
                 // Not started working here but same plan :D
                 templates.splice(i, 1);
             }
