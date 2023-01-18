@@ -121,9 +121,9 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                         var duplicate = false;
                         if (savedSchedules[x].week === foodSchedule.week) {
                             duplicate = true;
-                            console.log("Before: " + savedSchedules[x]);
+                            console.log("Before: " + savedSchedules[x].week + savedSchedules[x].monday);
                             savedSchedules.splice(x, 1, foodSchedule); 
-                            console.log("afterrrrrrrrrrr: " + savedSchedules[x]);
+                            console.log("afterrrrrrrrrrr: " + savedSchedules[x].week + savedSchedules[x].monday);
                             break;
                         }
                     }
