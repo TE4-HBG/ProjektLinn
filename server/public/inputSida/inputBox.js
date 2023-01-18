@@ -370,7 +370,7 @@ function checkImageSize(id) {
         if (file.size > 2000000) {
             
             object.value = ""; // remove the image
-            alert("Bilden du la upp är för stor, Max 2mb");
+            alert("Bilden du la upp är " + parseFloat((file.size / 1048576).toFixed(3)) + "MB, Max 2MB");
         }
         else {
             console.log("AlloweD!");
