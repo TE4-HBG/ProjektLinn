@@ -33,10 +33,14 @@ const port = 80;
 // string array
 let displayInfo = { templates: [], skåneTrafiken: {} };
 
-displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
-setInterval(async () => {
+(async () => {
     displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
-}, 3600000);
+    setInterval(async () => {
+        displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
+    }, 3600000);
+})();
+
+
 
 {
     //Create Websocket Server
@@ -125,12 +129,12 @@ setInterval(async () => {
                 console.log(savedSchedules);
                 fs.writeFileSync('foodSchedules.txt', JSON.stringify(savedSchedules));
                 console.log("foodSchedules.txt updated");
-                templates.splice(i,1);
+                templates.splice(i, 1);
             }
             else if (templates[i].duration === null && templates[i].countdown != null) {
                 // Ah! Theres been changes to the countdown!
                 // Not started working here but same plan :D
-                templates.splice(i,1);
+                templates.splice(i, 1);
             }
         }
     }
