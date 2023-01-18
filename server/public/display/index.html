@@ -43,6 +43,9 @@
         document.getElementById('page-container').innerHTML = info.templates.reduce((prev, curr) => (prev + curr.html), '');
         templateElements = document.getElementsByClassName("page");
 
+        //Gets the current time so it can be used for skanetrafiken
+        const now = new Date();
+        const currentTime = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 
         //Here we will retrieve all skanetrafiken elements from the templates and assign them
         let trainNameOne = document.getElementsByClassName("trainName1");
@@ -101,19 +104,37 @@
         trainNameFive.innerHTML = skånetrafiken.trainData[4].routeLongName;
         trainNameSix.innerHTML = skånetrafiken.trainData[5].routeLongName;
 
-        trainTimeOne.innerHTML = skånetrafiken.trainData[0].departureTime;
-        trainTimeTwo.innerHTML = skånetrafiken.trainData[1].departureTime;
-        trainTimeThree.innerHTML = skånetrafiken.trainData[2].departureTime;
-        trainTimeFour.innerHTML = skånetrafiken.trainData[3].departureTime;
-        trainTimeFive.innerHTML = skånetrafiken.trainData[4].departureTime;
-        trainTimeOne.innerHTML = skånetrafiken.trainData[5].departureTime;
+        
+        const departureTime1 = new Date("1970-01-01T" + skånetrafiken.trainData[0].departureTime + "Z");
+        let timeUntil1 = departureTime1 - currentTime;
+        trainTimeOne.innerHTML = timeUntil1 / (1000 * 60);
+        
+        const departureTime2 = new Date("1970-01-01T" + skånetrafiken.trainData[1].departureTime + "Z");
+        let timeUntil2 = departureTime2 - currentTime;
+        trainTimeTwo.innerHTML = timeUntil2 / (1000 * 60);
+        
+        const departureTime3 = new Date("1970-01-01T" + skånetrafiken.trainData[2].departureTime + "Z");
+        let timeUntil3 = departureTime3 - currentTime;
+        trainTimeThree.innerHTML = timeUntil3 / (1000 * 60);
+        
+        const departureTime4 = new Date("1970-01-01T" + skånetrafiken.trainData[3].departureTime + "Z");
+        let timeUntil4 = departureTime4 - currentTime;
+        trainTimeFour.innerHTML = timeUntil4 / (1000 * 60);
+        
+        const departureTime5 = new Date("1970-01-01T" + skånetrafiken.trainData[4].departureTime + "Z");
+        let timeUntil5 = departureTime5 - currentTime;
+        trainTimeFive.innerHTML = timeUntil5 / (1000 * 60);
+        
+        const departureTime6 = new Date("1970-01-01T" + skånetrafiken.trainData[5].departureTime + "Z");
+        let timeUntil6 = departureTime6 - currentTime;
+        trainTimeSix.innerHTML = timeUntil6 / (1000 * 60);
 
         trainImgOne.innerHTML = skånetrafiken.trainData[0].type;
-        trainImgTwo.innerHTML = skånetrafiken.trainData[0].type;
-        trainImgThree.innerHTML = skånetrafiken.trainData[0].type;
-        trainImgFour.innerHTML = skånetrafiken.trainData[0].type;
-        trainImgFive.innerHTML = skånetrafiken.trainData[0].type;
-        trainImgSix.innerHTML = skånetrafiken.trainData[0].type;
+        trainImgTwo.innerHTML = skånetrafiken.trainData[1].type;
+        trainImgThree.innerHTML = skånetrafiken.trainData[2].type;
+        trainImgFour.innerHTML = skånetrafiken.trainData[3].type;
+        trainImgFive.innerHTML = skånetrafiken.trainData[4].type;
+        trainImgSix.innerHTML = skånetrafiken.trainData[5].type;
 
 
         busNameOne.innerHTML = skånetrafiken.busData[0].routeLongName;
@@ -121,28 +142,46 @@
         busNameThree.innerHTML = skånetrafiken.busData[2].routeLongName;
         busNameFour.innerHTML = skånetrafiken.busData[3].routeLongName;
         busNameFive.innerHTML = skånetrafiken.busData[4].routeLongName;
-        busNameOne.innerHTML = skånetrafiken.busData[5].routeLongName;
+        busNameSix.innerHTML = skånetrafiken.busData[5].routeLongName;
 
-        busTimeOne.innerHTML = skånetrafiken.busData[0].departureTime;
-        busTimeTwo.innerHTML = skånetrafiken.busData[1].departureTime;
-        busTimeThree.innerHTML = skånetrafiken.busData[2].departureTime;
-        busTimeFour.innerHTML = skånetrafiken.busData[3].departureTime;
-        busTimeFive.innerHTML = skånetrafiken.busData[4].departureTime;
-        busTimeOne.innerHTML = skånetrafiken.busData[5].departureTime;
+        
+        const busDepartureTime1 = new Date("1970-01-01T" + skånetrafiken.busData[0].departureTime + "Z");
+        let busTimeUntil1 = busDepartureTime1 - currentTime;
+        busTimeOne.innerHTML = busTimeUntil1 / (1000 * 60);
+
+        const busDepartureTime2 = new Date("1970-01-01T" + skånetrafiken.busData[1].departureTime + "Z");
+        let busTimeUntil2 = busDepartureTime2 - currentTime;
+        busTimeTwo.innerHTML = busTimeUntil2 / (1000 * 60);
+
+        const busDepartureTime3 = new Date("1970-01-01T" + skånetrafiken.busData[2].departureTime + "Z");
+        let busTimeUntil3 = busDepartureTime3 - currentTime;
+        busTimeThree.innerHTML = busTimeUntil3 / (1000 * 60);
+
+        const busDepartureTime4 = new Date("1970-01-01T" + skånetrafiken.busData[3].departureTime + "Z");
+        let busTimeUntil4 = busDepartureTime4 - currentTime;
+        busTimeFour.innerHTML = busTimeUntil4 / (1000 * 60);
+
+        const busDepartureTime5 = new Date("1970-01-01T" + skånetrafiken.busData[4].departureTime + "Z");
+        let busTimeUntil5 = busDepartureTime5 - currentTime;
+        busTimeFive.innerHTML = busTimeUntil5 / (1000 * 60);
+
+        const busDepartureTime6 = new Date("1970-01-01T" + skånetrafiken.busData[5].departureTime + "Z");
+        let busTimeUntil6 = busDepartureTime6 - currentTime;
+        busTimeSix.innerHTML = busTimeUntil6 / (1000 * 60);
 
         busNumberOne.innerHTML = skånetrafiken.busData[0].routeShortName;
         busNumberTwo.innerHTML = skånetrafiken.busData[1].routeShortName;
         busNumberThree.innerHTML = skånetrafiken.busData[2].routeShortName;
         busNumberFour.innerHTML = skånetrafiken.busData[3].routeShortName;
         busNumberFive.innerHTML = skånetrafiken.busData[4].routeShortName;
-        busNumberOne.innerHTML = skånetrafiken.busData[5].routeShortName;
+        busNumberSix.innerHTML = skånetrafiken.busData[5].routeShortName;
 
         busImgOne.innerHTML = skånetrafiken.busData[0].type;
-        busImgTwo.innerHTML = skånetrafiken.busData[0].type;
-        busImgThree.innerHTML = skånetrafiken.busData[0].type;
-        busImgFour.innerHTML = skånetrafiken.busData[0].type;
-        busImgFive.innerHTML = skånetrafiken.busData[0].type;
-        busImgSix.innerHTML = skånetrafiken.busData[0].type;
+        busImgTwo.innerHTML = skånetrafiken.busData[1].type;
+        busImgThree.innerHTML = skånetrafiken.busData[2].type;
+        busImgFour.innerHTML = skånetrafiken.busData[3].type;
+        busImgFive.innerHTML = skånetrafiken.busData[4].type;
+        busImgSix.innerHTML = skånetrafiken.busData[5].type;
       }
     });
 
