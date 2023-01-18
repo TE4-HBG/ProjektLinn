@@ -31,7 +31,7 @@ const port = 80;
 
 
 // string array
-let displayInfo = { templates: [], skåneTrafiken: {} };
+let displayInfo = { templates: [], skåneTrafiken: null };
 
 (async () => {
     displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
