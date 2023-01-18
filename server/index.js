@@ -69,10 +69,11 @@ let displayInfo = { templates: [], skåneTrafiken: null };
         let counter = 0;
         let interValID = setInterval(() => {
             counter++;
-            console.log(`${new Date().toISOString()}: sent event to ${req.ip}.`)
             console.log(displayInfo.length);
-            if (res.write(`data: ${JSON.stringify(displayInfo)}\n\n`, (error) => { console.log(error) })) {
-                console.log("it be worken");
+            if (res.write(`data: ${JSON.stringify(displayInfo)}\n\n`, (error) => { if(error) {console.log(error)} })) {
+                console.log(`${new Date().toISOString()}: sent event to ${req.ip}.`)
+            } else {
+                console.error(`${new Date().toISOString()}: failed to send event to ${req.ip}!`)
             }
 
         }, 4000);
