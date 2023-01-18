@@ -139,12 +139,17 @@ let displayInfo = { templates: [], skåneTrafiken: null };
             else if (templates[i].duration === null && templates[i].countdown != null) {
                 console.log("Detected changes to countdown");
                 console.log(templates[i].countdown);
+                var savedCountdown = fs.readFileSync('countdown.txt', 'utf8');
+                console.log(savedCountdown);
 
                 var newCountdownDate = templates[i].countdown[0]
                 var newCountdownText = templates[i].countdown[1]
 
-                var savedCountdown = fs.readFileSync('countdown.txt', 'utf8');
-                console.log(savedCountdown);
+                var [oldCountdownDate, oldCountdownText] = savedCountdown.split(':');
+                console.log(oldCountdownDate);
+                console.log(newCountdownDate);
+
+                
 
                 templates.splice(i, 1);
             }
