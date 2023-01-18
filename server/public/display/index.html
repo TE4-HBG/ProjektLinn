@@ -52,51 +52,83 @@
         let trainNameFive = document.getElementsByClassName("trainName5");
         let trainNameSix = document.getElementsByClassName("trainName6");
 
-        let trainTimeOne = document.getElementsByClassName("busName6")
-        let trainTimeTwo = document.getElementsByClassName("busName6")
-        let trainTimeThree = document.getElementsByClassName("busName6")
-        let trainTimeFour = document.getElementsByClassName("busName6")
-        let trainTimeFive = document.getElementsByClassName("busName6")
-        let trainTimeSix = document.getElementsByClassName("busName6")
+        let trainTimeOne = document.getElementsByClassName("trainTime1");
+        let trainTimeTwo = document.getElementsByClassName("trainTime2");
+        let trainTimeThree = document.getElementsByClassName("trainTime3");
+        let trainTimeFour = document.getElementsByClassName("trainTime4");
+        let trainTimeFive = document.getElementsByClassName("trainTime5");
+        let trainTimeSix = document.getElementsByClassName("trainTime6");
+  
 
-        let trainImgOne = document.getElementsByClassName("trainImgOne")
-        let trainImgTwo = document.getElementsByClassName("trainImgTwo")
-        let trainImgThree = document.getElementsByClassName("trainImgThree")
-        let trainImgFour = document.getElementsByClassName("trainImgFour")
-        let trainImgFive = document.getElementsByClassName("trainImgFive")
-        let trainImgSix = document.getElementsByClassName("trainImgSix")
+        let trainImgOne = document.getElementsByClassName("trainImgOne");
+        let trainImgTwo = document.getElementsByClassName("trainImgTwo");
+        let trainImgThree = document.getElementsByClassName("trainImgThree");
+        let trainImgFour = document.getElementsByClassName("trainImgFour");
+        let trainImgFive = document.getElementsByClassName("trainImgFive");
+        let trainImgSix = document.getElementsByClassName("trainImgSix");
 
-        let busImgOne = document.getElementsByClassName("busImgOne")
-        let busImgTwo = document.getElementsByClassName("busImgTwo")
-        let busImgThree = document.getElementsByClassName("busImgThree")
-        let busImgFour = document.getElementsByClassName("busImgFour")
-        let busImgFive = document.getElementsByClassName("busImgFive")
-        let busImgSix = document.getElementsByClassName("busImgSix")
+        let busImgOne = document.getElementsByClassName("busImgOne");
+        let busImgTwo = document.getElementsByClassName("busImgTwo");
+        let busImgThree = document.getElementsByClassName("busImgThree");
+        let busImgFour = document.getElementsByClassName("busImgFour");
+        let busImgFive = document.getElementsByClassName("busImgFive");
+        let busImgSix = document.getElementsByClassName("busImgSix");
 
-        let busNameOne = document.getElementsByClassName("busName1")
-        let busNameTwo = document.getElementsByClassName("busName2")
-        let busNameThree = document.getElementsByClassName("busName3")
-        let busNameFour = document.getElementsByClassName("busName4")
-        let busNameFive = document.getElementsByClassName("busName5")
-        let busNameSix = document.getElementsByClassName("busName6")
+        let busNameOne = document.getElementsByClassName("busName1");
+        let busNameTwo = document.getElementsByClassName("busName2");
+        let busNameThree = document.getElementsByClassName("busName3");
+        let busNameFour = document.getElementsByClassName("busName4");
+        let busNameFive = document.getElementsByClassName("busName5");
+        let busNameSix = document.getElementsByClassName("busName6");
 
-        let busTimeOne = document.getElementsByClassName("busTime1")
-        let busTimeTwo = document.getElementsByClassName("busTime2")
-        let busTimeThree = document.getElementsByClassName("busTime3")
-        let busTimeFour = document.getElementsByClassName("busTime4")
-        let busTimeFive = document.getElementsByClassName("busTime5")
-        let busTimeSix = document.getElementsByClassName("busTime6")
+        let busTimeOne = document.getElementsByClassName("busTime1");
+        let busTimeTwo = document.getElementsByClassName("busTime2");
+        let busTimeThree = document.getElementsByClassName("busTime3");
+        let busTimeFour = document.getElementsByClassName("busTime4");
+        let busTimeFive = document.getElementsByClassName("busTime5");
+        let busTimeSix = document.getElementsByClassName("busTime6");
 
-        let busNumberOne = document.getElementsByClassName("busShortName1")
-        let busNumberTwo = document.getElementsByClassName("busShortName2")
-        let busNumberThree = document.getElementsByClassName("busShortName3")
-        let busNumberFour = document.getElementsByClassName("busShortName4")
-        let busNumberFive = document.getElementsByClassName("busShortName5")
-        let busNumberSix = document.getElementsByClassName("busShortName6")
+        let busNumberOne = document.getElementsByClassName("busShortName1");
+        let busNumberTwo = document.getElementsByClassName("busShortName2");
+        let busNumberThree = document.getElementsByClassName("busShortName3");
+        let busNumberFour = document.getElementsByClassName("busShortName4");
+        let busNumberFive = document.getElementsByClassName("busShortName5");
+        let busNumberSix = document.getElementsByClassName("busShortName6");
 
-        
+        trainNameOne.innerHTML = skånetrafiken.trainData[0].routeLongName;
+        trainNameTwo.innerHTML = skånetrafiken.trainData[1].routeLongName;
+        trainNameThree.innerHTML = skånetrafiken.trainData[2].routeLongName;
+        trainNameFour.innerHTML = skånetrafiken.trainData[3].routeLongName;
+        trainNameFive.innerHTML = skånetrafiken.trainData[4].routeLongName;
+        trainNameSix.innerHTML = skånetrafiken.trainData[5].routeLongName;
 
+        trainTimeOne.innerHTML = skånetrafiken.trainData[0].departureTime;
+        trainTimeTwo.innerHTML = skånetrafiken.trainData[1].departureTime;
+        trainTimeThree.innerHTML = skånetrafiken.trainData[2].departureTime;
+        trainTimeFour.innerHTML = skånetrafiken.trainData[3].departureTime;
+        trainTimeFive.innerHTML = skånetrafiken.trainData[4].departureTime;
+        trainTimeOne.innerHTML = skånetrafiken.trainData[5].departureTime;
 
+        busNameOne.innerHTML = skånetrafiken.busData[0].routeLongName;
+        busNameTwo.innerHTML = skånetrafiken.busData[1].routeLongName;
+        busNameThree.innerHTML = skånetrafiken.busData[2].routeLongName;
+        busNameFour.innerHTML = skånetrafiken.busData[3].routeLongName;
+        busNameFive.innerHTML = skånetrafiken.busData[4].routeLongName;
+        busNameOne.innerHTML = skånetrafiken.busData[5].routeLongName;
+
+        busTimeOne.innerHTML = skånetrafiken.busData[0].departureTime;
+        busTimeTwo.innerHTML = skånetrafiken.busData[1].departureTime;
+        busTimeThree.innerHTML = skånetrafiken.busData[2].departureTime;
+        busTimeFour.innerHTML = skånetrafiken.busData[3].departureTime;
+        busTimeFive.innerHTML = skånetrafiken.busData[4].departureTime;
+        busTimeOne.innerHTML = skånetrafiken.busData[5].departureTime;
+
+        busNumberOne.innerHTML = skånetrafiken.busData[0].routeShortName;
+        busNumberTwo.innerHTML = skånetrafiken.busData[1].routeShortName;
+        busNumberThree.innerHTML = skånetrafiken.busData[2].routeShortName;
+        busNumberFour.innerHTML = skånetrafiken.busData[3].routeShortName;
+        busNumberFive.innerHTML = skånetrafiken.busData[4].routeShortName;
+        busNumberOne.innerHTML = skånetrafiken.busData[5].routeShortName;
       }
     });
 
