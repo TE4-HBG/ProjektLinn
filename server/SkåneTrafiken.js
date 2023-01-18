@@ -1,7 +1,15 @@
 const fs = require('fs');
 const https = require('https');
 const unzipper = require('unzipper');
-const { setTimeout } = require('timers/promises');
+
+function sleep(ms) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, ms);
+    })
+}
+//const { setTimeout } = require('timers/promises');
 /**Array class for route file*/
 class Route {
     ID;
@@ -256,7 +264,7 @@ async function Get() {
         .on('finish', () => downloaded = true)
     );
     while(!downloaded) {
-        await setTimeout(1000);
+        await sleep(1000);
         currentTime += 1;
         if(currentTime > maxTime) {
             throw "the skånetrafiken servers timed out uh oh :("
