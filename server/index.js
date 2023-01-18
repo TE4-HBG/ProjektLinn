@@ -32,14 +32,14 @@ const port = 80;
 
 // string array
 let displayInfo = { templates: [], skåneTrafiken: {} };
-
+/*
 (async () => {
     displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
     setInterval(async () => {
         displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
     }, 3600000);
 })();
-
+*/
 
 
 {
