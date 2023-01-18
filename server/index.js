@@ -106,9 +106,9 @@ let displayInfo = { templates: [], skåneTrafiken: {} };
     function CheckForNonTemplateChanges(templates) {
         console.log(templates)
         templates = ParseData(templates);
-        console.log("After: " + templates)
+        console.log("After: " + templates[0])
         for (let i = 0; i < templates.length; i++) {
-            if (templates[i].duration === null && JSON.parse(templates[i].foodSchedules) != null) {
+            if (templates[i].duration === null && templates[i].foodSchedules != null) {
                 // Ah! Theres been changes to the food schedule!
                 console.log("Detected changes to food schedule")
                 // Load foodSchedule file to array of objects
