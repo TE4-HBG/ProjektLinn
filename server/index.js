@@ -96,22 +96,16 @@ let displayInfo = { templates: [], skåneTrafiken: {} };
         return false
     }
 
-    function ParseData(templatesToParse) {
-        let templates = JSON.parse(templatesToParse);
-        templates.forEach(template => {
-        template.foodSchedules = JSON.parse(template.foodSchedules);
-        });
-        return templates;
-    }
-
     function CheckForNonTemplateChanges(templates) {
-        templates = ParseData(templates);
-        console.log(templates)
-
-
-
-        
         for (let i = 0; i < templates.length; i++) {
+            console.log(templates[i])
+            console.log(JSON.parse(templates[i].foodSchedules))
+            /*
+            SyntaxError: Unexpected token u in JSON at position 0
+    at JSON.parse (<anonymous>)
+    at CheckForNonTemplateChanges (/root/ProjektLinn/server/index.js:90:30)
+    at UpdateDisplayInfo (/root/ProjektLinn/server/index.js:134:17)
+*/
             if (templates[i].duration === null && JSON.parse(templates[i].foodSchedules) != null) {
                 // Ah! Theres been changes to the food schedule!
                 console.log("Detected changes to food schedule")
@@ -122,7 +116,7 @@ let displayInfo = { templates: [], skåneTrafiken: {} };
                 for (let x = 0; x < savedSchedules.length; x++) {
                     for (let y = 0; y < JSON.parse(templates[i].foodSchedules).length; y++) {
                         foodSchedule = JSON.parse(templates[i].foodSchedules[y]);// NOTE SINGULAR NOT PLURAL!!!
-                        if (savedSchedules[x].week === foodSchedules.week) {
+                        if (savedSchedules[x].week === foodSchedule.week) {
                             // If the new week already exists in savedSchedule, replace it with new week.
                             savedSchedules[x] = foodSchedule;
                         }
