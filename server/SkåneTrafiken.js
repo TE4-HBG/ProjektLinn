@@ -260,9 +260,8 @@ async function Get() {
     let currentTime = 0;
     console.log("downloading")
     https.get(url, { headers: { "Accept-Encoding": "gzip" } }, (response) => response
-        .pipe(unzipper.Extract({ path: './skånetrafiken/' }))
-        .on('finish', () => downloaded = true)
-    );
+        .pipe(fs.createWriteStream('skånetrafiken.zip')))
+        .on('finish', () => downloaded = true);
 
     while (!downloaded) {
         await sleep(1000);
@@ -271,6 +270,14 @@ async function Get() {
             throw "the skånetrafiken servers timed out uh oh :("
         }
     }
+    try {
+        console.log(JSON.parse(fs.readFileSync('skånetrafiken.zip').toString('utf-8')))
+    } catch {
+
+    }
+
+    fs.createReadStream('skånetrafiken.zip').pipe(unzipper.Extract({path: './skånetrafiken/'}))
+    
     console.log('downloaded');
 
     const tripsArr = Trip.fromFile('./skånetrafiken/trips.txt');
