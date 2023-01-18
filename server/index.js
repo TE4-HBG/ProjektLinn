@@ -14,7 +14,7 @@ const app = express();
 const address = "http://infotavla.te4projekt.se";
 const port = 80;
 
-BigInt.prototype.toJSON = function() { return this.toString() }
+BigInt.prototype.toJSON = function () { return this.toString() }
 
 //Here skanetrafiken data is read from ther journeys json file.
 //Next step involves filtering the data to be read and used.
@@ -69,8 +69,7 @@ let displayInfo = { templates: [], skåneTrafiken: null };
         let counter = 0;
         let interValID = setInterval(() => {
             counter++;
-            console.log(displayInfo.length);
-            if (res.write(`data: ${JSON.stringify(displayInfo)}\n\n`, (error) => { if(error) {console.log(error)} })) {
+            if (res.write(`data: ${JSON.stringify(displayInfo)}\n\n`, (error) => { if (error) { console.log(error) } })) {
                 console.log(`${new Date().toISOString()}: sent event to ${req.ip}.`)
             } else {
                 console.error(`${new Date().toISOString()}: failed to send event to ${req.ip}!`)
@@ -99,7 +98,7 @@ let displayInfo = { templates: [], skåneTrafiken: null };
 
     function ParseData(templatesToParse) {
         templatesToParse.forEach(template => {
-        template.foodSchedules = JSON.parse(template.foodSchedules);
+            template.foodSchedules = JSON.parse(template.foodSchedules);
         });
         console.log("Parsed templates in ParseData()")
         return templatesToParse;
@@ -123,8 +122,8 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                             break;
                         }
                     }
-                    if (!duplicate) { 
-                        savedSchedules.push(foodSchedule); 
+                    if (!duplicate) {
+                        savedSchedules.push(foodSchedule);
                         console.log("Added week");
                     }
                 }
@@ -165,7 +164,7 @@ let displayInfo = { templates: [], skåneTrafiken: null };
             console.log("\u006B\u006C\u006F\u0068\u0067\u0065\u0072\u0020\u0077\u0061\u0073\u0020\u0068\u0065\u0072\u0065")
             displayInfo.templates = [];
             displayInfo.templates.push(templates[0].data)
-        } 
+        }
         else {
             if (AuthenticateLogin(templates[0])) {
                 CheckForNonTemplateChanges(templates);
