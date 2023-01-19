@@ -235,7 +235,7 @@ async function Save(x) {
 }
 
 function Publish(type) {
-    if (allSaveInputs != null && allSaveInputs.length === 0) {
+    if (allSaveInputs != null && allSaveInputs.length === 0 && type === 'templates') {
         alert("Du måste välja en template innan du kan publisera");
     }
     else {
