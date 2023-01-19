@@ -112,15 +112,15 @@
     let timeDiff = countdownDate.getTime() - todaysDate.getTime();
     let diffDays = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 
-    console.log("todays date: " + todaysDate);
-    console.log("countdown date: " + countdownDate);
-    console.log("Antal dagar: " + diffDays);
-
     forEach(countdownTextTag, item => item.innerHTML = countdownText);
     forEach(countdownDateTag, item => item.innerHTML = diffDays == 0 ? 'Idag!' : diffDays < 0 ? "Har hänt" : `${diffDays} dagar kvar`);
 }
 
-  setInterval(() => {
+  function SetFood() {
+
+  }
+
+setInterval(() => {
     counter += 1000;
     if (templatesChanged) {
       currentIndex = 0;
@@ -342,6 +342,7 @@
       //endregion
     }
     SetCountdown();
+    SetFood();
   }, 1000);
 </script>
 
