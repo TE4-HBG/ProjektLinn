@@ -5,6 +5,7 @@ let allSaveInputs = JSON.parse(localStorage.getItem("savedInputs"));
 if (!allSaveInputs) {
     allSaveInputs = [];
 }
+PrintAllSavedInputs();
 
 
 function PrintInputBorder(Arr) {
@@ -247,6 +248,7 @@ function Publish(type) {
     //window.location.reload();
     localStorage.clear();
     allSaveInputs = [];
+    PrintSavedInputs();
 }
 
 function DeleteInputBorder(LinnInputID) {
@@ -257,6 +259,23 @@ function test(x) {
     for (let index = 0; index < allSaveInputs.length; index++) {
         const element = allSaveInputs[index];
         console.log(element);
+        
+    }
+}
+function PrintAllSavedInputs(clear = false) {
+    if  (clear) {
+        document.getElementById('savedInputs').innerHTML = "";
+    }
+
+    
+    for (let i = 0; i < allSaveInputs.length; i++) {
+        const element = allSaveInputs[i];
+        
+
+        let tmpArray = Object.values(element.content).map(val => val.match(/<p>(.*?)<\/p>/)[1]);;
+        
+        console.log(tmpArray);
+        PrintSavedInputs(element.duration, element.templateID, tmpArray)
     }
 }
 function PrintSavedInputs(minutes, x, newArray) {
@@ -266,6 +285,8 @@ function PrintSavedInputs(minutes, x, newArray) {
     let imgAmount = 0;
     let Arr = localStorage.getItem(x);
     Arr = Arr.split(",");
+    
+    console.log(newArray);
 
     container += '<div name="' + Arr + '" id="' + Arr[0] + '-saved">' +
         '<div class="UpdateForms-saved">' +
@@ -342,7 +363,8 @@ function HideLoginPopup() {
     username = document.getElementById("username").value;
     password = document.getElementById("password").value;
     popup.style.display = "none";
-    ShowDinnerSchedule()
+    ShowDinnerSchedule();
+    PrintAllSavedInputs();
 }
 
 
