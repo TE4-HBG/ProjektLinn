@@ -80,6 +80,45 @@
     }
   }
 
+  function SetCountdown() {
+    let countdownTextTag = document.getElementsByClassName("countdownName");
+    let countdownDateTag = document.getElementsByClassName("countdownTime");
+    if (!countdownDate) {
+      return;
+    }
+
+    var savedCountdown = fs.readFileSync('countdown.txt', 'utf8');
+    var [countdownDateString, countdownText] = savedCountdown.split(':');
+
+    let countdownDate = new Date(countdownDateString);
+
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth()+1; 
+    let yyyy = today.getFullYear();
+    if(dd<10) 
+    {
+        dd='0'+dd;
+    } 
+    if(mm<10) 
+    {
+        mm='0'+mm;
+    }
+
+    let todaysDateString = yyyy+'-'+mm+'-'+dd;
+    let todaysDate = new Date(todaysDateString);
+
+    let timeDiff = countdownDate.getTime() - todaysDate.getTime();
+    let diffDays = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+    console.log("todays date: " + todaysDate);
+    console.log("countdown date: " + countdownDate);
+    console.log("Antal dagar: " + diffDays);
+
+    countdownTextTag.innerHTML = countdownText;
+    countdownDateTag.innerHTML = diffDays;
+}
+
   setInterval(() => {
     counter += 1000;
     if (templatesChanged) {
@@ -293,6 +332,7 @@
       */
       //endregion
     }
+    SetCountdown();
   }, 1000);
 </script>
 

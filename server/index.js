@@ -162,7 +162,11 @@ let displayInfo = { templates: [], skåneTrafiken: { trainData: [], busData: [] 
         }
     }
 
-    function CalculateCountdown(countdownDateString) {
+    // This function calculates number of days from todays date to countdown date
+    // This should not be done here but on the client
+    // When this is fixed, remove this function from here
+
+    /*function CalculateCountdown(countdownDateString) {
         let countdownDate = new Date(countdownDateString);
 
         let today = new Date();
@@ -186,7 +190,7 @@ let displayInfo = { templates: [], skåneTrafiken: { trainData: [], busData: [] 
         console.log("todays date: " + todaysDate);
         console.log("countdown date: " + countdownDate);
         console.log("Antal dagar: " + diffDays);
-    }
+    }*/
 
 
     async function UpdateDisplayInfo() {
@@ -200,7 +204,6 @@ let displayInfo = { templates: [], skåneTrafiken: { trainData: [], busData: [] 
         else {
             if (AuthenticateLogin(templates[0])) {
                 CheckForNonTemplateChanges(templates);
-                CalculateCountdown(newCountdownDate);
 
                 // if templates.length is 0, then the for loop shouldn't run in the first place! /// KLohger
                 if (templates.length != 0) { // Ugly solution but we can't find another way / I and A 
