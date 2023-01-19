@@ -180,11 +180,11 @@
       let lunchInfoTag = document.getElementsByClassName("lunchInfo");
 
       let foodScheduleInfo = info.foodSchedule;
-      if(x === 0) {
+      /*if(x === 0) {
         console.log(info)
         console.log(foodScheduleInfo);
         x = 1;
-      }
+      }*/
       
 
       let today = new Date();
@@ -511,7 +511,15 @@
       */
         //endregion
       }
+      if(x === 0) {
+        console.log(info)
+        x = 1;
+      }
       SetCountdown();
+      if(x === 1) {
+        console.log(info)
+        x = 2;
+      }
       SetFood();
     }, 1000);
   </script>
