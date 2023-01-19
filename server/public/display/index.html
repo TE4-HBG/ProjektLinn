@@ -127,8 +127,7 @@
     }
     if (info.skåneTrafiken.busData.length == 6 && info.skåneTrafiken.trainData.length == 6) {
       //Gets the current time so it can be used for skanetrafiken
-      const now = new Date();
-      const currentTime = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+      const currentTime = new Date();
 
       //Here we will retrieve all skanetrafiken elements from the templates and assign them
 
@@ -215,10 +214,11 @@
         let timeUntil5 = departureTime5 - currentTime;
         foreach(trainTimeFive, (item) => item.innerHTML = innerHTML = timeUntil5 / (1000 * 60));
 
-
-        const departureTime6 = new Date("1970-01-01T" + info.skåneTrafiken.trainData[5].departureTime + "Z");
-        let timeUntil6 = departureTime6 - currentTime;
-        foreach(trainTimeSix, (item) => item.innerHTML = innerHTML = timeUntil6 / (1000 * 60));
+        const departureTimeStr = info.skåneTrafiken.trainData[5].departureTime;
+        const departureTimeArr = departureTimeStr.split(':');
+        const departureTime6 = new Date(1970, 0, 1, departureTimeArr[0], departureTimeArr[1], departureTimeArr[2]);
+        let timeUntil6 = (departureTime6.getTime() - currentTime.getTime()) / (1000 * 60); 
+        forEach(trainTimeSix, (item) => item.innerHTML = timeUntil6);
       }
       /*
       foreach(trainImgOne, (item) => item.innerHTML = info.skåneTrafiken.trainData[0].type);
