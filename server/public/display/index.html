@@ -38,7 +38,26 @@
     let skåneChanged = false;
     let counter = 0;
     let currentIndex = 0;
-    const source = new EventSource("events");
+    const source = null;
+
+    window.onload(() => {
+      source = new EventSource("events")
+      source.addEventListener("message", (message) => {
+        console.log("recieved new data.")
+        let newInfo = JSON.parse(message.data);
+        if (JSON.stringify(info.templates) !== JSON.stringify(newInfo.templates)) {
+          console.log("got new templates!");
+          templatesChanged = true;
+          info = newInfo;
+          document.getElementById('page-container').innerHTML = info.templates.reduce((prev, curr) => (prev + curr.html), '');
+          templateElements = document.getElementsByClassName("page");
+        }
+        if (newInfo.skånetrafiken && JSON.stringify(info.skanetrafiken) !== JSON.stringify(newInfo.skånetrafiken)) {
+          info = newInfo;
+          skåneChanged = true;
+        }
+      });
+    })
     /**
      * 
      * @param {HTMLCollection} collection 
@@ -50,21 +69,6 @@
 
       }
     }
-
-    source.addEventListener("message", (message) => {
-      let newInfo = JSON.parse(message.data);
-      if (JSON.stringify(info.templates) !== JSON.stringify(newInfo.templates)) {
-        console.log("got new templates!");
-        templatesChanged = true;
-        info = newInfo;
-        document.getElementById('page-container').innerHTML = info.templates.reduce((prev, curr) => (prev + curr.html), '');
-        templateElements = document.getElementsByClassName("page");
-      }
-      if (newInfo.skånetrafiken && JSON.stringify(info.skanetrafiken) !== JSON.stringify(newInfo.skånetrafiken)) {
-        info = newInfo;
-        skåneChanged = true;
-      }
-    });
 
     setInterval(() => {
       counter += 1000;
