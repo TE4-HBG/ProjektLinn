@@ -192,7 +192,6 @@
 
       for (let i = 0; i < foodScheduleInfo.length; i++) {
         if (parseInt(foodScheduleInfo[i].week) === weekNumber) {
-          console.log("Right week");
           if (weekdayNumber === 1) {
             //It's monday
             forEach(
@@ -213,7 +212,6 @@
             );
           } else if (weekdayNumber === 4) {
             //It's thursday
-            console.log("Right day");
             forEach(
               lunchInfoTag,
               (item) => (item.innerHTML = foodScheduleInfo[i].thursday)
@@ -224,19 +222,8 @@
               lunchInfoTag,
               (item) => (item.innerHTML = foodScheduleInfo[i].friday)
             );
-          } else {
-            forEach(
-              lunchInfoTag,
-              (item) => (item.innerHTML = "Error: Ingen mat inlagd dag vecka")
-            );
           }
-        } /*else {
-          console.log("Wrong week");
-          forEach(
-            lunchInfoTag,
-            (item) => (item.innerHTML = "Error: Ingen mat inlagd denna vecka")
-          );
-        }*/
+        }
       }
     }
 
