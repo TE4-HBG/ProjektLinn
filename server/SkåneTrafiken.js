@@ -267,7 +267,7 @@ async function Get() {
         await sleep(1000);
         currentTime += 1;
         if (currentTime > maxTime) {
-            throw "the skånetrafiken servers timed out uh oh :("
+            console.error("the skånetrafiken servers timed out uh oh :(");
         }
     }
     console.log("downloaded")
