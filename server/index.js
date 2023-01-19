@@ -32,7 +32,7 @@ BigInt.prototype.toJSON = function () { return this.toString() }
 
 
 // string array
-let displayInfo = { templates: [], skåneTrafiken: { trainData: [], busData: [] } };
+let displayInfo = { templates: [], skåneTrafiken: { trainData: [], busData: [] }, countDown: '' };
 
 (async () => {
     displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
@@ -69,6 +69,7 @@ let displayInfo = { templates: [], skåneTrafiken: { trainData: [], busData: [] 
 
         let counter = 0;
         let interValID = setInterval(() => {
+            displayInfo.countDown = fs.readFileSync('countdown.txt','utf-8');
             counter++;
             if (res.write(`data: ${JSON.stringify(displayInfo)}\n\n`, (error) => { if (error) { console.log(error) } })) {
                 console.log(`${new Date().toISOString()}: sent event to ${req.ip}.`)
@@ -150,6 +151,7 @@ let displayInfo = { templates: [], skåneTrafiken: { trainData: [], busData: [] 
                 var [oldCountdownDate, oldCountdownText] = savedCountdown.split(':'); //Leaving this to be able to implement support for if empty info is submitted
 
                 var countdownInfo = newCountdownDate + ":" + newCountdownText;
+                
                 fs.writeFileSync('countdown.txt', countdownInfo);
 
                 console.log("countdown.txt updated");
