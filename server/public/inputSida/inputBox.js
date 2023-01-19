@@ -245,7 +245,7 @@ function Publish(type) {
         alert("Hmm, något gick fel. Servern kan vara nere. Ladda om sidan och prova igen, och ifall det fortfarande inte fungerar kontakta utvecklare!");
     }
     //window.location.reload();
-    localStorage.removeItem("savedInputs");
+    localStorage.clear();
     allSaveInputs = [];
 }
 
