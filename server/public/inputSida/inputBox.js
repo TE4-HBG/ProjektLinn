@@ -413,3 +413,8 @@ function checkImageSize(id) {
     };
     reader.readAsArrayBuffer(file);
 }
+
+function ClearData() { //Clears and updates allSaveInput and local storage, a clean slate
+    localStorage.removeItem("savedInputs");
+    allSaveInputs = [];
+}
