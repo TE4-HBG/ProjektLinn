@@ -63,7 +63,7 @@ p {
     position: absolute; 
     overflow-x: hidden;
     white-space: nowrap;
-    width: 42mm;
+    width: 40mm;
     height: 4.5mm;
 }
 /* Countdown in footer */ 
@@ -88,7 +88,7 @@ p {
     position: absolute; 
     overflow-x: hidden;
     white-space: nowrap;
-    width: 42mm;
+    width: 32mm;
     height: 4.5mm;
 }
 .skanetrafikenTimeBody {
@@ -302,7 +302,7 @@ p {
     position: absolute; 
     overflow-x: hidden;
     white-space: nowrap;
-    width: 42mm;
+    width: 30mm;
     height: 4.5mm;
 }
 .skanetrafikenTimeFooter {
