@@ -82,6 +82,7 @@ setInterval(async () => {
         let interValID = setInterval(() => {
             displayInfo.countDown = fs.readFileSync('countdown.txt','utf-8');
             displayInfo.foodSchedule = fs.readFileSync('foodSchedules.txt','utf-8');
+            console.log(displayInfo.foodSchedule);
 
             counter++;
             console.log(`${new Date().toISOString()}: sending event to ${req.ip}.`)
