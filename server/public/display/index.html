@@ -40,7 +40,7 @@
     let currentIndex = 0;
     const source = null;
 
-    window.onload(() => {
+    window.onload = () => {
       source = new EventSource("events")
       source.addEventListener("message", (message) => {
         console.log("recieved new data.")
@@ -57,7 +57,7 @@
           skåneChanged = true;
         }
       });
-    })
+    }
     /**
      * 
      * @param {HTMLCollection} collection 
