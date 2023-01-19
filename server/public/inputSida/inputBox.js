@@ -262,7 +262,7 @@ function test(x) {
         
     }
 }
-function PrintAllSavedInputs(clear = false) {
+function PrintAllSavedInputs(clear = false) { //call the function with the argument true to clear the saved inputs and then reprint it, in practice you print only the things that are in allSavedInputs[] 
     if  (clear) {
         document.getElementById('savedInputs').innerHTML = "";
     }
