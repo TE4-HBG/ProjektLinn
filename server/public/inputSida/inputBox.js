@@ -159,6 +159,7 @@ async function Save(x) {
             var newText1 = ParagraphDivision(allTextInput[0], "paragraph")
             jsonObject = {
                 "text1": newText1,
+                "image1path": allImgInput[0].value,
                 "image1": await _arrayBufferToBase64(allImgInput[0].files[0])
             };
 
@@ -185,6 +186,7 @@ async function Save(x) {
             allImgInput = inputBox.getElementsByClassName("IMG");
             minutes = inputBox.getElementsByClassName('quantity');
             jsonObject = {
+                "image1path": allImgInput[0].value,
                 "image1": await _arrayBufferToBase64(allImgInput[0].files[0])
             };
 
@@ -200,6 +202,7 @@ async function Save(x) {
             var newText1 = ParagraphDivision(allTextInput[0], "paragraph")
             jsonObject = {
                 "text1": newText1,
+                "image1path": allImgInput[0].value,
                 "image1": await _arrayBufferToBase64(allImgInput[0].files[0])
             };
 
@@ -221,7 +224,6 @@ async function Save(x) {
 
             allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
             PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allTextInput[1].value], (allSaveInputs.length - 1));
-            console.log("hello");
             break;
         case 'Template6':
             break;
@@ -282,10 +284,13 @@ function PrintAllSavedInputs() { //call the function with the argument true to c
     for (let i = 0; i < allSaveInputs.length; i++) {
         const element = allSaveInputs[i];  
 
-        let tmpArray = Object.values(element.content).map(val => val.match(/<p>(.*?)<\/p>/)[1]);;
-        
-        console.log(tmpArray);
-        PrintSavedInputs(element.duration, element.templateID, tmpArray, i)
+       //console.log(element.content);
+       const obj = element.content;
+       const foramtedArray = Object.entries(obj).map(([key, value]) => typeof value === 'string' ? value.replace(/<[^>]*>/g, '') : value);
+       //console.log(foramtedArray)
+
+        console.log(foramtedArray);
+        PrintSavedInputs(element.duration, element.templateID, foramtedArray, i)
     }
 }
 function PrintSavedInputs(minutes, x, newArray, index = null) {
@@ -308,7 +313,6 @@ function PrintSavedInputs(minutes, x, newArray, index = null) {
 
 
     for (let index = 0; index < Arr.length; index++) {
-        console.log(1);
 
         if (Arr[index] === 'IMG') {
             imgAmount++;
