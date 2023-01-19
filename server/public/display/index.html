@@ -84,14 +84,13 @@
   function SetCountdown() {
     let countdownTextTag = document.getElementsByClassName("countdownName");
     let countdownDateTag = document.getElementsByClassName("countdownTime");
+    let countdownDate = new Date(countdownDateString);
     if (!countdownDate) {
       return;
     }
 
     var savedCountdown = fs.readFileSync('countdown.txt', 'utf8');
     var [countdownDateString, countdownText] = savedCountdown.split(':');
-
-    let countdownDate = new Date(countdownDateString);
 
     let today = new Date();
     let dd = today.getDate();
