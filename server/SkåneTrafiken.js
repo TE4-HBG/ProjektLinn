@@ -284,12 +284,11 @@ async function Get() {
                 throw "the extraction timed out uh oh :("
             }
         }
+        console.log("extracted")
     } catch {
-        console.error(`EXTRACTION FAILED!\n ${fs.readFileSync('skånetrafiken.zip').toString('utf-8')}`);
-        return;
+        console.error(`EXTRACTION FAILED!, proceeding to use local file none-the-less`);
+        
     }
-
-    console.log("extracted")
 
     const tripsArr = Trip.fromFile('./skånetrafiken/trips.txt');
     const timesArr = StopTimes.fromFile('./skånetrafiken/stop_times.txt');
