@@ -60,7 +60,6 @@ function ShowDinnerSchedule() { // body onload + update dinner schedule table
 }
 
 
-
 function CheckForms() { // True if correct input
   const input = ['week', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
 
@@ -90,7 +89,6 @@ function CheckForms() { // True if correct input
 
   if (isFormsFilled && isWeekUnique) { return true; } else { return false; }
 }
-
 
 
 function ShowPopup(message) {

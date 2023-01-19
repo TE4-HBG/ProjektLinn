@@ -58,7 +58,7 @@
             <input type="text" id="CountdownTEXT" value=""><br><br>
             <label> Datum: </label>
             <input type="date" id="CountdownDATE" name="trip-start" value="2003-02-30">
-            <button id="btnInCountdown" onclick='Save("countdown")' type="button">Spara</button>
+            <button id="btnInCountdown" onclick='Publish("countdown")' type="button">Spara</button>
 
         </form>
     </div>
@@ -112,13 +112,14 @@
     </div>
     <button onclick="Publish('templates')" type="button" id="publish">Publicera</button>
     <div id="loginPopup">
-        <form type="login">
-            <label type="login">Username: <input type="login" id="username"></label>
+        <form autocomplete="on" class="loginForm" method="post">
+            <label class="loginLabel">Username: <input class="loginInput" name="username" id="username" type="text"></label>
             <br>
-            <label type="login">Password: <input type="login" id="password"></label>
+            <label class="loginLabel">Password: <input class="loginInput" name="password" id="password" type="password"></label>
             <br>
-            <input type="submitLogin" value="Submit" onclick="HideLoginPopup()">
+            <input class="submitInput" value="Submit" onclick="HideLoginPopup();">
         </form>
+        
     </div>
 
     
