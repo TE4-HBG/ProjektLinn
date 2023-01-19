@@ -32,13 +32,13 @@ BigInt.prototype.toJSON = function () { return this.toString() }
 
 
 // string array
-let displayInfo = { templates: [], skåneTrafiken: null };
+let displayInfo = { templates: [], skåneTrafiken: { trainData: [], busData: [] } };
 
 (async () => {
     displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
     setInterval(async () => {
         displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
-    }, 3600000);
+    }, 86400000);
 })();
 
 

@@ -254,7 +254,7 @@ const helsingborgCStops = [
     9022012083241049n
 ];
 async function Get() {
-    const url = 'https://opendata.samtrafiken.se/gtfs/skane/skane.zip?key=762ba7e4b02b4688856cc10ae69af137';
+    const url = 'https://opendata.samtrafiken.se/gtfs/skane/skane.zip?key=f1ed286e2bc1495ead7a6ce8b944798a';
     let downloaded = false;
     const maxTime = 50;
     let currentTime = 0;
@@ -284,12 +284,11 @@ async function Get() {
                 throw "the extraction timed out uh oh :("
             }
         }
+        console.log("extracted")
     } catch {
-        console.error(`EXTRACTION FAILED!\n ${fs.readFileSync('skånetrafiken.zip').toString('utf-8')}`);
-        return;
+        console.error(`EXTRACTION FAILED!, proceeding to use local file none-the-less`);
+        
     }
-
-    console.log("extracted")
 
     const tripsArr = Trip.fromFile('./skånetrafiken/trips.txt');
     const timesArr = StopTimes.fromFile('./skånetrafiken/stop_times.txt');
