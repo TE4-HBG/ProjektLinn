@@ -236,24 +236,24 @@ async function Save(x) {
 
 function Publish(type) {
     if (allSaveInputs != null && allSaveInputs.length === 0 && type === 'templates') {
-        alert("Du måste välja en template innan du kan publisera");
+        alert("Du måste välja en template innan du kan publicera");
     }
     else {
         if (type === "food" || type === "countdown") {
             Save(type);
+            localStorage.clear();
+            allSaveInputs = [];
         }
         
         if (Send(JSON.stringify(allSaveInputs))) {
-            alert("Data Skickat!");
+            alert("Data Skickad!");
         }
         else {
-            alert("Hmm, något gick fel. Servern kan vara nere. Ladda om sidan och prova igen, och ifall det fortfarande inte fungerar kontakta utvecklare!");
+            alert("Något gick fel. All sparad data borttagen, pröva igen senare.");
+            localStorage.clear();
+            allSaveInputs = [];
         } 
     }
-    //window.location.reload();
-    localStorage.clear();
-    allSaveInputs = [];
-
 }
 
 function DeleteInputBorder(LinnInputID, index) {
