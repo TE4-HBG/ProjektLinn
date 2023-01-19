@@ -178,7 +178,7 @@
       let lunchInfoTag = document.getElementsByClassName("lunchInfo");
 
       try {
-        let foodScheduleInfo = JSON.parse(info.foodSchedule);
+        var foodScheduleInfo = JSON.parse(info.foodSchedule);
       }
       catch {
         console.log("Failed to parse foodSchedule");
