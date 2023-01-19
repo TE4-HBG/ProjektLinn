@@ -30,8 +30,8 @@
     let info = {
       templates: [],
       skånetrafiken: {
-        busInfo: null,
-        trainInfo: null,
+        busInfo: [],
+        trainInfo: [],
       }
     };
     let templatesChanged = false;
@@ -111,7 +111,7 @@
           currentIndex = (currentIndex + 1) % templateElements.length;
         }
       }
-      if (info.skånetrafiken.busInfo && info.skånetrafiken.trainInfo) {
+      if (info.skånetrafiken.busInfo.length == 6 && info.skånetrafiken.trainInfo.length == 6) {
         //Gets the current time so it can be used for skanetrafiken
         const now = new Date();
         const currentTime = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
