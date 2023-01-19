@@ -137,8 +137,6 @@
       let countdownTextTag = document.getElementsByClassName("countdownName");
       let countdownDateTag = document.getElementsByClassName("countdownTime");
 
-      console.log(info)
-
       let [countdownDateString, countdownText] = info.countDown.split(":");
 
       let countdownDate = new Date(countdownDateString);
@@ -180,11 +178,8 @@
       let lunchInfoTag = document.getElementsByClassName("lunchInfo");
 
       let foodScheduleInfo = info.foodSchedule;
-      /*if(x === 0) {
-        console.log(info)
-        console.log(foodScheduleInfo);
-        x = 1;
-      }*/
+      
+      console.log(info)
       
 
       let today = new Date();
