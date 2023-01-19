@@ -174,17 +174,23 @@
       );
     }
 
+    let x = 0;
+
     function SetFood() {
       let lunchInfoTag = document.getElementsByClassName("lunchInfo");
 
-      let foodScheduleInfoString = info.foodSchedule;
-      let foodScheduleInfo = JSON.parse(foodScheduleInfoString);
+      let foodScheduleInfo = info.foodSchedule;
+      if(x === 0) {
+        console.log(foodScheduleInfo);
+        x = 1;
+      }
+      
 
       let today = new Date();
       let weekNumber = getWeek(today);
       let weekdayNumber = today.getDay(); //Gets a number from 0 to 6 where sunday = 0 and saturday = 6
 
-      for (let i = 0; i < foodScheduleInfo.length; i++) {
+      /*for (let i = 0; i < foodScheduleInfo.length; i++) {
         if (parseInt(foodScheduleInfo[i].week) === weekNumber) {
           if (weekdayNumber === 1) {
             //It's monday
@@ -228,7 +234,7 @@
             (item) => (item.innerHTML = "Error: Ingen mat inlagd denna vecka")
           );
         }
-      }
+      }*/
     }
 
     setInterval(() => {

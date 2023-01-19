@@ -239,11 +239,18 @@ function Publish(type) {
     else {
         if (type === "food" || type === "countdown") {
             Save(type);
-            localStorage.clear();
-            allSaveInputs = [];
+            if (Send(JSON.stringify(allSaveInputs))) {
+                alert("Data Skickad!");
+                localStorage.clear();
+                allSaveInputs = [];
+            }
+            else {
+                alert("Något gick fel. All sparad data borttagen, pröva igen senare.");
+                localStorage.clear();
+                allSaveInputs = [];
+            } 
         }
-        
-        if (Send(JSON.stringify(allSaveInputs))) {
+        else if (Send(JSON.stringify(allSaveInputs))) {
             alert("Data Skickad!");
         }
         else {
