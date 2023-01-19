@@ -164,7 +164,7 @@ async function Save(x) {
 
 
             allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
-            PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name]);
+            PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name], len(allSaveInputs));
 
             break;
         case 'Template2':
@@ -178,7 +178,7 @@ async function Save(x) {
             }
 
             allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
-            PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allTextInput[1].value]);
+            PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allTextInput[1].value], len(allSaveInputs));
 
             break;
         case 'Template3':
@@ -190,7 +190,7 @@ async function Save(x) {
 
 
             allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
-            PrintSavedInputs(minutes[0].value, x, [allImgInput[0].value]);
+            PrintSavedInputs(minutes[0].value, x, [allImgInput[0].value], len(allSaveInputs));
 
             break;
         case 'Template4':
@@ -205,7 +205,7 @@ async function Save(x) {
 
 
             allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
-            PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name]);
+            PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name], len(allSaveInputs));
 
             break;
         case 'Template5':
@@ -220,7 +220,7 @@ async function Save(x) {
 
 
             allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
-            PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allTextInput[1].value]);
+            PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allTextInput[1].value], len(allSaveInputs));
             console.log("hello");
             break;
         case 'Template6':
@@ -259,7 +259,7 @@ function DeleteInputBorder(LinnInputID, index) {
     document.getElementById(LinnInputID).remove();
     if (index != null) {
         allSaveInputs.splice(index, 1);
-        PrintAllSavedInputs(true);
+        PrintAllSavedInputs();
         localStorage.setItem("savedInputs", JSON.stringify(allSaveInputs));
     }
 }
@@ -270,18 +270,16 @@ function test(x) {
         
     }
 }
-function PrintAllSavedInputs(clear = false) { //call the function with the argument true to clear the saved inputs and then reprint it, in practice you print only the things that are in allSavedInputs[] 
-    if  (!clear) {
-        for (let i = 0; i < allSaveInputs.length; i++) {
-            const element = allSaveInputs[i];  
-    
-            let tmpArray = Object.values(element.content).map(val => val.match(/<p>(.*?)<\/p>/)[1]);;
-            
-            console.log(tmpArray);
-            PrintSavedInputs(element.duration, element.templateID, tmpArray, i)
-        }
+function PrintAllSavedInputs() { //call the function with the argument true to clear the saved inputs and then reprint it, in practice you print only the things that are in allSavedInputs[] 
+    document.getElementById('savedInputs').innerHTML = "";
+    for (let i = 0; i < allSaveInputs.length; i++) {
+        const element = allSaveInputs[i];  
+
+        let tmpArray = Object.values(element.content).map(val => val.match(/<p>(.*?)<\/p>/)[1]);;
+        
+        console.log(tmpArray);
+        PrintSavedInputs(element.duration, element.templateID, tmpArray, i)
     }
-    else { document.getElementById('savedInputs').innerHTML = ""; } 
 }
 function PrintSavedInputs(minutes, x, newArray, index = null) {
     let container = document.getElementById('savedInputs').innerHTML;
