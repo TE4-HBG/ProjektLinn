@@ -200,7 +200,7 @@ const routeID = [
     9011012041000000n, //10,Örkelljunga - Helsingborg
     9011012060100000n, //1,HelsingborgsExpressen Dalhem - Råå
     9011012021900000n, //219,Helsingborg - Rydebäck
-    //9011012022100000n, 221,Höganäs - Helsingborg
+    9011012041100000n, //11,Höganäs - Helsingborg
     9011012060800000n, //8,Rosengården - Husensjö - Helsingborg C - Sofiero -
     9011012060200000n, //2,Ödåkra/Berga - Helsingborg C - Ättekulla/Råå
 
@@ -288,6 +288,9 @@ async function Get() {
         var givenRoute = routeID[i];
 
         var found = routesArr.find(route => route.ID === givenRoute);
+        if(!found) {
+            continue;
+        }
         var foundTrips = tripsArr.filter(trip => trip.routeID === found.ID);
         timesArr.forEach(time => {
             for (let stopIndex = 0; stopIndex < helsingborgCStops.length; stopIndex++) {
