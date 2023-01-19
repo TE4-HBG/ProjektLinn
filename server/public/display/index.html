@@ -215,10 +215,9 @@
         let timeUntil5 = departureTime5 - currentTime;
         forEach(trainTimeFive, (item) => item.innerHTML = innerHTML = timeUntil5 / (1000 * 60));
 
-        const departureTimeStr = info.skåneTrafiken.trainData[5].departureTime;
-        const departureTimeArr = departureTimeStr.split(':');
-        const departureTime6 = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), departureTimeArr[0], departureTimeArr[1], departureTimeArr[2]);
-        let timeUntil6 = (departureTime6.getTime() - currentTime.getTime()) / (1000 * 60); 
+        const [departureTime6Hour, departureTime6Minute, departureTime6Second] = info.skåneTrafiken.trainData[5].departureTime.split(':');
+        const departureTime6 = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), departureTime6Hour, departureTime6Minute, departureTime6Second);
+        let timeUntil6 = Math.ceil((departureTime6.getTime() - currentTime.getTime()) / (1000 * 60));
         forEach(trainTimeSix, (item) => item.innerHTML = timeUntil6);
       }
       /*
