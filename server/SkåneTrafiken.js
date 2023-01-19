@@ -267,18 +267,29 @@ async function Get() {
         await sleep(1000);
         currentTime += 1;
         if (currentTime > maxTime) {
-            throw "the skånetrafiken servers timed out uh oh :("
+            console.error("the skånetrafiken servers timed out uh oh :(");
         }
     }
-    try {
-        console.log(JSON.parse(fs.readFileSync('skånetrafiken.zip').toString('utf-8')))
-    } catch {
+    console.log("downloaded")
 
+
+    let extracted = false;
+    console.log("extracting")
+    try {
+        fs.createReadStream('./skånetrafiken.zip').pipe(unzipper.Extract({ path: './skånetrafiken/' })).on('finish', () => extracted = true);
+        while (!extracted) {
+            await sleep(1000);
+            currentTime += 1;
+            if (currentTime > maxTime) {
+                throw "the extraction timed out uh oh :("
+            }
+        }
+    } catch {
+        console.error(`EXTRACTION FAILED!\n ${fs.readFileSync('skånetrafiken.zip').toString('utf-8')}`);
+        return;
     }
 
-    fs.createReadStream('skånetrafiken.zip').pipe(unzipper.Extract({path: './skånetrafiken/'}))
-    
-    console.log('downloaded');
+    console.log("extracted")
 
     const tripsArr = Trip.fromFile('./skånetrafiken/trips.txt');
     const timesArr = StopTimes.fromFile('./skånetrafiken/stop_times.txt');
