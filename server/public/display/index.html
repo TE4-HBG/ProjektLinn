@@ -137,6 +137,11 @@
       let countdownTextTag = document.getElementsByClassName("countdownName");
       let countdownDateTag = document.getElementsByClassName("countdownTime");
 
+      if(x === 1) {
+        console.log(info)
+        x = 2;
+      }
+
       let [countdownDateString, countdownText] = info.countDown.split(":");
 
       let countdownDate = new Date(countdownDateString);
@@ -516,9 +521,9 @@
         x = 1;
       }
       SetCountdown();
-      if(x === 1) {
+      if(x === 2) {
         console.log(info)
-        x = 2;
+        x = 3;
       }
       SetFood();
     }, 1000);
