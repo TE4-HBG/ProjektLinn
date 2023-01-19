@@ -71,9 +71,9 @@
     }
     if (newInfo.skåneTrafiken && JSON.stringify(info.skåneTrafiken) !== JSON.stringify(newInfo.skåneTrafiken)) {
       console.log("got new skånetrafiken stuff!");
-      info = newInfo;
       skåneChanged = true;
     }
+    info = newInfo;
   });
   /**
    * 
