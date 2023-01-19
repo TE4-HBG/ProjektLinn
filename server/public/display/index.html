@@ -113,6 +113,7 @@
         console.log("got new templates!");
         templatesChanged = true;
         info = newInfo;
+        console.log(info);
         document.getElementById("page-container").innerHTML =
           info.templates.reduce((prev, curr) => prev + curr.html, "");
         templateElements = document.getElementsByClassName("page");
