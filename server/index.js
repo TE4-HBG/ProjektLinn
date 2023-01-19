@@ -34,12 +34,9 @@ BigInt.prototype.toJSON = function () { return this.toString() }
 // string array
 let displayInfo = { templates: [], skåneTrafiken: { trainData: [], busData: [] }, countDown: '' };
 
-(async () => {
+setInterval(async () => {
     displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
-    setInterval(async () => {
-        displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
-    }, 86400000);
-})();
+}, 86400000);
 
 
 
