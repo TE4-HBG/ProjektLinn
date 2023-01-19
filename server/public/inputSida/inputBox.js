@@ -5,8 +5,6 @@ let allSaveInputs = JSON.parse(localStorage.getItem("savedInputs"));
 if (!allSaveInputs) {
     allSaveInputs = [];
 }
-PrintAllSavedInputs();
-
 
 function PrintInputBorder(Arr) {
     let Text = "";
