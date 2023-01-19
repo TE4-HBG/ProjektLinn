@@ -61,6 +61,7 @@ p {
 .trainName {
     font-size: 4.5mm; 
     position: absolute; 
+    overflow: hidden;
 }
 /* Countdown in footer */ 
 .countdown {
@@ -82,6 +83,7 @@ p {
 .busNameBody {
     font-size: 3.4mm; 
     position: absolute; 
+    overflow: hidden;
 }
 .skanetrafikenTimeBody {
     font-size: 6.5mm; 
@@ -292,6 +294,7 @@ p {
 .busNameFooter {
     font-size: 3.2mm; 
     position: absolute; 
+    overflow: hidden;
 }
 .skanetrafikenTimeFooter {
     font-size: 3.8mm; 

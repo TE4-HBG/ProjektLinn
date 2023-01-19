@@ -234,17 +234,21 @@ async function Save(x) {
 }
 
 function Publish(type) {
-    if (type === "food" || type === "countdown") {
-        Save(type);
-    }
-    
-    if (Send(JSON.stringify(allSaveInputs))) {
-        alert("Data Skickat!");
+    if (allSaveInputs != null && allSaveInputs.length === 0) {
+        alert("Du måste välja en template innan du kan publisera");
     }
     else {
-        alert("Hmm, något gick fel. Servern kan vara nere. Ladda om sidan och prova igen, och ifall det fortfarande inte fungerar kontakta utvecklare!");
+        if (type === "food" || type === "countdown") {
+            Save(type);
+        }
+        
+        if (Send(JSON.stringify(allSaveInputs))) {
+            alert("Data Skickat!");
+        }
+        else {
+            alert("Hmm, något gick fel. Servern kan vara nere. Ladda om sidan och prova igen, och ifall det fortfarande inte fungerar kontakta utvecklare!");
+        } 
     }
-    //window.location.reload();
 }
 
 function DeleteInputBorder(LinnInputID) {
