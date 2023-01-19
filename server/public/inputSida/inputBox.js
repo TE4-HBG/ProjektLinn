@@ -261,7 +261,6 @@ function DeleteInputBorder(LinnInputID, index) {
         allSaveInputs.splice(index, 1);
         PrintAllSavedInputs(true);
         localStorage.setItem("savedInputs", JSON.stringify(allSaveInputs));
-
     }
 }
 function test(x) {
@@ -272,20 +271,17 @@ function test(x) {
     }
 }
 function PrintAllSavedInputs(clear = false) { //call the function with the argument true to clear the saved inputs and then reprint it, in practice you print only the things that are in allSavedInputs[] 
-    if  (clear) {
-        document.getElementById('savedInputs').innerHTML = "";
-    }
-
+    if  (!clear) {
+        for (let i = 0; i < allSaveInputs.length; i++) {
+            const element = allSaveInputs[i];  
     
-    for (let i = 0; i < allSaveInputs.length; i++) {
-        const element = allSaveInputs[i];
-        
-
-        let tmpArray = Object.values(element.content).map(val => val.match(/<p>(.*?)<\/p>/)[1]);;
-        
-        console.log(tmpArray);
-        PrintSavedInputs(element.duration, element.templateID, tmpArray, i)
+            let tmpArray = Object.values(element.content).map(val => val.match(/<p>(.*?)<\/p>/)[1]);;
+            
+            console.log(tmpArray);
+            PrintSavedInputs(element.duration, element.templateID, tmpArray, i)
+        }
     }
+    else { document.getElementById('savedInputs').innerHTML = ""; } 
 }
 function PrintSavedInputs(minutes, x, newArray, index = null) {
     let container = document.getElementById('savedInputs').innerHTML;
