@@ -36,10 +36,12 @@ let displayInfo = { templates: [], skåneTrafiken: { trainData: [], busData: [] 
 
 (async () => {
     displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
+    console.log("skåne be new")
 })()
 
 setInterval(async () => {
     displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
+    console.log("skåne be new")
 }, 30000);
 
 
