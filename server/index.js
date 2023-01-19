@@ -69,9 +69,10 @@ setInterval(async () => {
             displayInfo.countDown = fs.readFileSync('countdown.txt','utf-8');
             counter++;
             if (res.write(`data: ${JSON.stringify(displayInfo)}\n\n`, (error) => { if (error) { console.log(error) } })) {
-                console.log(`${new Date().toISOString()}: sent event to ${req.ip}.`)
+                console.log(`${new Date().toISOString()}: sent event to ${req.ip}.`) 
             } else {
-                console.error(`${new Date().toISOString()}: failed to send event to ${req.ip}!`)
+                console.error(`${new Date().toISOString()}: failed to send event to ${req.ip}!\nDisplay info is ${displayInfo}`)
+
             }
 
         }, 4000);
