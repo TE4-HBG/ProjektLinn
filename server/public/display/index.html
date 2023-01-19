@@ -117,7 +117,7 @@
     console.log("Antal dagar: " + diffDays);
 
     forEach(countdownTextTag, item => item.innerHTML = countdownText);
-    forEach(countdownDateTag, item => item.innerHTML = diffDays);
+    forEach(countdownDateTag, item => item.innerHTML = diffDays == 0 ? 'Idag!' : diffDays < 0 ? "Har hänt" : `${diffDays} dagar kvar`);
 }
 
   setInterval(() => {
