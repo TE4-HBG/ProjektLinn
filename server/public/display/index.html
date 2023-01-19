@@ -52,29 +52,29 @@
     /**
      * @type {int}
      */
-    Date.prototype.getWeek = function () {
+    function getWeek(date) {
       // debugger
       let msWeek = 604800000; // Week in milliseconds
       let msDay = 86400000; // Day in milliseconds
-      let year = this.getFullYear(); // Get the year
-      //let month = this.getMonth();                                // Month
+      let year = date.getFullYear(); // Get the year
+      //let month = date.getMonth();                                // Month
       let oneDate = new Date(year, 0, 1); // Create a new date based on THIS year
       let temp = oneDate.getDay(); // Ordinal of the first day
       let getFirstDay = temp === 0 ? 6 : temp - 1; // Ordinal of the first day of the current month (0-MO, 6-SU)
       let countWeek = 0;
       // Test to confirm week
       oneDate = new Date(oneDate.getTime() + msDay * (7 - getFirstDay));
-      if (oneDate.getTime() > this.getTime()) {
+      if (oneDate.getTime() > date.getTime()) {
         return countWeek;
       }
       // Increment loop
       while (true) {
         oneDate = new Date(oneDate.getTime() + msWeek); // Add a week and check
-        if (oneDate.getTime() > this.getTime()) break;
+        if (oneDate.getTime() > date.getTime()) break;
         countWeek++;
       }
       return countWeek + 1;
-    };
+    }
 
     function forEach(collection, func) {
       for (let i = 0; i < collection.length; i++) {
@@ -181,7 +181,7 @@
       console.log(foodScheduleInfo);
 
       let today = new Date();
-      let weekNumber = today.getWeek();
+      let weekNumber = getWeek(today);
       let weekdayNumber = today.getDay(); //Gets a number from 0 to 6 where sunday = 0 and saturday = 6
 
       console.log(weekdayNumber);
