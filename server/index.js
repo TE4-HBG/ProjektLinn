@@ -37,7 +37,7 @@ let displayInfo = { templates: [], skåneTrafiken: null };
     displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
     setInterval(async () => {
         displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
-    }, 3600000);
+    }, 86400000);
 })();
 
 
