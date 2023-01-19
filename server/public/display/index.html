@@ -137,10 +137,7 @@
       let countdownTextTag = document.getElementsByClassName("countdownName");
       let countdownDateTag = document.getElementsByClassName("countdownTime");
 
-      if(x === 1) {
-        console.log(info)
-        x = 2;
-      }
+      console.log(info)
 
       let [countdownDateString, countdownText] = info.countDown.split(":");
 
@@ -178,8 +175,6 @@
               : `${diffDays} dagar kvar`)
       );
     }
-
-    let x = 0;
 
     function SetFood() {
       let lunchInfoTag = document.getElementsByClassName("lunchInfo");
@@ -516,15 +511,7 @@
       */
         //endregion
       }
-      if(x === 0) {
-        console.log(info)
-        x = 1;
-      }
       SetCountdown();
-      if(x === 2) {
-        console.log(info)
-        x = 3;
-      }
       SetFood();
     }, 1000);
   </script>
