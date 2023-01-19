@@ -218,8 +218,7 @@ setInterval(async () => {
         else {
             if (AuthenticateLogin(templates[0])) {
                 CheckForNonTemplateChanges(templates);
-
-                // if templates.length is 0, then the for loop shouldn't run in the first place! /// KLohger
+                
                 if (templates.length != 0) { // Ugly solution but we can't find another way / I and A 
                     displayInfo.templates = [];
                     console.log(`amount of templates: ${templates.length}`)
