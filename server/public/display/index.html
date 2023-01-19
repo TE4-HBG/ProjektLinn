@@ -30,11 +30,12 @@
     let info = {
       templates: [],
       skånetrafiken: {
-        busInfo: [],
-        trainInfo: [],
+        busInfo: null,
+        trainInfo: null,
       }
     };
-    let changed = false;
+    let templatesChanged = false;
+    let skåneChanged = false;
     let counter = 0;
     let currentIndex = 0;
     const source = new EventSource("events");
@@ -51,175 +52,26 @@
     }
 
     source.addEventListener("message", (message) => {
-      if (JSON.stringify(info) !== message.data) {
-        console.log("got new stuff!");
-        changed = true;
-        info = JSON.parse(message.data);
+      let newInfo = JSON.parse(message.data);
+      if (JSON.stringify(info.templates) !== JSON.stringify(newInfo.templates)) {
+        console.log("got new templates!");
+        templatesChanged = true;
+        info = newInfo;
         document.getElementById('page-container').innerHTML = info.templates.reduce((prev, curr) => (prev + curr.html), '');
         templateElements = document.getElementsByClassName("page");
-
-        //Gets the current time so it can be used for skanetrafiken
-        const now = new Date();
-        const currentTime = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
-
-        //Here we will retrieve all skanetrafiken elements from the templates and assign them
-        if (info.skånetrafiken) {
-
-          let trainNameOne = document.getElementsByClassName("trainName1");
-          let trainNameTwo = document.getElementsByClassName("trainName2");
-          let trainNameThree = document.getElementsByClassName("trainName3");
-          let trainNameFour = document.getElementsByClassName("trainName4");
-          let trainNameFive = document.getElementsByClassName("trainName5");
-          let trainNameSix = document.getElementsByClassName("trainName6");
-
-          let trainTimeOne = document.getElementsByClassName("trainTime1");
-          let trainTimeTwo = document.getElementsByClassName("trainTime2");
-          let trainTimeThree = document.getElementsByClassName("trainTime3");
-          let trainTimeFour = document.getElementsByClassName("trainTime4");
-          let trainTimeFive = document.getElementsByClassName("trainTime5");
-          let trainTimeSix = document.getElementsByClassName("trainTime6");
-
-          let trainImgOne = document.getElementsByClassName("trainImgOne");
-          let trainImgTwo = document.getElementsByClassName("trainImgTwo");
-          let trainImgThree = document.getElementsByClassName("trainImgThree");
-          let trainImgFour = document.getElementsByClassName("trainImgFour");
-          let trainImgFive = document.getElementsByClassName("trainImgFive");
-          let trainImgSix = document.getElementsByClassName("trainImgSix");
-
-          let busImgOne = document.getElementsByClassName("busImgOne");
-          let busImgTwo = document.getElementsByClassName("busImgTwo");
-          let busImgThree = document.getElementsByClassName("busImgThree");
-          let busImgFour = document.getElementsByClassName("busImgFour");
-          let busImgFive = document.getElementsByClassName("busImgFive");
-          let busImgSix = document.getElementsByClassName("busImgSix");
-
-          let busNameOne = document.getElementsByClassName("busName1");
-          let busNameTwo = document.getElementsByClassName("busName2");
-          let busNameThree = document.getElementsByClassName("busName3");
-          let busNameFour = document.getElementsByClassName("busName4");
-          let busNameFive = document.getElementsByClassName("busName5");
-          let busNameSix = document.getElementsByClassName("busName6");
-
-          let busTimeOne = document.getElementsByClassName("busTime1");
-          let busTimeTwo = document.getElementsByClassName("busTime2");
-          let busTimeThree = document.getElementsByClassName("busTime3");
-          let busTimeFour = document.getElementsByClassName("busTime4");
-          let busTimeFive = document.getElementsByClassName("busTime5");
-          let busTimeSix = document.getElementsByClassName("busTime6");
-
-          let busNumberOne = document.getElementsByClassName("busShortName1");
-          let busNumberTwo = document.getElementsByClassName("busShortName2");
-          let busNumberThree = document.getElementsByClassName("busShortName3");
-          let busNumberFour = document.getElementsByClassName("busShortName4");
-          let busNumberFive = document.getElementsByClassName("busShortName5");
-          let busNumberSix = document.getElementsByClassName("busShortName6");
-
-          foreach(trainNameOne, (item) => item.innerHTML = skånetrafiken.trainData[0].routeLongName);
-          foreach(trainNameTwo, (item) => item.innerHTML = skånetrafiken.trainData[1].routeLongName);
-          foreach(trainNameThree, (item) => item.innerHTML = skånetrafiken.trainData[2].routeLongName);
-          foreach(trainNameFour, (item) => item.innerHTML = skånetrafiken.trainData[3].routeLongName);
-          foreach(trainNameFive, (item) => item.innerHTML = skånetrafiken.trainData[4].routeLongName);
-          foreach(trainNameSix, (item) => item.innerHTML = skånetrafiken.trainData[5].routeLongName);
-
-          const departureTime1 = new Date("1970-01-01T" + skånetrafiken.trainData[0].departureTime + "Z");
-          let timeUntil1 = departureTime1 - currentTime;
-          foreach(trainTimeOne, (item) => item.innerHTML = innerHTML = timeUntil1 / (1000 * 60));
-
-          const departureTime2 = new Date("1970-01-01T" + skånetrafiken.trainData[1].departureTime + "Z");
-          let timeUntil2 = departureTime2 - currentTime;
-          foreach(trainTimeTwo, (item) => item.innerHTML = innerHTML = timeUntil2 / (1000 * 60));
-
-          const departureTime3 = new Date("1970-01-01T" + skånetrafiken.trainData[2].departureTime + "Z");
-          let timeUntil3 = departureTime3 - currentTime;
-          foreach(trainTimeThree, (item) => item.innerHTML = innerHTML = timeUntil3 / (1000 * 60));
-
-
-          const departureTime4 = new Date("1970-01-01T" + skånetrafiken.trainData[3].departureTime + "Z");
-          let timeUntil4 = departureTime4 - currentTime;
-          foreach(trainTimeFour, (item) => item.innerHTML = innerHTML = timeUntil4 / (1000 * 60));
-
-
-          const departureTime5 = new Date("1970-01-01T" + skånetrafiken.trainData[4].departureTime + "Z");
-          let timeUntil5 = departureTime5 - currentTime;
-          foreach(trainTimeFive, (item) => item.innerHTML = innerHTML = timeUntil5 / (1000 * 60));
-
-
-          const departureTime6 = new Date("1970-01-01T" + skånetrafiken.trainData[5].departureTime + "Z");
-          let timeUntil6 = departureTime6 - currentTime;
-          foreach(trainTimeSix, (item) => item.innerHTML = innerHTML = timeUntil6 / (1000 * 60));
-          /*
-          foreach(trainImgOne, (item) => item.innerHTML = skånetrafiken.trainData[0].type);
-          foreach(trainImgTwo, (item) => item.innerHTML = skånetrafiken.trainData[1].type);
-          foreach(trainImgThree, (item) => item.innerHTML = skånetrafiken.trainData[2].type);
-          foreach(trainImgFour, (item) => item.innerHTML = skånetrafiken.trainData[3].type);
-          foreach(trainImgFive, (item) => item.innerHTML = skånetrafiken.trainData[4].type);
-          foreach(trainImgSix, (item) => item.innerHTML = skånetrafiken.trainData[5].type);
-          */
-
-          foreach(busNameOne, (item) => item.innerHTML = skånetrafiken.busData[0].routeLongName);
-          foreach(busNameTwo, (item) => item.innerHTML = skånetrafiken.busData[1].routeLongName);
-          foreach(busNameThree, (item) => item.innerHTML = skånetrafiken.busData[2].routeLongName);
-          foreach(busNameFour, (item) => item.innerHTML = skånetrafiken.busData[3].routeLongName);
-          foreach(busNameFive, (item) => item.innerHTML = skånetrafiken.busData[4].routeLongName);
-          foreach(busNameSix, (item) => item.innerHTML = skånetrafiken.busData[5].routeLongName);
-
-
-          const busDepartureTime1 = new Date("1970-01-01T" + skånetrafiken.busData[0].departureTime + "Z");
-          let busTimeUntil1 = busDepartureTime1 - currentTime;
-          foreach(busTimeOne, (item) => item.innerHTML = busTimeUntil1 / (1000 * 60));
-
-          const busDepartureTime2 = new Date("1970-01-01T" + skånetrafiken.busData[1].departureTime + "Z");
-          let busTimeUntil2 = busDepartureTime2 - currentTime;
-          foreach(busTimeTwo, (item) => item.innerHTML = busTimeUntil2 / (1000 * 60));
-
-          const busDepartureTime3 = new Date("1970-01-01T" + skånetrafiken.busData[2].departureTime + "Z");
-          let busTimeUntil3 = busDepartureTime3 - currentTime;
-          foreach(busTimeThree, (item) => item.innerHTML = busTimeUntil3 / (1000 * 60));
-
-          const busDepartureTime4 = new Date("1970-01-01T" + skånetrafiken.busData[3].departureTime + "Z");
-          let busTimeUntil4 = busDepartureTime4 - currentTime;
-          foreach(busTimeFour, (item) => item.innerHTML = busTimeUntil4 / (1000 * 60));
-
-          const busDepartureTime5 = new Date("1970-01-01T" + skånetrafiken.busData[4].departureTime + "Z");
-          let busTimeUntil5 = busDepartureTime5 - currentTime;
-          foreach(busTimeFive, (item) => item.innerHTML = busTimeUntil5 / (1000 * 60));
-
-          const busDepartureTime6 = new Date("1970-01-01T" + skånetrafiken.busData[5].departureTime + "Z");
-          let busTimeUntil6 = busDepartureTime6 - currentTime;
-          foreach(busTimeSix, (item) => item.innerHTML = busTimeUntil6 / (1000 * 60));
-
-          foreach(busNumberOne, (item) => item.innerHTML = skånetrafiken.busData[0].routeShortName);
-          foreach(busNumberTwo, (item) => item.innerHTML = skånetrafiken.busData[1].routeShortName);
-          foreach(busNumberThree, (item) => item.innerHTML = skånetrafiken.busData[2].routeShortName);
-          foreach(busNumberFour, (item) => item.innerHTML = skånetrafiken.busData[3].routeShortName);
-          foreach(busNumberFive, (item) => item.innerHTML = skånetrafiken.busData[4].routeShortName);
-          foreach(busNumberSix, (item) => item.innerHTML = skånetrafiken.busData[5].routeShortName);
-          
-          
-          if (skånetrafiken.busData[0].type = "700")
-          {
-            foreach(busImgOne, (item) => item.src.innerHTML = "http://infotavla.te4projekt.se/images/icons/Trains and busses/Stadsbuss.svg");
-          }
-          else {
-            foreach(busImgOne, (item) => item.src.innerHTML = "http://infotavla.te4projekt.se/images/icons/Trains and busses/Stadsbuss.svg");
-          }
-          /*
-          foreach(busImgTwo, (item) => item.innerHTML = skånetrafiken.busData[1].type);
-          foreach(busImgThree, (item) => item.innerHTML = skånetrafiken.busData[2].type);
-          foreach(busImgFour, (item) => item.innerHTML = skånetrafiken.busData[3].type);
-          foreach(busImgFive, (item) => item.innerHTML = skånetrafiken.busData[4].type);
-          foreach(busImgSix, (item) => item.innerHTML = skånetrafiken.busData[5].type);
-          */
-        }
+      }
+      if (JSON.stringify(info.skånetrafiken) !== JSON.stringify(newInfo.skånetrafiken)) {
+        info = newInfo;
+        skåneChanged = true;
       }
     });
 
     setInterval(() => {
       counter += 1000;
-      if (changed) {
+      if (templatesChanged) {
         currentIndex = 0;
-        console.log("stuff changed! changed!");
-        changed = false;
+        console.log("templates have changed!");
+        templatesChanged = false;
         if (templateElements.length != 0) {
 
 
@@ -258,6 +110,174 @@
           });
           currentIndex = (currentIndex + 1) % templateElements.length;
         }
+      }
+      if (info.skånetrafiken.busInfo && info.skånetrafiken.trainInfo) {
+        //Gets the current time so it can be used for skanetrafiken
+        const now = new Date();
+        const currentTime = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+
+        //Here we will retrieve all skanetrafiken elements from the templates and assign them
+
+        let trainNameOne = document.getElementsByClassName("trainName1");
+        let trainNameTwo = document.getElementsByClassName("trainName2");
+        let trainNameThree = document.getElementsByClassName("trainName3");
+        let trainNameFour = document.getElementsByClassName("trainName4");
+        let trainNameFive = document.getElementsByClassName("trainName5");
+        let trainNameSix = document.getElementsByClassName("trainName6");
+
+        let trainTimeOne = document.getElementsByClassName("trainTime1");
+        let trainTimeTwo = document.getElementsByClassName("trainTime2");
+        let trainTimeThree = document.getElementsByClassName("trainTime3");
+        let trainTimeFour = document.getElementsByClassName("trainTime4");
+        let trainTimeFive = document.getElementsByClassName("trainTime5");
+        let trainTimeSix = document.getElementsByClassName("trainTime6");
+
+        let trainImgOne = document.getElementsByClassName("trainImgOne");
+        let trainImgTwo = document.getElementsByClassName("trainImgTwo");
+        let trainImgThree = document.getElementsByClassName("trainImgThree");
+        let trainImgFour = document.getElementsByClassName("trainImgFour");
+        let trainImgFive = document.getElementsByClassName("trainImgFive");
+        let trainImgSix = document.getElementsByClassName("trainImgSix");
+
+        let busImgOne = document.getElementsByClassName("busImgOne");
+        let busImgTwo = document.getElementsByClassName("busImgTwo");
+        let busImgThree = document.getElementsByClassName("busImgThree");
+        let busImgFour = document.getElementsByClassName("busImgFour");
+        let busImgFive = document.getElementsByClassName("busImgFive");
+        let busImgSix = document.getElementsByClassName("busImgSix");
+
+        let busNameOne = document.getElementsByClassName("busName1");
+        let busNameTwo = document.getElementsByClassName("busName2");
+        let busNameThree = document.getElementsByClassName("busName3");
+        let busNameFour = document.getElementsByClassName("busName4");
+        let busNameFive = document.getElementsByClassName("busName5");
+        let busNameSix = document.getElementsByClassName("busName6");
+
+        let busTimeOne = document.getElementsByClassName("busTime1");
+        let busTimeTwo = document.getElementsByClassName("busTime2");
+        let busTimeThree = document.getElementsByClassName("busTime3");
+        let busTimeFour = document.getElementsByClassName("busTime4");
+        let busTimeFive = document.getElementsByClassName("busTime5");
+        let busTimeSix = document.getElementsByClassName("busTime6");
+
+        let busNumberOne = document.getElementsByClassName("busShortName1");
+        let busNumberTwo = document.getElementsByClassName("busShortName2");
+        let busNumberThree = document.getElementsByClassName("busShortName3");
+        let busNumberFour = document.getElementsByClassName("busShortName4");
+        let busNumberFive = document.getElementsByClassName("busShortName5");
+        let busNumberSix = document.getElementsByClassName("busShortName6");
+
+        // set all train names
+        {
+          foreach(trainNameOne, (item) => item.innerHTML = skånetrafiken.trainData[0].routeLongName);
+          foreach(trainNameTwo, (item) => item.innerHTML = skånetrafiken.trainData[1].routeLongName);
+          foreach(trainNameThree, (item) => item.innerHTML = skånetrafiken.trainData[2].routeLongName);
+          foreach(trainNameFour, (item) => item.innerHTML = skånetrafiken.trainData[3].routeLongName);
+          foreach(trainNameFive, (item) => item.innerHTML = skånetrafiken.trainData[4].routeLongName);
+          foreach(trainNameSix, (item) => item.innerHTML = skånetrafiken.trainData[5].routeLongName);
+        }
+
+        // set train times
+        {
+          const departureTime1 = new Date("1970-01-01T" + skånetrafiken.trainData[0].departureTime + "Z");
+          let timeUntil1 = departureTime1 - currentTime;
+          foreach(trainTimeOne, (item) => item.innerHTML = innerHTML = timeUntil1 / (1000 * 60));
+
+          const departureTime2 = new Date("1970-01-01T" + skånetrafiken.trainData[1].departureTime + "Z");
+          let timeUntil2 = departureTime2 - currentTime;
+          foreach(trainTimeTwo, (item) => item.innerHTML = innerHTML = timeUntil2 / (1000 * 60));
+
+          const departureTime3 = new Date("1970-01-01T" + skånetrafiken.trainData[2].departureTime + "Z");
+          let timeUntil3 = departureTime3 - currentTime;
+          foreach(trainTimeThree, (item) => item.innerHTML = innerHTML = timeUntil3 / (1000 * 60));
+
+
+          const departureTime4 = new Date("1970-01-01T" + skånetrafiken.trainData[3].departureTime + "Z");
+          let timeUntil4 = departureTime4 - currentTime;
+          foreach(trainTimeFour, (item) => item.innerHTML = innerHTML = timeUntil4 / (1000 * 60));
+
+
+          const departureTime5 = new Date("1970-01-01T" + skånetrafiken.trainData[4].departureTime + "Z");
+          let timeUntil5 = departureTime5 - currentTime;
+          foreach(trainTimeFive, (item) => item.innerHTML = innerHTML = timeUntil5 / (1000 * 60));
+
+
+          const departureTime6 = new Date("1970-01-01T" + skånetrafiken.trainData[5].departureTime + "Z");
+          let timeUntil6 = departureTime6 - currentTime;
+          foreach(trainTimeSix, (item) => item.innerHTML = innerHTML = timeUntil6 / (1000 * 60));
+        }
+        /*
+        foreach(trainImgOne, (item) => item.innerHTML = skånetrafiken.trainData[0].type);
+        foreach(trainImgTwo, (item) => item.innerHTML = skånetrafiken.trainData[1].type);
+        foreach(trainImgThree, (item) => item.innerHTML = skånetrafiken.trainData[2].type);
+        foreach(trainImgFour, (item) => item.innerHTML = skånetrafiken.trainData[3].type);
+        foreach(trainImgFive, (item) => item.innerHTML = skånetrafiken.trainData[4].type);
+        foreach(trainImgSix, (item) => item.innerHTML = skånetrafiken.trainData[5].type);
+        */
+
+        // set bus names
+        {
+          foreach(busNameOne, (item) => item.innerHTML = skånetrafiken.busData[0].routeLongName);
+          foreach(busNameTwo, (item) => item.innerHTML = skånetrafiken.busData[1].routeLongName);
+          foreach(busNameThree, (item) => item.innerHTML = skånetrafiken.busData[2].routeLongName);
+          foreach(busNameFour, (item) => item.innerHTML = skånetrafiken.busData[3].routeLongName);
+          foreach(busNameFive, (item) => item.innerHTML = skånetrafiken.busData[4].routeLongName);
+          foreach(busNameSix, (item) => item.innerHTML = skånetrafiken.busData[5].routeLongName);
+        }
+
+        // set bus times
+        {
+          const busDepartureTime1 = new Date("1970-01-01T" + skånetrafiken.busData[0].departureTime + "Z");
+          let busTimeUntil1 = busDepartureTime1 - currentTime;
+          foreach(busTimeOne, (item) => item.innerHTML = busTimeUntil1 / (1000 * 60));
+
+          const busDepartureTime2 = new Date("1970-01-01T" + skånetrafiken.busData[1].departureTime + "Z");
+          let busTimeUntil2 = busDepartureTime2 - currentTime;
+          foreach(busTimeTwo, (item) => item.innerHTML = busTimeUntil2 / (1000 * 60));
+
+          const busDepartureTime3 = new Date("1970-01-01T" + skånetrafiken.busData[2].departureTime + "Z");
+          let busTimeUntil3 = busDepartureTime3 - currentTime;
+          foreach(busTimeThree, (item) => item.innerHTML = busTimeUntil3 / (1000 * 60));
+
+          const busDepartureTime4 = new Date("1970-01-01T" + skånetrafiken.busData[3].departureTime + "Z");
+          let busTimeUntil4 = busDepartureTime4 - currentTime;
+          foreach(busTimeFour, (item) => item.innerHTML = busTimeUntil4 / (1000 * 60));
+
+          const busDepartureTime5 = new Date("1970-01-01T" + skånetrafiken.busData[4].departureTime + "Z");
+          let busTimeUntil5 = busDepartureTime5 - currentTime;
+          foreach(busTimeFive, (item) => item.innerHTML = busTimeUntil5 / (1000 * 60));
+
+          const busDepartureTime6 = new Date("1970-01-01T" + skånetrafiken.busData[5].departureTime + "Z");
+          let busTimeUntil6 = busDepartureTime6 - currentTime;
+          foreach(busTimeSix, (item) => item.innerHTML = busTimeUntil6 / (1000 * 60));
+        }
+
+        // set bus number
+        {
+          foreach(busNumberOne, (item) => item.innerHTML = skånetrafiken.busData[0].routeShortName);
+          foreach(busNumberTwo, (item) => item.innerHTML = skånetrafiken.busData[1].routeShortName);
+          foreach(busNumberThree, (item) => item.innerHTML = skånetrafiken.busData[2].routeShortName);
+          foreach(busNumberFour, (item) => item.innerHTML = skånetrafiken.busData[3].routeShortName);
+          foreach(busNumberFive, (item) => item.innerHTML = skånetrafiken.busData[4].routeShortName);
+          foreach(busNumberSix, (item) => item.innerHTML = skånetrafiken.busData[5].routeShortName);
+        }
+
+        /*
+        if (skånetrafiken.busData[0].type = "700") {
+          foreach(busImgOne, (item) => item.src.innerHTML = "http://infotavla.te4projekt.se/images/icons/Trains and busses/Stadsbuss.svg");
+        }
+        else {
+          foreach(busImgOne, (item) => item.src.innerHTML = "http://infotavla.te4projekt.se/images/icons/Trains and busses/Stadsbuss.svg");
+        }
+        */
+        /*
+        foreach(busImgTwo, (item) => item.innerHTML = skånetrafiken.busData[1].type);
+        foreach(busImgThree, (item) => item.innerHTML = skånetrafiken.busData[2].type);
+        foreach(busImgFour, (item) => item.innerHTML = skånetrafiken.busData[3].type);
+        foreach(busImgFive, (item) => item.innerHTML = skånetrafiken.busData[4].type);
+        foreach(busImgSix, (item) => item.innerHTML = skånetrafiken.busData[5].type);
+        */
+        //endregion
       }
     }, 1000);
   </script>
