@@ -51,7 +51,8 @@
       busData: [],
       trainData: [],
     },
-    countDown: ''
+    countDown: '',
+    foodSchedule: ''
   };
   let templatesChanged = false;
   let skåneChanged = false;
@@ -115,9 +116,20 @@
     forEach(countdownTextTag, item => item.innerHTML = countdownText);
     forEach(countdownDateTag, item => item.innerHTML = diffDays == 0 ? 'Idag!' : diffDays < 0 ? "Har hänt" : `${diffDays} dagar kvar`);
 }
-
   function SetFood() {
+    let lunchInfoTag = document.getElementsByClassName("lunchInfo");
 
+    let foodScheduleInfoString = info.foodSchedule;
+    let foodScheduleInfo = JSON.parse(foodScheduleInfoString);
+    console.log(foodScheduleInfo);
+
+
+    let today = new Date();
+    let weekNumber = today.getWeek();
+    let weekdayNumber = today.getDay(); //Gets a number from 0 to 6 where sunday = 0 and saturday = 6
+
+    console.log(weekdayNumber);
+    console.log(weekNumber);
   }
 
 setInterval(() => {

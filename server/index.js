@@ -32,7 +32,7 @@ BigInt.prototype.toJSON = function () { return this.toString() }
 
 
 // string array
-let displayInfo = { templates: [], skåneTrafiken: { trainData: [], busData: [] }, countDown: '' };
+let displayInfo = { templates: [], skåneTrafiken: { trainData: [], busData: [] }, countDown: '', foodSchedule: '' };
 
 setInterval(async () => {
     displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
@@ -67,6 +67,7 @@ setInterval(async () => {
         let counter = 0;
         let interValID = setInterval(() => {
             displayInfo.countDown = fs.readFileSync('countdown.txt','utf-8');
+            displayInfo.foodSchedule = fs.readFileSync('foodSchedules.txt','utf-8');
             counter++;
             if (res.write(`data: ${JSON.stringify(displayInfo)}\n\n`, (error) => { if (error) { console.log(error) } })) {
                 console.log(`${new Date().toISOString()}: sent event to ${req.ip}.`)
