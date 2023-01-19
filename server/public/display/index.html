@@ -301,29 +301,29 @@ setInterval(() => {
         forEach(busTimeOne, (item) => item.innerHTML = busTimeUntil1);
 
         const [busDepartureTime2Hour, busDepartureTime2Minute, busDepartureTime2Second] = info.skåneTrafiken.busData[1].departureTime.split(':');
-        const busDepartureTime2 = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), busDepartureTime1Hour, busDepartureTime1Minute, busDepartureTime2Second);
+        const busDepartureTime2 = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), busDepartureTime2Hour, busDepartureTime2Minute, busDepartureTime2Second);
         let busTimeUntil2 = Math.ceil((busDepartureTime2.getTime() - currentTime.getTime()) / (1000 * 60));
-        forEach(busTimeOne, (item) => item.innerHTML = busTimeUntil2);
+        forEach(busTimeTwo, (item) => item.innerHTML = busTimeUntil2);
 
         const [busDepartureTime3Hour, busDepartureTime3Minute, busDepartureTime3Second] = info.skåneTrafiken.busData[2].departureTime.split(':');
-        const busDepartureTime3 = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), busDepartureTime1Hour, busDepartureTime1Minute, busDepartureTime3Second);
+        const busDepartureTime3 = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), busDepartureTime3Hour, busDepartureTime3Minute, busDepartureTime3Second);
         let busTimeUntil3 = Math.ceil((busDepartureTime3.getTime() - currentTime.getTime()) / (1000 * 60));
-        forEach(busTimeOne, (item) => item.innerHTML = busTimeUntil3);
+        forEach(busTimeThree, (item) => item.innerHTML = busTimeUntil3);
 
         const [busDepartureTime4Hour, busDepartureTime4Minute, busDepartureTime4Second] = info.skåneTrafiken.busData[3].departureTime.split(':');
-        const busDepartureTime4 = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), busDepartureTime1Hour, busDepartureTime1Minute, busDepartureTime4Second);
+        const busDepartureTime4 = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), busDepartureTime4Hour, busDepartureTime4Minute, busDepartureTime4Second);
         let busTimeUntil4 = Math.ceil((busDepartureTime4.getTime() - currentTime.getTime()) / (1000 * 60));
-        forEach(busTimeOne, (item) => item.innerHTML = busTimeUntil4);
+        forEach(busTimeFour, (item) => item.innerHTML = busTimeUntil4);
 
         const [busDepartureTime5Hour, busDepartureTime5Minute, busDepartureTime5Second] = info.skåneTrafiken.busData[4].departureTime.split(':');
-        const busDepartureTime5 = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), busDepartureTime1Hour, busDepartureTime1Minute, busDepartureTime5Second);
+        const busDepartureTime5 = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), busDepartureTime5Hour, busDepartureTime5Minute, busDepartureTime5Second);
         let busTimeUntil5 = Math.ceil((busDepartureTime5.getTime() - currentTime.getTime()) / (1000 * 60));
-        forEach(busTimeOne, (item) => item.innerHTML = busTimeUntil5);
+        forEach(busTimeFive, (item) => item.innerHTML = busTimeUntil5);
 
         const [busDepartureTime6Hour, busDepartureTime6Minute, busDepartureTime6Second] = info.skåneTrafiken.busData[5].departureTime.split(':');
-        const busDepartureTime6 = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), busDepartureTime1Hour, busDepartureTime1Minute, busDepartureTime6Second);
+        const busDepartureTime6 = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), busDepartureTime6Hour, busDepartureTime6Minute, busDepartureTime6Second);
         let busTimeUntil6 = Math.ceil((busDepartureTime6.getTime() - currentTime.getTime()) / (1000 * 60));
-        forEach(busTimeOne, (item) => item.innerHTML = busTimeUntil6);
+        forEach(busTimeSix, (item) => item.innerHTML = busTimeUntil6);
       }
 
       // set bus number

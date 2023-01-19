@@ -9,7 +9,7 @@ const { readFile, writeFile } = require('fs/promises');
 const SkåneTrafiken = require('./SkåneTrafiken.js')
 //const __filename = fileURLToPath(import.meta.url);
 //const __dirname = dirname(__filename);
-let newCountdownDate; 
+let newCountdownDate;
 let newCountdownText;
 const app = express();
 const address = "http://infotavla.te4projekt.se";
@@ -34,8 +34,21 @@ BigInt.prototype.toJSON = function () { return this.toString() }
 // string array
 let displayInfo = { templates: [], skåneTrafiken: { trainData: [], busData: [] }, countDown: '', foodSchedule: '' };
 
+(async () => {
+    displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
+    console.log("skåne be new")
+    console.log(displayInfo.skåneTrafiken);
+})()
+
 setInterval(async () => {
     displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
+    console.log("skåne be new")
+    console.log(displayInfo.skåneTrafiken);
+}, 30000);
+
+
+setInterval(async () => {
+    await SkåneTrafiken.Download();
 }, 86400000);
 
 
@@ -68,13 +81,14 @@ setInterval(async () => {
         let interValID = setInterval(() => {
             displayInfo.countDown = fs.readFileSync('countdown.txt','utf-8');
             displayInfo.foodSchedule = fs.readFileSync('foodSchedules.txt','utf-8');
-            counter++;
-            if (res.write(`data: ${JSON.stringify(displayInfo)}\n\n`, (error) => { if (error) { console.log(error) } })) {
-                console.log(`${new Date().toISOString()}: sent event to ${req.ip}.`)
-            } else {
-                console.error(`${new Date().toISOString()}: failed to send event to ${req.ip}!`)
-            }
 
+            counter++;
+            console.log(`${new Date().toISOString()}: sending event to ${req.ip}.`)
+            res.write(`data: ${JSON.stringify(displayInfo)}\n\n`, (error) => {
+                if (error) {
+                    console.error(`${new Date().toISOString()}: failed to send event to ${req.ip}: ${error}`)
+                }
+            });
         }, 4000);
 
         // If client closes connection, stop sending events
@@ -149,7 +163,7 @@ setInterval(async () => {
                 var [oldCountdownDate, oldCountdownText] = savedCountdown.split(':'); //Leaving this to be able to implement support for if empty info is submitted
 
                 var countdownInfo = newCountdownDate + ":" + newCountdownText;
-                
+
                 fs.writeFileSync('countdown.txt', countdownInfo);
 
                 console.log("countdown.txt updated");
