@@ -253,7 +253,7 @@ const helsingborgCStops = [
     9022012083241048n,
     9022012083241049n
 ];
-async function Get() {
+async function Download() {
     const url = 'https://opendata.samtrafiken.se/gtfs/skane/skane.zip?key=f1ed286e2bc1495ead7a6ce8b944798a';
     let downloaded = false;
     const maxTime = 50;
@@ -289,6 +289,9 @@ async function Get() {
         console.error(`EXTRACTION FAILED!, proceeding to use local file none-the-less`);
         
     }
+}
+async function Get() {
+    
 
     const tripsArr = Trip.fromFile('./skånetrafiken/trips.txt');
     const timesArr = StopTimes.fromFile('./skånetrafiken/stop_times.txt');
@@ -387,5 +390,6 @@ module.exports = {
     Journey,
     routeID,
     helsingborgCStops,
+    Download,
     Get,
 }
