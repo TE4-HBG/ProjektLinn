@@ -37,11 +37,13 @@ let displayInfo = { templates: [], skåneTrafiken: { trainData: [], busData: [] 
 (async () => {
     displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
     console.log("skåne be new")
+    console.log(displayInfo.skåneTrafiken);
 })()
 
 setInterval(async () => {
     displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
     console.log("skåne be new")
+    console.log(displayInfo.skåneTrafiken);
 }, 30000);
 
 
