@@ -374,6 +374,7 @@ async function Get() {
         }
 
     }
+    console.log("done getting the data");
     return { trainData: outputTrain, busData: outputBuss };
 
     //Regionbuss 700 eller 1501
