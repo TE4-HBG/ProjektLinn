@@ -6,7 +6,8 @@ const { fileURLToPath } = require('url');
 const { dirname } = require('path');
 const { WebSocketServer } = require('ws');
 const { readFile, writeFile } = require('fs/promises');
-const SkåneTrafiken = require('./SkåneTrafiken.js')
+const SkåneTrafiken = require('./SkåneTrafiken.js');
+const { Console } = require('console');
 //const __filename = fileURLToPath(import.meta.url);
 //const __dirname = dirname(__filename);
 let newCountdownDate;
@@ -131,7 +132,10 @@ setInterval(async () => {
                     foodSchedule = templates[i].foodSchedules[y];
                     for (let x = 0; x < savedSchedules.length; x++) {
                         var duplicate = false;
+                        console.log("savedSchedules[x].week: " + savedSchedules[x].week);
+                        console.log("foodSchedule.week: "+ foodSchedule.week);
                         if (savedSchedules[x].week === foodSchedule.week) {
+                            console.log("Inside If");
                             duplicate = true;
                             savedSchedules.splice(x, 1, foodSchedule);
                             break;
