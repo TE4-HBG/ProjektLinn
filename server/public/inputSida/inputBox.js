@@ -164,7 +164,7 @@ async function Save(x) {
 
 
             allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
-            PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name], len(allSaveInputs));
+            PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name], allSaveInputs.length);
 
             break;
         case 'Template2':
@@ -178,7 +178,7 @@ async function Save(x) {
             }
 
             allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
-            PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allTextInput[1].value], len(allSaveInputs));
+            PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allTextInput[1].value], allSaveInputs.length);
 
             break;
         case 'Template3':
@@ -190,7 +190,7 @@ async function Save(x) {
 
 
             allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
-            PrintSavedInputs(minutes[0].value, x, [allImgInput[0].value], len(allSaveInputs));
+            PrintSavedInputs(minutes[0].value, x, [allImgInput[0].value], allSaveInputs.length);
 
             break;
         case 'Template4':
@@ -205,7 +205,7 @@ async function Save(x) {
 
 
             allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
-            PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name], len(allSaveInputs));
+            PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allImgInput[0].files[0].name], allSaveInputs.length);
 
             break;
         case 'Template5':
@@ -220,7 +220,7 @@ async function Save(x) {
 
 
             allSaveInputs.push(new Template(minutes[0].value, x, jsonObject, username, password, null, null));
-            PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allTextInput[1].value], len(allSaveInputs));
+            PrintSavedInputs(minutes[0].value, x, [allTextInput[0].value, allTextInput[1].value], allSaveInputs.length);
             console.log("hello");
             break;
         case 'Template6':
