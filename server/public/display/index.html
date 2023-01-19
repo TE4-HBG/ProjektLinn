@@ -191,7 +191,7 @@
       let weekdayNumber = today.getDay(); //Gets a number from 0 to 6 where sunday = 0 and saturday = 6
 
       for (let i = 0; i < foodScheduleInfo.length; i++) {
-        console.log(foodScheduleInfo[i].week);
+        console.log(parseInt(foodScheduleInfo[i].week));
         console.log(weekNumber);
         if (parseInt(foodScheduleInfo[i].week) === weekNumber) {
           if (weekdayNumber === 1) {
