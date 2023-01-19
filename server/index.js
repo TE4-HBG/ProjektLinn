@@ -36,12 +36,16 @@ let displayInfo = { templates: [], skåneTrafiken: { trainData: [], busData: [] 
 
 (async () => {
     displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
-    setInterval(async () => {
-        await SkåneTrafiken.Download();
-        displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
-    }, 86400000);
 })()
 
+setInterval(async () => {
+    displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
+}, 30000);
+
+
+setInterval(async () => {
+    await SkåneTrafiken.Download();
+}, 86400000);
 
 
 

@@ -292,7 +292,7 @@ async function Download() {
 }
 async function Get() {
     
-
+    console.log("Transforming skåne data")
     const tripsArr = Trip.fromFile('./skånetrafiken/trips.txt');
     const timesArr = StopTimes.fromFile('./skånetrafiken/stop_times.txt');
     const routesArr = Route.fromFile('./skånetrafiken/routes.txt');
