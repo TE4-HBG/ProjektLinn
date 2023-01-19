@@ -176,37 +176,6 @@ setInterval(async () => {
         }
     }
 
-    // This function calculates number of days from todays date to countdown date
-    // This should not be done here but on the client
-    // When this is fixed, remove this function from here
-
-    /*function CalculateCountdown(countdownDateString) {
-        let countdownDate = new Date(countdownDateString);
-
-        let today = new Date();
-        let dd = today.getDate();
-        let mm = today.getMonth()+1; 
-        let yyyy = today.getFullYear();
-        if(dd<10) 
-        {
-            dd='0'+dd;
-        } 
-        if(mm<10) 
-        {
-            mm='0'+mm;
-        }
-
-        let todaysDateString = yyyy+'-'+mm+'-'+dd;
-        let todaysDate = new Date(todaysDateString);
-
-        let timeDiff = countdownDate.getTime() - todaysDate.getTime();
-        let diffDays = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-        console.log("todays date: " + todaysDate);
-        console.log("countdown date: " + countdownDate);
-        console.log("Antal dagar: " + diffDays);
-    }*/
-
-
     async function UpdateDisplayInfo() {
         console.log("Entered UpdateDisplayInfo()");
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
