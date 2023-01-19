@@ -1,697 +1,429 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="http://infotavla.te4projekt.se/favicon.ico"
-    />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="http://infotavla.te4projekt.se/favicon.ico"
-    />
-    <title>TE4</title>
-    <link rel="stylesheet" href="http://infotavla.te4projekt.se/css/main.css" />
-    <script src="http://infotavla.te4projekt.se/scripts/clockAndDate.js"></script>
-    <style type="text/css">
-      .page {
-        position: absolute;
-        width: 100%;
-        /*scale: 3;*/
-      }
-    </style>
-  </head>
 
-  <body onload="InitClock()">
-    <div id="page-container"></div>
-    <div
-      id="ww_c2119b56c9599"
-      v="1.3"
-      loc="id"
-      a='{"t":"ticker","lang":"en","ids":["wl2618"],"font":"Arial","sl_ics":"one","sl_sot":"celsius","cl_bkg":"#7B1FA2","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","el_nme":3}'
-    >
-      <a
-        href="https://sharpweather.com/widgets/"
-        id="ww_c2119b56c9599_u"
-        target="_blank"
-      >
-        Free HTML Weather Widget for Website
-      </a>
-    </div>
-    <script
-      async
-      src="http://infotavla.te4projekt.se/scripts/weatherWidget.js"
-    ></script>
-  </body>
-  <script type="text/javascript">
-    /**
-     * @type {int}
-     */
-    function getWeek(date) {
-      // debugger
-      let msWeek = 604800000; // Week in milliseconds
-      let msDay = 86400000; // Day in milliseconds
-      let year = date.getFullYear(); // Get the year
-      //let month = date.getMonth();                                // Month
-      let oneDate = new Date(year, 0, 1); // Create a new date based on THIS year
-      let temp = oneDate.getDay(); // Ordinal of the first day
-      let getFirstDay = temp === 0 ? 6 : temp - 1; // Ordinal of the first day of the current month (0-MO, 6-SU)
-      let countWeek = 0;
-      // Test to confirm week
-      oneDate = new Date(oneDate.getTime() + msDay * (7 - getFirstDay));
-      if (oneDate.getTime() > date.getTime()) {
-        return countWeek;
-      }
-      // Increment loop
-      while (true) {
-        oneDate = new Date(oneDate.getTime() + msWeek); // Add a week and check
-        if (oneDate.getTime() > date.getTime()) break;
-        countWeek++;
-      }
-      return countWeek + 1;
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="http://infotavla.te4projekt.se/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="http://infotavla.te4projekt.se/favicon.ico" />
+  <title>TE4</title>
+  <link rel="stylesheet" href="http://infotavla.te4projekt.se/css/main.css" />
+  <script src="http://infotavla.te4projekt.se/scripts/clockAndDate.js"></script>
+  <style type="text/css">
+    .page {
+      position: absolute;
+      width: 100%;
+      /*scale: 3;*/
     }
+  </style>
+</head>
 
-    function forEach(collection, func) {
-      for (let i = 0; i < collection.length; i++) {
-        func(collection.item(i));
-      }
+<body onload="InitClock()">
+  <div id="page-container"></div>
+  <div id="ww_c2119b56c9599" v="1.3" loc="id"
+    a='{"t":"ticker","lang":"en","ids":["wl2618"],"font":"Arial","sl_ics":"one","sl_sot":"celsius","cl_bkg":"#7B1FA2","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","el_nme":3}'>
+    <a href="https://sharpweather.com/widgets/" id="ww_c2119b56c9599_u" target="_blank">
+      Free HTML Weather Widget for Website
+    </a>
+  </div>
+  <script async src="http://infotavla.te4projekt.se/scripts/weatherWidget.js"></script>
+</body>
+<script type="text/javascript">
+  /**
+   * @type {int}
+   */
+  function getWeek(date) {
+    // debugger
+    let msWeek = 604800000; // Week in milliseconds
+    let msDay = 86400000; // Day in milliseconds
+    let year = date.getFullYear(); // Get the year
+    //let month = date.getMonth();                                // Month
+    let oneDate = new Date(year, 0, 1); // Create a new date based on THIS year
+    let temp = oneDate.getDay(); // Ordinal of the first day
+    let getFirstDay = temp === 0 ? 6 : temp - 1; // Ordinal of the first day of the current month (0-MO, 6-SU)
+    let countWeek = 0;
+    // Test to confirm week
+    oneDate = new Date(oneDate.getTime() + msDay * (7 - getFirstDay));
+    if (oneDate.getTime() > date.getTime()) {
+      return countWeek;
     }
-    const fade = [
-      { opacity: "100%", zIndex: "1" },
-      { opacity: "0%", zIndex: "1" },
-    ];
-    const appear = [{ opacity: "100%", zIndex: "0" }];
-    const disappear = [{ opacity: "0%", zIndex: "-1" }];
+    // Increment loop
+    while (true) {
+      oneDate = new Date(oneDate.getTime() + msWeek); // Add a week and check
+      if (oneDate.getTime() > date.getTime()) break;
+      countWeek++;
+    }
+    return countWeek + 1;
+  }
 
-    let templateElements = [];
-    let info = {
-      templates: [],
-      skåneTrafiken: {
-        busData: [],
-        trainData: [],
-      },
-      countDown: "",
-      foodSchedule: "",
-    };
-    let templatesChanged = false;
-    let skåneChanged = false;
-    let counter = 0;
-    let currentIndex = 0;
+  function forEach(collection, func) {
+    for (let i = 0; i < collection.length; i++) {
+      func(collection.item(i));
+    }
+  }
+  const fade = [
+    { opacity: "100%", zIndex: "1" },
+    { opacity: "0%", zIndex: "1" },
+  ];
+  const appear = [{ opacity: "100%", zIndex: "0" }];
+  const disappear = [{ opacity: "0%", zIndex: "-1" }];
 
-    const source = new EventSource("events");
-    source.addEventListener("message", (message) => {
-      console.log("recieved new data.");
-      let newInfo = JSON.parse(message.data);
-      if (
-        JSON.stringify(info.templates) !== JSON.stringify(newInfo.templates)
-      ) {
-        console.log("got new templates!");
-        templatesChanged = true;
-        info = newInfo;
-        document.getElementById("page-container").innerHTML =
-          info.templates.reduce((prev, curr) => prev + curr.html, "");
-        templateElements = document.getElementsByClassName("page");
-      }
-      if (
-        newInfo.skåneTrafiken &&
-        JSON.stringify(info.skåneTrafiken) !==
-          JSON.stringify(newInfo.skåneTrafiken)
-      ) {
-        console.log("got new skånetrafiken stuff!");
-        skåneChanged = true;
-      }
+  let templateElements = [];
+  let info = {
+    templates: [],
+    skåneTrafiken: {
+      busData: [],
+      trainData: [],
+    },
+    countDown: "",
+    foodSchedule: "",
+  };
+  let templatesChanged = false;
+  let skåneChanged = false;
+  let counter = 0;
+  let currentIndex = 0;
+
+  const source = new EventSource("events");
+  source.addEventListener("message", (message) => {
+    console.log("recieved new data.");
+    let newInfo = JSON.parse(message.data);
+    if (
+      JSON.stringify(info.templates) !== JSON.stringify(newInfo.templates)
+    ) {
+      console.log("got new templates!");
+      templatesChanged = true;
       info = newInfo;
-    });
-    /**
-     *
-     * @param {HTMLCollection} collection
-     * @param {(element : HTMLElement) => *} func
-     */
+      document.getElementById("page-container").innerHTML =
+        info.templates.reduce((prev, curr) => prev + curr.html, "");
+      templateElements = document.getElementsByClassName("page");
+    }
+    if (
+      newInfo.skåneTrafiken &&
+      JSON.stringify(info.skåneTrafiken) !==
+      JSON.stringify(newInfo.skåneTrafiken)
+    ) {
+      console.log("got new skånetrafiken stuff!");
+      skåneChanged = true;
+    }
+    info = newInfo;
+  });
+  /**
+   *
+   * @param {HTMLCollection} collection
+   * @param {(element : HTMLElement) => *} func
+   */
 
-    function SetCountdown() {
-      let countdownTextTag = document.getElementsByClassName("countdownName");
-      let countdownDateTag = document.getElementsByClassName("countdownTime");
+  function SetCountdown() {
+    let countdownTextTag = document.getElementsByClassName("countdownName");
+    let countdownDateTag = document.getElementsByClassName("countdownTime");
 
-      let [countdownDateString, countdownText] = info.countDown.split(":");
+    let [countdownDateString, countdownText] = info.countDown.split(":");
 
-      let countdownDate = new Date(countdownDateString);
-      if (!countdownDate) {
-        return;
-      }
-
-      let today = new Date();
-      let dd = today.getDate();
-      let mm = today.getMonth() + 1;
-      let yyyy = today.getFullYear();
-      if (dd < 10) {
-        dd = "0" + dd;
-      }
-      if (mm < 10) {
-        mm = "0" + mm;
-      }
-
-      let todaysDateString = yyyy + "-" + mm + "-" + dd;
-      let todaysDate = new Date(todaysDateString);
-
-      let timeDiff = countdownDate.getTime() - todaysDate.getTime();
-      let diffDays = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-
-      forEach(countdownTextTag, (item) => (item.innerHTML = countdownText));
-      forEach(
-        countdownDateTag,
-        (item) =>
-          (item.innerHTML =
-            diffDays == 0
-              ? "Idag!"
-              : diffDays < 0
-              ? "Har hänt"
-              : `${diffDays} dagar kvar`)
-      );
+    let countdownDate = new Date(countdownDateString);
+    if (!countdownDate) {
+      return;
     }
 
-    function SetFood() {
-      let lunchInfoTag = document.getElementsByClassName("lunchInfo");
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1;
+    let yyyy = today.getFullYear();
+    if (dd < 10) {
+      dd = "0" + dd;
+    }
+    if (mm < 10) {
+      mm = "0" + mm;
+    }
 
-      let foodScheduleInfoString = info.foodSchedule;
-      let foodScheduleInfo = JSON.parse(foodScheduleInfoString);
+    let todaysDateString = yyyy + "-" + mm + "-" + dd;
+    let todaysDate = new Date(todaysDateString);
 
-      let today = new Date();
-      let weekNumber = getWeek(today);
-      let weekdayNumber = today.getDay(); //Gets a number from 0 to 6 where sunday = 0 and saturday = 6
+    let timeDiff = countdownDate.getTime() - todaysDate.getTime();
+    let diffDays = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 
-      for (let i = 0; i < foodScheduleInfo.length; i++) {
-        if (parseInt(foodScheduleInfo[i].week) === weekNumber) {
-          if (weekdayNumber === 1) {
-            //It's monday
-            forEach(
-              lunchInfoTag,
-              (item) => (item.innerHTML = foodScheduleInfo[i].monday)
-            );
-          } else if (weekdayNumber === 2) {
-            //It's tuesday
-            forEach(
-              lunchInfoTag,
-              (item) => (item.innerHTML = foodScheduleInfo[i].tuesday)
-            );
-          } else if (weekdayNumber === 3) {
-            //It's wednesday
-            forEach(
-              lunchInfoTag,
-              (item) => (item.innerHTML = foodScheduleInfo[i].wednesday)
-            );
-          } else if (weekdayNumber === 4) {
-            //It's thursday
-            forEach(
-              lunchInfoTag,
-              (item) => (item.innerHTML = foodScheduleInfo[i].thursday)
-            );
-          } else if (weekdayNumber === 5) {
-            //It's friday
-            forEach(
-              lunchInfoTag,
-              (item) => (item.innerHTML = foodScheduleInfo[i].friday)
-            );
-          } else {
-            forEach(
-              lunchInfoTag,
-              (item) => (item.innerHTML = "Error: Ingen mat inlagd dag vecka")
-            );
-          }
+    forEach(countdownTextTag, (item) => (item.innerHTML = countdownText));
+    forEach(
+      countdownDateTag,
+      (item) =>
+      (item.innerHTML =
+        diffDays == 0
+          ? "Idag!"
+          : diffDays < 0
+            ? "Har hänt"
+            : `${diffDays} dagar kvar`)
+    );
+  }
+
+  function SetFood() {
+    let lunchInfoTag = document.getElementsByClassName("lunchInfo");
+
+    let foodScheduleInfoString = info.foodSchedule;
+    let foodScheduleInfo = JSON.parse(foodScheduleInfoString);
+
+    let today = new Date();
+    let weekNumber = getWeek(today);
+    let weekdayNumber = today.getDay(); //Gets a number from 0 to 6 where sunday = 0 and saturday = 6
+
+    for (let i = 0; i < foodScheduleInfo.length; i++) {
+      if (parseInt(foodScheduleInfo[i].week) === weekNumber) {
+        if (weekdayNumber === 1) {
+          //It's monday
+          forEach(
+            lunchInfoTag,
+            (item) => (item.innerHTML = foodScheduleInfo[i].monday)
+          );
+        } else if (weekdayNumber === 2) {
+          //It's tuesday
+          forEach(
+            lunchInfoTag,
+            (item) => (item.innerHTML = foodScheduleInfo[i].tuesday)
+          );
+        } else if (weekdayNumber === 3) {
+          //It's wednesday
+          forEach(
+            lunchInfoTag,
+            (item) => (item.innerHTML = foodScheduleInfo[i].wednesday)
+          );
+        } else if (weekdayNumber === 4) {
+          //It's thursday
+          forEach(
+            lunchInfoTag,
+            (item) => (item.innerHTML = foodScheduleInfo[i].thursday)
+          );
+        } else if (weekdayNumber === 5) {
+          //It's friday
+          forEach(
+            lunchInfoTag,
+            (item) => (item.innerHTML = foodScheduleInfo[i].friday)
+          );
         } else {
           forEach(
             lunchInfoTag,
-            (item) => (item.innerHTML = "Error: Ingen mat inlagd denna vecka")
+            (item) => (item.innerHTML = "Error: Ingen mat inlagd dag vecka")
           );
+        }
+      } else {
+        forEach(
+          lunchInfoTag,
+          (item) => (item.innerHTML = "Error: Ingen mat inlagd denna vecka")
+        );
+      }
+    }
+  }
+
+  setInterval(() => {
+    counter += 1000;
+    if (templatesChanged) {
+      currentIndex = 0;
+      console.log("templates have changed!");
+      templatesChanged = false;
+      if (templateElements.length != 0) {
+        templateElements[currentIndex].style.opacity = "100%";
+        for (let index = 0; index < templateElements.length; index++) {
+          if (index != currentIndex) {
+            templateElements[index].style.opacity = "0%";
+          }
         }
       }
     }
-
-    setInterval(() => {
-      counter += 1000;
-      if (templatesChanged) {
-        currentIndex = 0;
-        console.log("templates have changed!");
-        templatesChanged = false;
-        if (templateElements.length != 0) {
-          templateElements[currentIndex].style.opacity = "100%";
-          for (let index = 0; index < templateElements.length; index++) {
-            if (index != currentIndex) {
-              templateElements[index].style.opacity = "0%";
-            }
+    if (templateElements.length > 1) {
+      if (counter >= info.templates[currentIndex].duration * 1000) {
+        counter = 0;
+        for (let index = 0; index < templateElements.length; index++) {
+          if (
+            index !== currentIndex ||
+            index !== (currentIndex + 1) % templateElements.length
+          ) {
+            templateElements[index].animate(disappear, {
+              duration: 0,
+              iterations: 1,
+              fill: "forwards",
+            });
           }
         }
+        console.log(
+          `Changing from ${currentIndex} to ${(currentIndex + 1) % templateElements.length
+          }`
+        );
+
+        templateElements[
+          (currentIndex + 1) % templateElements.length
+        ].animate(appear, {
+          duration: 0,
+          iterations: 1,
+          fill: "forwards",
+        });
+
+        templateElements[currentIndex].animate(fade, {
+          duration: 0,
+          iterations: 1,
+          fill: "forwards",
+        });
+        currentIndex = (currentIndex + 1) % templateElements.length;
       }
-      if (templateElements.length > 1) {
-        if (counter >= info.templates[currentIndex].duration * 1000) {
-          counter = 0;
-          for (let index = 0; index < templateElements.length; index++) {
-            if (
-              index !== currentIndex ||
-              index !== (currentIndex + 1) % templateElements.length
-            ) {
-              templateElements[index].animate(disappear, {
-                duration: 0,
-                iterations: 1,
-                fill: "forwards",
-              });
-            }
-          }
-          console.log(
-            `Changing from ${currentIndex} to ${
-              (currentIndex + 1) % templateElements.length
-            }`
-          );
 
-          templateElements[
-            (currentIndex + 1) % templateElements.length
-          ].animate(appear, {
-            duration: 0,
-            iterations: 1,
-            fill: "forwards",
-          });
+    }
+    if (info.skåneTrafiken.busData.length == 6 && info.skåneTrafiken.trainData.length == 6) {
+      //Gets the current time so it can be used for skanetrafiken
+      const currentTime = new Date();
+      let skåneTrafiken = Object.assign({}, info.skåneTrafiken);
 
-          templateElements[currentIndex].animate(fade, {
-            duration: 0,
-            iterations: 1,
-            fill: "forwards",
-          });
-          currentIndex = (currentIndex + 1) % templateElements.length;
+      for (let i = 4; i >= 0; i--) {
+        if (JSON.stringify(skåneTrafiken.busData[i]) === JSON.stringify(skåneTrafiken.busData[i + 1])) {
+          skåneTrafiken.busData[i + 1] = { routeShortName: '', routeLongName: '', type: '700', departureTime: null }
+        }
+        if (JSON.stringify(skåneTrafiken.trainData[i]) === JSON.stringify(skåneTrafiken.busData[i + 1])) {
+          skåneTrafiken.busData[i + 1] = { routeLongName: '', type: '69', departureTime: null }
         }
       }
-      if (
-        info.skåneTrafiken.busData.length == 6 &&
-        info.skåneTrafiken.trainData.length == 6
-      ) {
-        //Gets the current time so it can be used for skanetrafiken
-        const currentTime = new Date();
 
-        //Here we will retrieve all skanetrafiken elements from the templates and assign them
 
-        let trainNameOne = document.getElementsByClassName("trainName1");
-        let trainNameTwo = document.getElementsByClassName("trainName2");
-        let trainNameThree = document.getElementsByClassName("trainName3");
-        let trainNameFour = document.getElementsByClassName("trainName4");
-        let trainNameFive = document.getElementsByClassName("trainName5");
-        let trainNameSix = document.getElementsByClassName("trainName6");
 
-        let trainTimeOne = document.getElementsByClassName("trainTime1");
-        let trainTimeTwo = document.getElementsByClassName("trainTime2");
-        let trainTimeThree = document.getElementsByClassName("trainTime3");
-        let trainTimeFour = document.getElementsByClassName("trainTime4");
-        let trainTimeFive = document.getElementsByClassName("trainTime5");
-        let trainTimeSix = document.getElementsByClassName("trainTime6");
 
-        let trainImgOne = document.getElementsByClassName("trainImgOne");
-        let trainImgTwo = document.getElementsByClassName("trainImgTwo");
-        let trainImgThree = document.getElementsByClassName("trainImgThree");
-        let trainImgFour = document.getElementsByClassName("trainImgFour");
-        let trainImgFive = document.getElementsByClassName("trainImgFive");
-        let trainImgSix = document.getElementsByClassName("trainImgSix");
+      //Here we will retrieve all skanetrafiken elements from the templates and assign them
+      let trainNames = [
+        document.getElementsByClassName("trainName1"),
+        document.getElementsByClassName("trainName2"),
+        document.getElementsByClassName("trainName3"),
+        document.getElementsByClassName("trainName4"),
+        document.getElementsByClassName("trainName5"),
+        document.getElementsByClassName("trainName6"),
+      ];
+      let trainTimes = [
+        document.getElementsByClassName("trainTime1"),
+        document.getElementsByClassName("trainTime2"),
+        document.getElementsByClassName("trainTime3"),
+        document.getElementsByClassName("trainTime4"),
+        document.getElementsByClassName("trainTime5"),
+        document.getElementsByClassName("trainTime6"),
+      ];
 
-        let busImgOne = document.getElementsByClassName("busImgOne");
-        let busImgTwo = document.getElementsByClassName("busImgTwo");
-        let busImgThree = document.getElementsByClassName("busImgThree");
-        let busImgFour = document.getElementsByClassName("busImgFour");
-        let busImgFive = document.getElementsByClassName("busImgFive");
-        let busImgSix = document.getElementsByClassName("busImgSix");
 
-        let busNameOne = document.getElementsByClassName("busName1");
-        let busNameTwo = document.getElementsByClassName("busName2");
-        let busNameThree = document.getElementsByClassName("busName3");
-        let busNameFour = document.getElementsByClassName("busName4");
-        let busNameFive = document.getElementsByClassName("busName5");
-        let busNameSix = document.getElementsByClassName("busName6");
+      let trainImgOne = document.getElementsByClassName("trainImgOne");
+      let trainImgTwo = document.getElementsByClassName("trainImgTwo");
+      let trainImgThree = document.getElementsByClassName("trainImgThree");
+      let trainImgFour = document.getElementsByClassName("trainImgFour");
+      let trainImgFive = document.getElementsByClassName("trainImgFive");
+      let trainImgSix = document.getElementsByClassName("trainImgSix");
 
-        let busTimeOne = document.getElementsByClassName("busTime1");
-        let busTimeTwo = document.getElementsByClassName("busTime2");
-        let busTimeThree = document.getElementsByClassName("busTime3");
-        let busTimeFour = document.getElementsByClassName("busTime4");
-        let busTimeFive = document.getElementsByClassName("busTime5");
-        let busTimeSix = document.getElementsByClassName("busTime6");
+      let busImgOne = document.getElementsByClassName("busImgOne");
+      let busImgTwo = document.getElementsByClassName("busImgTwo");
+      let busImgThree = document.getElementsByClassName("busImgThree");
+      let busImgFour = document.getElementsByClassName("busImgFour");
+      let busImgFive = document.getElementsByClassName("busImgFive");
+      let busImgSix = document.getElementsByClassName("busImgSix");
 
-        let busNumberOne = document.getElementsByClassName("busShortName1");
-        let busNumberTwo = document.getElementsByClassName("busShortName2");
-        let busNumberThree = document.getElementsByClassName("busShortName3");
-        let busNumberFour = document.getElementsByClassName("busShortName4");
-        let busNumberFive = document.getElementsByClassName("busShortName5");
-        let busNumberSix = document.getElementsByClassName("busShortName6");
+      let busNames = [
+        document.getElementsByClassName("busName1"),
+        document.getElementsByClassName("busName2"),
+        document.getElementsByClassName("busName3"),
+        document.getElementsByClassName("busName4"),
+        document.getElementsByClassName("busName5"),
+        document.getElementsByClassName("busName6"),
+      ]
 
-        // set all train names
-        {
-          forEach(
-            trainNameOne,
-            (item) =>
-              (item.innerHTML = info.skåneTrafiken.trainData[0].routeLongName)
-          );
-          forEach(
-            trainNameTwo,
-            (item) =>
-              (item.innerHTML = info.skåneTrafiken.trainData[1].routeLongName)
-          );
-          forEach(
-            trainNameThree,
-            (item) =>
-              (item.innerHTML = info.skåneTrafiken.trainData[2].routeLongName)
-          );
-          forEach(
-            trainNameFour,
-            (item) =>
-              (item.innerHTML = info.skåneTrafiken.trainData[3].routeLongName)
-          );
-          forEach(
-            trainNameFive,
-            (item) =>
-              (item.innerHTML = info.skåneTrafiken.trainData[4].routeLongName)
-          );
-          forEach(
-            trainNameSix,
-            (item) =>
-              (item.innerHTML = info.skåneTrafiken.trainData[5].routeLongName)
-          );
+      let busTimes = [
+        document.getElementsByClassName("busTime1"),
+        document.getElementsByClassName("busTime2"),
+        document.getElementsByClassName("busTime3"),
+        document.getElementsByClassName("busTime4"),
+        document.getElementsByClassName("busTime5"),
+        document.getElementsByClassName("busTime6"),
+      ]
+
+
+      let busNumberOne = document.getElementsByClassName("busShortName1");
+      let busNumberTwo = document.getElementsByClassName("busShortName2");
+      let busNumberThree = document.getElementsByClassName("busShortName3");
+      let busNumberFour = document.getElementsByClassName("busShortName4");
+      let busNumberFive = document.getElementsByClassName("busShortName5");
+      let busNumberSix = document.getElementsByClassName("busShortName6");
+
+      // set all train names
+      trainNames.forEach((collection, i) => forEach(collection, (item) => { item.innerHTML = skåneTrafiken.trainData[i].routeLongName }));
+
+      // set train times
+      trainTimes.forEach((collection, i) => {
+        /**
+         * @type {string | number}
+         * 
+         * */
+        let timeUntil;
+        if (skåneTrafiken.trainData[i].departureTime) {
+          const [departureTimeHour, departureTimeMinute, departureTimeSecond] = skåneTrafiken.trainData[i].departureTime.split(':');
+          const departureTime = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), departureTimeHour, departureTimeMinute, departureTimeSecond);
+          timeUntil = Math.ceil((departureTime1.getTime() - currentTime.getTime()) / (1000 * 60));
+        } else {
+          timeUntil = '';
         }
 
-        // set train times
-        {
-          const [
-            departureTime1Hour,
-            departureTime1Minute,
-            departureTime1Second,
-          ] = info.skåneTrafiken.trainData[0].departureTime.split(":");
-          const departureTime1 = new Date(
-            currentTime.getFullYear(),
-            currentTime.getMonth(),
-            currentTime.getDate(),
-            departureTime1Hour,
-            departureTime1Minute,
-            departureTime1Second
-          );
-          let timeUntil1 = Math.ceil(
-            (departureTime1.getTime() - currentTime.getTime()) / (1000 * 60)
-          );
-          forEach(trainTimeOne, (item) => (item.innerHTML = timeUntil1));
-
-          const [
-            departureTime2Hour,
-            departureTime2Minute,
-            departureTime2Second,
-          ] = info.skåneTrafiken.trainData[1].departureTime.split(":");
-          const departureTime2 = new Date(
-            currentTime.getFullYear(),
-            currentTime.getMonth(),
-            currentTime.getDate(),
-            departureTime2Hour,
-            departureTime2Minute,
-            departureTime2Second
-          );
-          let timeUntil2 = Math.ceil(
-            (departureTime2.getTime() - currentTime.getTime()) / (1000 * 60)
-          );
-          forEach(trainTimeTwo, (item) => (item.innerHTML = timeUntil2));
-
-          const [
-            departureTime3Hour,
-            departureTime3Minute,
-            departureTime3Second,
-          ] = info.skåneTrafiken.trainData[2].departureTime.split(":");
-          const departureTime3 = new Date(
-            currentTime.getFullYear(),
-            currentTime.getMonth(),
-            currentTime.getDate(),
-            departureTime3Hour,
-            departureTime3Minute,
-            departureTime3Second
-          );
-          let timeUntil3 = Math.ceil(
-            (departureTime3.getTime() - currentTime.getTime()) / (1000 * 60)
-          );
-          forEach(trainTimeThree, (item) => (item.innerHTML = timeUntil3));
-
-          const [
-            departureTime4Hour,
-            departureTime4Minute,
-            departureTime4Second,
-          ] = info.skåneTrafiken.trainData[3].departureTime.split(":");
-          const departureTime4 = new Date(
-            currentTime.getFullYear(),
-            currentTime.getMonth(),
-            currentTime.getDate(),
-            departureTime4Hour,
-            departureTime4Minute,
-            departureTime4Second
-          );
-          let timeUntil4 = Math.ceil(
-            (departureTime4.getTime() - currentTime.getTime()) / (1000 * 60)
-          );
-          forEach(trainTimeFour, (item) => (item.innerHTML = timeUntil4));
-
-          const [
-            departureTime5Hour,
-            departureTime5Minute,
-            departureTime5Second,
-          ] = info.skåneTrafiken.trainData[4].departureTime.split(":");
-          const departureTime5 = new Date(
-            currentTime.getFullYear(),
-            currentTime.getMonth(),
-            currentTime.getDate(),
-            departureTime5Hour,
-            departureTime5Minute,
-            departureTime5Second
-          );
-          let timeUntil5 = Math.ceil(
-            (departureTime5.getTime() - currentTime.getTime()) / (1000 * 60)
-          );
-          forEach(trainTimeFive, (item) => (item.innerHTML = timeUntil5));
-
-          const [
-            departureTime6Hour,
-            departureTime6Minute,
-            departureTime6Second,
-          ] = info.skåneTrafiken.trainData[5].departureTime.split(":");
-          const departureTime6 = new Date(
-            currentTime.getFullYear(),
-            currentTime.getMonth(),
-            currentTime.getDate(),
-            departureTime6Hour,
-            departureTime6Minute,
-            departureTime6Second
-          );
-          let timeUntil6 = Math.ceil(
-            (departureTime6.getTime() - currentTime.getTime()) / (1000 * 60)
-          );
-          forEach(trainTimeSix, (item) => (item.innerHTML = timeUntil6));
-        }
-        /*
-      foreach(trainImgOne, (item) => item.innerHTML = info.skåneTrafiken.trainData[0].type);
-      foreach(trainImgTwo, (item) => item.innerHTML = info.skåneTrafiken.trainData[1].type);
-      foreach(trainImgThree, (item) => item.innerHTML = info.skåneTrafiken.trainData[2].type);
-      foreach(trainImgFour, (item) => item.innerHTML = info.skåneTrafiken.trainData[3].type);
-      foreach(trainImgFive, (item) => item.innerHTML = info.skåneTrafiken.trainData[4].type);
-      foreach(trainImgSix, (item) => item.innerHTML = info.skåneTrafiken.trainData[5].type);
+        forEach(collection, (element) => element.innerHTML = timeUntil);
+      });
+      /*
+      foreach(trainImgOne, (item) => item.innerHTML = skåneTrafiken.trainData[0].type);
+      foreach(trainImgTwo, (item) => item.innerHTML = skåneTrafiken.trainData[1].type);
+      foreach(trainImgThree, (item) => item.innerHTML = skåneTrafiken.trainData[2].type);
+      foreach(trainImgFour, (item) => item.innerHTML = skåneTrafiken.trainData[3].type);
+      foreach(trainImgFive, (item) => item.innerHTML = skåneTrafiken.trainData[4].type);
+      foreach(trainImgSix, (item) => item.innerHTML = skåneTrafiken.trainData[5].type);
       */
 
-        // set bus names
-        {
-          forEach(
-            busNameOne,
-            (item) =>
-              (item.innerHTML = info.skåneTrafiken.busData[0].routeLongName)
-          );
-          forEach(
-            busNameTwo,
-            (item) =>
-              (item.innerHTML = info.skåneTrafiken.busData[1].routeLongName)
-          );
-          forEach(
-            busNameThree,
-            (item) =>
-              (item.innerHTML = info.skåneTrafiken.busData[2].routeLongName)
-          );
-          forEach(
-            busNameFour,
-            (item) =>
-              (item.innerHTML = info.skåneTrafiken.busData[3].routeLongName)
-          );
-          forEach(
-            busNameFive,
-            (item) =>
-              (item.innerHTML = info.skåneTrafiken.busData[4].routeLongName)
-          );
-          forEach(
-            busNameSix,
-            (item) =>
-              (item.innerHTML = info.skåneTrafiken.busData[5].routeLongName)
-          );
-        }
+      // set bus names
+      busNames.forEach((collection, i) => {
+        forEach(collection, (item) => item.innerHTML = skåneTrafiken.busData[i].routeLongName);
+      });
 
-        // set bus times
-        {
-          const [
-            busDepartureTime1Hour,
-            busDepartureTime1Minute,
-            busDepartureTime1Second,
-          ] = info.skåneTrafiken.busData[0].departureTime.split(":");
-          const busDepartureTime1 = new Date(
-            currentTime.getFullYear(),
-            currentTime.getMonth(),
-            currentTime.getDate(),
-            busDepartureTime1Hour,
-            busDepartureTime1Minute,
-            busDepartureTime1Second
-          );
-          let busTimeUntil1 = Math.ceil(
-            (busDepartureTime1.getTime() - currentTime.getTime()) / (1000 * 60)
-          );
-          forEach(busTimeOne, (item) => (item.innerHTML = busTimeUntil1));
+      // set bus times
+      {
+        busTimes.forEach((collection, i) => {
+          /**
+           * @type {string | number}
+           * */
+          let timeUntil;
+          if (skåneTrafiken.busData[i].departureTime) {
+            const [busDepartureTimeHour, busDepartureTimeMinute, busDepartureTimeSecond] = skåneTrafiken.busData[i].departureTime.split(':');
+            const busDepartureTime = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), busDepartureTimeHour, busDepartureTimeMinute, busDepartureTimeSecond);
+            timeUntil = Math.ceil((busDepartureTime.getTime() - currentTime.getTime()) / (1000 * 60));
+          } else {
+            timeUntil = '';
+          }
 
-          const [
-            busDepartureTime2Hour,
-            busDepartureTime2Minute,
-            busDepartureTime2Second,
-          ] = info.skåneTrafiken.busData[1].departureTime.split(":");
-          const busDepartureTime2 = new Date(
-            currentTime.getFullYear(),
-            currentTime.getMonth(),
-            currentTime.getDate(),
-            busDepartureTime2Hour,
-            busDepartureTime2Minute,
-            busDepartureTime2Second
-          );
-          let busTimeUntil2 = Math.ceil(
-            (busDepartureTime2.getTime() - currentTime.getTime()) / (1000 * 60)
-          );
-          forEach(busTimeTwo, (item) => (item.innerHTML = busTimeUntil2));
+          forEach(collection, (item) => item.innerHTML = timeUntil);
+        })
+      }
 
-          const [
-            busDepartureTime3Hour,
-            busDepartureTime3Minute,
-            busDepartureTime3Second,
-          ] = info.skåneTrafiken.busData[2].departureTime.split(":");
-          const busDepartureTime3 = new Date(
-            currentTime.getFullYear(),
-            currentTime.getMonth(),
-            currentTime.getDate(),
-            busDepartureTime3Hour,
-            busDepartureTime3Minute,
-            busDepartureTime3Second
-          );
-          let busTimeUntil3 = Math.ceil(
-            (busDepartureTime3.getTime() - currentTime.getTime()) / (1000 * 60)
-          );
-          forEach(busTimeThree, (item) => (item.innerHTML = busTimeUntil3));
+      // set bus number
+      {
+        forEach(busNumberOne, (item) => item.innerHTML = skåneTrafiken.busData[0].routeShortName);
+        forEach(busNumberTwo, (item) => item.innerHTML = skåneTrafiken.busData[1].routeShortName);
+        forEach(busNumberThree, (item) => item.innerHTML = skåneTrafiken.busData[2].routeShortName);
+        forEach(busNumberFour, (item) => item.innerHTML = skåneTrafiken.busData[3].routeShortName);
+        forEach(busNumberFive, (item) => item.innerHTML = skåneTrafiken.busData[4].routeShortName);
+        forEach(busNumberSix, (item) => item.innerHTML = skåneTrafiken.busData[5].routeShortName);
+      }
 
-          const [
-            busDepartureTime4Hour,
-            busDepartureTime4Minute,
-            busDepartureTime4Second,
-          ] = info.skåneTrafiken.busData[3].departureTime.split(":");
-          const busDepartureTime4 = new Date(
-            currentTime.getFullYear(),
-            currentTime.getMonth(),
-            currentTime.getDate(),
-            busDepartureTime4Hour,
-            busDepartureTime4Minute,
-            busDepartureTime4Second
-          );
-          let busTimeUntil4 = Math.ceil(
-            (busDepartureTime4.getTime() - currentTime.getTime()) / (1000 * 60)
-          );
-          forEach(busTimeFour, (item) => (item.innerHTML = busTimeUntil4));
-
-          const [
-            busDepartureTime5Hour,
-            busDepartureTime5Minute,
-            busDepartureTime5Second,
-          ] = info.skåneTrafiken.busData[4].departureTime.split(":");
-          const busDepartureTime5 = new Date(
-            currentTime.getFullYear(),
-            currentTime.getMonth(),
-            currentTime.getDate(),
-            busDepartureTime5Hour,
-            busDepartureTime5Minute,
-            busDepartureTime5Second
-          );
-          let busTimeUntil5 = Math.ceil(
-            (busDepartureTime5.getTime() - currentTime.getTime()) / (1000 * 60)
-          );
-          forEach(busTimeFive, (item) => (item.innerHTML = busTimeUntil5));
-
-          const [
-            busDepartureTime6Hour,
-            busDepartureTime6Minute,
-            busDepartureTime6Second,
-          ] = info.skåneTrafiken.busData[5].departureTime.split(":");
-          const busDepartureTime6 = new Date(
-            currentTime.getFullYear(),
-            currentTime.getMonth(),
-            currentTime.getDate(),
-            busDepartureTime6Hour,
-            busDepartureTime6Minute,
-            busDepartureTime6Second
-          );
-          let busTimeUntil6 = Math.ceil(
-            (busDepartureTime6.getTime() - currentTime.getTime()) / (1000 * 60)
-          );
-          forEach(busTimeSix, (item) => (item.innerHTML = busTimeUntil6));
-        }
-
-        // set bus number
-        {
-          forEach(
-            busNumberOne,
-            (item) =>
-              (item.innerHTML = info.skåneTrafiken.busData[0].routeShortName)
-          );
-          forEach(
-            busNumberTwo,
-            (item) =>
-              (item.innerHTML = info.skåneTrafiken.busData[1].routeShortName)
-          );
-          forEach(
-            busNumberThree,
-            (item) =>
-              (item.innerHTML = info.skåneTrafiken.busData[2].routeShortName)
-          );
-          forEach(
-            busNumberFour,
-            (item) =>
-              (item.innerHTML = info.skåneTrafiken.busData[3].routeShortName)
-          );
-          forEach(
-            busNumberFive,
-            (item) =>
-              (item.innerHTML = info.skåneTrafiken.busData[4].routeShortName)
-          );
-          forEach(
-            busNumberSix,
-            (item) =>
-              (item.innerHTML = info.skåneTrafiken.busData[5].routeShortName)
-          );
-        }
-
-        /*
-      if (info.skåneTrafiken.busData[0].type = "700") {
+      /*
+      if (skåneTrafiken.busData[0].type = "700") {
         foreach(busImgOne, (item) => item.src.innerHTML = "http://infotavla.te4projekt.se/images/icons/Trains and busses/Stadsbuss.svg");
       }
       else {
         foreach(busImgOne, (item) => item.src.innerHTML = "http://infotavla.te4projekt.se/images/icons/Trains and busses/Stadsbuss.svg");
       }
       */
-        /*
-      foreach(busImgTwo, (item) => item.innerHTML = info.skåneTrafiken.busData[1].type);
-      foreach(busImgThree, (item) => item.innerHTML = info.skåneTrafiken.busData[2].type);
-      foreach(busImgFour, (item) => item.innerHTML = info.skåneTrafiken.busData[3].type);
-      foreach(busImgFive, (item) => item.innerHTML = info.skåneTrafiken.busData[4].type);
-      foreach(busImgSix, (item) => item.innerHTML = info.skåneTrafiken.busData[5].type);
+      /*
+      foreach(busImgTwo, (item) => item.innerHTML = skåneTrafiken.busData[1].type);
+      foreach(busImgThree, (item) => item.innerHTML = skåneTrafiken.busData[2].type);
+      foreach(busImgFour, (item) => item.innerHTML = skåneTrafiken.busData[3].type);
+      foreach(busImgFive, (item) => item.innerHTML = skåneTrafiken.busData[4].type);
+      foreach(busImgSix, (item) => item.innerHTML = skåneTrafiken.busData[5].type);
       */
-        //endregion
-      }
-      SetCountdown();
-      SetFood();
-    }, 1000);
-  </script>
+      //endregion
+    }
+    SetCountdown();
+    SetFood();
+  }, 1000);
+</script>
+
 </html>
