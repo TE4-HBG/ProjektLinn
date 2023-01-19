@@ -9,7 +9,8 @@ const { readFile, writeFile } = require('fs/promises');
 const SkåneTrafiken = require('./SkåneTrafiken.js')
 //const __filename = fileURLToPath(import.meta.url);
 //const __dirname = dirname(__filename);
-
+let newCountdownDate; 
+let newCountdownText;
 const app = express();
 const address = "http://infotavla.te4projekt.se";
 const port = 80;
@@ -144,8 +145,8 @@ let displayInfo = { templates: [], skåneTrafiken: null };
                 console.log("Old countdown.txt: " + savedCountdown);
 
                 //Saving the new and old information for countdown into four variables
-                var newCountdownDate = templates[i].countdown[0];
-                var newCountdownText = templates[i].countdown[1];
+                newCountdownDate = templates[i].countdown[0];
+                newCountdownText = templates[i].countdown[1];
                 var [oldCountdownDate, oldCountdownText] = savedCountdown.split(':'); //Leaving this to be able to implement support for if empty info is submitted
 
                 var countdownInfo = newCountdownDate + ":" + newCountdownText;
@@ -161,6 +162,32 @@ let displayInfo = { templates: [], skåneTrafiken: null };
         }
     }
 
+    function CalculateCountdown(countdownDateString) {
+        let countdownDate = new Date(countdownDateString);
+
+        let today = new Date();
+        let dd = today.getDate();
+        let mm = today.getMonth()+1; 
+        let yyyy = today.getFullYear();
+        if(dd<10) 
+        {
+            dd='0'+dd;
+        } 
+        if(mm<10) 
+        {
+            mm='0'+mm;
+        }
+
+        let todaysDateString = yyyy+'-'+mm+'-'+dd;
+        let todaysDate = new Date(todaysDateString);
+
+        let timeDiff = countdownDate.getTime() - todaysDate.getTime();
+        let diffDays = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+        console.log("todays date: " + todaysDate);
+        console.log("countdown date: " + countdownDate);
+        console.log("Antal dagar: " + diffDays);
+    }
+
 
     async function UpdateDisplayInfo() {
         console.log("Entered UpdateDisplayInfo()");
@@ -173,6 +200,7 @@ let displayInfo = { templates: [], skåneTrafiken: null };
         else {
             if (AuthenticateLogin(templates[0])) {
                 CheckForNonTemplateChanges(templates);
+                CalculateCountdown(newCountdownDate);
 
                 // if templates.length is 0, then the for loop shouldn't run in the first place! /// KLohger
                 if (templates.length != 0) { // Ugly solution but we can't find another way / I and A 
