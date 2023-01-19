@@ -256,9 +256,15 @@ function Publish(type) {
 
 }
 
-function DeleteInputBorder(LinnInputID) {
+function DeleteInputBorder(LinnInputID, index) {
     console.log('trying to removed ' + LinnInputID);
     document.getElementById(LinnInputID).remove();
+    if (index != null) {
+        allSaveInputs.splice(index, 1);
+        PrintAllSavedInputs(true);
+        localStorage.setItem("savedInputs", JSON.stringify(allSaveInputs));
+
+    }
 }
 function test(x) {
     for (let index = 0; index < allSaveInputs.length; index++) {
@@ -280,22 +286,22 @@ function PrintAllSavedInputs(clear = false) { //call the function with the argum
         let tmpArray = Object.values(element.content).map(val => val.match(/<p>(.*?)<\/p>/)[1]);;
         
         console.log(tmpArray);
-        PrintSavedInputs(element.duration, element.templateID, tmpArray)
+        PrintSavedInputs(element.duration, element.templateID, tmpArray, i)
     }
 }
-function PrintSavedInputs(minutes, x, newArray) {
+function PrintSavedInputs(minutes, x, newArray, index = null) {
     let container = document.getElementById('savedInputs').innerHTML;
     let inputBox = document.getElementById(x);
     let textAmount = 0;
     let imgAmount = 0;
     let Arr = localStorage.getItem(x);
     Arr = Arr.split(",");
-    
+
     console.log(newArray);
 
     container += '<div name="' + Arr + '" id="' + Arr[0] + '-saved">' +
         '<div class="UpdateForms-saved">' +
-        '<button type="button" class="delBtn" onclick=DeleteInputBorder("' + Arr[0] + '-saved")>X</button>' +
+        '<button type="button" class="delBtn" onclick="DeleteInputBorder(\'' + Arr[0] + '-saved\', ' + index +  ')">X</button>' +
         '<h4>' + Arr[0] + '</h4>' +
         '<input readonly type="number" class="quantity" name="quantity" min="0" max="15" value="' + minutes + '">' +
         '<br>';
