@@ -29,7 +29,7 @@
     let templateElements = [];
     let info = {
       templates: [],
-      skånetrafiken: {
+      skanetrafiken: {
         busInfo: [],
         trainInfo: [],
       }
@@ -60,7 +60,7 @@
         document.getElementById('page-container').innerHTML = info.templates.reduce((prev, curr) => (prev + curr.html), '');
         templateElements = document.getElementsByClassName("page");
       }
-      if (JSON.stringify(info.skånetrafiken) !== JSON.stringify(newInfo.skånetrafiken)) {
+      if (JSON.stringify(info.skanetrafiken) !== JSON.stringify(newInfo.skånetrafiken)) {
         info = newInfo;
         skåneChanged = true;
       }
@@ -111,7 +111,7 @@
           currentIndex = (currentIndex + 1) % templateElements.length;
         }
       }
-      if (info.skånetrafiken.busInfo.length == 6 && info.skånetrafiken.trainInfo.length == 6) {
+      if (info.skanetrafiken.busInfo.length == 6 && info.skanetrafiken.trainInfo.length == 6) {
         //Gets the current time so it can be used for skanetrafiken
         const now = new Date();
         const currentTime = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
