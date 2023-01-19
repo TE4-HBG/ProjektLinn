@@ -177,16 +177,20 @@
     function SetFood() {
       let lunchInfoTag = document.getElementsByClassName("lunchInfo");
 
-      let foodScheduleInfo = info.foodSchedule;
-      
-      console.log(info)
+      try {
+        let foodScheduleInfo = JSON.parse(info.foodSchedule);
+      }
+      catch {
+        console.log("Failed to parse foodSchedule");
+        return;
+      }
       
 
       let today = new Date();
       let weekNumber = getWeek(today);
       let weekdayNumber = today.getDay(); //Gets a number from 0 to 6 where sunday = 0 and saturday = 6
 
-      /*for (let i = 0; i < foodScheduleInfo.length; i++) {
+      for (let i = 0; i < foodScheduleInfo.length; i++) {
         if (parseInt(foodScheduleInfo[i].week) === weekNumber) {
           if (weekdayNumber === 1) {
             //It's monday
@@ -230,7 +234,7 @@
             (item) => (item.innerHTML = "Error: Ingen mat inlagd denna vecka")
           );
         }
-      }*/
+      }
     }
 
     setInterval(() => {
