@@ -187,7 +187,7 @@
 
       for (let i = 0; i < foodScheduleInfo.length; i++) {
         console.log(foodScheduleInfo[i].week);
-        if (foodScheduleInfo[i].week === weekNumber) {
+        if (parseInt(foodScheduleInfo[i].week) === weekNumber) {
           if (weekdayNumber === 1) {
             //It's monday
             forEach(
