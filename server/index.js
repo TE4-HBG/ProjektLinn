@@ -31,7 +31,7 @@ BigInt.prototype.toJSON = function () { return this.toString() }
 
 
 // string array
-let displayInfo = { templates: [], skånetrafiken: { trainData: [], busData: [] } };
+let displayInfo = { templates: [], skåneTrafiken: { trainData: [], busData: [] } };
 
 (async () => {
     displayInfo.skåneTrafiken = await SkåneTrafiken.Get();
