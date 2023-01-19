@@ -31,6 +31,12 @@
   <script async src="http://infotavla.te4projekt.se/scripts/weatherWidget.js"></script>
 </body>
 <script type="text/javascript">
+  function forEach(collection, func) {
+    for (let i = 0; i < collection.length; i++) {
+      func(collection.item(i));
+
+    }
+  }
   const fade = [
     { opacity: "100%", zIndex: "1" },
     { opacity: "0%", zIndex: "1" },
@@ -73,12 +79,7 @@
    * @param {HTMLCollection} collection 
    * @param {(element : HTMLElement) => *} func
    */
-  const foreach = (collection, func) => {
-    for (let i = 0; i < collection.length; i++) {
-      func(collection.item(i));
-
-    }
-  }
+  
 
   function SetCountdown() {
     let countdownTextTag = document.getElementsByClassName("countdownName");
@@ -221,41 +222,41 @@
 
       // set all train names
       {
-        foreach(trainNameOne, (item) => item.innerHTML = info.skåneTrafiken.trainData[0].routeLongName);
-        foreach(trainNameTwo, (item) => item.innerHTML = info.skåneTrafiken.trainData[1].routeLongName);
-        foreach(trainNameThree, (item) => item.innerHTML = info.skåneTrafiken.trainData[2].routeLongName);
-        foreach(trainNameFour, (item) => item.innerHTML = info.skåneTrafiken.trainData[3].routeLongName);
-        foreach(trainNameFive, (item) => item.innerHTML = info.skåneTrafiken.trainData[4].routeLongName);
-        foreach(trainNameSix, (item) => item.innerHTML = info.skåneTrafiken.trainData[5].routeLongName);
+        forEach(trainNameOne, (item) => item.innerHTML = info.skåneTrafiken.trainData[0].routeLongName);
+        forEach(trainNameTwo, (item) => item.innerHTML = info.skåneTrafiken.trainData[1].routeLongName);
+        forEach(trainNameThree, (item) => item.innerHTML = info.skåneTrafiken.trainData[2].routeLongName);
+        forEach(trainNameFour, (item) => item.innerHTML = info.skåneTrafiken.trainData[3].routeLongName);
+        forEach(trainNameFive, (item) => item.innerHTML = info.skåneTrafiken.trainData[4].routeLongName);
+        forEach(trainNameSix, (item) => item.innerHTML = info.skåneTrafiken.trainData[5].routeLongName);
       }
 
       // set train times
       {
         const departureTime1 = new Date("1970-01-01T" + info.skåneTrafiken.trainData[0].departureTime + "Z");
         let timeUntil1 = departureTime1 - currentTime;
-        foreach(trainTimeOne, (item) => item.innerHTML = innerHTML = timeUntil1 / (1000 * 60));
+        forEach(trainTimeOne, (item) => item.innerHTML = innerHTML = timeUntil1 / (1000 * 60));
 
         const departureTime2 = new Date("1970-01-01T" + info.skåneTrafiken.trainData[1].departureTime + "Z");
         let timeUntil2 = departureTime2 - currentTime;
-        foreach(trainTimeTwo, (item) => item.innerHTML = innerHTML = timeUntil2 / (1000 * 60));
+        forEach(trainTimeTwo, (item) => item.innerHTML = innerHTML = timeUntil2 / (1000 * 60));
 
         const departureTime3 = new Date("1970-01-01T" + info.skåneTrafiken.trainData[2].departureTime + "Z");
         let timeUntil3 = departureTime3 - currentTime;
-        foreach(trainTimeThree, (item) => item.innerHTML = innerHTML = timeUntil3 / (1000 * 60));
+        forEach(trainTimeThree, (item) => item.innerHTML = innerHTML = timeUntil3 / (1000 * 60));
 
 
         const departureTime4 = new Date("1970-01-01T" + info.skåneTrafiken.trainData[3].departureTime + "Z");
         let timeUntil4 = departureTime4 - currentTime;
-        foreach(trainTimeFour, (item) => item.innerHTML = innerHTML = timeUntil4 / (1000 * 60));
+        forEach(trainTimeFour, (item) => item.innerHTML = innerHTML = timeUntil4 / (1000 * 60));
 
 
         const departureTime5 = new Date("1970-01-01T" + info.skåneTrafiken.trainData[4].departureTime + "Z");
         let timeUntil5 = departureTime5 - currentTime;
-        foreach(trainTimeFive, (item) => item.innerHTML = innerHTML = timeUntil5 / (1000 * 60));
+        forEach(trainTimeFive, (item) => item.innerHTML = innerHTML = timeUntil5 / (1000 * 60));
 
         const departureTimeStr = info.skåneTrafiken.trainData[5].departureTime;
         const departureTimeArr = departureTimeStr.split(':');
-        const departureTime6 = new Date(1970, 0, 1, departureTimeArr[0], departureTimeArr[1], departureTimeArr[2]);
+        const departureTime6 = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), departureTimeArr[0], departureTimeArr[1], departureTimeArr[2]);
         let timeUntil6 = (departureTime6.getTime() - currentTime.getTime()) / (1000 * 60); 
         forEach(trainTimeSix, (item) => item.innerHTML = timeUntil6);
       }
@@ -270,49 +271,49 @@
 
       // set bus names
       {
-        foreach(busNameOne, (item) => item.innerHTML = info.skåneTrafiken.busData[0].routeLongName);
-        foreach(busNameTwo, (item) => item.innerHTML = info.skåneTrafiken.busData[1].routeLongName);
-        foreach(busNameThree, (item) => item.innerHTML = info.skåneTrafiken.busData[2].routeLongName);
-        foreach(busNameFour, (item) => item.innerHTML = info.skåneTrafiken.busData[3].routeLongName);
-        foreach(busNameFive, (item) => item.innerHTML = info.skåneTrafiken.busData[4].routeLongName);
-        foreach(busNameSix, (item) => item.innerHTML = info.skåneTrafiken.busData[5].routeLongName);
+        forEach(busNameOne, (item) => item.innerHTML = info.skåneTrafiken.busData[0].routeLongName);
+        forEach(busNameTwo, (item) => item.innerHTML = info.skåneTrafiken.busData[1].routeLongName);
+        forEach(busNameThree, (item) => item.innerHTML = info.skåneTrafiken.busData[2].routeLongName);
+        forEach(busNameFour, (item) => item.innerHTML = info.skåneTrafiken.busData[3].routeLongName);
+        forEach(busNameFive, (item) => item.innerHTML = info.skåneTrafiken.busData[4].routeLongName);
+        forEach(busNameSix, (item) => item.innerHTML = info.skåneTrafiken.busData[5].routeLongName);
       }
 
       // set bus times
       {
         const busDepartureTime1 = new Date("1970-01-01T" + info.skåneTrafiken.busData[0].departureTime + "Z");
         let busTimeUntil1 = busDepartureTime1 - currentTime;
-        foreach(busTimeOne, (item) => item.innerHTML = busTimeUntil1 / (1000 * 60));
+        forEach(busTimeOne, (item) => item.innerHTML = busTimeUntil1 / (1000 * 60));
 
         const busDepartureTime2 = new Date("1970-01-01T" + info.skåneTrafiken.busData[1].departureTime + "Z");
         let busTimeUntil2 = busDepartureTime2 - currentTime;
-        foreach(busTimeTwo, (item) => item.innerHTML = busTimeUntil2 / (1000 * 60));
+        forEach(busTimeTwo, (item) => item.innerHTML = busTimeUntil2 / (1000 * 60));
 
         const busDepartureTime3 = new Date("1970-01-01T" + info.skåneTrafiken.busData[2].departureTime + "Z");
         let busTimeUntil3 = busDepartureTime3 - currentTime;
-        foreach(busTimeThree, (item) => item.innerHTML = busTimeUntil3 / (1000 * 60));
+        forEach(busTimeThree, (item) => item.innerHTML = busTimeUntil3 / (1000 * 60));
 
         const busDepartureTime4 = new Date("1970-01-01T" + info.skåneTrafiken.busData[3].departureTime + "Z");
         let busTimeUntil4 = busDepartureTime4 - currentTime;
-        foreach(busTimeFour, (item) => item.innerHTML = busTimeUntil4 / (1000 * 60));
+        forEach(busTimeFour, (item) => item.innerHTML = busTimeUntil4 / (1000 * 60));
 
         const busDepartureTime5 = new Date("1970-01-01T" + info.skåneTrafiken.busData[4].departureTime + "Z");
         let busTimeUntil5 = busDepartureTime5 - currentTime;
-        foreach(busTimeFive, (item) => item.innerHTML = busTimeUntil5 / (1000 * 60));
+        forEach(busTimeFive, (item) => item.innerHTML = busTimeUntil5 / (1000 * 60));
 
         const busDepartureTime6 = new Date("1970-01-01T" + info.skåneTrafiken.busData[5].departureTime + "Z");
         let busTimeUntil6 = busDepartureTime6 - currentTime;
-        foreach(busTimeSix, (item) => item.innerHTML = busTimeUntil6 / (1000 * 60));
+        forEach(busTimeSix, (item) => item.innerHTML = busTimeUntil6 / (1000 * 60));
       }
 
       // set bus number
       {
-        foreach(busNumberOne, (item) => item.innerHTML = info.skåneTrafiken.busData[0].routeShortName);
-        foreach(busNumberTwo, (item) => item.innerHTML = info.skåneTrafiken.busData[1].routeShortName);
-        foreach(busNumberThree, (item) => item.innerHTML = info.skåneTrafiken.busData[2].routeShortName);
-        foreach(busNumberFour, (item) => item.innerHTML = info.skåneTrafiken.busData[3].routeShortName);
-        foreach(busNumberFive, (item) => item.innerHTML = info.skåneTrafiken.busData[4].routeShortName);
-        foreach(busNumberSix, (item) => item.innerHTML = info.skåneTrafiken.busData[5].routeShortName);
+        forEach(busNumberOne, (item) => item.innerHTML = info.skåneTrafiken.busData[0].routeShortName);
+        forEach(busNumberTwo, (item) => item.innerHTML = info.skåneTrafiken.busData[1].routeShortName);
+        forEach(busNumberThree, (item) => item.innerHTML = info.skåneTrafiken.busData[2].routeShortName);
+        forEach(busNumberFour, (item) => item.innerHTML = info.skåneTrafiken.busData[3].routeShortName);
+        forEach(busNumberFive, (item) => item.innerHTML = info.skåneTrafiken.busData[4].routeShortName);
+        forEach(busNumberSix, (item) => item.innerHTML = info.skåneTrafiken.busData[5].routeShortName);
       }
 
       /*
