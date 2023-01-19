@@ -113,7 +113,6 @@
         console.log("got new templates!");
         templatesChanged = true;
         info = newInfo;
-        console.log(info);
         document.getElementById("page-container").innerHTML =
           info.templates.reduce((prev, curr) => prev + curr.html, "");
         templateElements = document.getElementsByClassName("page");
@@ -126,7 +125,10 @@
         console.log("got new skånetrafiken stuff!");
         skåneChanged = true;
       }
+      console.log("before ddddddddddddddddddddddddddddddd")
+      console.log(info)
       info = newInfo;
+      console.log(info)
     });
     /**
      *
@@ -182,6 +184,7 @@
 
       let foodScheduleInfo = info.foodSchedule;
       if(x === 0) {
+        console.log(info)
         console.log(foodScheduleInfo);
         x = 1;
       }
