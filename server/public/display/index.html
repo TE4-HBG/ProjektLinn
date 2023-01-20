@@ -309,21 +309,26 @@
         if (
           skåneTrafiken.busData[i].routeShortName === skåneTrafiken.busData[i + 1].routeShortName &&
           skåneTrafiken.busData[i].timeUntil === skåneTrafiken.busData[i + 1].timeUntil ||
-          skåneTrafiken.busData[i + 1].timeUntil < 0
+          skåneTrafiken.busData[i + 1].timeUntil <= 0
         ) {
           skåneTrafiken.busData.splice(i + 1, 1);
         }
         if (
-          skåneTrafiken.busData[i].timeUntil < 0
+          skåneTrafiken.busData[i].timeUntil <= 0
         ) {
           skåneTrafiken.busData.splice(i, 1);
         }
         if (
           skåneTrafiken.trainData[i].routeShortName === skåneTrafiken.trainData[i + 1].routeShortName &&
           skåneTrafiken.trainData[i].timeUntil === skåneTrafiken.trainData[i + 1].timeUntil ||
-          skåneTrafiken.trainData[i + 1].timeUntil < 0
+          skåneTrafiken.trainData[i + 1].timeUntil <= 0
         ) {
           skåneTrafiken.trainData.splice(i + 1, 1);
+        }
+        if (
+          skåneTrafiken.trainData[i].timeUntil <= 0
+        ) {
+          skåneTrafiken.busData.splice(i, 1);
         }
       }
 

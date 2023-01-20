@@ -517,6 +517,7 @@ p {
     width: 230px;
     height: 537px;
     transform: translateX(126.9mm) translateY(52.9mm) !important;
+    overflow: hidden;
 }
 #template1Img0 {
     position: absolute;
@@ -535,12 +536,14 @@ p {
     width: 230px;
     height: 537px;
     transform: translateX(126.9mm) translateY(52.9mm) !important;
+    overflow: hidden;
 }
 #template2Text2 {
     position: absolute;
     width: 700px;
     height: 376px;
     transform: translateX(2.5mm) translateY(200mm) !important;
+    overflow: hidden;
 }
 
 #template3Img {
@@ -572,18 +575,21 @@ p {
     width: 669px;
     height: 378px;
     transform: translateX(6.8mm) translateY(169.3mm) !important;
+    overflow: hidden;
 }
 #template5Text1 {
     position: absolute;
     width: 669px;
     height: 378px;
     transform: translateX(6.8mm) translateY(53.3mm) !important;
+    overflow: hidden;
 }
 #template5Text2 {
     position: absolute;
     width: 669px;
     height: 378px;
     transform: translateX(6.8mm) translateY(169.3mm) !important;
+    overflow: hidden;
 }
 
 .img * {
