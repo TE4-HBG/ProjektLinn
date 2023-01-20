@@ -183,7 +183,7 @@ setInterval(async () => {
     async function UpdateDisplayInfo() {
         console.log("Entered UpdateDisplayInfo()");
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
-        for (let index = 0; index < array.length; index++) {- // Visualise what is being sent from inputSida to server
+        for (let index = 0; index < templates.length; index++) {- // Visualise what is being sent from inputSida to server
             console.log(templates[index].templateID);
         }
         
