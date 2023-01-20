@@ -183,7 +183,7 @@ setInterval(async () => {
     async function UpdateDisplayInfo() {
         console.log("Entered UpdateDisplayInfo()");
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
-        for (let index = 0; index < array.length; index++) {- // Visualise what is being sent from inputSida to server
+        for (let index = 0; index < templates.length; index++) { // Visualise what is being sent from inputSida to server
             console.log(templates[index].templateID);
         }
         
@@ -228,7 +228,7 @@ setInterval(async () => {
 
                                 const ext = matches[0].split('/')[1];
                                 const data = matches[1].split(',')[1];
-                                console.log(Buffer.from(data, 'base64'));
+                                // console.log(Buffer.from(data, 'base64')); commented out to clean up server console commented out to clean up server console
                                 await writeFile(`public/images/template/${templates[i].templateID}.${ext}`, Buffer.from(data, 'base64'));
                                 console.log("saved file")
                                 image1.src = `${address}/images/template/${templates[i].templateID}.${ext}`;
@@ -247,7 +247,7 @@ setInterval(async () => {
 
                                 const ext = matches[0].split('/')[1];
                                 const data = matches[1].split(',')[1];
-                                console.log(Buffer.from(data, 'base64'));
+                                // console.log(Buffer.from(data, 'base64')); commented out to clean up server console
                                 await writeFile(`public/images/template/${templates[i].templateID}.${ext}`, Buffer.from(data, 'base64'));
                                 console.log("saved file")
                                 image1.src = `${address}/images/template/${templates[i].templateID}.${ext}`;
@@ -264,7 +264,7 @@ setInterval(async () => {
 
                                 const ext = matches[0].split('/')[1];
                                 const data = matches[1].split(',')[1];
-                                console.log(Buffer.from(data, 'base64'));
+                                // console.log(Buffer.from(data, 'base64')); commented out to clean up server console
                                 await writeFile(`public/images/template/${templates[i].templateID}.${ext}`, Buffer.from(data, 'base64'));
                                 console.log("saved file")
                                 image1.src = `${address}/images/template/${templates[i].templateID}.${ext}`;
