@@ -404,7 +404,17 @@
       // set all train names
       trainNames.forEach((collection, i) => {
         forEach(collection, (item) => {
-          item.innerHTML = skåneTrafiken.trainData[i].routeLongName;
+
+          if (skånetrafiken.trainData[i].routeLongName.includes("Ø G")) {
+            item.innerHTML = "Ö-Göteborg"
+          }
+           if (skånetrafiken.trainData[i].routeLongName.includes("Ø M")) {
+            item.innerHTML = "Ö-Malmö"
+          }
+          else {
+            item.innerHTML = skåneTrafiken.trainData[i].routeLongName;
+          }
+          
         });
       });
 
@@ -426,7 +436,43 @@
       // set bus names
       busNames.forEach((collection, i) => {
         forEach(collection, (item) => {
-          item.innerHTML = skåneTrafiken.busData[i].routeLongName
+          //Tänk på att directionIDs här är bara gissade. De kan behöva bytas.
+          // Ödåkra - Helsingborg C - Råå
+          if (skåneTrafiken.busData[i].directionId == 1 && skånetrafiken.busData[i].routeShortName == 2) {
+            item.innerHTML = "Ödåkra"
+          }
+          if (skåneTrafiken.busData[i].directionId == 0 && skånetrafiken.busData[i].routeShortName == 2) {
+            item.innerHTML = "Råå"
+          }
+          //Örkelljunga - Helsingborg C
+          if (skånetrafiken.busData[i].routeShortName == 10) {
+            item.innerHTML = "Örkelljunga"
+          }
+          //Rydebäck - Helsingborg C
+          if (skånetrafiken.busData[i].routeShortName == 219) {
+            item.innerHTML = "Rydebäck"
+          }
+          //Höganäs - Helsingborg
+          if (skånetrafiken.busData[i].routeShortName == 11) {
+            item.innerHTML = "Höganäs"
+          }
+          //1,HelsingborgsExpressen Dalhem - Råå
+          if (skåneTrafiken.busData[i].directionId == 1 && skånetrafiken.busData[i].routeShortName == 1) {
+            item.innerHTML = "Dalhem"
+          }
+          if (skåneTrafiken.busData[i].directionId == 0 && skånetrafiken.busData[i].routeShortName == 1) {
+            item.innerHTML = "Råå"
+          }
+          //8,Rosengården - Husensjö - Helsingborg C - Sofiero -
+          if (skåneTrafiken.busData[i].directionId == 1 && skånetrafiken.busData[i].routeShortName == 8) {
+            item.innerHTML = "Rosengården"
+          }
+          if (skåneTrafiken.busData[i].directionId == 0 && skånetrafiken.busData[i].routeShortName == 8) {
+            item.innerHTML = "Hittarp"
+          }
+
+
+          //item.innerHTML = skåneTrafiken.busData[i].routeLongName
         });
       });
 
