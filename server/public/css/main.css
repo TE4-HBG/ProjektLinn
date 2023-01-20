@@ -291,6 +291,7 @@ p {
     height: 16.9mm;
     width: 98.1mm;
     transform: translateX(15mm) translateY(178mm) !important;
+    overflow: hidden;
 }
 .lunchBody {
     text-align: center;
@@ -505,6 +506,7 @@ p {
     height: 24.3mm;
     width: 40.5mm;
     transform: translateX(142.4mm) translateY(293.3mm) !important;
+    overflow: hidden;
 }
 .lunchFooter {
     text-align: center;
