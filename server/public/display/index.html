@@ -104,7 +104,7 @@
       JSON.stringify(info.skåneTrafiken) !==
       JSON.stringify(newInfo.skåneTrafiken)
     ) {
-      console.log("got new skånetrafiken stuff!");
+      console.log("got new skåneTrafiken stuff!");
       skåneChanged = true;
     }
     info = newInfo;
@@ -405,10 +405,10 @@
       trainNames.forEach((collection, i) => {
         forEach(collection, (item) => {
 
-          if (skånetrafiken.trainData[i].routeLongName.includes("Ø G")) {
+          if (skåneTrafiken.trainData[i].routeLongName.includes("Ø G")) {
             item.innerHTML = "Ö-Göteborg"
           }
-           if (skånetrafiken.trainData[i].routeLongName.includes("Ø M")) {
+           else if (skåneTrafiken.trainData[i].routeLongName.includes("Ø M")) {
             item.innerHTML = "Ö-Malmö"
           }
           else {
@@ -438,36 +438,36 @@
         forEach(collection, (item) => {
           //Tänk på att directionIDs här är bara gissade. De kan behöva bytas.
           // Ödåkra - Helsingborg C - Råå
-          if (skåneTrafiken.busData[i].directionId == 1 && skånetrafiken.busData[i].routeShortName == 2) {
+          if (skåneTrafiken.busData[i].directionId == 1 && skåneTrafiken.busData[i].routeShortName == 2) {
             item.innerHTML = "Ödåkra"
           }
-          if (skåneTrafiken.busData[i].directionId == 0 && skånetrafiken.busData[i].routeShortName == 2) {
+          if (skåneTrafiken.busData[i].directionId == 0 && skåneTrafiken.busData[i].routeShortName == 2) {
             item.innerHTML = "Råå"
           }
           //Örkelljunga - Helsingborg C
-          if (skånetrafiken.busData[i].routeShortName == 10) {
+          if (skåneTrafiken.busData[i].routeShortName == 10) {
             item.innerHTML = "Örkelljunga"
           }
           //Rydebäck - Helsingborg C
-          if (skånetrafiken.busData[i].routeShortName == 219) {
+          if (skåneTrafiken.busData[i].routeShortName == 219) {
             item.innerHTML = "Rydebäck"
           }
           //Höganäs - Helsingborg
-          if (skånetrafiken.busData[i].routeShortName == 11) {
+          if (skåneTrafiken.busData[i].routeShortName == 11) {
             item.innerHTML = "Höganäs"
           }
           //1,HelsingborgsExpressen Dalhem - Råå
-          if (skåneTrafiken.busData[i].directionId == 1 && skånetrafiken.busData[i].routeShortName == 1) {
+          if (skåneTrafiken.busData[i].directionId == 1 && skåneTrafiken.busData[i].routeShortName == 1) {
             item.innerHTML = "Dalhem"
           }
-          if (skåneTrafiken.busData[i].directionId == 0 && skånetrafiken.busData[i].routeShortName == 1) {
+          if (skåneTrafiken.busData[i].directionId == 0 && skåneTrafiken.busData[i].routeShortName == 1) {
             item.innerHTML = "Råå"
           }
           //8,Rosengården - Husensjö - Helsingborg C - Sofiero -
-          if (skåneTrafiken.busData[i].directionId == 1 && skånetrafiken.busData[i].routeShortName == 8) {
+          if (skåneTrafiken.busData[i].directionId == 1 && skåneTrafiken.busData[i].routeShortName == 8) {
             item.innerHTML = "Rosengården"
           }
-          if (skåneTrafiken.busData[i].directionId == 0 && skånetrafiken.busData[i].routeShortName == 8) {
+          if (skåneTrafiken.busData[i].directionId == 0 && skåneTrafiken.busData[i].routeShortName == 8) {
             item.innerHTML = "Hittarp"
           }
 
