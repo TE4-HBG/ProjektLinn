@@ -280,7 +280,7 @@ function test(x) {
     }
 }
 function PrintAllSavedInputs() { //call the function with the argument true to clear the saved inputs and then reprint it, in practice you print only the things that are in allSavedInputs[] 
-    document.getElementById('savedInputs').innerHTML = "";
+    document.getElementById('savedInputs').innerHTML = '<H2 id ="Rubrik_Mall">Sparade Mallar</H2>';
     for (let i = 0; i < allSaveInputs.length; i++) {
         const element = allSaveInputs[i];  
 
