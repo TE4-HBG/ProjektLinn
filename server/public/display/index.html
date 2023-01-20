@@ -266,8 +266,7 @@
     ) {
       //Gets the current time so it can be used for skanetrafiken
       const currentTime = new Date();
-      let skåneTrafiken = Object.assign({}, info.skåneTrafiken);
-
+      let skåneTrafiken = JSON.parse(JSON.stringify(info.skåneTrafiken));
       skåneTrafiken.busData.forEach((bus) => {
         const [
           departureTimeHour,
