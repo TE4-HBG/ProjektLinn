@@ -183,8 +183,10 @@ setInterval(async () => {
     async function UpdateDisplayInfo() {
         console.log("Entered UpdateDisplayInfo()");
         let templates = JSON.parse(await readFile("currentDisplayInfo.json"));
-        for (let index = 0; index < templates.length; index++) { // Visualise what is being sent from inputSida to server
-            console.log(templates[index].templateID);
+        for (let index = 0; index < templates - 1; index++) { // Visualise what is being sent from inputSida to server
+            if(templates[index].content.image1path == templates[index + 1].content.image1path) {
+                console.log("!!!!!!!!!!!!!!!!!!!!SAMMA image path!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            }
         }
         
         if (templates[0] && templates[0].isCool) {
