@@ -438,20 +438,20 @@
         forEach(collection, (item) => {
           //Tänk på att directionIDs här är bara gissade. De kan behöva bytas.
           // Ödåkra - Helsingborg C - Råå
-          if (skåneTrafiken.busData[i].directionId == 1 && skåneTrafiken.busData[i].routeShortName == 2) {
+          if (skåneTrafiken.busData[i].directionId == 0 && skåneTrafiken.busData[i].routeShortName == 2) {
             item.innerHTML = "Ödåkra"
           }
-          if (skåneTrafiken.busData[i].directionId == 0 && skåneTrafiken.busData[i].routeShortName == 2) {
+          if (skåneTrafiken.busData[i].directionId == 1 && skåneTrafiken.busData[i].routeShortName == 2) {
             item.innerHTML = "Råå"
           }
           //Örkelljunga - Helsingborg C
           if (skåneTrafiken.busData[i].routeShortName == 10) {
             item.innerHTML = "Örkelljunga"
           }
-          //Rydebäck - Helsingborg C
-          if (skåneTrafiken.busData[i].routeShortName == 219) {
-            item.innerHTML = "Rydebäck"
-          }
+          //Rydebäck - Helsingborg C - FUNGERAR EJ
+          //if (skåneTrafiken.busData[i].routeShortName == 219) {
+         //   item.innerHTML = "Rydebäck"
+         // }
           //Höganäs - Helsingborg
           if (skåneTrafiken.busData[i].routeShortName == 11) {
             item.innerHTML = "Höganäs"
