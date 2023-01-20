@@ -421,4 +421,5 @@ function checkImageSize(id) {
 function ClearData() { //Clears and updates allSaveInput and local storage, a clean slate
     localStorage.removeItem("savedInputs");
     allSaveInputs = [];
+    PrintAllSavedInputs()
 }
