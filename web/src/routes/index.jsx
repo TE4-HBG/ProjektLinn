@@ -1,8 +1,8 @@
 export const RootRoute = () => {
     return (
-        <div>
+        <>
             <h1 className='text-green-500'>RootRoute</h1>
-        </div>
+        </>
     )
 }
 
