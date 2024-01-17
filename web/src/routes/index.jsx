@@ -1,3 +1,5 @@
+import { CountdownWidget } from "../components/CountdownWidget";
+
 export const RootRoute = () => {
     return (
         <>
@@ -11,6 +13,6 @@ export const RootRoute = () => {
  */
 // eslint-disable-next-line react-refresh/only-export-components
 export const rootRoute = {
-    path: '/',
-    element: <RootRoute />,
-}
+  path: "/",
+  element: <RootRoute />,
+};
