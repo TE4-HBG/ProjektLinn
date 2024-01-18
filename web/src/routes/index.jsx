@@ -1,5 +1,3 @@
-import { CountdownWidget } from "../components/CountdownWidget";
-
 export const RootRoute = () => {
     return (
         <>
