@@ -1,10 +1,8 @@
 /**
  * Provides a context and hook for accessing the PocketBase client.
  */
-import PocketBase from "pocketbase";
-import { RecordModel } from 'pocketbase';
-import { RecordService } from "pocketbase";
-import { useContext, createContext } from "react";
+import PocketBase, { RecordService } from "pocketbase";
+import { createContext, useContext } from "react";
 
 /**
  * Represents a strict record model with required properties.
@@ -54,6 +52,16 @@ export interface Widget extends StrictRecordModel {
 }
 
 /**
+ * Represents a widget record model.
+ */
+export interface Misc extends StrictRecordModel {
+    // slide: string;
+    type: string;
+    data: any;
+    // Add your properties here for event
+}
+
+/**
  * Represents an expanded model with additional expand property.
  */
 export type ExpandedModel<Model extends StrictRecordModel, Expand extends Record<string, StrictRecordModel >> = Omit<Model, 'expand'> & {
@@ -69,6 +77,7 @@ interface TypedPocketBase extends PocketBase {
     collection(idOrName: "layout_items"): RecordService<LayoutItem>;
     collection(idOrName: "slides"): RecordService<Slide>;
     collection(idOrName: "widgets"): RecordService<Widget>;
+    collection(idOrName: "misc"): RecordService<Misc>;
 }
 
 const pocketBaseClient = new PocketBase(
