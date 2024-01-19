@@ -1,12 +1,11 @@
+import { DisplayContainer } from "../components/DisplayContainer";
+
 export const RootRoute = () => {
-  
-   
-    return (
-        
-            <>
-             
-            </>
-    );
+  return (
+    <>
+      <DisplayContainer />
+    </>
+  );
 };
 
 /**

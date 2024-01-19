@@ -11,6 +11,7 @@ import {
  * @param slideId The ID of the slide.
  * @returns The data containing the widgets for the slide.
  */
+
 export const useWidgets = (slideId: string) => {
     const pbClient = usePocketbase();
 
