@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import * as WeatherIcons from "./weatherIcons";
+import * as WeatherIcons from "../components/weatherIcons";
 
 const weatherFetcher = async () => {
   const res = await fetch(
