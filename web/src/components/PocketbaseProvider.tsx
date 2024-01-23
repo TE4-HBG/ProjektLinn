@@ -58,7 +58,7 @@ export interface Widget extends StrictRecordModel {
 export interface Misc extends StrictRecordModel {
     // slide: string;
     type: string;
-    data: any;
+    value: any;
     // Add your properties here for event
 }
 
