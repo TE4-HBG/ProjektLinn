@@ -67,6 +67,3 @@ The application should now be running at http://localhost:5173
 - Tailwind CSS
 - PocketBase
 ```
-
-
-
