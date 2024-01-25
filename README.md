@@ -57,7 +57,7 @@ npm run dev
 ```
 
 
-The application should now be running at http://localhost:3001.
+The application should now be running at http://localhost:5173
 
 
 ## Acknowledgements
