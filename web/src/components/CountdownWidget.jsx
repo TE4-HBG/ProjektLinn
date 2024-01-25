@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+// @ts-ignore
 import ntiLogo from "../assets/ntiLogo.svg";
 
 const size = "2x1"; //Size for layout purposes. Later it should be getting this from the Database
 
 export const CountdownWidget = ({ data }) => {
+  //tar emot key datatime och skapar ett Date object
   const { datetime } = data;
   const receivedDate = new Date(datetime);
 
@@ -13,7 +15,7 @@ export const CountdownWidget = ({ data }) => {
   const [secondsLeft, setSecondsLeft] = useState(0);
 
   useEffect(() => {
-    //Update time every 100ms
+    //Update time every 1000ms
     const interval = setInterval(() => {
       getTimeLeft();
     }, 1000);
@@ -26,6 +28,8 @@ export const CountdownWidget = ({ data }) => {
     const dateNow = new Date();
     const timeDifference = receivedDate - dateNow;
 
+    console.log(receivedDate);
+    //converterar till dagar, timmar osv
     const calculatedDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
     const calculatedHours = Math.floor(
       (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -35,7 +39,8 @@ export const CountdownWidget = ({ data }) => {
     );
     const calculatedSeconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-    // Format values to always have two digits
+    // padStart Formats values to always have two digits, if they already 2 digits
+    // no "0" gets added, if digits are less than 2 in length "0" gets added
     const formattedDays = String(calculatedDays).padStart(2, "0");
     const formattedHours = String(calculatedHours).padStart(2, "0");
     const formattedMinutes = String(calculatedMinutes).padStart(2, "0");
