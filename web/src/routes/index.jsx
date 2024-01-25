@@ -1,9 +1,11 @@
 import { DisplayContainer } from "../components/DisplayContainer";
+import { Veckoevents } from "../components/Veckoevents";
 
 export const RootRoute = () => {
   return (
     <>
       <DisplayContainer />
+      <Veckoevents />
     </>
   );
 };

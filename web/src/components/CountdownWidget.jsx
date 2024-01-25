@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ntiLogo from "../assets/ntiLogo.svg";
 
-const size = "2x1";
+const size = "2x1"; //Size for layout purposes. Later it should be getting this from the Database
 
 export const CountdownWidget = ({ data }) => {
   const { datetime } = data;
@@ -13,6 +13,7 @@ export const CountdownWidget = ({ data }) => {
   const [secondsLeft, setSecondsLeft] = useState(0);
 
   useEffect(() => {
+    //Update time every 100ms
     const interval = setInterval(() => {
       getTimeLeft();
     }, 1000);
@@ -21,6 +22,7 @@ export const CountdownWidget = ({ data }) => {
   }, []);
 
   function getTimeLeft() {
+    //Calculate remaining time from date and format it.
     const dateNow = new Date();
     const timeDifference = receivedDate - dateNow;
 
@@ -46,6 +48,7 @@ export const CountdownWidget = ({ data }) => {
   }
 
   if (size === "1x1") {
+    //Widget layouts are returned depending on their size in grid
     return (
       <>
         <div className="countdownDiv aspect-square flex flex-col">
@@ -159,6 +162,7 @@ export const CountdownWidget = ({ data }) => {
     );
   } else {
     return (
+      //If size is something else than set size, display error!
       <>
         <h1>Something went wrong, gridsize does not exist</h1>
       </>
