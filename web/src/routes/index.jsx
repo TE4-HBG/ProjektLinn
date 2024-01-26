@@ -5,6 +5,7 @@ import { SlideTimer } from "../components/SlideTimer";
 import { NewsArticleWidget } from "../components/NewsArticleWidget";
 import { Insta } from "../components/Insta";
 import { CountdownWidget } from "../components/CountdownWidget";
+import { useMisc } from "../lib/hooks/useMisc";
 
 export const RootRoute = () => {
   const dataForTrafficWidget = {
@@ -20,6 +21,7 @@ export const RootRoute = () => {
     tidigare kod:
     <DisplayContainer />
     <Veckoevents />
+    <CountdownWidget data={dataTime} />
     */
   return (
     <>
@@ -28,6 +30,7 @@ export const RootRoute = () => {
       <NewsArticleWidget />
       <Insta />
       <CountdownWidget data={dataTime} />
+      {console.log(useMisc("st-hbg-c-departures"))}
     </>
   );
 };
