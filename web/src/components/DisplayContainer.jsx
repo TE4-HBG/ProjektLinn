@@ -7,7 +7,7 @@ export const DisplayContainer = () => {
   return (
     <>
       <DisplayHeader />
-      <p className="p-10 text-center bg-white "> Display Container </p>
+      <p className="p-10 text-center  "> </p>
       <DisplayFooter />
     </>
   );
