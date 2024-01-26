@@ -1,3 +1,5 @@
+// This timer is a component that is linked to slide timer only fix the syling and make sure the time is saved in the data base
+
 import React, { useState, useEffect } from "react";
 // @ts-ignore
 import ntiLogo from "../assets/ntiLogo.svg";
@@ -56,19 +58,19 @@ export const CountdownWidget = ({ data }) => {
     //Widget layouts are returned depending on their size in grid
     return (
       <>
-        <div className="countdownDiv aspect-square flex flex-col">
-          <div className="countdownTopTextDiv flex justify-center mt-10">
-            <h1 className="countdownTopText text-center text-8xl">Jul-Lan</h1>
+        <div className="flex flex-col countdownDiv aspect-square">
+          <div className="flex justify-center mt-10 countdownTopTextDiv">
+            <h1 className="text-center countdownTopText text-8xl">Jul-Lan</h1>
           </div>
-          <div className="countdownCountdownDiv flex-grow flex items-center justify-center">
+          <div className="flex items-center justify-center flex-grow countdownCountdownDiv">
             <div className="countdownNumbers">
               <p className="text-[13rem] font-bold">
                 {daysLeft}:{hoursLeft}:{minutesLeft}:{secondsLeft}
               </p>
             </div>
           </div>
-          <div className="countdownFooter mb-10">
-            <img src={ntiLogo} alt="NTI Gymnasiet" className="mx-auto w-8/12" />
+          <div className="mb-10 countdownFooter">
+            <img src={ntiLogo} alt="NTI Gymnasiet" className="w-8/12 mx-auto" />
           </div>
         </div>
       </>
@@ -77,10 +79,10 @@ export const CountdownWidget = ({ data }) => {
     return (
       <>
         <div className="countdownDiv aspect-[1/2] flex flex-col">
-          <div className="countdownTopTextDiv flex justify-center mt-10">
-            <h1 className="countdownTopText text-center text-8xl">Jul-Lan</h1>
+          <div className="flex justify-center mt-10 countdownTopTextDiv">
+            <h1 className="text-center countdownTopText text-8xl">Jul-Lan</h1>
           </div>
-          <div className="countdownCountdownDiv flex-grow flex-col flex justify-center">
+          <div className="flex flex-col justify-center flex-grow countdownCountdownDiv">
             <table className="mt-40">
               <tr>
                 <td>
@@ -89,7 +91,7 @@ export const CountdownWidget = ({ data }) => {
                   </h3>
                 </td>
                 <td>
-                  <p className="text-6xl ml-10">Dagar</p>
+                  <p className="ml-10 text-6xl">Dagar</p>
                 </td>
               </tr>
               <tr>
@@ -99,7 +101,7 @@ export const CountdownWidget = ({ data }) => {
                   </h3>
                 </td>
                 <td>
-                  <p className="text-6xl ml-10">Timmar</p>
+                  <p className="ml-10 text-6xl">Timmar</p>
                 </td>
               </tr>
               <tr>
@@ -109,7 +111,7 @@ export const CountdownWidget = ({ data }) => {
                   </h3>
                 </td>
                 <td>
-                  <p className="text-6xl ml-10">Minuter</p>
+                  <p className="ml-10 text-6xl">Minuter</p>
                 </td>
               </tr>
               <tr>
@@ -119,13 +121,13 @@ export const CountdownWidget = ({ data }) => {
                   </h3>
                 </td>
                 <td>
-                  <p className="text-6xl ml-10">Sekunder</p>
+                  <p className="ml-10 text-6xl">Sekunder</p>
                 </td>
               </tr>
             </table>
           </div>
-          <div className="countdownFooter mb-10">
-            <img src={ntiLogo} alt="NTI Gymnasiet" className="mx-auto w-8/12" />
+          <div className="mb-10 countdownFooter">
+            <img src={ntiLogo} alt="NTI Gymnasiet" className="w-8/12 mx-auto" />
           </div>
         </div>
       </>
@@ -134,33 +136,33 @@ export const CountdownWidget = ({ data }) => {
     return (
       <>
         <div className="countdownDiv aspect-[2/1] flex flex-col">
-          <div className="countdownTopTextDiv flex justify-center mt-10">
-            <h1 className="countdownTopText text-center text-8xl">Jul-Lan</h1>
+          <div className="flex justify-center mt-10 countdownTopTextDiv">
+            <h1 className="text-center countdownTopText text-8xl">Jul-Lan</h1>
           </div>
-          <div className="countdownCountdownDiv flex-grow flex-col flex justify-center text-center">
+          <div className="flex flex-col justify-center flex-grow text-center countdownCountdownDiv">
             <table className="table-fixed ml-[10%] mr-[10%]">
               <tr>
                 <td className="w-3/12">
-                  <h3 className="text-9xl font-semibold">{daysLeft}</h3>
+                  <h3 className="font-semibold text-9xl">{daysLeft}</h3>
                   <p className="text-2xl">Dagar</p>
                 </td>
                 <td className="w-3/12">
-                  <h3 className="text-9xl font-semibold">{hoursLeft}</h3>
+                  <h3 className="font-semibold text-9xl">{hoursLeft}</h3>
                   <p className="text-2xl">Timmar</p>
                 </td>
                 <td className="w-3/12">
-                  <h3 className="text-9xl font-semibold">{minutesLeft}</h3>
+                  <h3 className="font-semibold text-9xl">{minutesLeft}</h3>
                   <p className="text-2xl">Minuter</p>
                 </td>
                 <td className="w-3/12">
-                  <h3 className="text-9xl font-semibold">{secondsLeft}</h3>
+                  <h3 className="font-semibold text-9xl">{secondsLeft}</h3>
                   <p className="text-2xl">Sekunder</p>
                 </td>
               </tr>
             </table>
           </div>
-          <div className="countdownFooter mb-10">
-            <img src={ntiLogo} alt="NTI Gymnasiet" className="mx-auto w-4/12" />
+          <div className="mb-10 countdownFooter">
+            <img src={ntiLogo} alt="NTI Gymnasiet" className="w-4/12 mx-auto" />
           </div>
         </div>
       </>

@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
     ExpandedModel,
     LayoutItem,
@@ -37,6 +37,7 @@ export const useSlides = () => {
 
 export const useNewSlide = () => {
     const pbClient = usePocketbase();
+    const queryClient = useQueryClient()
 
     const data = useMutation({
         mutationFn: async (slide: Omit<Slide, keyof StrictRecordModel> ) => {
@@ -46,18 +47,25 @@ export const useNewSlide = () => {
 
             return newSlide;
         },
+        onSuccess: () => {
+          queryClient.invalidateQueries({ queryKey: ['slides'] })
+        },
     });
     return data;
 }
 
 export const useDeleteSlide = () => {
     const pbClient = usePocketbase();
+    const queryClient = useQueryClient()
 
     const data = useMutation({
         mutationFn: async (slideID: string) => {
             await pbClient
                 .collection('slides')
                 .delete(slideID);
+        },
+        onSuccess: () => {
+          queryClient.invalidateQueries({ queryKey: ['slides'] })
         },
     });
 

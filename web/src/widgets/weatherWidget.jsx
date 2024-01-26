@@ -377,7 +377,6 @@ export const WeatherWidget1x2 = () => {
     }
   }
 
-  const TodayWeatherIcon = data.weatherType;
   return (
     <div
       className="bg-gradient-to-br from-indigo-500 to-indigo-900  text-white grid grid-col-1"

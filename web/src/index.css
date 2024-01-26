@@ -9,6 +9,8 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+  min-height: 0;
+  min-width: 0;
 }
 
 body {

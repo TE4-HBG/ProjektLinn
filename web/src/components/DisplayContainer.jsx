@@ -1,23 +1,23 @@
+import LunchWidget from "../widgets/LunchWidget";
 import { DisplayFooter } from "./DisplayHeaderFooter";
 import { DisplayHeader } from "./DisplayHeaderFooter";
+import { AdminGrid } from "./Grid";
 
 export const DisplayContainer = () => {
   return (
     <>
       <DisplayHeader />
-      <p className="container p-10 text-center bg-white "> Display Container </p>
+      <p className="p-10 text-center bg-white "> Display Container </p>
       <DisplayFooter />
     </>
   );
 };
 
-
 export const EditContainer = () => {
   return (
     <>
-      <div className="container mx-auto px-4 border-4 w-[30vw]">
-        <p className="container p-10 text-center"> Edit Container </p>
-      </div>
+      <p className="p-10 text-center"> Edit Container </p>
+      {/* <AdminGrid slideId={"c8v6aslmcq12goj"} layoutId={"x8pxvylsuseyveq"} /> */}
     </>
   );
 };
