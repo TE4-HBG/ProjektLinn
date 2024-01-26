@@ -44,7 +44,7 @@ export const DisplayHeader = () => {
         <>
             <div className="flex justify-between items-center px-[5%] h-[10vh] fixed top-0 left-0 right-0 font-bold">
                 <div className="flex">
-                    <img src={NtiLogo} />
+                    <img src={NtiLogo} className="w-[28vw]"/>
                 </div>
 
                 <div className="flex text-white text-6xl">
