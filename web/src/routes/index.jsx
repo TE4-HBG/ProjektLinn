@@ -11,9 +11,7 @@ export const RootRoute = () => {
   };
   return (
     <>
-   
-    <DisplayContainer/>  
-
+      <DisplayContainer />
     </>
   );
 };
