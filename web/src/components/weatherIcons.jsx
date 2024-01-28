@@ -16,9 +16,9 @@ export const Clearday = () => {
           y2="264.76"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#fbbf24" />
-          <stop offset="0.45" stop-color="#fbbf24" />
-          <stop offset="1" stop-color="#f59e0b" />
+          <stop offset="0" stopColor="#fbbf24" />
+          <stop offset="0.45" stopColor="#fbbf24" />
+          <stop offset="1" stopColor="#f59e0b" />
         </linearGradient>
         <symbol id="clear-day-b" viewBox="0 0 384 384">
           <circle
@@ -26,8 +26,8 @@ export const Clearday = () => {
             cy="192"
             r="84"
             stroke="#f8af18"
-            stroke-miterlimit="10"
-            stroke-width="6"
+            strokeMiterlimit="10"
+            strokeWidth="6"
             fill="url(#clear-day-a)"
           />
 
@@ -35,9 +35,9 @@ export const Clearday = () => {
             d="M192,61.66V12m0,360V322.34M284.17,99.83l35.11-35.11M64.72,319.28l35.11-35.11m0-184.34L64.72,64.72M319.28,319.28l-35.11-35.11M61.66,192H12m360,0H322.34"
             fill="none"
             stroke="#fbbf24"
-            stroke-linecap="round"
-            stroke-miterlimit="10"
-            stroke-width="24"
+            strokeLinecap="round"
+            strokeMiterlimit="10"
+            strokeWidth="24"
           >
             <animateTransform
               attributeName="transform"
@@ -123,9 +123,9 @@ export const Drizzle = () => {
           y2="261.37"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#f3f7fe" />
-          <stop offset="0.45" stop-color="#f3f7fe" />
-          <stop offset="1" stop-color="#deeafb" />
+          <stop offset="0" stopColor="#f3f7fe" />
+          <stop offset="0.45" stopColor="#f3f7fe" />
+          <stop offset="1" stopColor="#deeafb" />
         </linearGradient>
         <linearGradient
           id="drizzle-b"
@@ -136,9 +136,9 @@ export const Drizzle = () => {
           gradientTransform="translate(-989.44 1287.05) rotate(-9)"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#0b65ed" />
-          <stop offset="0.45" stop-color="#0a5ad4" />
-          <stop offset="1" stop-color="#0950bc" />
+          <stop offset="0" stopColor="#0b65ed" />
+          <stop offset="0.45" stopColor="#0a5ad4" />
+          <stop offset="1" stopColor="#0950bc" />
         </linearGradient>
         <linearGradient
           id="drizzle-c"
@@ -160,8 +160,8 @@ export const Drizzle = () => {
           <path
             d="M291,107c-.85,0-1.68.09-2.53.13A83.9,83.9,0,0,0,135.6,42.92,55.91,55.91,0,0,0,51,91a56.56,56.56,0,0,0,.8,9.08A60,60,0,0,0,63,219c1.35,0,2.67-.11,4-.2v.2H291a56,56,0,0,0,0-112Z"
             stroke="#e6effc"
-            stroke-miterlimit="10"
-            stroke-width="6"
+            strokeMiterlimit="10"
+            strokeWidth="6"
             fill="url(#drizzle-a)"
           />
         </symbol>
@@ -177,7 +177,7 @@ export const Drizzle = () => {
       <path
         d="M200,376a8,8,0,0,1-8-8V356a8,8,0,0,1,16,0v12A8,8,0,0,1,200,376Z"
         stroke="#0a5ad4"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
         fill="url(#drizzle-b)"
         opacity="0"
       >
@@ -205,7 +205,7 @@ export const Drizzle = () => {
       <path
         d="M256,376a8,8,0,0,1-8-8V356a8,8,0,0,1,16,0v12A8,8,0,0,1,256,376Z"
         stroke="#0a5ad4"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
         fill="url(#drizzle-c)"
         opacity="0"
       >
@@ -233,7 +233,7 @@ export const Drizzle = () => {
       <path
         d="M312,376a8,8,0,0,1-8-8V356a8,8,0,0,1,16,0v12A8,8,0,0,1,312,376Z"
         stroke="#0a5ad4"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
         fill="url(#drizzle-d)"
         opacity="0"
       >
@@ -276,9 +276,9 @@ export const Extremerain = () => {
           y2="149.27"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#9ca3af" />
-          <stop offset="0.45" stop-color="#9ca3af" />
-          <stop offset="1" stop-color="#6b7280" />
+          <stop offset="0" stopColor="#9ca3af" />
+          <stop offset="0.45" stopColor="#9ca3af" />
+          <stop offset="1" stopColor="#6b7280" />
         </linearGradient>
         <linearGradient
           id="extreme-rain-b"
@@ -288,9 +288,9 @@ export const Extremerain = () => {
           y2="261.37"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#6b7280" />
-          <stop offset="0.45" stop-color="#6b7280" />
-          <stop offset="1" stop-color="#4b5563" />
+          <stop offset="0" stopColor="#6b7280" />
+          <stop offset="0.45" stopColor="#6b7280" />
+          <stop offset="1" stopColor="#4b5563" />
         </linearGradient>
         <linearGradient
           id="extreme-rain-c"
@@ -301,9 +301,9 @@ export const Extremerain = () => {
           gradientTransform="translate(-1189.41 1353.24) rotate(-9)"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#0b65ed" />
-          <stop offset="0.45" stop-color="#0a5ad4" />
-          <stop offset="1" stop-color="#0950bc" />
+          <stop offset="0" stopColor="#0b65ed" />
+          <stop offset="0.45" stopColor="#0a5ad4" />
+          <stop offset="1" stopColor="#0950bc" />
         </linearGradient>
         <linearGradient
           id="extreme-rain-d"
@@ -327,7 +327,7 @@ export const Extremerain = () => {
           <path
             d="M.5,93.18a32.44,32.44,0,0,0,32.44,32.44H162.69v-.12c.77,0,1.53.12,2.31.12a34.75,34.75,0,0,0,6.49-68.89A32.38,32.38,0,0,0,123,23.62,48.58,48.58,0,0,0,34.4,60.81c-.49,0-1-.07-1.46-.07A32.44,32.44,0,0,0,.5,93.18Z"
             stroke="#848b98"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
             fill="url(#extreme-rain-a)"
           />
         </symbol>
@@ -335,8 +335,8 @@ export const Extremerain = () => {
           <path
             d="M291,107c-.85,0-1.68.09-2.53.13A83.9,83.9,0,0,0,135.6,42.92,55.91,55.91,0,0,0,51,91a56.56,56.56,0,0,0,.8,9.08A60,60,0,0,0,63,219c1.35,0,2.67-.11,4-.2v.2H291a56,56,0,0,0,0-112Z"
             stroke="#5b6472"
-            stroke-miterlimit="10"
-            stroke-width="6"
+            strokeMiterlimit="10"
+            strokeWidth="6"
             fill="url(#extreme-rain-b)"
           />
         </symbol>
@@ -372,7 +372,7 @@ export const Extremerain = () => {
           <path
             d="M8.5,56.5a8,8,0,0,1-8-8V8.5a8,8,0,0,1,16,0v40A8,8,0,0,1,8.5,56.5Z"
             stroke="#0a5ad4"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
             fill="url(#extreme-rain-c)"
             opacity="0"
           >
@@ -399,7 +399,7 @@ export const Extremerain = () => {
           <path
             d="M64.5,56.5a8,8,0,0,1-8-8V8.5a8,8,0,0,1,16,0v40A8,8,0,0,1,64.5,56.5Z"
             stroke="#0a5ad4"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
             fill="url(#extreme-rain-d)"
             opacity="0"
           >
@@ -426,7 +426,7 @@ export const Extremerain = () => {
           <path
             d="M120.5,56.5a8,8,0,0,1-8-8V8.5a8,8,0,0,1,16,0v40A8,8,0,0,1,120.5,56.5Z"
             stroke="#0a5ad4"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
             fill="url(#extreme-rain-e)"
             opacity="0"
           >
@@ -482,9 +482,9 @@ export const Extremesleet = () => {
           y2="149.27"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#9ca3af" />
-          <stop offset="0.45" stop-color="#9ca3af" />
-          <stop offset="1" stop-color="#6b7280" />
+          <stop offset="0" stopColor="#9ca3af" />
+          <stop offset="0.45" stopColor="#9ca3af" />
+          <stop offset="1" stopColor="#6b7280" />
         </linearGradient>
         <linearGradient
           id="extreme-sleet-b"
@@ -494,9 +494,9 @@ export const Extremesleet = () => {
           y2="261.37"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#6b7280" />
-          <stop offset="0.45" stop-color="#6b7280" />
-          <stop offset="1" stop-color="#4b5563" />
+          <stop offset="0" stopColor="#6b7280" />
+          <stop offset="0.45" stopColor="#6b7280" />
+          <stop offset="1" stopColor="#4b5563" />
         </linearGradient>
         <linearGradient
           id="extreme-sleet-c"
@@ -507,9 +507,9 @@ export const Extremesleet = () => {
           gradientTransform="translate(-1188.61 1355.32) rotate(-9)"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#0b65ed" />
-          <stop offset="0.45" stop-color="#0a5ad4" />
-          <stop offset="1" stop-color="#0950bc" />
+          <stop offset="0" stopColor="#0b65ed" />
+          <stop offset="0.45" stopColor="#0a5ad4" />
+          <stop offset="1" stopColor="#0950bc" />
         </linearGradient>
         <linearGradient
           id="extreme-sleet-d"
@@ -535,9 +535,9 @@ export const Extremesleet = () => {
           y2="43.07"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#86c3db" />
-          <stop offset="0.45" stop-color="#86c3db" />
-          <stop offset="1" stop-color="#5eafcf" />
+          <stop offset="0" stopColor="#86c3db" />
+          <stop offset="0.45" stopColor="#86c3db" />
+          <stop offset="1" stopColor="#5eafcf" />
         </linearGradient>
         <linearGradient
           id="extreme-sleet-g"
@@ -559,7 +559,7 @@ export const Extremesleet = () => {
           <path
             d="M.5,93.18a32.44,32.44,0,0,0,32.44,32.44H162.69v-.12c.77,0,1.53.12,2.31.12a34.75,34.75,0,0,0,6.49-68.89A32.38,32.38,0,0,0,123,23.62,48.58,48.58,0,0,0,34.4,60.81c-.49,0-1-.07-1.46-.07A32.44,32.44,0,0,0,.5,93.18Z"
             stroke="#848b98"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
             fill="url(#extreme-sleet-a)"
           />
         </symbol>
@@ -567,8 +567,8 @@ export const Extremesleet = () => {
           <path
             d="M291,107c-.85,0-1.68.09-2.53.13A83.9,83.9,0,0,0,135.6,42.92,55.91,55.91,0,0,0,51,91a56.56,56.56,0,0,0,.8,9.08A60,60,0,0,0,63,219c1.35,0,2.67-.11,4-.2v.2H291a56,56,0,0,0,0-112Z"
             stroke="#5b6472"
-            stroke-miterlimit="10"
-            stroke-width="6"
+            strokeMiterlimit="10"
+            strokeWidth="6"
             fill="url(#extreme-sleet-b)"
           />
         </symbol>
@@ -600,12 +600,12 @@ export const Extremesleet = () => {
             />
           </use>
         </symbol>
-        <symbol id="extreme-sleet-m" viewBox="0 0 156.2 49" overflow="visible">
+        <symbol id="extreme-sleetM" viewBox="0 0 156.2 49" overflow="visible">
           <g>
             <path
               d="M41.67,31l-5.78-3.3a13.74,13.74,0,0,0,0-6.47L41.67,18a4,4,0,0,0,1.49-5.46A4.08,4.08,0,0,0,37.62,11l-5.79,3.3a13.61,13.61,0,0,0-2.64-2,13.84,13.84,0,0,0-3-1.28V4.5a4.05,4.05,0,0,0-8.1,0v6.6a14.25,14.25,0,0,0-5.69,3.23L6.58,11A4.08,4.08,0,0,0,1,12.5,4,4,0,0,0,2.53,18l5.78,3.3a13.74,13.74,0,0,0,0,6.47L2.53,31A4,4,0,0,0,1,36.5a4.08,4.08,0,0,0,3.52,2,4,4,0,0,0,2-.54l5.79-3.3a13.61,13.61,0,0,0,2.64,2,13.8,13.8,0,0,0,3,1.27V44.5a4.05,4.05,0,0,0,8.1,0V37.89a14.22,14.22,0,0,0,5.68-3.23L37.62,38a4,4,0,0,0,2,.54,4.08,4.08,0,0,0,3.52-2A4,4,0,0,0,41.67,31ZM19.06,29.7a6,6,0,0,1-2.22-8.2,6.1,6.1,0,0,1,5.27-3,6.16,6.16,0,0,1,3,.8,6,6,0,0,1,2.22,8.2A6.12,6.12,0,0,1,19.06,29.7Z"
               stroke="#86c3db"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
               fill="url(#extreme-sleet-f)"
               opacity="0"
             >
@@ -643,7 +643,7 @@ export const Extremesleet = () => {
             <path
               d="M97.67,31l-5.78-3.3a13.74,13.74,0,0,0,0-6.47L97.67,18a4,4,0,0,0,1.49-5.46A4.08,4.08,0,0,0,93.62,11l-5.79,3.3a13.61,13.61,0,0,0-2.64-2,13.84,13.84,0,0,0-3-1.28V4.5a4.05,4.05,0,0,0-8.1,0v6.6a14.25,14.25,0,0,0-5.69,3.23L62.58,11A4.08,4.08,0,0,0,57,12.5,4,4,0,0,0,58.53,18l5.78,3.3a13.74,13.74,0,0,0,0,6.47L58.53,31A4,4,0,0,0,57,36.5a4.08,4.08,0,0,0,3.52,2,4,4,0,0,0,2-.54l5.79-3.3a13.61,13.61,0,0,0,2.64,2,13.8,13.8,0,0,0,3,1.27V44.5a4.05,4.05,0,0,0,8.1,0V37.89a14.22,14.22,0,0,0,5.68-3.23L93.62,38a4,4,0,0,0,2,.54,4.08,4.08,0,0,0,3.52-2A4,4,0,0,0,97.67,31ZM75.06,29.7a6,6,0,0,1-2.22-8.2,6.1,6.1,0,0,1,5.27-3,6.16,6.16,0,0,1,3,.8,6,6,0,0,1,2.22,8.2A6.12,6.12,0,0,1,75.06,29.7Z"
               stroke="#86c3db"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
               fill="url(#extreme-sleet-g)"
               opacity="0"
             >
@@ -681,7 +681,7 @@ export const Extremesleet = () => {
             <path
               d="M153.67,31l-5.78-3.3a13.74,13.74,0,0,0,0-6.47L153.67,18a4,4,0,0,0,1.49-5.46A4.08,4.08,0,0,0,149.62,11l-5.79,3.3a13.61,13.61,0,0,0-2.64-2,13.84,13.84,0,0,0-3-1.28V4.5a4.05,4.05,0,0,0-8.1,0v6.6a14.25,14.25,0,0,0-5.69,3.23L118.58,11A4.08,4.08,0,0,0,113,12.5,4,4,0,0,0,114.53,18l5.78,3.3a13.74,13.74,0,0,0,0,6.47L114.53,31A4,4,0,0,0,113,36.5a4.08,4.08,0,0,0,3.52,2,4,4,0,0,0,2-.54l5.79-3.3a13.61,13.61,0,0,0,2.64,2,13.8,13.8,0,0,0,3,1.27V44.5a4.05,4.05,0,0,0,8.1,0V37.89a14.22,14.22,0,0,0,5.68-3.23l5.79,3.3a4,4,0,0,0,2,.54,4.08,4.08,0,0,0,3.52-2A4,4,0,0,0,153.67,31ZM131.06,29.7a6,6,0,0,1-2.22-8.2,6.1,6.1,0,0,1,5.27-3,6.16,6.16,0,0,1,3,.8,6,6,0,0,1,2.22,8.2A6.12,6.12,0,0,1,131.06,29.7Z"
               stroke="#86c3db"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
               fill="url(#extreme-sleet-h)"
               opacity="0"
             >
@@ -716,12 +716,12 @@ export const Extremesleet = () => {
           </g>
         </symbol>
         <symbol id="extreme-sleet-l" viewBox="0 0 156.2 49" overflow="visible">
-          <use width="156.2" height="49" xlinkHref="#extreme-sleet-m" />
+          <use width="156.2" height="49" xlinkHref="#extreme-sleetM" />
 
           <path
             d="M22.1,38.5a8,8,0,0,1-8-8v-12a8,8,0,0,1,16,0v12A8,8,0,0,1,22.1,38.5Z"
             stroke="#0a5ad4"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
             fill="url(#extreme-sleet-c)"
             opacity="0"
           >
@@ -749,7 +749,7 @@ export const Extremesleet = () => {
           <path
             d="M78.1,38.5a8,8,0,0,1-8-8v-12a8,8,0,0,1,16,0v12A8,8,0,0,1,78.1,38.5Z"
             stroke="#0a5ad4"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
             fill="url(#extreme-sleet-d)"
             opacity="0"
           >
@@ -777,7 +777,7 @@ export const Extremesleet = () => {
           <path
             d="M134.1,38.5a8,8,0,0,1-8-8v-12a8,8,0,0,1,16,0v12A8,8,0,0,1,134.1,38.5Z"
             stroke="#0a5ad4"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
             fill="url(#extreme-sleet-e)"
             opacity="0"
           >
@@ -834,9 +834,9 @@ export const Extremesnow = () => {
           y2="149.27"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#9ca3af" />
-          <stop offset="0.45" stop-color="#9ca3af" />
-          <stop offset="1" stop-color="#6b7280" />
+          <stop offset="0" stopColor="#9ca3af" />
+          <stop offset="0.45" stopColor="#9ca3af" />
+          <stop offset="1" stopColor="#6b7280" />
         </linearGradient>
         <linearGradient
           id="extreme-snow-b"
@@ -846,9 +846,9 @@ export const Extremesnow = () => {
           y2="261.37"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#6b7280" />
-          <stop offset="0.45" stop-color="#6b7280" />
-          <stop offset="1" stop-color="#4b5563" />
+          <stop offset="0" stopColor="#6b7280" />
+          <stop offset="0.45" stopColor="#6b7280" />
+          <stop offset="1" stopColor="#4b5563" />
         </linearGradient>
         <linearGradient
           id="extreme-snow-c"
@@ -858,9 +858,9 @@ export const Extremesnow = () => {
           y2="43.07"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#86c3db" />
-          <stop offset="0.45" stop-color="#86c3db" />
-          <stop offset="1" stop-color="#5eafcf" />
+          <stop offset="0" stopColor="#86c3db" />
+          <stop offset="0.45" stopColor="#86c3db" />
+          <stop offset="1" stopColor="#5eafcf" />
         </linearGradient>
         <linearGradient
           id="extreme-snow-d"
@@ -882,7 +882,7 @@ export const Extremesnow = () => {
           <path
             d="M.5,93.18a32.44,32.44,0,0,0,32.44,32.44H162.69v-.12c.77,0,1.53.12,2.31.12a34.75,34.75,0,0,0,6.49-68.89A32.38,32.38,0,0,0,123,23.62,48.58,48.58,0,0,0,34.4,60.81c-.49,0-1-.07-1.46-.07A32.44,32.44,0,0,0,.5,93.18Z"
             stroke="#848b98"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
             fill="url(#extreme-snow-a)"
           />
         </symbol>
@@ -890,8 +890,8 @@ export const Extremesnow = () => {
           <path
             d="M291,107c-.85,0-1.68.09-2.53.13A83.9,83.9,0,0,0,135.6,42.92,55.91,55.91,0,0,0,51,91a56.56,56.56,0,0,0,.8,9.08A60,60,0,0,0,63,219c1.35,0,2.67-.11,4-.2v.2H291a56,56,0,0,0,0-112Z"
             stroke="#5b6472"
-            stroke-miterlimit="10"
-            stroke-width="6"
+            strokeMiterlimit="10"
+            strokeWidth="6"
             fill="url(#extreme-snow-b)"
           />
         </symbol>
@@ -928,7 +928,7 @@ export const Extremesnow = () => {
             <path
               d="M41.67,31l-5.78-3.3a13.74,13.74,0,0,0,0-6.47L41.67,18a4,4,0,0,0,1.49-5.46A4.08,4.08,0,0,0,37.62,11l-5.79,3.3a13.61,13.61,0,0,0-2.64-2,13.84,13.84,0,0,0-3-1.28V4.5a4.05,4.05,0,0,0-8.1,0v6.6a14.25,14.25,0,0,0-5.69,3.23L6.58,11A4.08,4.08,0,0,0,1,12.5,4,4,0,0,0,2.53,18l5.78,3.3a13.74,13.74,0,0,0,0,6.47L2.53,31A4,4,0,0,0,1,36.5a4.08,4.08,0,0,0,3.52,2,4,4,0,0,0,2-.54l5.79-3.3a13.61,13.61,0,0,0,2.64,2,13.8,13.8,0,0,0,3,1.27V44.5a4.05,4.05,0,0,0,8.1,0V37.89a14.22,14.22,0,0,0,5.68-3.23L37.62,38a4,4,0,0,0,2,.54,4.08,4.08,0,0,0,3.52-2A4,4,0,0,0,41.67,31ZM19.06,29.7a6,6,0,0,1-2.22-8.2,6.1,6.1,0,0,1,5.27-3,6.16,6.16,0,0,1,3,.8,6,6,0,0,1,2.22,8.2A6.12,6.12,0,0,1,19.06,29.7Z"
               stroke="#86c3db"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
               fill="url(#extreme-snow-c)"
               opacity="0"
             >
@@ -966,7 +966,7 @@ export const Extremesnow = () => {
             <path
               d="M97.67,31l-5.78-3.3a13.74,13.74,0,0,0,0-6.47L97.67,18a4,4,0,0,0,1.49-5.46A4.08,4.08,0,0,0,93.62,11l-5.79,3.3a13.61,13.61,0,0,0-2.64-2,13.84,13.84,0,0,0-3-1.28V4.5a4.05,4.05,0,0,0-8.1,0v6.6a14.25,14.25,0,0,0-5.69,3.23L62.58,11A4.08,4.08,0,0,0,57,12.5,4,4,0,0,0,58.53,18l5.78,3.3a13.74,13.74,0,0,0,0,6.47L58.53,31A4,4,0,0,0,57,36.5a4.08,4.08,0,0,0,3.52,2,4,4,0,0,0,2-.54l5.79-3.3a13.61,13.61,0,0,0,2.64,2,13.8,13.8,0,0,0,3,1.27V44.5a4.05,4.05,0,0,0,8.1,0V37.89a14.22,14.22,0,0,0,5.68-3.23L93.62,38a4,4,0,0,0,2,.54,4.08,4.08,0,0,0,3.52-2A4,4,0,0,0,97.67,31ZM75.06,29.7a6,6,0,0,1-2.22-8.2,6.1,6.1,0,0,1,5.27-3,6.16,6.16,0,0,1,3,.8,6,6,0,0,1,2.22,8.2A6.12,6.12,0,0,1,75.06,29.7Z"
               stroke="#86c3db"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
               fill="url(#extreme-snow-d)"
               opacity="0"
             >
@@ -1004,7 +1004,7 @@ export const Extremesnow = () => {
             <path
               d="M153.67,31l-5.78-3.3a13.74,13.74,0,0,0,0-6.47L153.67,18a4,4,0,0,0,1.49-5.46A4.08,4.08,0,0,0,149.62,11l-5.79,3.3a13.61,13.61,0,0,0-2.64-2,13.84,13.84,0,0,0-3-1.28V4.5a4.05,4.05,0,0,0-8.1,0v6.6a14.25,14.25,0,0,0-5.69,3.23L118.58,11A4.08,4.08,0,0,0,113,12.5,4,4,0,0,0,114.53,18l5.78,3.3a13.74,13.74,0,0,0,0,6.47L114.53,31A4,4,0,0,0,113,36.5a4.08,4.08,0,0,0,3.52,2,4,4,0,0,0,2-.54l5.79-3.3a13.61,13.61,0,0,0,2.64,2,13.8,13.8,0,0,0,3,1.27V44.5a4.05,4.05,0,0,0,8.1,0V37.89a14.22,14.22,0,0,0,5.68-3.23l5.79,3.3a4,4,0,0,0,2,.54,4.08,4.08,0,0,0,3.52-2A4,4,0,0,0,153.67,31ZM131.06,29.7a6,6,0,0,1-2.22-8.2,6.1,6.1,0,0,1,5.27-3,6.16,6.16,0,0,1,3,.8,6,6,0,0,1,2.22,8.2A6.12,6.12,0,0,1,131.06,29.7Z"
               stroke="#86c3db"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
               fill="url(#extreme-snow-e)"
               opacity="0"
             >
@@ -1070,9 +1070,9 @@ export const Fog = () => {
           y2="261.37"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#f3f7fe" />
-          <stop offset="0.45" stop-color="#f3f7fe" />
-          <stop offset="1" stop-color="#deeafb" />
+          <stop offset="0" stopColor="#f3f7fe" />
+          <stop offset="0.45" stopColor="#f3f7fe" />
+          <stop offset="1" stopColor="#deeafb" />
         </linearGradient>
         <linearGradient
           id="fog-b"
@@ -1082,17 +1082,23 @@ export const Fog = () => {
           y2="122.35"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#d4d7dd" />
-          <stop offset="0.45" stop-color="#d4d7dd" />
-          <stop offset="1" stop-color="#bec1c6" />
+          <stop offset="0" stopColor="#d4d7dd" />
+          <stop offset="0.45" stopColor="#d4d7dd" />
+          <stop offset="1" stopColor="#bec1c6" />
         </linearGradient>
-        <linearGradient id="fog-c" y1="-50.35" x2="168" y2="74.35" xlinkHref="#fog-b" />
+        <linearGradient
+          id="fog-c"
+          y1="-50.35"
+          x2="168"
+          y2="74.35"
+          xlinkHref="#fog-b"
+        />
         <symbol id="fog-d" viewBox="0 0 350 222">
           <path
             d="M291,107c-.85,0-1.68.09-2.53.13A83.9,83.9,0,0,0,135.6,42.92,55.91,55.91,0,0,0,51,91a56.56,56.56,0,0,0,.8,9.08A60,60,0,0,0,63,219c1.35,0,2.67-.11,4-.2v.2H291a56,56,0,0,0,0-112Z"
             stroke="#e6effc"
-            stroke-miterlimit="10"
-            stroke-width="6"
+            strokeMiterlimit="10"
+            strokeWidth="6"
             fill="url(#fog-a)"
           />
         </symbol>
@@ -1103,9 +1109,9 @@ export const Fog = () => {
             x2="252"
             y2="60"
             fill="none"
-            stroke-linecap="round"
-            stroke-miterlimit="10"
-            stroke-width="24"
+            strokeLinecap="round"
+            strokeMiterlimit="10"
+            strokeWidth="24"
             stroke="url(#fog-b)"
           >
             <animateTransform
@@ -1123,9 +1129,9 @@ export const Fog = () => {
             x2="252"
             y2="12"
             fill="none"
-            stroke-linecap="round"
-            stroke-miterlimit="10"
-            stroke-width="24"
+            strokeLinecap="round"
+            strokeMiterlimit="10"
+            strokeWidth="24"
             stroke="url(#fog-c)"
           >
             <animateTransform
@@ -1170,9 +1176,9 @@ export const Overcast = () => {
           y2="261.37"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#f3f7fe" />
-          <stop offset="0.45" stop-color="#f3f7fe" />
-          <stop offset="1" stop-color="#deeafb" />
+          <stop offset="0" stopColor="#f3f7fe" />
+          <stop offset="0.45" stopColor="#f3f7fe" />
+          <stop offset="1" stopColor="#deeafb" />
         </linearGradient>
         <linearGradient
           id="overcast-b"
@@ -1182,15 +1188,15 @@ export const Overcast = () => {
           y2="149.27"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#9ca3af" />
-          <stop offset="0.45" stop-color="#9ca3af" />
-          <stop offset="1" stop-color="#6b7280" />
+          <stop offset="0" stopColor="#9ca3af" />
+          <stop offset="0.45" stopColor="#9ca3af" />
+          <stop offset="1" stopColor="#6b7280" />
         </linearGradient>
         <symbol id="overcast-d" viewBox="0 0 200.26 126.12">
           <path
             d="M.5,93.18a32.44,32.44,0,0,0,32.44,32.44H162.69v-.12c.77,0,1.53.12,2.31.12a34.75,34.75,0,0,0,6.49-68.89A32.38,32.38,0,0,0,123,23.62,48.58,48.58,0,0,0,34.4,60.81c-.49,0-1-.07-1.46-.07A32.44,32.44,0,0,0,.5,93.18Z"
             stroke="#848b98"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
             fill="url(#overcast-b)"
           />
         </symbol>
@@ -1198,8 +1204,8 @@ export const Overcast = () => {
           <path
             d="M291,107c-.85,0-1.68.09-2.53.13A83.9,83.9,0,0,0,135.6,42.92,55.91,55.91,0,0,0,51,91a56.56,56.56,0,0,0,.8,9.08A60,60,0,0,0,63,219c1.35,0,2.67-.11,4-.2v.2H291a56,56,0,0,0,0-112Z"
             stroke="#e6effc"
-            stroke-miterlimit="10"
-            stroke-width="6"
+            strokeMiterlimit="10"
+            strokeWidth="6"
             fill="url(#overcast-a)"
           />
         </symbol>
@@ -1318,7 +1324,7 @@ export const Partlycloudyday = () => {
             height="222"
             transform="translate(13 36)"
             xlinkHref="#partly-cloudy-e"
-          />    
+          />
         </symbol>
       </defs>
       <use
@@ -1504,16 +1510,16 @@ export const Raindrop = () => {
           y2="231.72"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#3392d6" />
-          <stop offset="0.45" stop-color="#3392d6" />
-          <stop offset="1" stop-color="#2477b2" />
+          <stop offset="0" stopColor="#3392d6" />
+          <stop offset="0.45" stopColor="#3392d6" />
+          <stop offset="1" stopColor="#2477b2" />
         </linearGradient>
         <symbol id="raindrop-b" viewBox="0 0 164 245.57">
           <path
             d="M82,3.57c-48.7,72-80,117-80,160.75s35.79,79.25,80,79.25,80-35.47,80-79.25S130.7,75.54,82,3.57Z"
             stroke="#2885c7"
-            stroke-miterlimit="10"
-            stroke-width="4"
+            strokeMiterlimit="10"
+            strokeWidth="4"
             fill="url(#raindrop-a)"
           >
             <animateTransform
@@ -1553,16 +1559,16 @@ export const Raindrops = () => {
           y2="231.72"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#3392d6" />
-          <stop offset="0.45" stop-color="#3392d6" />
-          <stop offset="1" stop-color="#2477b2" />
+          <stop offset="0" stopColor="#3392d6" />
+          <stop offset="0.45" stopColor="#3392d6" />
+          <stop offset="1" stopColor="#2477b2" />
         </linearGradient>
         <symbol id="raindrops-b" viewBox="0 0 164 245.57">
           <path
             d="M82,3.57c-48.7,72-80,117-80,160.75s35.79,79.25,80,79.25,80-35.47,80-79.25S130.7,75.54,82,3.57Z"
             stroke="#2885c7"
-            stroke-miterlimit="10"
-            stroke-width="4"
+            strokeMiterlimit="10"
+            strokeWidth="4"
             fill="url(#raindrops-a)"
           />
         </symbol>
@@ -1620,9 +1626,9 @@ export const Sleet = () => {
           y2="261.37"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#f3f7fe" />
-          <stop offset="0.45" stop-color="#f3f7fe" />
-          <stop offset="1" stop-color="#deeafb" />
+          <stop offset="0" stopColor="#f3f7fe" />
+          <stop offset="0.45" stopColor="#f3f7fe" />
+          <stop offset="1" stopColor="#deeafb" />
         </linearGradient>
         <linearGradient
           id="sleet-b"
@@ -1633,9 +1639,9 @@ export const Sleet = () => {
           gradientTransform="translate(-1188.61 1355.32) rotate(-9)"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#0b65ed" />
-          <stop offset="0.45" stop-color="#0a5ad4" />
-          <stop offset="1" stop-color="#0950bc" />
+          <stop offset="0" stopColor="#0b65ed" />
+          <stop offset="0.45" stopColor="#0a5ad4" />
+          <stop offset="1" stopColor="#0950bc" />
         </linearGradient>
         <linearGradient
           id="sleet-c"
@@ -1661,9 +1667,9 @@ export const Sleet = () => {
           y2="43.07"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#86c3db" />
-          <stop offset="0.45" stop-color="#86c3db" />
-          <stop offset="1" stop-color="#5eafcf" />
+          <stop offset="0" stopColor="#86c3db" />
+          <stop offset="0.45" stopColor="#86c3db" />
+          <stop offset="1" stopColor="#5eafcf" />
         </linearGradient>
         <linearGradient
           id="sleet-f"
@@ -1685,8 +1691,8 @@ export const Sleet = () => {
           <path
             d="M291,107c-.85,0-1.68.09-2.53.13A83.9,83.9,0,0,0,135.6,42.92,55.91,55.91,0,0,0,51,91a56.56,56.56,0,0,0,.8,9.08A60,60,0,0,0,63,219c1.35,0,2.67-.11,4-.2v.2H291a56,56,0,0,0,0-112Z"
             stroke="#e6effc"
-            stroke-miterlimit="10"
-            stroke-width="6"
+            strokeMiterlimit="10"
+            strokeWidth="6"
             fill="url(#sleet-a)"
           />
         </symbol>
@@ -1695,7 +1701,7 @@ export const Sleet = () => {
             <path
               d="M41.67,31l-5.78-3.3a13.74,13.74,0,0,0,0-6.47L41.67,18a4,4,0,0,0,1.49-5.46A4.08,4.08,0,0,0,37.62,11l-5.79,3.3a13.61,13.61,0,0,0-2.64-2,13.84,13.84,0,0,0-3-1.28V4.5a4.05,4.05,0,0,0-8.1,0v6.6a14.25,14.25,0,0,0-5.69,3.23L6.58,11A4.08,4.08,0,0,0,1,12.5,4,4,0,0,0,2.53,18l5.78,3.3a13.74,13.74,0,0,0,0,6.47L2.53,31A4,4,0,0,0,1,36.5a4.08,4.08,0,0,0,3.52,2,4,4,0,0,0,2-.54l5.79-3.3a13.61,13.61,0,0,0,2.64,2,13.8,13.8,0,0,0,3,1.27V44.5a4.05,4.05,0,0,0,8.1,0V37.89a14.22,14.22,0,0,0,5.68-3.23L37.62,38a4,4,0,0,0,2,.54,4.08,4.08,0,0,0,3.52-2A4,4,0,0,0,41.67,31ZM19.06,29.7a6,6,0,0,1-2.22-8.2,6.1,6.1,0,0,1,5.27-3,6.16,6.16,0,0,1,3,.8,6,6,0,0,1,2.22,8.2A6.12,6.12,0,0,1,19.06,29.7Z"
               stroke="#86c3db"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
               fill="url(#sleet-e)"
               opacity="0"
             >
@@ -1733,7 +1739,7 @@ export const Sleet = () => {
             <path
               d="M97.67,31l-5.78-3.3a13.74,13.74,0,0,0,0-6.47L97.67,18a4,4,0,0,0,1.49-5.46A4.08,4.08,0,0,0,93.62,11l-5.79,3.3a13.61,13.61,0,0,0-2.64-2,13.84,13.84,0,0,0-3-1.28V4.5a4.05,4.05,0,0,0-8.1,0v6.6a14.25,14.25,0,0,0-5.69,3.23L62.58,11A4.08,4.08,0,0,0,57,12.5,4,4,0,0,0,58.53,18l5.78,3.3a13.74,13.74,0,0,0,0,6.47L58.53,31A4,4,0,0,0,57,36.5a4.08,4.08,0,0,0,3.52,2,4,4,0,0,0,2-.54l5.79-3.3a13.61,13.61,0,0,0,2.64,2,13.8,13.8,0,0,0,3,1.27V44.5a4.05,4.05,0,0,0,8.1,0V37.89a14.22,14.22,0,0,0,5.68-3.23L93.62,38a4,4,0,0,0,2,.54,4.08,4.08,0,0,0,3.52-2A4,4,0,0,0,97.67,31ZM75.06,29.7a6,6,0,0,1-2.22-8.2,6.1,6.1,0,0,1,5.27-3,6.16,6.16,0,0,1,3,.8,6,6,0,0,1,2.22,8.2A6.12,6.12,0,0,1,75.06,29.7Z"
               stroke="#86c3db"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
               fill="url(#sleet-f)"
               opacity="0"
             >
@@ -1771,7 +1777,7 @@ export const Sleet = () => {
             <path
               d="M153.67,31l-5.78-3.3a13.74,13.74,0,0,0,0-6.47L153.67,18a4,4,0,0,0,1.49-5.46A4.08,4.08,0,0,0,149.62,11l-5.79,3.3a13.61,13.61,0,0,0-2.64-2,13.84,13.84,0,0,0-3-1.28V4.5a4.05,4.05,0,0,0-8.1,0v6.6a14.25,14.25,0,0,0-5.69,3.23L118.58,11A4.08,4.08,0,0,0,113,12.5,4,4,0,0,0,114.53,18l5.78,3.3a13.74,13.74,0,0,0,0,6.47L114.53,31A4,4,0,0,0,113,36.5a4.08,4.08,0,0,0,3.52,2,4,4,0,0,0,2-.54l5.79-3.3a13.61,13.61,0,0,0,2.64,2,13.8,13.8,0,0,0,3,1.27V44.5a4.05,4.05,0,0,0,8.1,0V37.89a14.22,14.22,0,0,0,5.68-3.23l5.79,3.3a4,4,0,0,0,2,.54,4.08,4.08,0,0,0,3.52-2A4,4,0,0,0,153.67,31ZM131.06,29.7a6,6,0,0,1-2.22-8.2,6.1,6.1,0,0,1,5.27-3,6.16,6.16,0,0,1,3,.8,6,6,0,0,1,2.22,8.2A6.12,6.12,0,0,1,131.06,29.7Z"
               stroke="#86c3db"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
               fill="url(#sleet-g)"
               opacity="0"
             >
@@ -1811,7 +1817,7 @@ export const Sleet = () => {
           <path
             d="M22.1,38.5a8,8,0,0,1-8-8v-12a8,8,0,0,1,16,0v12A8,8,0,0,1,22.1,38.5Z"
             stroke="#0a5ad4"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
             fill="url(#sleet-b)"
             opacity="0"
           >
@@ -1839,7 +1845,7 @@ export const Sleet = () => {
           <path
             d="M78.1,38.5a8,8,0,0,1-8-8v-12a8,8,0,0,1,16,0v12A8,8,0,0,1,78.1,38.5Z"
             stroke="#0a5ad4"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
             fill="url(#sleet-c)"
             opacity="0"
           >
@@ -1867,7 +1873,7 @@ export const Sleet = () => {
           <path
             d="M134.1,38.5a8,8,0,0,1-8-8v-12a8,8,0,0,1,16,0v12A8,8,0,0,1,134.1,38.5Z"
             stroke="#0a5ad4"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
             fill="url(#sleet-d)"
             opacity="0"
           >
@@ -1924,9 +1930,9 @@ export const Snow = () => {
           y2="261.37"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#f3f7fe" />
-          <stop offset="0.45" stop-color="#f3f7fe" />
-          <stop offset="1" stop-color="#deeafb" />
+          <stop offset="0" stopColor="#f3f7fe" />
+          <stop offset="0.45" stopColor="#f3f7fe" />
+          <stop offset="1" stopColor="#deeafb" />
         </linearGradient>
         <linearGradient
           id="snow-b"
@@ -1936,9 +1942,9 @@ export const Snow = () => {
           y2="43.07"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#86c3db" />
-          <stop offset="0.45" stop-color="#86c3db" />
-          <stop offset="1" stop-color="#5eafcf" />
+          <stop offset="0" stopColor="#86c3db" />
+          <stop offset="0.45" stopColor="#86c3db" />
+          <stop offset="1" stopColor="#5eafcf" />
         </linearGradient>
         <linearGradient
           id="snow-c"
@@ -1960,8 +1966,8 @@ export const Snow = () => {
           <path
             d="M291,107c-.85,0-1.68.09-2.53.13A83.9,83.9,0,0,0,135.6,42.92,55.91,55.91,0,0,0,51,91a56.56,56.56,0,0,0,.8,9.08A60,60,0,0,0,63,219c1.35,0,2.67-.11,4-.2v.2H291a56,56,0,0,0,0-112Z"
             stroke="#e6effc"
-            stroke-miterlimit="10"
-            stroke-width="6"
+            strokeMiterlimit="10"
+            strokeWidth="6"
             fill="url(#snow-a)"
           />
         </symbol>
@@ -1970,7 +1976,7 @@ export const Snow = () => {
             <path
               d="M41.67,31l-5.78-3.3a13.74,13.74,0,0,0,0-6.47L41.67,18a4,4,0,0,0,1.49-5.46A4.08,4.08,0,0,0,37.62,11l-5.79,3.3a13.61,13.61,0,0,0-2.64-2,13.84,13.84,0,0,0-3-1.28V4.5a4.05,4.05,0,0,0-8.1,0v6.6a14.25,14.25,0,0,0-5.69,3.23L6.58,11A4.08,4.08,0,0,0,1,12.5,4,4,0,0,0,2.53,18l5.78,3.3a13.74,13.74,0,0,0,0,6.47L2.53,31A4,4,0,0,0,1,36.5a4.08,4.08,0,0,0,3.52,2,4,4,0,0,0,2-.54l5.79-3.3a13.61,13.61,0,0,0,2.64,2,13.8,13.8,0,0,0,3,1.27V44.5a4.05,4.05,0,0,0,8.1,0V37.89a14.22,14.22,0,0,0,5.68-3.23L37.62,38a4,4,0,0,0,2,.54,4.08,4.08,0,0,0,3.52-2A4,4,0,0,0,41.67,31ZM19.06,29.7a6,6,0,0,1-2.22-8.2,6.1,6.1,0,0,1,5.27-3,6.16,6.16,0,0,1,3,.8,6,6,0,0,1,2.22,8.2A6.12,6.12,0,0,1,19.06,29.7Z"
               stroke="#86c3db"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
               fill="url(#snow-b)"
               opacity="0"
             >
@@ -2008,7 +2014,7 @@ export const Snow = () => {
             <path
               d="M97.67,31l-5.78-3.3a13.74,13.74,0,0,0,0-6.47L97.67,18a4,4,0,0,0,1.49-5.46A4.08,4.08,0,0,0,93.62,11l-5.79,3.3a13.61,13.61,0,0,0-2.64-2,13.84,13.84,0,0,0-3-1.28V4.5a4.05,4.05,0,0,0-8.1,0v6.6a14.25,14.25,0,0,0-5.69,3.23L62.58,11A4.08,4.08,0,0,0,57,12.5,4,4,0,0,0,58.53,18l5.78,3.3a13.74,13.74,0,0,0,0,6.47L58.53,31A4,4,0,0,0,57,36.5a4.08,4.08,0,0,0,3.52,2,4,4,0,0,0,2-.54l5.79-3.3a13.61,13.61,0,0,0,2.64,2,13.8,13.8,0,0,0,3,1.27V44.5a4.05,4.05,0,0,0,8.1,0V37.89a14.22,14.22,0,0,0,5.68-3.23L93.62,38a4,4,0,0,0,2,.54,4.08,4.08,0,0,0,3.52-2A4,4,0,0,0,97.67,31ZM75.06,29.7a6,6,0,0,1-2.22-8.2,6.1,6.1,0,0,1,5.27-3,6.16,6.16,0,0,1,3,.8,6,6,0,0,1,2.22,8.2A6.12,6.12,0,0,1,75.06,29.7Z"
               stroke="#86c3db"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
               fill="url(#snow-c)"
               opacity="0"
             >
@@ -2046,7 +2052,7 @@ export const Snow = () => {
             <path
               d="M153.67,31l-5.78-3.3a13.74,13.74,0,0,0,0-6.47L153.67,18a4,4,0,0,0,1.49-5.46A4.08,4.08,0,0,0,149.62,11l-5.79,3.3a13.61,13.61,0,0,0-2.64-2,13.84,13.84,0,0,0-3-1.28V4.5a4.05,4.05,0,0,0-8.1,0v6.6a14.25,14.25,0,0,0-5.69,3.23L118.58,11A4.08,4.08,0,0,0,113,12.5,4,4,0,0,0,114.53,18l5.78,3.3a13.74,13.74,0,0,0,0,6.47L114.53,31A4,4,0,0,0,113,36.5a4.08,4.08,0,0,0,3.52,2,4,4,0,0,0,2-.54l5.79-3.3a13.61,13.61,0,0,0,2.64,2,13.8,13.8,0,0,0,3,1.27V44.5a4.05,4.05,0,0,0,8.1,0V37.89a14.22,14.22,0,0,0,5.68-3.23l5.79,3.3a4,4,0,0,0,2,.54,4.08,4.08,0,0,0,3.52-2A4,4,0,0,0,153.67,31ZM131.06,29.7a6,6,0,0,1-2.22-8.2,6.1,6.1,0,0,1,5.27-3,6.16,6.16,0,0,1,3,.8,6,6,0,0,1,2.22,8.2A6.12,6.12,0,0,1,131.06,29.7Z"
               stroke="#86c3db"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
               fill="url(#snow-d)"
               opacity="0"
             >
@@ -2108,17 +2114,17 @@ export const Snowflake = () => {
           y2="366.82"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#86c3db" />
-          <stop offset="0.45" stop-color="#86c3db" />
-          <stop offset="1" stop-color="#5eafcf" />
+          <stop offset="0" stopColor="#86c3db" />
+          <stop offset="0.45" stopColor="#86c3db" />
+          <stop offset="1" stopColor="#5eafcf" />
         </linearGradient>
       </defs>
       <path
         d="M372,295.22l-34.26-19.77a83.79,83.79,0,0,0-.08-38.86L372,216.78a24,24,0,1,0-24-41.56L313.67,195A81.44,81.44,0,0,0,280,175.58V136a24,24,0,0,0-48,0v39.62A84.08,84.08,0,0,0,198.28,195L164,175.22a24,24,0,1,0-24,41.56l34.26,19.77a83.79,83.79,0,0,0,.08,38.86L140,295.22a24,24,0,1,0,24,41.56L198.33,317A80.62,80.62,0,0,0,232,336.37V376a24,24,0,0,0,48,0V336.32A84,84,0,0,0,313.67,317L348,336.78a24,24,0,1,0,24-41.56Zm-134-8A36,36,0,1,1,287.2,274,36,36,0,0,1,238,287.18Z"
         stroke="#72b9d5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
         fill="url(#snowflake-a)"
       >
         <animateTransform
@@ -2172,9 +2178,9 @@ export const Thunderstormrain = () => {
           y2="261.37"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#f3f7fe" />
-          <stop offset="0.45" stop-color="#f3f7fe" />
-          <stop offset="1" stop-color="#deeafb" />
+          <stop offset="0" stopColor="#f3f7fe" />
+          <stop offset="0.45" stopColor="#f3f7fe" />
+          <stop offset="1" stopColor="#deeafb" />
         </linearGradient>
         <linearGradient
           id="thunderstorm-rain-b"
@@ -2184,9 +2190,9 @@ export const Thunderstormrain = () => {
           y2="142.14"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#f7b23b" />
-          <stop offset="0.45" stop-color="#f7b23b" />
-          <stop offset="1" stop-color="#f59e0b" />
+          <stop offset="0" stopColor="#f7b23b" />
+          <stop offset="0.45" stopColor="#f7b23b" />
+          <stop offset="1" stopColor="#f59e0b" />
         </linearGradient>
         <linearGradient
           id="thunderstorm-rain-c"
@@ -2197,9 +2203,9 @@ export const Thunderstormrain = () => {
           gradientTransform="translate(-1189.41 1353.24) rotate(-9)"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#0b65ed" />
-          <stop offset="0.45" stop-color="#0a5ad4" />
-          <stop offset="1" stop-color="#0950bc" />
+          <stop offset="0" stopColor="#0b65ed" />
+          <stop offset="0.45" stopColor="#0a5ad4" />
+          <stop offset="1" stopColor="#0950bc" />
         </linearGradient>
         <linearGradient
           id="thunderstorm-rain-d"
@@ -2223,16 +2229,20 @@ export const Thunderstormrain = () => {
           <path
             d="M291,107c-.85,0-1.68.09-2.53.13A83.9,83.9,0,0,0,135.6,42.92,55.91,55.91,0,0,0,51,91a56.56,56.56,0,0,0,.8,9.08A60,60,0,0,0,63,219c1.35,0,2.67-.11,4-.2v.2H291a56,56,0,0,0,0-112Z"
             stroke="#e6effc"
-            stroke-miterlimit="10"
-            stroke-width="6"
+            strokeMiterlimit="10"
+            strokeWidth="6"
             fill="url(#thunderstorm-rain-a)"
           />
         </symbol>
-        <symbol id="thunderstorm-rain-g" viewBox="0 0 129 57" overflow="visible">
+        <symbol
+          id="thunderstorm-rain-g"
+          viewBox="0 0 129 57"
+          overflow="visible"
+        >
           <path
             d="M8.5,56.5a8,8,0,0,1-8-8V8.5a8,8,0,0,1,16,0v40A8,8,0,0,1,8.5,56.5Z"
             stroke="#0a5ad4"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
             fill="url(#thunderstorm-rain-c)"
             opacity="0"
           >
@@ -2259,7 +2269,7 @@ export const Thunderstormrain = () => {
           <path
             d="M64.5,56.5a8,8,0,0,1-8-8V8.5a8,8,0,0,1,16,0v40A8,8,0,0,1,64.5,56.5Z"
             stroke="#0a5ad4"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
             fill="url(#thunderstorm-rain-d)"
             opacity="0"
           >
@@ -2286,7 +2296,7 @@ export const Thunderstormrain = () => {
           <path
             d="M120.5,56.5a8,8,0,0,1-8-8V8.5a8,8,0,0,1,16,0v40A8,8,0,0,1,120.5,56.5Z"
             stroke="#0a5ad4"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
             fill="url(#thunderstorm-rain-e)"
             opacity="0"
           >
@@ -2314,8 +2324,8 @@ export const Thunderstormrain = () => {
           <polygon
             points="34.77 2 2.77 98 34.77 98 18.77 178 98.78 66 50.77 66 82.78 2 34.77 2"
             stroke="#f6a823"
-            stroke-miterlimit="10"
-            stroke-width="4"
+            strokeMiterlimit="10"
+            strokeWidth="4"
             fill="url(#thunderstorm-rain-b)"
           >
             <animate
@@ -2366,9 +2376,9 @@ export const Thunderstorm = () => {
           y2="261.37"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#f3f7fe" />
-          <stop offset="0.45" stop-color="#f3f7fe" />
-          <stop offset="1" stop-color="#deeafb" />
+          <stop offset="0" stopColor="#f3f7fe" />
+          <stop offset="0.45" stopColor="#f3f7fe" />
+          <stop offset="1" stopColor="#deeafb" />
         </linearGradient>
         <linearGradient
           id="thunderstorm-b"
@@ -2378,16 +2388,16 @@ export const Thunderstorm = () => {
           y2="142.14"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#f7b23b" />
-          <stop offset="0.45" stop-color="#f7b23b" />
-          <stop offset="1" stop-color="#f59e0b" />
+          <stop offset="0" stopColor="#f7b23b" />
+          <stop offset="0.45" stopColor="#f7b23b" />
+          <stop offset="1" stopColor="#f59e0b" />
         </linearGradient>
         <symbol id="thunderstorm-c" viewBox="0 0 350 222">
           <path
             d="M291,107c-.85,0-1.68.09-2.53.13A83.9,83.9,0,0,0,135.6,42.92,55.91,55.91,0,0,0,51,91a56.56,56.56,0,0,0,.8,9.08A60,60,0,0,0,63,219c1.35,0,2.67-.11,4-.2v.2H291a56,56,0,0,0,0-112Z"
             stroke="#e6effc"
-            stroke-miterlimit="10"
-            stroke-width="6"
+            strokeMiterlimit="10"
+            strokeWidth="6"
             fill="url(#thunderstorm-a)"
           />
         </symbol>
@@ -2395,8 +2405,8 @@ export const Thunderstorm = () => {
           <polygon
             points="34.77 2 2.77 98 34.77 98 18.77 178 98.78 66 50.77 66 82.78 2 34.77 2"
             stroke="#f6a823"
-            stroke-miterlimit="10"
-            stroke-width="4"
+            strokeMiterlimit="10"
+            strokeWidth="4"
             fill="url(#thunderstorm-b)"
           >
             <animate

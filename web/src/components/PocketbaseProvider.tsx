@@ -3,11 +3,11 @@
  */
 import PocketBase, { RecordService } from "pocketbase";
 import { createContext, useContext } from "react";
-
+type _Expand = Record<string, any> | undefined;
 /**
  * Represents a strict record model with required properties.
  */
-export type StrictRecordModel<Expand extends Record<string, any> | undefined = undefined> = {
+export type StrictRecordModel<Expand extends _Expand = undefined> = {
     id: string;
     created_at: string;
     updated_at: string;
@@ -19,14 +19,14 @@ export type StrictRecordModel<Expand extends Record<string, any> | undefined = u
 /**
  * Represents a layout record model.
  */
-export interface Layout extends StrictRecordModel {
+export interface Layout<Expand extends _Expand = undefined> extends StrictRecordModel<Expand> {
     name: string;
 }
 
 /**
  * Represents a layout item record model.
  */
-export interface LayoutItem extends StrictRecordModel {
+export interface LayoutItem<Expand extends _Expand = undefined> extends StrictRecordModel<Expand> {
     layout: string;
     row_start: number;
     row_end: number;
@@ -37,16 +37,16 @@ export interface LayoutItem extends StrictRecordModel {
 /**
  * Represents a slide record model.
  */
-export interface Slide extends StrictRecordModel {
-    layoutID: number;
+export interface Slide<Expand extends _Expand = undefined> extends StrictRecordModel<Expand> {
     index: number;
+    layout: string;
     interval: number;
 }
 
 /**
  * Represents a widget record model.
  */
-export interface Widget extends StrictRecordModel {
+export interface Widget<Expand extends _Expand = undefined> extends StrictRecordModel<Expand> {
     slide: string;
     type: string;
     data: any;
@@ -55,7 +55,7 @@ export interface Widget extends StrictRecordModel {
 /**
  * Represents a widget record model.
  */
-export interface Misc extends StrictRecordModel {
+export interface Misc<Expand extends _Expand = undefined> extends StrictRecordModel<Expand> {
     // slide: string;
     type: string;
     value: any;

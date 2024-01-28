@@ -1,11 +1,4 @@
 import { DisplayContainer } from "../components/DisplayContainer";
-import { Veckoevents } from "../components/Veckoevents";
-import { TrafficWidget } from "../components/trafficWidget";
-import { SlideTimer } from "../components/SlideTimer";
-import { NewsArticleWidget } from "../components/NewsArticleWidget";
-import { Insta } from "../components/Insta";
-import { CountdownWidget } from "../components/CountdownWidget";
-import { useMisc } from "../lib/hooks/useMisc";
 
 export const RootRoute = () => {
   const dataForTrafficWidget = {
@@ -16,21 +9,11 @@ export const RootRoute = () => {
   const dataTime = {
     datetime: "2015-03-25",
   };
-
-  /*
-    tidigare kod:
-    <DisplayContainer />
-    <Veckoevents />
-    <CountdownWidget data={dataTime} />
-    */
   return (
     <>
-      <TrafficWidget data={dataForTrafficWidget} />
-      <SlideTimer />
-      <NewsArticleWidget />
-      <Insta />
-      <CountdownWidget data={dataTime} />
-      {console.log(useMisc("st-hbg-c-departures"))}
+   
+    <DisplayContainer/>  
+
     </>
   );
 };

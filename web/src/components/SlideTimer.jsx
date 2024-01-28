@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 export const SlideTimer = () => {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
-
+const [time, setTime] = useState(0);
   const minutesInputRef = useRef();
   const secondsInputRef = useRef();
   const timerRef = useRef();
@@ -22,44 +22,49 @@ export const SlideTimer = () => {
     return minutes * 60 + seconds;
   };
 
-  const startTimer = () => {
-    timerRef.current = setInterval(countDown, 1000);
-  };
+  const handleSubmit = () => {
+  setTime (convertToSeconds()); //this should be sent to pocketbase
+  console.log(time + " seconds");
+  }
 
-  const countDown = () => {
-    let c_seconds = convertToSeconds();
-
-    if (c_seconds) {
-      setSeconds((prevSeconds) => (prevSeconds ? prevSeconds - 1 : 59));
-
-      if (c_seconds % 60 === 0 && minutes) {
-        setMinutes((prevMinutes) => prevMinutes - 1);
-      }
-    } else {
-      clearInterval(timerRef.current);
+  useEffect(() => {
+    if (seconds>59) {
+      setMinutes((prevMinutes) => prevMinutes + 1);
+      setSeconds(0);
+      minutesInputRef.current.value = minutes + 1;
+      secondsInputRef.current.value = 0;
     }
-  };
+    if (seconds<0) {
+      if (minutes>0) {
+        setMinutes((prevMinutes) => prevMinutes - 1);
+        setSeconds(59);
+        minutesInputRef.current.value = minutes - 1;
+        secondsInputRef.current.value = 59;
+      }
+      else{
+        setSeconds(0);
+        minutesInputRef.current.value = 0;
+        secondsInputRef.current.value = 0;
 
-  const stopTimer = () => {
-    clearInterval(timerRef.current);
-  };
 
-  const resetTimer = () => {
-    setMinutes(0);
-    setSeconds(0);
-    minutesInputRef.current.value = 0;
-    secondsInputRef.current.value = 0;
-    clearInterval(timerRef.current);
-  };
+      }
+      
+    }
+    
+  }, [seconds]);
 
+
+ 
   return (
     <>
       <div className="">
-        <div className="grid grid-cols-2 gap-4">
-          <div className="justify-center items-center space-x-4 ring ring-purple-600 bg-zinc-600 rounded-lg shadow-xl">
-            <span>Min</span>
-            <div className="max-w-5 float-right ring ring ring-purple-600 bg-zinc-600 rounded-lg shadow-xl">
+        
+          <div className="justify-center items-center space-x-4 ring ring-purple-600 bg-zinc-600 rounded-lg grid grid-cols-3 ">
+            <div>
+              <span className="mx-10  text-white font-semibold">Minuter</span>
+
               <input
+                className="rounded w-[20%] text-center"
                 ref={minutesInputRef}
                 type="number"
                 placeholder={0}
@@ -67,11 +72,12 @@ export const SlideTimer = () => {
                 onChange={inputHandler}
               />
             </div>
-          </div>
-          <div className="justify-center items-center space-x-4  ring ring-purple-600 bg-zinc-600 rounded-lg shadow-xl">
-            <span>Sec</span>
-            <div className="max-w-5 float-right ring ring-purple-600 bg-zinc-600 rounded-lg shadow-xl">
+
+            <div>
+              <span className="mx-10 text-white font-semibold">Sekunder</span>
+
               <input
+                className="rounded w-[20%] text-center "
                 ref={secondsInputRef}
                 type="number"
                 placeholder={0}
@@ -79,32 +85,16 @@ export const SlideTimer = () => {
                 onChange={inputHandler}
               />
             </div>
-          </div>
+
+            
+
+            <span className=" text-white text-xl font-bold mx-10 " onClick={handleSubmit} >Bekräfta</span>
+       
         </div>
-        <div className="flex justify-center items-center space-x-4 mt-6 ring ring-purple-600 bg-zinc-600 rounded-lg shadow-xl">
-          <button
-            onClick={startTimer}
-            className="flex items-center justify-center w-8 duration-300 outline-none cursor-pointer group ring ring-purple-600 bg-zinc-600 rounded-lg shadow-xl hover:scale-110 text-white min-width-fit"
-          >
-            Start
-          </button>
-          <button
-            onClick={stopTimer}
-            className="flex items-center justify-center w-8 duration-300 outline-none cursor-pointer group ring ring-purple-600 bg-zinc-600 rounded-lg shadow-xl hover:scale-110 text-white min-width-fit"
-          >
-            Stop
-          </button>
-          <button
-            onClick={resetTimer}
-            className="flex items-center justify-center w-8 duration-300 outline-none cursor-pointer group ring ring-purple-600 bg-zinc-600 rounded-lg shadow-xl hover:scale-110 text-white min-width-fit"
-          >
-            Reset
-          </button>
-        </div>
+
         <div className="flex justify-center items-center mt-6 ring ring-purple-600 bg-zinc-600 rounded-lg shadow-xl">
-          <h1>
-            {" "}
-            Timer {minutes} : {seconds < 10 ? `0${seconds}` : seconds}{" "}
+          <h1 className="font-bold text-white text-xl">
+            Slide time: {minutes} : {seconds < 10 ? `0${seconds}` : seconds}{" "}
           </h1>
         </div>
       </div>
