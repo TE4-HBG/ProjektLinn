@@ -1,4 +1,4 @@
-import Iframe from 'react-iframe'
+import Iframe from 'react-iframe';
 
 
 export const Insta = () => {
@@ -6,8 +6,8 @@ export const Insta = () => {
    
            //Iframe to show instagram profile
         // not completelty tested BE CAREFUL MIGHT EXPLODE
-            
-            <Iframe url="https://www.instagram.com/ntihelsingborg//embed"
+            <div className='h-[2000px]'>
+            <Iframe url="https://www.instagram.com/ntihelsingborg/embed"
                width="100%"
                height="100%"
                id=""
@@ -16,6 +16,7 @@ export const Insta = () => {
                position="relative"
                scrolling='no'
                />
+            </div>
       
             )
             }
