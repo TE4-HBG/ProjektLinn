@@ -6,12 +6,12 @@ export const Veckoevents = () => {
   if (size === "1x1") { //Widget layouts are returned depending on their size in grid
     return (
       <>
-        <div className="bg-red-900 aspect-square">
+        <div className=" aspect-square">
           <h1 className="text-white text-[10vw] text-center mt-20 font-semibold">
             Vecka 39
           </h1>
           <h3 className="text-white text-[6vw] text-center">Måndag</h3>
-          <p className="m-auto w-2/3 text-center text-9xl mt-[15%] text-white">
+          <p className="m-auto w-2/3 text-center text-2xl mt-[15%] text-white">
             <span className="font-semibold">NTI CUP. </span>Glöm inte anmäla er
             på Schoolsoft
           </p>
@@ -21,7 +21,7 @@ export const Veckoevents = () => {
   } else if (size === "1x2") {
     return (
       <>
-        <div className="bg-red-900 aspect-[1/2]">
+        <div className=" aspect-[1/2]">
           <h1 className="text-white text-[10vw] text-center mt-[5%]">
             Vecka 39
           </h1>
@@ -95,7 +95,7 @@ export const Veckoevents = () => {
   } else if (size === "2x1") {
     return (
       <>
-        <div className="bg-red-900 aspect-[2/1]">
+        <div className=" aspect-[2/1]">
           <h1 className="text-white text-9xl text-center mt-20">Vecka 39</h1>
           <hr className="bg-white w-1/3 m-auto mt-10 center h-1" />
           <table className="m-auto mt-20 text-white text-center w-[90%]">
