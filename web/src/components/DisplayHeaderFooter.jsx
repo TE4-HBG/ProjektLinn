@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import NtiLogo from '../assets/whitelogo.png';
+import NtiTe4 from '../assets/ntite4.png';
 
 const ClockComponent = () => {
     const [date, setDate] = useState(new Date());
@@ -44,7 +45,7 @@ export const DisplayHeader = () => {
         <>
             <div className="flex justify-between items-center px-[5%] h-[10vh] fixed top-0 left-0 right-0 font-bold">
                 <div className="flex">
-                    <img src={NtiLogo} />
+                    <img src={NtiLogo} className="w-[20vh]"/>
                 </div>
 
                 <div className="flex text-white text-6xl">
@@ -64,7 +65,7 @@ export const DisplayFooter = () => {
                 </div>
 
                 <div className="flex text-6xl text-white">
-                    TE4
+                    <img src={NtiTe4} className="w-[5vh]"/>
                 </div>
             </div>
         </>
