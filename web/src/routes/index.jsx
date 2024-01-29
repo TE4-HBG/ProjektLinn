@@ -1,17 +1,7 @@
 import { DisplayContainer } from "../components/DisplayContainer";
-import { usePocketbase } from "../components/PocketbaseProvider";
-import { useState, useEffect } from "react";
-import {
-  pbClienttest,
-  getEx,
-  setEx,
-  deleteEx,
-  editEx,
-} from "../lib/hooks/useForLearning";
+import { Veckoevents } from "../components/Veckoevents";
 
 export const RootRoute = () => {
-  //om map används för att loopa igenom sätt alltid state som en rom array i början
-
   const dataForTrafficWidget = {
     divId: "someId",
     interval: 30000, // Custom interval in milliseconds
@@ -22,7 +12,10 @@ export const RootRoute = () => {
   };
   return (
     <>
-      <DisplayContainer />
+   
+    <DisplayContainer/>
+    <Veckoevents/>  
+
     </>
   );
 };
