@@ -1,5 +1,5 @@
 import { DisplayContainer } from "../components/DisplayContainer";
-import { Veckoevents } from "../components/Veckoevents";
+import { Veckoevents1x1 } from "../components/Veckoevents";
 
 export const RootRoute = () => {
   const dataForTrafficWidget = {
@@ -14,7 +14,7 @@ export const RootRoute = () => {
     <>
    
     <DisplayContainer/>
-    <Veckoevents/>  
+    <Veckoevents1x1/>  
 
     </>
   );

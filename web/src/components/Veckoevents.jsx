@@ -1,8 +1,6 @@
 import "react";
 
-const size = "1x2"; //Size for layout purposes. Later it should be getting this from the Database
-
-export const Veckoevents = () => {
+export const Veckoevents = ({size}) => {
   if (size === "1x1") { //Widget layouts are returned depending on their size in grid
     return (
       <>
@@ -165,3 +163,13 @@ export const Veckoevents = () => {
     );
   }
 };
+
+export const Veckoevents2x1 = ({  }) => {
+  return <Veckoevents  size="2x1" />;
+}
+export const Veckoevents1x2 = ({ }) => {
+  return <Veckoevents  size="1x2" />;
+}
+export const Veckoevents1x1 = ({ }) => {
+  return <Veckoevents  size="1x1" />;
+}
